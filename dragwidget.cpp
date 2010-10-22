@@ -70,20 +70,6 @@ using namespace std;
 	 
  }
 
- void DragWidget::dragEnterEvent(QDragEnterEvent *event)
- {
-     if (event->mimeData()->hasText()) {
-         if (children().contains(event->source())) {
-             event->setDropAction(Qt::MoveAction);
-             event->accept();
-         } else {
-             event->acceptProposedAction();
-         }
-     } else {
-         event->ignore();
-     }
- }
-
 
  void DragWidget::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
@@ -110,7 +96,7 @@ void showMessage(QString message){
 	msgBox.exec();
 }
 
- void DragWidget::dropEvent(QDropEvent *event)
+ void DragWidget::mouseReleaseEvent(QMouseEvent *event)
  {
 	 activeCellChanged();
 
@@ -118,54 +104,13 @@ void showMessage(QString message){
 	 int col = position.x()/cellWidth;
 	 int row = position.y()/cellHeight;
 
-     if ( event->mimeData()->hasText()) {
-         const QMimeData *mime = event->mimeData();
-         QStringList pieces = mime->text().split(QRegExp("\\s+"),
-                              QString::SkipEmptyParts);
-         QPoint hotSpot;
+     activeWidget->move(col * cellWidth, row * cellHeight);
 
-         QList<QByteArray> hotSpotPos = mime->data("application/x-hotspot").split(' ');
-         if (hotSpotPos.size() == 2) {
-             hotSpot.setX(hotSpotPos[0].toInt());
-             hotSpot.setY(hotSpotPos[1].toInt());
-			 if ( activeWidget == grid[originRow][originCol] ) {
-			 	grid[originRow][originCol] = NULL;
-			 }
-         }
+	 grid[row][col] = activeWidget;
 
-         foreach (QString piece, pieces) {
-             DragLabel *newLabel = new DragLabel(piece, this);
-			 position = position - hotSpot;
-	
-
-			 position.setX(col * cellWidth );
-			 position.setY(row * cellHeight );
-             newLabel->move(position);
-             newLabel->show();
-             newLabel->setAttribute(Qt::WA_DeleteOnClose);
-
-             position += QPoint(newLabel->width(), 0);
-
-			 grid[row][col] = newLabel;
-
-         }
-
-         if (event->source() == this) {
-             event->setDropAction(Qt::MoveAction);
-             event->accept();
-         } else {
-             event->acceptProposedAction();
-         }
-     } else {
-         event->ignore();
-     }
-     foreach (QObject *child, children()) {
-         if (child->inherits("QWidget")) {
-             QWidget *widget = static_cast<QWidget *>(child);
-             if (!widget->isVisible())
-                 widget->deleteLater();
-         }
-     }
+	 if ( activeWidget == grid[originRow][originCol] ) {
+		grid[originRow][originCol] = NULL;
+	 }
 
      activeDragging = false;
 	 activeWidget = NULL;
@@ -188,27 +133,11 @@ void showMessage(QString message){
 	 originCol = col;
 	 originRow = row;		 
 
-     QMimeData *mimeData = new QMimeData;
-     mimeData->setText(child->text());
-     mimeData->setData("application/x-hotspot",
-                       QByteArray::number(hotSpot.x())
-                       + " " + QByteArray::number(hotSpot.y()));
-
-     QPixmap pixmap(child->size());
-     child->render(&pixmap);
-
-     QDrag *drag = new QDrag(this);
-     drag->setMimeData(mimeData);
-     drag->setPixmap(pixmap);
-     drag->setHotSpot(hotSpot);
+	 offsetX = event->pos().x() - child->x();
+	 offsetY = event->pos().y() - child->y();
 
 	 activeWidget = child;
-
-     Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction);
-
-     if (dropAction == Qt::MoveAction)
-         child->close();
-
+	 activeWidget->raise();
 	 activeDragging = true;
 
  }
@@ -247,7 +176,12 @@ void DragWidget::activeCellChanged(){
 
 }
 
-void DragWidget::dragMoveEvent( QDragMoveEvent *event ) {
+void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
+
+	if ( activeDragging ) {
+		activeWidget->move(event->pos().x()-offsetX, event->pos().y()-offsetY);
+	}
+
 	lastActiveCol = activeCol;
 	lastActiveRow = activeRow;
 	QPoint pos = event->pos();
