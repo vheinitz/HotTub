@@ -45,6 +45,8 @@
  #include <QWidget>
  #include <QtGui>
 
+ #include "templatewidget.h"
+
  class QDragEnterEvent;
  class QDropEvent;
 
@@ -68,7 +70,7 @@
  private:
 
 	 QWidget* **grid;
-	 QWidget* activeWidget;
+	 TemplateWidget* activeWidget;
 	 QLabel *label;
 	 bool activeDragging;
 	 int activeCol;

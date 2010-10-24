@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dragwidget.h'
 **
-** Created: Thu Oct 21 20:57:15 2010
+** Created: Sat Oct 23 18:52:25 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!

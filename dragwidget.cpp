@@ -4,7 +4,7 @@
  #include <QPropertyAnimation>
  #include <iostream>
 
- #include "draglabel.h"
+ #include "textedit.h"
  #include "dragwidget.h"
 
 
@@ -25,14 +25,16 @@ using namespace std;
          QString word;
          inputStream >> word;
          if (!word.isEmpty()) {
-             DragLabel *wordLabel = new DragLabel(word, this);
-             wordLabel->move(x, y);
-             wordLabel->show();
-             wordLabel->setAttribute(Qt::WA_DeleteOnClose);
-             x += wordLabel->width() + 2;
+             TextEdit *edit = new TextEdit(word, this);
+			 //wordLabel->setCursor(Qt::OpenHandCursor);
+             edit->enterEditMode();
+             edit->move(x, y);
+             edit->show();
+             edit->setAttribute(Qt::WA_DeleteOnClose);
+             x += edit->width() + 2;
              if (x >= 195) {
                  x = 5;
-                 y += wordLabel->height() + 2;
+                 y += edit->height() + 2;
              }
          }
      }
@@ -98,6 +100,10 @@ void showMessage(QString message){
 
  void DragWidget::mouseReleaseEvent(QMouseEvent *event)
  {
+     if ( activeWidget != NULL ) {
+     	activeWidget->setCursor(Qt::OpenHandCursor);
+	 }
+		 return;
 	 activeCellChanged();
 
      QPoint position = event->pos();
@@ -120,12 +126,21 @@ void showMessage(QString message){
 
  void DragWidget::mousePressEvent(QMouseEvent *event)
  {
+	 cout << "Mouse pressed " << endl;
 
-     DragLabel *child = static_cast<DragLabel*>(childAt(event->pos()));
-     if (!child)
-         return;
+     QWidget *child = childAt(event->pos());
+	 if ( child == NULL ) return;
 
-     QPoint hotSpot = event->pos() - child->pos();
+	 QWidget *parent = child->parentWidget();
+	 while ( parent != this ) {
+		child = parent;
+		parent = parent->parentWidget();
+	 }
+
+	 TemplateWidget *templWidget = static_cast<TemplateWidget*>(child);
+	 if ( templWidget ) {
+	 	templWidget->setCursor(Qt::ClosedHandCursor);
+	 }
 
 	 int col = event->pos().x() / cellWidth;
 	 int row = event->pos().y() / cellHeight;
@@ -136,15 +151,18 @@ void showMessage(QString message){
 	 offsetX = event->pos().x() - child->x();
 	 offsetY = event->pos().y() - child->y();
 
-	 activeWidget = child;
+	 activeWidget = templWidget;
 	 activeWidget->raise();
 	 activeDragging = true;
-
  }
 
 void DragWidget::activeCellChanged(){
-	
+
+	if ( activeWidget == NULL ) return;
+
 	int row = activeRow;
+	int m = activeWidget->height() / cellHeight + 1;
+	cout << activeWidget->height() << " " << cellHeight << " " << m << endl;
 	int dir = 1;
 	if ( lastActiveRow < activeRow ) {
 		dir = -1;
@@ -155,7 +173,7 @@ void DragWidget::activeCellChanged(){
 		QPropertyAnimation* animation = new QPropertyAnimation(widget, "geometry");
   		animation->setDuration(150);
  		animation->setEasingCurve(QEasingCurve::InOutQuart);
- 		animation->setEndValue(QRect(widget->x(),widget->y()+(cellHeight*dir),widget->width(),widget->height()));
+ 		animation->setEndValue(QRect(widget->x(),widget->y()+(cellHeight*dir*m),widget->width(),widget->height()));
 
 		animationGroup->addAnimation(animation);
 
@@ -164,11 +182,10 @@ void DragWidget::activeCellChanged(){
 
 
 	if ( row != activeRow ){ 
-		cout << "Starting animation" << endl;
  		animationGroup->start(QAbstractAnimation::DeleteWhenStopped);		
 	
 		while ( row != activeRow ) {
-			grid[row][activeCol] = grid[row-dir][activeCol];
+			grid[row][activeCol] = grid[row-(dir*m)][activeCol];
 			row = row - dir;
 		}
 		grid[row][activeCol]=NULL;

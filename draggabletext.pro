@@ -1,8 +1,10 @@
- HEADERS     = draglabel.h \
-               dragwidget.h
+ HEADERS     = templatewidget.h \
+               dragwidget.h \
+               textedit.h
  RESOURCES   = draggabletext.qrc
- SOURCES     = draglabel.cpp \
+ SOURCES     = templatewidget.cpp \
                dragwidget.cpp \
+               textedit.cpp \
                main.cpp
 
  # install
