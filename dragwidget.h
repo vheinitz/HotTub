@@ -69,7 +69,7 @@
 
  private:
 
-	 QWidget* **grid;
+	 TemplateWidget* **grid;
 	 TemplateWidget* activeWidget;
 	 QLabel *label;
 	 bool activeDragging;

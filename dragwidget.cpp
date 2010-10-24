@@ -1,12 +1,13 @@
 
- #include <QtGui>
- #include <QPen>
- #include <QPropertyAnimation>
- #include <iostream>
+#include <QtGui>
+#include <QPen>
+#include <QPropertyAnimation>
+#include <iostream>
 
- #include "textedit.h"
- #include "dragwidget.h"
-
+#include "textedit.h"
+#include "lineedit.h"
+#include "dragwidget.h"
+#include "dateedit.h"
 
 using namespace std;
 
@@ -14,39 +15,29 @@ using namespace std;
  DragWidget::DragWidget(QWidget *parent)
      : QWidget(parent)
  {
-     QFile dictionaryFile(":/dictionary/words.txt");
-     dictionaryFile.open(QIODevice::ReadOnly);
-     QTextStream inputStream(&dictionaryFile);
-
-     int x = 5;
-     int y = 5;
-
-     while (!inputStream.atEnd()) {
-         QString word;
-         inputStream >> word;
-         if (!word.isEmpty()) {
-             TextEdit *edit = new TextEdit(word, this);
-			 //wordLabel->setCursor(Qt::OpenHandCursor);
-             edit->enterEditMode();
-             edit->move(x, y);
-             edit->show();
-             edit->setAttribute(Qt::WA_DeleteOnClose);
-             x += edit->width() + 2;
-             if (x >= 195) {
-                 x = 5;
-                 y += edit->height() + 2;
-             }
-         }
-     }
-
+     TextEdit *edit = new TextEdit("Address", this);
+     LineEdit *line = new LineEdit("Name", this);
+     DateEdit *date = new DateEdit("Birthday", this);
+     
+     line->move(0,0);
+     line->show();
+     edit->move(0,50);
+     edit->show();
+     
+     date->move(0,100);
+     date->show();
+     
+     //date->enterEditMode();
+     //line->enterEditMode();
+     //edit->enterEditMode();
+     
+     
      QPalette newPalette = palette();
      newPalette.setColor(QPalette::Window, Qt::white);
      setPalette(newPalette);
 
-     setAcceptDrops(true);
-     setMinimumSize(800, qMax(600, y));
-     setWindowTitle(tr("Draggable Text"));
-
+     setMinimumSize(800, 600);
+     
 	 cellWidth = 150;
 	 cellHeight = 40;
 
@@ -54,9 +45,9 @@ using namespace std;
 	 rows = height()/cellHeight;
 	 int i=0;
 	 int j=0;
-	 grid = (QWidget ***)malloc(rows * sizeof(QWidget **));
+	 grid = (TemplateWidget ***)malloc(rows * sizeof(TemplateWidget **));
 	 for(i=0;i<rows;i++){
-		grid[i] = (QWidget **)malloc(cols * sizeof(QWidget *));
+		grid[i] = (TemplateWidget **)malloc(cols * sizeof(TemplateWidget *));
 		for(j=0; j<cols; j++){
 			grid[i][j] = NULL;
 		}
@@ -126,8 +117,6 @@ void showMessage(QString message){
 
  void DragWidget::mousePressEvent(QMouseEvent *event)
  {
-	 cout << "Mouse pressed " << endl;
-
      QWidget *child = childAt(event->pos());
 	 if ( child == NULL ) return;
 
@@ -169,7 +158,7 @@ void DragWidget::activeCellChanged(){
 	}
  	QAnimationGroup* animationGroup = new QParallelAnimationGroup();
 	while ( grid[row][activeCol] != NULL && ( row != originRow || activeCol != originCol) ){ 
-		QWidget* widget = grid[row][activeCol];
+		TemplateWidget* widget = grid[row][activeCol];
 		QPropertyAnimation* animation = new QPropertyAnimation(widget, "geometry");
   		animation->setDuration(150);
  		animation->setEasingCurve(QEasingCurve::InOutQuart);

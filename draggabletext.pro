@@ -1,10 +1,14 @@
  HEADERS     = templatewidget.h \
                dragwidget.h \
-               textedit.h
+               lineedit.h \
+               textedit.h \
+               dateedit.h
  RESOURCES   = draggabletext.qrc
  SOURCES     = templatewidget.cpp \
                dragwidget.cpp \
                textedit.cpp \
+               lineedit.cpp \
+               dateedit.cpp \
                main.cpp
 
  # install

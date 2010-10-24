@@ -1,0 +1,22 @@
+
+#include "dateedit.h"
+
+DateEdit::DateEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
+    setLabel(label);
+    edit = new QDateTimeEdit;
+    edit->setCalendarPopup(true);
+    addWidget(edit);
+    
+}
+
+void DateEdit::enterEditMode(){
+    edit->setDisabled(true);
+}
+
+void DateEdit::exitEditMode(){
+    edit->setDisabled(false);
+}
+
+void DateEdit::setActiveCursor(Qt::CursorShape shape){
+    edit->setCursor(shape);
+}
