@@ -21,3 +21,11 @@ void LineEdit::exitEditMode(){
 void LineEdit::setActiveCursor(Qt::CursorShape shape){
     edit->setCursor(shape);
 }
+
+int LineEdit::getLeftAlignmentHint(){
+    return edit->x();
+}
+
+int LineEdit::getTopAlignmentHint(){
+    return edit->y();
+}

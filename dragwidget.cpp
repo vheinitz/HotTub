@@ -27,10 +27,13 @@ using namespace std;
      date->move(0,100);
      date->show();
      
-     //date->enterEditMode();
-     //line->enterEditMode();
-     //edit->enterEditMode();
+     date->enterEditMode();
+     line->enterEditMode();
+     edit->enterEditMode();
      
+     widgets.push_back(date);
+     widgets.push_back(line);
+     widgets.push_back(edit);
      
      QPalette newPalette = palette();
      newPalette.setColor(QPalette::Window, Qt::white);
@@ -38,28 +41,13 @@ using namespace std;
 
      setMinimumSize(800, 600);
      
-	 cellWidth = 150;
-	 cellHeight = 40;
-
-	 cols = width()/cellWidth;
-	 rows = height()/cellHeight;
-	 int i=0;
-	 int j=0;
-	 grid = (TemplateWidget ***)malloc(rows * sizeof(TemplateWidget **));
-	 for(i=0;i<rows;i++){
-		grid[i] = (TemplateWidget **)malloc(cols * sizeof(TemplateWidget *));
-		for(j=0; j<cols; j++){
-			grid[i][j] = NULL;
-		}
-	 }
-
 	 activeDragging = false;
 
-	 activeCol = 0;
-	 activeRow = 0;
-
+     hintX = -1;
+     hintY = -1;
+     overrideHints = false;
 	 timer = new QTimer(this);
-	 connect(timer, SIGNAL(timeout()), this, SLOT(activeCellChanged()));
+	 //connect(timer, SIGNAL(timeout()), this, SLOT(activeCellChanged()));
 	 
  }
 
@@ -67,20 +55,24 @@ using namespace std;
  void DragWidget::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
 
-	int i;
-	QPainter painter(this);
-	QPen pen;
-	pen.setStyle(Qt::DotLine);
-	pen.setColor(Qt::lightGray);
-	painter.setPen(pen);
-
-	for(i=0; i<width(); i+=cellWidth){
-		painter.drawLine(i, 0, i, height());
-	}
-
-	for(i=0; i<height(); i+=cellHeight){
-		painter.drawLine(0, i, width(), i);
-	}
+     if ( overrideHints ) return; 
+     
+     if ( hintX != -1 || hintY != -1 ) {
+         QPen pen;
+         pen.setStyle(Qt::DotLine);
+         pen.setColor(Qt::gray);
+         QPainter painter(this);
+     
+         painter.setPen(pen);
+         
+         if ( hintX != -1 ) {
+             painter.drawLine(hintX, 0, hintX, height());
+         }
+     
+         if ( hintY != -1 ) {
+             painter.drawLine(0, hintY, width(), hintY);
+         }
+     }
  }
 
 void showMessage(QString message){
@@ -91,28 +83,18 @@ void showMessage(QString message){
 
  void DragWidget::mouseReleaseEvent(QMouseEvent *event)
  {
+     Q_UNUSED(event);
+     
      if ( activeWidget != NULL ) {
      	activeWidget->setCursor(Qt::OpenHandCursor);
 	 }
-		 return;
-	 activeCellChanged();
-
-     QPoint position = event->pos();
-	 int col = position.x()/cellWidth;
-	 int row = position.y()/cellHeight;
-
-     activeWidget->move(col * cellWidth, row * cellHeight);
-
-	 grid[row][col] = activeWidget;
-
-	 if ( activeWidget == grid[originRow][originCol] ) {
-		grid[originRow][originCol] = NULL;
-	 }
-
+        
      activeDragging = false;
 	 activeWidget = NULL;
-	 timer->stop();
-	 update();
+     
+     hintX = -1;
+     hintY = -1;
+     update();
  }
 
  void DragWidget::mousePressEvent(QMouseEvent *event)
@@ -131,11 +113,6 @@ void showMessage(QString message){
 	 	templWidget->setCursor(Qt::ClosedHandCursor);
 	 }
 
-	 int col = event->pos().x() / cellWidth;
-	 int row = event->pos().y() / cellHeight;
-
-	 originCol = col;
-	 originRow = row;		 
 
 	 offsetX = event->pos().x() - child->x();
 	 offsetY = event->pos().y() - child->y();
@@ -145,7 +122,7 @@ void showMessage(QString message){
 	 activeDragging = true;
  }
 
-void DragWidget::activeCellChanged(){
+/*void DragWidget::activeCellChanged(){
 
 	if ( activeWidget == NULL ) return;
 
@@ -180,29 +157,55 @@ void DragWidget::activeCellChanged(){
 		grid[row][activeCol]=NULL;
 	}
 
-}
+}*/
 
 void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
-
 	if ( activeDragging ) {
 		activeWidget->move(event->pos().x()-offsetX, event->pos().y()-offsetY);
 	}
-
-	lastActiveCol = activeCol;
-	lastActiveRow = activeRow;
-	QPoint pos = event->pos();
- 	activeCol = pos.x() / cellWidth;
- 	activeRow = pos.y() / cellHeight;
-
-
- 	if ( (lastActiveCol != activeCol && originCol != activeCol) || (lastActiveRow != activeRow && originRow != activeRow) ) {
-		if ( grid[activeRow][activeCol] != NULL ){ 
-			timer->start(150);
-		}
- 	}
-
-	update();
+    
+    if ( overrideHints ) return;
+    
+    hintX = -1;
+    hintY = -1;
+    int activeWidgetHintX = activeWidget->getLeftAlignmentHint();
+    int activeWidgetHintY = activeWidget->getTopAlignmentHint();
+    for(unsigned int i=0; i<widgets.size(); i++){
+        if ( widgets[i] != activeWidget ) {
+            int hint = widgets[i]->getLeftAlignmentHint() + widgets[i]->x();
+        
+            if ( abs(hint - (event->pos().x() + activeWidgetHintX) + offsetX ) < THRESHOLD ) {
+                activeWidget->move(hint - activeWidgetHintX, activeWidget->y());
+                hintX = hint;
+            }
+            
+            hint = widgets[i]->getTopAlignmentHint() + widgets[i]->y();
+            if ( abs( hint - (event->pos().y() + activeWidgetHintY) + offsetY ) < THRESHOLD ) {
+                activeWidget->move(activeWidget->x(), hint - activeWidgetHintY);
+                hintY = hint;
+            }
+        }
+    }
+    update();
 
 }
+
+
+void DragWidget::keyPressEvent( QKeyEvent *event ) {
+    if ( event->modifiers() && Qt::ControlModifier ) {
+        overrideHints = true;
+        update();
+    }
+    
+}
+
+
+void DragWidget::keyReleaseEvent( QKeyEvent *event ) {
+    Q_UNUSED(event);
+    
+    overrideHints = false;
+    update();
+}
+
 
 

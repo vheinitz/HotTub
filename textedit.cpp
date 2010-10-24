@@ -23,3 +23,11 @@ void TextEdit::setActiveCursor(Qt::CursorShape shape){
     edit->viewport()->setCursor(shape);
     
 }
+
+int TextEdit::getLeftAlignmentHint(){
+    return edit->x();
+}
+
+int TextEdit::getTopAlignmentHint(){
+    return edit->y();
+}

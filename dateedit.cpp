@@ -20,3 +20,11 @@ void DateEdit::exitEditMode(){
 void DateEdit::setActiveCursor(Qt::CursorShape shape){
     edit->setCursor(shape);
 }
+
+int DateEdit::getLeftAlignmentHint(){
+    return edit->x()+2;
+}
+
+int DateEdit::getTopAlignmentHint(){
+    return edit->y();;
+}

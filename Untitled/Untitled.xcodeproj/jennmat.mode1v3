@@ -293,7 +293,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>916 255 1252 1148 0 0 2560 1418 </string>
+						<string>722 265 1252 1148 0 0 2560 1418 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -323,20 +323,20 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3F6C03D31273E08600D6AD12</string>
+										<string>3FF2C5851274D0CA00103B7D</string>
 										<key>history</key>
 										<array>
-											<string>3F6C039B1273DAB800D6AD12</string>
-											<string>3F6C03A81273DBDB00D6AD12</string>
-											<string>3F6C03C51273DE6D00D6AD12</string>
-											<string>3F6C03C61273DE6D00D6AD12</string>
-											<string>3F6C03C71273DE6D00D6AD12</string>
-											<string>3F6C03C81273DE6D00D6AD12</string>
-											<string>3F6C03C91273DE6D00D6AD12</string>
-											<string>3F6C03CA1273DE6D00D6AD12</string>
-											<string>3F6C03CF1273E03900D6AD12</string>
-											<string>3F6C03D01273E03900D6AD12</string>
-											<string>3F6C03D11273E03900D6AD12</string>
+											<string>3FF2C5661274CC4200103B7D</string>
+											<string>3FF2C56A1274CC4200103B7D</string>
+											<string>3FF2C56E1274CC7600103B7D</string>
+											<string>3FF2C5711274CCB000103B7D</string>
+											<string>3FF2C5721274CCB000103B7D</string>
+											<string>3FF2C5731274CCB000103B7D</string>
+											<string>3FF2C5741274CCB000103B7D</string>
+											<string>3FF2C5761274CDF800103B7D</string>
+											<string>3FF2C57E1274CF9200103B7D</string>
+											<string>3FF2C57F1274CF9200103B7D</string>
+											<string>3FF2C5801274CF9200103B7D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -348,14 +348,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1044, 918}}</string>
+								<string>{{0, 0}, {1044, 914}}</string>
 								<key>RubberWindowFrame</key>
-								<string>916 255 1252 1148 0 0 2560 1418 </string>
+								<string>722 265 1252 1148 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>918pt</string>
+							<string>914pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -368,14 +368,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 923}, {1044, 184}}</string>
+								<string>{{0, 919}, {1044, 188}}</string>
 								<key>RubberWindowFrame</key>
-								<string>916 255 1252 1148 0 0 2560 1418 </string>
+								<string>722 265 1252 1148 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>184pt</string>
+							<string>188pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -394,9 +394,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3F6C02CF1273AE2400D6AD12</string>
+				<string>3FF2C50A1274BEC400103B7D</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3F6C02D01273AE2400D6AD12</string>
+				<string>3FF2C50B1274BEC400103B7D</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -538,7 +538,7 @@
 		<string>/Users/jennmat/Workspace/QT/DnD/Untitled/Untitled.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>916 255 1252 1148 0 0 2560 1418 </string>
+	<string>722 265 1252 1148 0 0 2560 1418 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -615,7 +615,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3FC1BE4F1273AE1700A9A986</string>
-				<string>3F6C02D11273AE2400D6AD12</string>
+				<string>3FF2C50C1274BEC400103B7D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

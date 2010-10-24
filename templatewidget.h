@@ -17,6 +17,8 @@
      
      void setCursor(Qt::CursorShape);   
      virtual void setActiveCursor(Qt::CursorShape) = 0;
+     virtual int getLeftAlignmentHint() = 0;
+     virtual int getTopAlignmentHint() = 0;
  protected:
      void setLabel(const QString&);
      void addWidget(QWidget *widget);

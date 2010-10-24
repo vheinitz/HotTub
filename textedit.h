@@ -12,6 +12,8 @@ public:
     void enterEditMode();
     void exitEditMode();
     void setActiveCursor(Qt::CursorShape);
+    int getLeftAlignmentHint();
+    int getTopAlignmentHint();
 private:
     QTextEdit *edit;
     
