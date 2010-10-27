@@ -19,6 +19,9 @@
      virtual void setActiveCursor(Qt::CursorShape) = 0;
      virtual int getLeftAlignmentHint() = 0;
      virtual int getTopAlignmentHint() = 0;
+     virtual bool allowResizeWidth() = 0;
+     virtual bool allowResizeHeight() = 0;
+
  protected:
      void setLabel(const QString&);
      void addWidget(QWidget *widget);
@@ -29,5 +32,7 @@
      QLabel *label;
      QHBoxLayout *layout;
  };
+
+
 
  #endif

@@ -14,6 +14,8 @@ public:
     void setActiveCursor(Qt::CursorShape);
     int getLeftAlignmentHint();
     int getTopAlignmentHint();
+    bool allowResizeWidth();
+    bool allowResizeHeight();
 private:
     QLineEdit *edit;
     
