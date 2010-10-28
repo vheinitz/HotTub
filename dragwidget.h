@@ -16,8 +16,6 @@
 using namespace std;
 
 
-
-
  class DragWidget : public QWidget
  {
 	Q_OBJECT

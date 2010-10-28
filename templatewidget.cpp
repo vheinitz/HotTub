@@ -1,21 +1,22 @@
 
+#include <Qt>
+#include <QtGui>
 
- #include <Qt>
- #include <QtGui>
+#include "templatewidget.h"
 
- #include "templatewidget.h"
-
- TemplateWidget::TemplateWidget(QWidget *parent)
+TemplateWidget::TemplateWidget(QWidget *parent)
      : QWidget(parent)
- {
-	layout = new QHBoxLayout;
+{
+    layout = new QHBoxLayout;
 	label = new QLabel;
-	
-     layout->addWidget(label, Qt::AlignTop);
-	
-     QWidget::setLayout(layout);
+	/*layout->setHorizontalSpacing(8);
+    //layout->addWidget(label, 0, 0, Qt::AlignTop);*/
+	layout->setContentsMargins(0,0,0,0);
+    layout->addWidget(label);
+	QWidget::setLayout(layout);
+    
+}
 
- }
 
 void TemplateWidget::setLabel(const QString& text){
     label->setText(text);
@@ -23,15 +24,15 @@ void TemplateWidget::setLabel(const QString& text){
 
 void TemplateWidget::setLayout(QLayout *l){
     layout->addLayout(l);
+    /*layout->addLayout(l, 0, 1, Qt::AlignTop);*/
 }
 
 void TemplateWidget::addWidget(QWidget *widget){
     layout->addWidget(widget);
+    /*layout->addWidget(widget, 0, 1, Qt::AlignTop);*/
 }
  
 void TemplateWidget::setCursor(Qt::CursorShape shape){
     QWidget::setCursor(shape);
     setActiveCursor(shape);
-    
 }
-

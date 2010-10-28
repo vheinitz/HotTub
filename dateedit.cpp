@@ -6,7 +6,6 @@ DateEdit::DateEdit(const QString& label, QWidget *parent) : TemplateWidget(paren
     edit = new QDateTimeEdit;
     edit->setCalendarPopup(true);
     addWidget(edit);
-    
 }
 
 void DateEdit::enterEditMode(){
@@ -28,3 +27,12 @@ int DateEdit::getLeftAlignmentHint(){
 int DateEdit::getTopAlignmentHint(){
     return edit->y();;
 }
+
+bool DateEdit::allowResizeWidth(){
+    return false;
+}
+
+bool DateEdit::allowResizeHeight(){
+    return false;
+}
+

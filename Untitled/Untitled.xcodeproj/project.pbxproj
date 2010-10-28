@@ -14,6 +14,9 @@
 		3F6C036F1273D5BC00D6AD12 /* lineedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lineedit.h; path = ../lineedit.h; sourceTree = SOURCE_ROOT; };
 		3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dateedit.cpp; path = ../dateedit.cpp; sourceTree = SOURCE_ROOT; };
 		3F6C03A01273DB1C00D6AD12 /* dateedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dateedit.h; path = ../dateedit.h; sourceTree = SOURCE_ROOT; };
+		3F8277F7127669F500D81BE2 /* hotspot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotspot.cpp; path = ../hotspot.cpp; sourceTree = SOURCE_ROOT; };
+		3F8277F8127669F500D81BE2 /* hotspot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hotspot.h; path = ../hotspot.h; sourceTree = SOURCE_ROOT; };
+		3F82785E12767C1B00D81BE2 /* action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = action.h; path = ../action.h; sourceTree = SOURCE_ROOT; };
 		3FC1BE421273A37800A9A986 /* templatewidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = templatewidget.cpp; path = ../templatewidget.cpp; sourceTree = SOURCE_ROOT; };
 		3FC1BE431273A37800A9A986 /* templatewidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = templatewidget.h; path = ../templatewidget.h; sourceTree = SOURCE_ROOT; };
 		3FC1BE441273A37800A9A986 /* dragwidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dragwidget.cpp; path = ../dragwidget.cpp; sourceTree = SOURCE_ROOT; };
@@ -33,8 +36,11 @@
 				3F6C036F1273D5BC00D6AD12 /* lineedit.h */,
 				3FC1BE431273A37800A9A986 /* templatewidget.h */,
 				3FC1BE441273A37800A9A986 /* dragwidget.cpp */,
+				3F8277F7127669F500D81BE2 /* hotspot.cpp */,
+				3F8277F8127669F500D81BE2 /* hotspot.h */,
 				3F6C02EF1273B10300D6AD12 /* draggabletext.pro */,
 				3FC1BE451273A37800A9A986 /* dragwidget.h */,
+				3F82785E12767C1B00D81BE2 /* action.h */,
 			);
 			name = Untitled;
 			sourceTree = "<group>";

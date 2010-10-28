@@ -29,3 +29,11 @@ int LineEdit::getLeftAlignmentHint(){
 int LineEdit::getTopAlignmentHint(){
     return edit->y();
 }
+
+bool LineEdit::allowResizeWidth(){
+    return true;
+}
+
+bool LineEdit::allowResizeHeight(){
+    return false;
+}

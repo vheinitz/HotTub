@@ -5,7 +5,7 @@
 TextEdit::TextEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
     setLabel(label);
     edit = new QTextEdit;
-    edit->setFixedSize(245,65);
+    setMinimumSize(150,40);
     addWidget(edit);
 
 }
@@ -30,4 +30,13 @@ int TextEdit::getLeftAlignmentHint(){
 
 int TextEdit::getTopAlignmentHint(){
     return edit->y();
+}
+
+
+bool TextEdit::allowResizeWidth(){
+    return true;
+}
+
+bool TextEdit::allowResizeHeight(){
+    return true;
 }

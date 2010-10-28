@@ -8,6 +8,8 @@
 #include "lineedit.h"
 #include "dragwidget.h"
 #include "dateedit.h"
+#include "hotspot.h"
+#include "action.h"
 
 using namespace std;
 
@@ -26,11 +28,17 @@ using namespace std;
      
      date->move(0,100);
      date->show();
+
      
      date->enterEditMode();
      line->enterEditMode();
      edit->enterEditMode();
      
+     date->setActiveCursor(Qt::OpenHandCursor);
+     line->setActiveCursor(Qt::OpenHandCursor);
+     edit->setActiveCursor(Qt::OpenHandCursor);
+     
+          
      widgets.push_back(date);
      widgets.push_back(line);
      widgets.push_back(edit);
@@ -42,11 +50,18 @@ using namespace std;
      setMinimumSize(800, 600);
      
 	 activeDragging = false;
+     activeWidget = NULL;
+     
+     actionWidget = NULL;
+     activeAction = false;
+     
 
      hintX = -1;
      hintY = -1;
      overrideHints = false;
 	 timer = new QTimer(this);
+     
+     setMouseTracking(true);
 	 //connect(timer, SIGNAL(timeout()), this, SLOT(activeCellChanged()));
 	 
  }
@@ -55,24 +70,35 @@ using namespace std;
  void DragWidget::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
 
-     if ( overrideHints ) return; 
      
-     if ( hintX != -1 || hintY != -1 ) {
-         QPen pen;
-         pen.setStyle(Qt::DotLine);
-         pen.setColor(Qt::gray);
-         QPainter painter(this);
      
-         painter.setPen(pen);
+     if ( !overrideHints ) { 
+        if ( hintX != -1 || hintY != -1 ) {
+            QPen pen;
+            pen.setStyle(Qt::DotLine);
+            pen.setColor(Qt::gray);
+            QPainter painter(this);
+     
+            painter.setPen(pen);
          
-         if ( hintX != -1 ) {
-             painter.drawLine(hintX, 0, hintX, height());
-         }
+            if ( hintX != -1 ) {
+                painter.drawLine(hintX, 0, hintX, height());
+            }
      
-         if ( hintY != -1 ) {
-             painter.drawLine(0, hintY, width(), hintY);
-         }
+            if ( hintY != -1 ) {
+                painter.drawLine(0, hintY, width(), hintY);
+            }
+         
+            if ( marginY != -1 ) {
+                painter.drawLine(0, marginY, width(), marginY);
+            }
+        }
      }
+     
+     /*QPainter painter(this);
+     for (unsigned int i=0; i<hotSpots.size(); i++) {
+         painter.fillRect(hotSpots[i].rect(), Qt::yellow);
+     }*/
  }
 
 void showMessage(QString message){
@@ -81,45 +107,81 @@ void showMessage(QString message){
 	msgBox.exec();
 }
 
+void DragWidget::buildHotSpots(){
+    hotSpots.clear();
+    int x,y,width,height;
+    for( unsigned int i=0; i<widgets.size(); i++){
+        if ( widgets[i]->allowResizeWidth() ) {
+            x=widgets[i]->x();
+            y=widgets[i]->y();
+            width=widgets[i]->width();
+            height=widgets[i]->height();
+      
+            if ( widgets[i]->allowResizeWidth() && widgets[i]->allowResizeHeight() ) {
+                hotSpots.push_back(Hotspot(widgets[i], QRect(x+width-THRESHOLD/2, y, THRESHOLD, height-THRESHOLD/2), Qt::SizeHorCursor, RESIZE_WIDTH));
+                hotSpots.push_back(Hotspot(widgets[i], QRect(x,y+height-THRESHOLD/2, width-THRESHOLD/2, THRESHOLD), Qt::SizeVerCursor, RESIZE_HEIGHT));
+                hotSpots.push_back(Hotspot(widgets[i], QRect(x+width-THRESHOLD/2, y+height-THRESHOLD/2, THRESHOLD, THRESHOLD), Qt::SizeFDiagCursor, RESIZE_BOTH));
+            } else if ( widgets[i]->allowResizeHeight() ) {
+                hotSpots.push_back(Hotspot(widgets[i], QRect(x,y+height-THRESHOLD/2, width, THRESHOLD), Qt::SizeVerCursor, RESIZE_HEIGHT));
+            } else if ( widgets[i]->allowResizeWidth() ) {
+                hotSpots.push_back(Hotspot(widgets[i], QRect(x+width-THRESHOLD/2, y, THRESHOLD, height), Qt::SizeHorCursor, RESIZE_WIDTH));
+            }
+        }
+    }
+}
+
  void DragWidget::mouseReleaseEvent(QMouseEvent *event)
  {
      Q_UNUSED(event);
      
-     if ( activeWidget != NULL ) {
-     	activeWidget->setCursor(Qt::OpenHandCursor);
-	 }
-        
+     buildHotSpots();
+     
+     if ( activeWidget ) {
+         activeWidget->setActiveCursor(Qt::OpenHandCursor);
+     }
+     
      activeDragging = false;
 	 activeWidget = NULL;
      
+     activeAction = false;
+     action = NONE;
+     
      hintX = -1;
      hintY = -1;
+     marginY = -1;
      update();
  }
 
  void DragWidget::mousePressEvent(QMouseEvent *event)
  {
-     QWidget *child = childAt(event->pos());
-	 if ( child == NULL ) return;
+     activeAction = true;
+     QWidget *child = NULL;
+	 
+     for (unsigned int i=0; i<widgets.size(); i++) {
+         if ( widgets[i]->geometry().contains(event->pos())) {
+             child = widgets[i];
+             continue;
+         }
+     }
 
-	 QWidget *parent = child->parentWidget();
+     if ( child == NULL ) return;
+
+	 /*QWidget *parent = child->parentWidget();
 	 while ( parent != this ) {
 		child = parent;
 		parent = parent->parentWidget();
-	 }
+	 }*/
 
 	 TemplateWidget *templWidget = static_cast<TemplateWidget*>(child);
-	 if ( templWidget ) {
-	 	templWidget->setCursor(Qt::ClosedHandCursor);
-	 }
-
-
+	 
 	 offsetX = event->pos().x() - child->x();
 	 offsetY = event->pos().y() - child->y();
 
 	 activeWidget = templWidget;
+     activeWidget->setActiveCursor(Qt::ClosedHandCursor);
 	 activeWidget->raise();
 	 activeDragging = true;
+     
  }
 
 /*void DragWidget::activeCellChanged(){
@@ -160,32 +222,87 @@ void showMessage(QString message){
 }*/
 
 void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
-	if ( activeDragging ) {
-		activeWidget->move(event->pos().x()-offsetX, event->pos().y()-offsetY);
-	}
+	
+    if ( activeAction && action == RESIZE_BOTH ) {
+        int width = qMax(actionWidget->minimumWidth(), event->pos().x() - actionWidget->x());
+        int height = qMax(actionWidget->minimumHeight(), event->pos().y() - actionWidget->y());
+        actionWidget->setGeometry(actionWidget->x(), actionWidget->y(), width, height );
+        return;
+    } else if ( activeAction && action == RESIZE_WIDTH ) {
+        int width = qMax(actionWidget->minimumWidth(), event->pos().x() - actionWidget->x());
+        actionWidget->setGeometry(actionWidget->x(), actionWidget->y(), width, actionWidget->height() );
+        return;
+    } else if ( activeAction && action == RESIZE_HEIGHT ) {
+        int height = qMax(actionWidget->minimumHeight(), event->pos().y() - actionWidget->y());
+        actionWidget->setGeometry(actionWidget->x(), actionWidget->y(), actionWidget->width(), height );
+        return;
+    }
+        
     
-    if ( overrideHints ) return;
+    if ( activeDragging ) {
+        activeWidget->move(event->pos().x()-offsetX, event->pos().y()-offsetY);
+        
+    }
+        
+    
+    setCursor(Qt::ArrowCursor);
+    action = NONE;
+    actionWidget = NULL;
     
     hintX = -1;
     hintY = -1;
-    int activeWidgetHintX = activeWidget->getLeftAlignmentHint();
-    int activeWidgetHintY = activeWidget->getTopAlignmentHint();
+    marginY = -1;
+    int activeWidgetHintX=-1, activeWidgetHintY=-1;
+    
+    if ( activeWidget != NULL ){
+        activeWidgetHintX = activeWidget->getLeftAlignmentHint();
+        activeWidgetHintY = activeWidget->getTopAlignmentHint();
+    }
     for(unsigned int i=0; i<widgets.size(); i++){
         if ( widgets[i] != activeWidget ) {
-            int hint = widgets[i]->getLeftAlignmentHint() + widgets[i]->x();
+            if ( activeWidget != NULL && !overrideHints ) {
+                int hint = widgets[i]->getLeftAlignmentHint() + widgets[i]->x();
         
-            if ( abs(hint - (event->pos().x() + activeWidgetHintX) + offsetX ) < THRESHOLD ) {
-                activeWidget->move(hint - activeWidgetHintX, activeWidget->y());
-                hintX = hint;
-            }
+                if ( abs(hint - (event->pos().x() + activeWidgetHintX) + offsetX ) < THRESHOLD ) {
+                    activeWidget->move(hint - activeWidgetHintX, activeWidget->y());
+                    hintX = hint;
+                }
             
-            hint = widgets[i]->getTopAlignmentHint() + widgets[i]->y();
-            if ( abs( hint - (event->pos().y() + activeWidgetHintY) + offsetY ) < THRESHOLD ) {
-                activeWidget->move(activeWidget->x(), hint - activeWidgetHintY);
-                hintY = hint;
+                hint = widgets[i]->getTopAlignmentHint() + widgets[i]->y();
+                if ( abs( hint - (event->pos().y() + activeWidgetHintY) + offsetY ) < THRESHOLD ) {
+                    activeWidget->move(activeWidget->x(), hint - activeWidgetHintY);
+                    hintY = hint;
+                }
+            
+            /* Check for margins */
+                if ( hintX > -1 ) {
+                    if ( abs(event->pos().y() - widgets[i]->y() - widgets[i]->height() - offsetY - THRESHOLD) < MARGIN ) {
+                        activeWidget->move(activeWidget->x(), widgets[i]->y() + widgets[i]->height() + MARGIN);
+                        marginY = widgets[i]->y() + widgets[i]->height();
+                    }
+           
+                    if ( abs(event->pos().y() - offsetY - widgets[i]->y() + activeWidget->height() + THRESHOLD ) < MARGIN ) {
+                        activeWidget->move(activeWidget->x(), widgets[i]->y() - activeWidget->height() - MARGIN);
+                        marginY = activeWidget->y() + activeWidget->height();
+                    }
+                }
+            }
+        }
+        
+        if ( !activeDragging ) {
+        /* Check hot spots */
+            for (unsigned int i=0; i<hotSpots.size(); i++) {
+                if ( hotSpots[i].rect().contains(event->pos() ) ) {
+                    setCursor(hotSpots[i].getCursor());
+                    action = hotSpots[i].getAction();
+                    actionWidget = hotSpots[i].targetWidget();
+                }
             }
         }
     }
+    
+    
+    
     update();
 
 }
@@ -206,6 +323,5 @@ void DragWidget::keyReleaseEvent( QKeyEvent *event ) {
     overrideHints = false;
     update();
 }
-
 
 
