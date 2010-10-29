@@ -381,6 +381,76 @@
 			3FA4B7D7127941730092E35A /* PBXTextBookmark */ = 3FA4B7D7127941730092E35A /* PBXTextBookmark */;
 			3FA4B7D8127942A20092E35A /* PBXTextBookmark */ = 3FA4B7D8127942A20092E35A /* PBXTextBookmark */;
 			3FA4B7D9127942F60092E35A /* PBXTextBookmark */ = 3FA4B7D9127942F60092E35A /* PBXTextBookmark */;
+			3FA4B7DA127A546E0092E35A /* PBXTextBookmark */ = 3FA4B7DA127A546E0092E35A /* PBXTextBookmark */;
+			3FA4B7DB127A54950092E35A /* PBXTextBookmark */ = 3FA4B7DB127A54950092E35A /* PBXTextBookmark */;
+			3FA4B7DC127A54950092E35A /* PBXTextBookmark */ = 3FA4B7DC127A54950092E35A /* PBXTextBookmark */;
+			3FA4B7DD127A54950092E35A /* PBXTextBookmark */ = 3FA4B7DD127A54950092E35A /* PBXTextBookmark */;
+			3FA4B7DE127A54D20092E35A /* PBXTextBookmark */ = 3FA4B7DE127A54D20092E35A /* PBXTextBookmark */;
+			3FA4B7DF127A54D20092E35A /* PBXTextBookmark */ = 3FA4B7DF127A54D20092E35A /* PBXTextBookmark */;
+			3FA4B7E0127A54D20092E35A /* PBXTextBookmark */ = 3FA4B7E0127A54D20092E35A /* PBXTextBookmark */;
+			3FA4B7E1127A54D20092E35A /* PBXTextBookmark */ = 3FA4B7E1127A54D20092E35A /* PBXTextBookmark */;
+			3FA4B7E2127A54D20092E35A /* PBXTextBookmark */ = 3FA4B7E2127A54D20092E35A /* PBXTextBookmark */;
+			3FA4B7E3127A54EC0092E35A /* PBXTextBookmark */ = 3FA4B7E3127A54EC0092E35A /* PBXTextBookmark */;
+			3FA4B7E4127A56040092E35A /* PBXTextBookmark */ = 3FA4B7E4127A56040092E35A /* PBXTextBookmark */;
+			3FA4B7E5127A56040092E35A /* PBXTextBookmark */ = 3FA4B7E5127A56040092E35A /* PBXTextBookmark */;
+			3FA4B7E6127A56040092E35A /* PBXTextBookmark */ = 3FA4B7E6127A56040092E35A /* PBXTextBookmark */;
+			3FA4B7E7127A56480092E35A /* PBXTextBookmark */ = 3FA4B7E7127A56480092E35A /* PBXTextBookmark */;
+			3FA4B7E8127A56610092E35A /* PBXTextBookmark */ = 3FA4B7E8127A56610092E35A /* PBXTextBookmark */;
+			3FA4B7E9127A56610092E35A /* PBXTextBookmark */ = 3FA4B7E9127A56610092E35A /* PBXTextBookmark */;
+			3FA4B7EA127A56610092E35A /* PBXTextBookmark */ = 3FA4B7EA127A56610092E35A /* PBXTextBookmark */;
+			3FA4B7EB127A56840092E35A /* PBXTextBookmark */ = 3FA4B7EB127A56840092E35A /* PBXTextBookmark */;
+			3FA4B7EC127A568B0092E35A /* PBXTextBookmark */ = 3FA4B7EC127A568B0092E35A /* PBXTextBookmark */;
+			3FA4B7ED127A56E40092E35A /* PBXTextBookmark */ = 3FA4B7ED127A56E40092E35A /* PBXTextBookmark */;
+			3FA4B7EE127A57280092E35A /* PBXTextBookmark */ = 3FA4B7EE127A57280092E35A /* PBXTextBookmark */;
+			3FA4B7EF127A57280092E35A /* PBXTextBookmark */ = 3FA4B7EF127A57280092E35A /* PBXTextBookmark */;
+			3FA4B7F0127A57280092E35A /* PBXTextBookmark */ = 3FA4B7F0127A57280092E35A /* PBXTextBookmark */;
+			3FA4B7F1127A572E0092E35A /* PBXTextBookmark */ = 3FA4B7F1127A572E0092E35A /* PBXTextBookmark */;
+			3FA4B7F2127A574D0092E35A /* PBXTextBookmark */ = 3FA4B7F2127A574D0092E35A /* PBXTextBookmark */;
+			3FA4B7F3127A574D0092E35A /* PBXTextBookmark */ = 3FA4B7F3127A574D0092E35A /* PBXTextBookmark */;
+			3FA4B7F4127A574D0092E35A /* PBXTextBookmark */ = 3FA4B7F4127A574D0092E35A /* PBXTextBookmark */;
+			3FA4B7F5127A575D0092E35A /* PBXTextBookmark */ = 3FA4B7F5127A575D0092E35A /* PBXTextBookmark */;
+			3FA4B7F6127A57890092E35A /* PBXTextBookmark */ = 3FA4B7F6127A57890092E35A /* PBXTextBookmark */;
+			3FA4B7F7127A57930092E35A /* PBXTextBookmark */ = 3FA4B7F7127A57930092E35A /* PBXTextBookmark */;
+			3FA4B7F8127A57AB0092E35A /* PBXTextBookmark */ = 3FA4B7F8127A57AB0092E35A /* PBXTextBookmark */;
+			3FA4B7F9127A57AF0092E35A /* PBXTextBookmark */ = 3FA4B7F9127A57AF0092E35A /* PBXTextBookmark */;
+			3FA4B7FA127A57D20092E35A /* PBXTextBookmark */ = 3FA4B7FA127A57D20092E35A /* PBXTextBookmark */;
+			3FA4B7FB127A57ED0092E35A /* PBXTextBookmark */ = 3FA4B7FB127A57ED0092E35A /* PBXTextBookmark */;
+			3FA4B7FC127A58540092E35A /* PBXTextBookmark */ = 3FA4B7FC127A58540092E35A /* PBXTextBookmark */;
+			3FA4B7FD127A58540092E35A /* PBXTextBookmark */ = 3FA4B7FD127A58540092E35A /* PBXTextBookmark */;
+			3FA4B7FE127A58540092E35A /* PBXTextBookmark */ = 3FA4B7FE127A58540092E35A /* PBXTextBookmark */;
+			3FA4B7FF127A58650092E35A /* PBXTextBookmark */ = 3FA4B7FF127A58650092E35A /* PBXTextBookmark */;
+			3FA4B800127A58870092E35A /* PBXTextBookmark */ = 3FA4B800127A58870092E35A /* PBXTextBookmark */;
+			3FA4B801127A58DC0092E35A /* PBXTextBookmark */ = 3FA4B801127A58DC0092E35A /* PBXTextBookmark */;
+			3FA4B802127A59010092E35A /* PBXTextBookmark */ = 3FA4B802127A59010092E35A /* PBXTextBookmark */;
+			3FA4B803127A59130092E35A /* PBXTextBookmark */ = 3FA4B803127A59130092E35A /* PBXTextBookmark */;
+			3FA4B804127A59130092E35A /* PBXTextBookmark */ = 3FA4B804127A59130092E35A /* PBXTextBookmark */;
+			3FA4B805127A59130092E35A /* PBXTextBookmark */ = 3FA4B805127A59130092E35A /* PBXTextBookmark */;
+			3FA4B806127A59250092E35A /* PBXTextBookmark */ = 3FA4B806127A59250092E35A /* PBXTextBookmark */;
+			3FA4B807127A59480092E35A /* PBXTextBookmark */ = 3FA4B807127A59480092E35A /* PBXTextBookmark */;
+			3FA4B808127A59480092E35A /* PBXTextBookmark */ = 3FA4B808127A59480092E35A /* PBXTextBookmark */;
+			3FA4B809127A59480092E35A /* PBXTextBookmark */ = 3FA4B809127A59480092E35A /* PBXTextBookmark */;
+			3FA4B80A127A59530092E35A /* PBXTextBookmark */ = 3FA4B80A127A59530092E35A /* PBXTextBookmark */;
+			3FA4B80B127A595D0092E35A /* PBXTextBookmark */ = 3FA4B80B127A595D0092E35A /* PBXTextBookmark */;
+			3FA4B80C127A597D0092E35A /* PBXTextBookmark */ = 3FA4B80C127A597D0092E35A /* PBXTextBookmark */;
+			3FA4B80D127A597D0092E35A /* PBXTextBookmark */ = 3FA4B80D127A597D0092E35A /* PBXTextBookmark */;
+			3FA4B80E127A597D0092E35A /* PBXTextBookmark */ = 3FA4B80E127A597D0092E35A /* PBXTextBookmark */;
+			3FA4B80F127A598A0092E35A /* PBXTextBookmark */ = 3FA4B80F127A598A0092E35A /* PBXTextBookmark */;
+			3FA4B810127A59B50092E35A /* PBXTextBookmark */ = 3FA4B810127A59B50092E35A /* PBXTextBookmark */;
+			3FA4B811127A59B50092E35A /* PBXTextBookmark */ = 3FA4B811127A59B50092E35A /* PBXTextBookmark */;
+			3FA4B812127A59B50092E35A /* PBXTextBookmark */ = 3FA4B812127A59B50092E35A /* PBXTextBookmark */;
+			3FA4B813127A59CD0092E35A /* PBXTextBookmark */ = 3FA4B813127A59CD0092E35A /* PBXTextBookmark */;
+			3FA4B814127A59CF0092E35A /* PBXTextBookmark */ = 3FA4B814127A59CF0092E35A /* PBXTextBookmark */;
+			3FA4B815127A59EE0092E35A /* PBXTextBookmark */ = 3FA4B815127A59EE0092E35A /* PBXTextBookmark */;
+			3FA4B816127A59FE0092E35A /* PBXTextBookmark */ = 3FA4B816127A59FE0092E35A /* PBXTextBookmark */;
+			3FA4B817127A5A0E0092E35A /* PBXTextBookmark */ = 3FA4B817127A5A0E0092E35A /* PBXTextBookmark */;
+			3FA4B818127A5A820092E35A /* PBXTextBookmark */ = 3FA4B818127A5A820092E35A /* PBXTextBookmark */;
+			3FA4B819127A5A820092E35A /* PBXTextBookmark */ = 3FA4B819127A5A820092E35A /* PBXTextBookmark */;
+			3FA4B81A127A5A820092E35A /* PBXTextBookmark */ = 3FA4B81A127A5A820092E35A /* PBXTextBookmark */;
+			3FA4B81B127A5B5A0092E35A /* PBXTextBookmark */ = 3FA4B81B127A5B5A0092E35A /* PBXTextBookmark */;
+			3FA4B81C127A5B5A0092E35A /* PBXTextBookmark */ = 3FA4B81C127A5B5A0092E35A /* PBXTextBookmark */;
+			3FA4B81D127A5B5A0092E35A /* PBXTextBookmark */ = 3FA4B81D127A5B5A0092E35A /* PBXTextBookmark */;
+			3FA4B81E127A5B5A0092E35A /* PBXTextBookmark */ = 3FA4B81E127A5B5A0092E35A /* PBXTextBookmark */;
+			3FA4B81F127A5B5A0092E35A /* PBXTextBookmark */ = 3FA4B81F127A5B5A0092E35A /* PBXTextBookmark */;
 			3FF2C56A1274CC4200103B7D = 3FF2C56A1274CC4200103B7D /* PBXTextBookmark */;
 			3FF2C5D21275197D00103B7D = 3FF2C5D21275197D00103B7D /* PBXTextBookmark */;
 			3FF2C5D61275199500103B7D = 3FF2C5D61275199500103B7D /* PBXTextBookmark */;
@@ -400,7 +470,7 @@
 	};
 	3F6C02EF1273B10300D6AD12 /* draggabletext.pro */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 874}}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 849}}";
 			sepNavSelRange = "{172, 0}";
 			sepNavVisRange = "{0, 780}";
 		};
@@ -408,7 +478,7 @@
 	3F6C02F51273B3F300D6AD12 /* textedit.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {983, 874}}";
-			sepNavSelRange = "{242, 0}";
+			sepNavSelRange = "{181, 0}";
 			sepNavVisRange = "{0, 726}";
 		};
 	};
@@ -422,8 +492,8 @@
 	3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {983, 874}}";
-			sepNavSelRange = "{562, 111}";
-			sepNavVisRange = "{0, 673}";
+			sepNavSelRange = "{202, 0}";
+			sepNavVisRange = "{0, 722}";
 		};
 	};
 	3F6C036F1273D5BC00D6AD12 /* lineedit.h */ = {
@@ -436,8 +506,8 @@
 	3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {983, 874}}";
-			sepNavSelRange = "{249, 0}";
-			sepNavVisRange = "{0, 673}";
+			sepNavSelRange = "{217, 0}";
+			sepNavVisRange = "{0, 699}";
 		};
 	};
 	3F6C03A01273DB1C00D6AD12 /* dateedit.h */ = {
@@ -452,7 +522,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 39";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -462,7 +532,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 23";
 		rLen = 0;
-		rLoc = 531;
+		rLoc = 499;
 		rType = 0;
 		vrLen = 735;
 		vrLoc = 0;
@@ -492,7 +562,7 @@
 		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
 		name = "lineedit.cpp: 32";
 		rLen = 111;
-		rLoc = 562;
+		rLoc = 611;
 		rType = 0;
 		vrLen = 673;
 		vrLoc = 0;
@@ -512,7 +582,7 @@
 		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
 		name = "dateedit.cpp: 38";
 		rLen = 0;
-		rLoc = 673;
+		rLoc = 699;
 		rType = 0;
 		vrLen = 675;
 		vrLoc = 0;
@@ -532,7 +602,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 213";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2225;
 		vrLoc = 3810;
@@ -542,7 +612,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 50";
 		rLen = 0;
-		rLoc = 1079;
+		rLoc = 1129;
 		rType = 0;
 		vrLen = 970;
 		vrLoc = 0;
@@ -552,7 +622,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 34";
 		rLen = 0;
-		rLoc = 728;
+		rLoc = 778;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 0;
@@ -562,7 +632,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 34";
 		rLen = 0;
-		rLoc = 728;
+		rLoc = 778;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 0;
@@ -572,7 +642,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 213";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2224;
 		vrLoc = 3810;
@@ -582,7 +652,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 185";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2216;
 		vrLoc = 3806;
@@ -592,7 +662,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 91";
 		rLen = 0;
-		rLoc = 3719;
+		rLoc = 4283;
 		rType = 0;
 		vrLen = 1372;
 		vrLoc = 1461;
@@ -602,7 +672,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 34";
 		rLen = 0;
-		rLoc = 728;
+		rLoc = 778;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 0;
@@ -612,7 +682,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 33";
 		rLen = 0;
-		rLoc = 651;
+		rLoc = 701;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 0;
@@ -622,7 +692,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 33";
 		rLen = 0;
-		rLoc = 651;
+		rLoc = 701;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 0;
@@ -632,7 +702,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 90";
 		rLen = 0;
-		rLoc = 3719;
+		rLoc = 4283;
 		rType = 0;
 		vrLen = 1526;
 		vrLoc = 623;
@@ -642,7 +712,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 85";
 		rLen = 0;
-		rLoc = 2299;
+		rLoc = 2863;
 		rType = 0;
 		vrLen = 1617;
 		vrLoc = 651;
@@ -652,7 +722,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 85";
 		rLen = 0;
-		rLoc = 2299;
+		rLoc = 2863;
 		rType = 0;
 		vrLen = 1619;
 		vrLoc = 651;
@@ -662,7 +732,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 85";
 		rLen = 0;
-		rLoc = 2299;
+		rLoc = 2863;
 		rType = 0;
 		vrLen = 1640;
 		vrLoc = 319;
@@ -672,7 +742,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 96";
 		rLen = 0;
-		rLoc = 3719;
+		rLoc = 4283;
 		rType = 0;
 		vrLen = 1609;
 		vrLoc = 1268;
@@ -682,7 +752,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 97";
 		rLen = 0;
-		rLoc = 3719;
+		rLoc = 4283;
 		rType = 0;
 		vrLen = 1610;
 		vrLoc = 1268;
@@ -692,7 +762,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 82";
 		rLen = 0;
-		rLoc = 2299;
+		rLoc = 2863;
 		rType = 0;
 		vrLen = 1574;
 		vrLoc = 107;
@@ -702,7 +772,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 33";
 		rLen = 0;
-		rLoc = 651;
+		rLoc = 701;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 0;
@@ -712,7 +782,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 38";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 891;
 		rType = 0;
 		vrLen = 1006;
 		vrLoc = 0;
@@ -722,7 +792,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 82";
 		rLen = 0;
-		rLoc = 2299;
+		rLoc = 2863;
 		rType = 0;
 		vrLen = 1552;
 		vrLoc = 129;
@@ -742,7 +812,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 38";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 891;
 		rType = 0;
 		vrLen = 1006;
 		vrLoc = 0;
@@ -752,7 +822,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 25";
 		rLen = 0;
-		rLoc = 531;
+		rLoc = 499;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 0;
@@ -762,7 +832,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 41";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -772,7 +842,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 40";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -782,7 +852,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 40";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -792,7 +862,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 40";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -802,7 +872,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 41";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -812,7 +882,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 41";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -822,7 +892,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 82";
 		rLen = 0;
-		rLoc = 2299;
+		rLoc = 2863;
 		rType = 0;
 		vrLen = 1552;
 		vrLoc = 129;
@@ -832,7 +902,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 121";
 		rLen = 0;
-		rLoc = 4663;
+		rLoc = 5289;
 		rType = 0;
 		vrLen = 1581;
 		vrLoc = 1194;
@@ -842,7 +912,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 121";
 		rLen = 0;
-		rLoc = 4663;
+		rLoc = 5289;
 		rType = 0;
 		vrLen = 1456;
 		vrLoc = 1365;
@@ -872,7 +942,7 @@
 		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
 		name = "dateedit.cpp: 38";
 		rLen = 0;
-		rLoc = 673;
+		rLoc = 699;
 		rType = 0;
 		vrLen = 675;
 		vrLoc = 0;
@@ -902,7 +972,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 25";
 		rLen = 0;
-		rLoc = 531;
+		rLoc = 499;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 0;
@@ -912,7 +982,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 121";
 		rLen = 0;
-		rLoc = 4663;
+		rLoc = 5289;
 		rType = 0;
 		vrLen = 1779;
 		vrLoc = 1897;
@@ -922,7 +992,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 23";
 		rLen = 0;
-		rLoc = 461;
+		rLoc = 371;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -932,7 +1002,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 28";
 		rLen = 0;
-		rLoc = 585;
+		rLoc = 445;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -942,7 +1012,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 28";
 		rLen = 0;
-		rLoc = 585;
+		rLoc = 445;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -952,7 +1022,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 121";
 		rLen = 0;
-		rLoc = 4663;
+		rLoc = 5289;
 		rType = 0;
 		vrLen = 1755;
 		vrLoc = 1897;
@@ -962,7 +1032,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 118";
 		rLen = 0;
-		rLoc = 4591;
+		rLoc = 5217;
 		rType = 0;
 		vrLen = 1755;
 		vrLoc = 1897;
@@ -972,7 +1042,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 118";
 		rLen = 0;
-		rLoc = 4591;
+		rLoc = 5217;
 		rType = 0;
 		vrLen = 1755;
 		vrLoc = 1897;
@@ -982,7 +1052,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 28";
 		rLen = 0;
-		rLoc = 585;
+		rLoc = 445;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -992,7 +1062,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 40";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -1002,7 +1072,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 41";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -1012,7 +1082,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 41";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -1022,7 +1092,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 41";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -1032,7 +1102,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 35";
 		rLen = 0;
-		rLoc = 838;
+		rLoc = 672;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -1062,7 +1132,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 24";
 		rLen = 0;
-		rLoc = 530;
+		rLoc = 498;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 0;
@@ -1072,7 +1142,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 33";
 		rLen = 0;
-		rLoc = 651;
+		rLoc = 701;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 0;
@@ -1082,7 +1152,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 118";
 		rLen = 0;
-		rLoc = 4591;
+		rLoc = 5217;
 		rType = 0;
 		vrLen = 1755;
 		vrLoc = 1897;
@@ -1092,7 +1162,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 96";
 		rLen = 0;
-		rLoc = 2485;
+		rLoc = 3049;
 		rType = 0;
 		vrLen = 1551;
 		vrLoc = 1030;
@@ -1102,7 +1172,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 105";
 		rLen = 0;
-		rLoc = 2935;
+		rLoc = 3499;
 		rType = 0;
 		vrLen = 1644;
 		vrLoc = 1030;
@@ -1112,7 +1182,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 239";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2214;
 		vrLoc = 4756;
@@ -1122,7 +1192,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 238";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2216;
 		vrLoc = 4756;
@@ -1132,7 +1202,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 239";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2209;
 		vrLoc = 4756;
@@ -1142,7 +1212,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 209";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2356;
 		vrLoc = 4479;
@@ -1152,7 +1222,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 51";
 		rLen = 0;
-		rLoc = 1358;
+		rLoc = 1111;
 		rType = 0;
 		vrLen = 1400;
 		vrLoc = 0;
@@ -1162,7 +1232,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 205";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2385;
 		vrLoc = 4490;
@@ -1172,7 +1242,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 250";
 		rLen = 0;
-		rLoc = 9525;
+		rLoc = 10184;
 		rType = 0;
 		vrLen = 2442;
 		vrLoc = 4608;
@@ -1182,7 +1252,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 211";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2344;
 		vrLoc = 4543;
@@ -1192,7 +1262,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 195";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 1476;
 		vrLoc = 3461;
@@ -1202,7 +1272,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 240";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2299;
 		vrLoc = 4551;
@@ -1212,7 +1282,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 210";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 1314;
 		vrLoc = 4305;
@@ -1222,7 +1292,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 33";
 		rLen = 0;
-		rLoc = 651;
+		rLoc = 701;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 0;
@@ -1232,7 +1302,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 209";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2372;
 		vrLoc = 4514;
@@ -1242,7 +1312,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 210";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 4126;
@@ -1252,7 +1322,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 209";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 1427;
 		vrLoc = 3910;
@@ -1262,7 +1332,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 205";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 1422;
 		vrLoc = 3737;
@@ -1272,7 +1342,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 207";
 		rLen = 0;
-		rLoc = 7463;
+		rLoc = 8118;
 		rType = 0;
 		vrLen = 2436;
 		vrLoc = 4610;
@@ -1282,7 +1352,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 205";
 		rLen = 0;
-		rLoc = 7463;
+		rLoc = 8118;
 		rType = 0;
 		vrLen = 2325;
 		vrLoc = 4610;
@@ -1292,7 +1362,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 195";
 		rLen = 0;
-		rLoc = 6404;
+		rLoc = 7059;
 		rType = 0;
 		vrLen = 2482;
 		vrLoc = 4551;
@@ -1302,7 +1372,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 204";
 		rLen = 0;
-		rLoc = 7458;
+		rLoc = 8113;
 		rType = 0;
 		vrLen = 2343;
 		vrLoc = 4551;
@@ -1312,7 +1382,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 45";
 		rLen = 0;
-		rLoc = 1232;
+		rLoc = 985;
 		rType = 0;
 		vrLen = 1462;
 		vrLoc = 0;
@@ -1322,7 +1392,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 244";
 		rLen = 0;
-		rLoc = 9448;
+		rLoc = 10107;
 		rType = 0;
 		vrLen = 2512;
 		vrLoc = 4577;
@@ -1332,7 +1402,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 200";
 		rLen = 0;
-		rLoc = 7132;
+		rLoc = 7787;
 		rType = 0;
 		vrLen = 2538;
 		vrLoc = 4577;
@@ -1342,7 +1412,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 239";
 		rLen = 0;
-		rLoc = 9490;
+		rLoc = 10149;
 		rType = 0;
 		vrLen = 1833;
 		vrLoc = 2562;
@@ -1352,7 +1422,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 238";
 		rLen = 0;
-		rLoc = 9448;
+		rLoc = 10107;
 		rType = 0;
 		vrLen = 2568;
 		vrLoc = 4404;
@@ -1362,7 +1432,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 24";
 		rLen = 0;
-		rLoc = 530;
+		rLoc = 498;
 		rType = 0;
 		vrLen = 736;
 		vrLoc = 0;
@@ -1372,7 +1442,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 38";
 		rLen = 0;
-		rLoc = 728;
+		rLoc = 779;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 0;
@@ -1382,7 +1452,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 36";
 		rLen = 0;
-		rLoc = 728;
+		rLoc = 779;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 0;
@@ -1392,7 +1462,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 33";
 		rLen = 0;
-		rLoc = 651;
+		rLoc = 701;
 		rType = 0;
 		vrLen = 1032;
 		vrLoc = 0;
@@ -1402,7 +1472,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 57";
 		rLen = 0;
-		rLoc = 1149;
+		rLoc = 1294;
 		rType = 0;
 		vrLen = 1096;
 		vrLoc = 0;
@@ -1432,7 +1502,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 238";
 		rLen = 0;
-		rLoc = 9448;
+		rLoc = 10107;
 		rType = 0;
 		vrLen = 2568;
 		vrLoc = 4404;
@@ -1442,7 +1512,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 238";
 		rLen = 0;
-		rLoc = 9384;
+		rLoc = 10043;
 		rType = 0;
 		vrLen = 2568;
 		vrLoc = 4404;
@@ -1452,7 +1522,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 238";
 		rLen = 0;
-		rLoc = 9384;
+		rLoc = 10043;
 		rType = 0;
 		vrLen = 2575;
 		vrLoc = 4404;
@@ -1462,7 +1532,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 238";
 		rLen = 0;
-		rLoc = 9384;
+		rLoc = 10043;
 		rType = 0;
 		vrLen = 2568;
 		vrLoc = 4404;
@@ -1472,14 +1542,14 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 108";
 		rLen = 0;
-		rLoc = 2970;
+		rLoc = 3534;
 		rType = 0;
 		vrLen = 1542;
 		vrLoc = 1872;
 	};
 	3F8277F7127669F500D81BE2 /* hotspot.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 874}}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 849}}";
 			sepNavSelRange = "{221, 0}";
 			sepNavVisRange = "{0, 440}";
 		};
@@ -1506,7 +1576,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 108";
 		rLen = 0;
-		rLoc = 2970;
+		rLoc = 3534;
 		rType = 0;
 		vrLen = 1548;
 		vrLoc = 1865;
@@ -1556,7 +1626,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 108";
 		rLen = 0;
-		rLoc = 2970;
+		rLoc = 3534;
 		rType = 0;
 		vrLen = 1548;
 		vrLoc = 1865;
@@ -1576,7 +1646,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2863;
+		rLoc = 3427;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 1083;
@@ -1626,7 +1696,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2863;
+		rLoc = 3427;
 		rType = 0;
 		vrLen = 1659;
 		vrLoc = 1112;
@@ -1636,7 +1706,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 89";
 		rLen = 0;
-		rLoc = 2275;
+		rLoc = 2839;
 		rType = 0;
 		vrLen = 1666;
 		vrLoc = 1112;
@@ -1646,7 +1716,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 89";
 		rLen = 0;
-		rLoc = 2275;
+		rLoc = 2839;
 		rType = 0;
 		vrLen = 1666;
 		vrLoc = 1112;
@@ -1726,7 +1796,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 89";
 		rLen = 0;
-		rLoc = 2275;
+		rLoc = 2839;
 		rType = 0;
 		vrLen = 1666;
 		vrLoc = 1112;
@@ -1736,7 +1806,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2864;
+		rLoc = 3428;
 		rType = 0;
 		vrLen = 1667;
 		vrLoc = 1112;
@@ -1746,7 +1816,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2876;
+		rLoc = 3440;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 1112;
@@ -1756,7 +1826,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2876;
+		rLoc = 3440;
 		rType = 0;
 		vrLen = 1668;
 		vrLoc = 1112;
@@ -1766,7 +1836,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2864;
+		rLoc = 3428;
 		rType = 0;
 		vrLen = 1667;
 		vrLoc = 1112;
@@ -1816,7 +1886,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2864;
+		rLoc = 3428;
 		rType = 0;
 		vrLen = 1667;
 		vrLoc = 1112;
@@ -1826,7 +1896,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 110";
 		rLen = 0;
-		rLoc = 2977;
+		rLoc = 3541;
 		rType = 0;
 		vrLen = 1667;
 		vrLoc = 1112;
@@ -1836,7 +1906,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 237";
 		rLen = 0;
-		rLoc = 9247;
+		rLoc = 9906;
 		rType = 0;
 		vrLen = 2259;
 		vrLoc = 4946;
@@ -1846,7 +1916,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 240";
 		rLen = 0;
-		rLoc = 9448;
+		rLoc = 10107;
 		rType = 0;
 		vrLen = 2280;
 		vrLoc = 4946;
@@ -1896,7 +1966,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 47";
 		rLen = 0;
-		rLoc = 836;
+		rLoc = 886;
 		rType = 0;
 		vrLen = 1150;
 		vrLoc = 0;
@@ -1906,7 +1976,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 240";
 		rLen = 0;
-		rLoc = 9448;
+		rLoc = 10107;
 		rType = 0;
 		vrLen = 2345;
 		vrLoc = 4881;
@@ -1916,7 +1986,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 240";
 		rLen = 0;
-		rLoc = 9445;
+		rLoc = 10104;
 		rType = 0;
 		vrLen = 2417;
 		vrLoc = 4815;
@@ -1926,7 +1996,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 240";
 		rLen = 0;
-		rLoc = 9409;
+		rLoc = 10068;
 		rType = 0;
 		vrLen = 2417;
 		vrLoc = 4815;
@@ -1986,7 +2056,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2864;
+		rLoc = 3428;
 		rType = 0;
 		vrLen = 1695;
 		vrLoc = 1083;
@@ -1996,7 +2066,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2864;
+		rLoc = 3428;
 		rType = 0;
 		vrLen = 1695;
 		vrLoc = 1083;
@@ -2096,7 +2166,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 109";
 		rLen = 0;
-		rLoc = 2864;
+		rLoc = 3428;
 		rType = 0;
 		vrLen = 1666;
 		vrLoc = 1112;
@@ -2106,7 +2176,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 191";
 		rLen = 0;
-		rLoc = 6650;
+		rLoc = 7305;
 		rType = 0;
 		vrLen = 2640;
 		vrLoc = 4411;
@@ -2116,7 +2186,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 191";
 		rLen = 0;
-		rLoc = 6561;
+		rLoc = 7216;
 		rType = 0;
 		vrLen = 2640;
 		vrLoc = 4411;
@@ -2126,7 +2196,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 191";
 		rLen = 0;
-		rLoc = 6571;
+		rLoc = 7226;
 		rType = 0;
 		vrLen = 2640;
 		vrLoc = 4411;
@@ -2136,7 +2206,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 192";
 		rLen = 0;
-		rLoc = 6671;
+		rLoc = 7326;
 		rType = 0;
 		vrLen = 2654;
 		vrLoc = 4411;
@@ -2146,7 +2216,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 202";
 		rLen = 0;
-		rLoc = 7181;
+		rLoc = 7836;
 		rType = 0;
 		vrLen = 2678;
 		vrLoc = 4452;
@@ -2156,7 +2226,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 202";
 		rLen = 0;
-		rLoc = 7181;
+		rLoc = 7836;
 		rType = 0;
 		vrLen = 2678;
 		vrLoc = 4452;
@@ -2196,7 +2266,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 202";
 		rLen = 0;
-		rLoc = 7181;
+		rLoc = 7836;
 		rType = 0;
 		vrLen = 2673;
 		vrLoc = 4452;
@@ -2206,7 +2276,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 200";
 		rLen = 0;
-		rLoc = 7150;
+		rLoc = 7805;
 		rType = 0;
 		vrLen = 2673;
 		vrLoc = 4452;
@@ -2216,7 +2286,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 201";
 		rLen = 0;
-		rLoc = 7176;
+		rLoc = 7831;
 		rType = 0;
 		vrLen = 2673;
 		vrLoc = 4452;
@@ -2226,7 +2296,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 246";
 		rLen = 0;
-		rLoc = 9275;
+		rLoc = 9934;
 		rType = 0;
 		vrLen = 2555;
 		vrLoc = 4813;
@@ -2236,7 +2306,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 149";
 		rLen = 0;
-		rLoc = 4894;
+		rLoc = 5514;
 		rType = 0;
 		vrLen = 1899;
 		vrLoc = 2837;
@@ -2246,7 +2316,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 68";
 		rLen = 0;
-		rLoc = 1149;
+		rLoc = 1294;
 		rType = 0;
 		vrLen = 1143;
 		vrLoc = 23;
@@ -2256,7 +2326,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 131";
 		rLen = 0;
-		rLoc = 4200;
+		rLoc = 4826;
 		rType = 0;
 		vrLen = 1774;
 		vrLoc = 2837;
@@ -2266,7 +2336,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 198";
 		rLen = 0;
-		rLoc = 6425;
+		rLoc = 7080;
 		rType = 0;
 		vrLen = 2450;
 		vrLoc = 3856;
@@ -2276,7 +2346,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 48";
 		rLen = 0;
-		rLoc = 1199;
+		rLoc = 952;
 		rType = 0;
 		vrLen = 1490;
 		vrLoc = 107;
@@ -2286,7 +2356,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 199";
 		rLen = 0;
-		rLoc = 6571;
+		rLoc = 7226;
 		rType = 0;
 		vrLen = 2459;
 		vrLoc = 3947;
@@ -2296,7 +2366,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 114";
 		rLen = 0;
-		rLoc = 3500;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1715;
 		vrLoc = 1341;
@@ -2306,7 +2376,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 114";
 		rLen = 0;
-		rLoc = 3500;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1715;
 		vrLoc = 1341;
@@ -2316,7 +2386,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 114";
 		rLen = 0;
-		rLoc = 3500;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1735;
 		vrLoc = 1341;
@@ -2326,7 +2396,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 113";
 		rLen = 0;
-		rLoc = 2935;
+		rLoc = 3499;
 		rType = 0;
 		vrLen = 1739;
 		vrLoc = 1341;
@@ -2356,7 +2426,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 113";
 		rLen = 0;
-		rLoc = 2935;
+		rLoc = 3499;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 1335;
@@ -2366,7 +2436,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 113";
 		rLen = 0;
-		rLoc = 2864;
+		rLoc = 3428;
 		rType = 0;
 		vrLen = 1744;
 		vrLoc = 1335;
@@ -2376,7 +2446,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 257";
 		rLen = 0;
-		rLoc = 9329;
+		rLoc = 9988;
 		rType = 0;
 		vrLen = 2405;
 		vrLoc = 5373;
@@ -2386,7 +2456,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 114";
 		rLen = 0;
-		rLoc = 3500;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1779;
 		vrLoc = 1630;
@@ -2396,7 +2466,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 114";
 		rLen = 0;
-		rLoc = 3500;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1779;
 		vrLoc = 1630;
@@ -2426,7 +2496,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 36";
 		rLen = 0;
-		rLoc = 728;
+		rLoc = 779;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 0;
@@ -2456,7 +2526,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 114";
 		rLen = 0;
-		rLoc = 3500;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1747;
 		vrLoc = 1691;
@@ -2544,7 +2614,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 259";
 		rLen = 0;
-		rLoc = 9384;
+		rLoc = 10043;
 		rType = 0;
 		vrLen = 2351;
 		vrLoc = 5493;
@@ -2554,7 +2624,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 259";
 		rLen = 0;
-		rLoc = 9384;
+		rLoc = 10043;
 		rType = 0;
 		vrLen = 2351;
 		vrLoc = 5493;
@@ -2594,7 +2664,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 259";
 		rLen = 0;
-		rLoc = 9384;
+		rLoc = 10043;
 		rType = 0;
 		vrLen = 2357;
 		vrLoc = 5487;
@@ -2604,7 +2674,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 115";
 		rLen = 0;
-		rLoc = 3500;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1739;
 		vrLoc = 2013;
@@ -2614,7 +2684,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 200";
 		rLen = 0;
-		rLoc = 6447;
+		rLoc = 7102;
 		rType = 0;
 		vrLen = 2277;
 		vrLoc = 3791;
@@ -2624,7 +2694,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 200";
 		rLen = 0;
-		rLoc = 6447;
+		rLoc = 7102;
 		rType = 0;
 		vrLen = 2277;
 		vrLoc = 3791;
@@ -2664,7 +2734,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 200";
 		rLen = 0;
-		rLoc = 6447;
+		rLoc = 7102;
 		rType = 0;
 		vrLen = 2255;
 		vrLoc = 3813;
@@ -2674,7 +2744,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 205";
 		rLen = 0;
-		rLoc = 6949;
+		rLoc = 7604;
 		rType = 0;
 		vrLen = 2192;
 		vrLoc = 3791;
@@ -2684,7 +2754,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 205";
 		rLen = 0;
-		rLoc = 6943;
+		rLoc = 7598;
 		rType = 0;
 		vrLen = 2109;
 		vrLoc = 3791;
@@ -2694,7 +2764,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 204";
 		rLen = 0;
-		rLoc = 6932;
+		rLoc = 7587;
 		rType = 0;
 		vrLen = 2110;
 		vrLoc = 3791;
@@ -2704,7 +2774,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 204";
 		rLen = 0;
-		rLoc = 6932;
+		rLoc = 7587;
 		rType = 0;
 		vrLen = 2110;
 		vrLoc = 3791;
@@ -2744,7 +2814,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 35";
 		rLen = 0;
-		rLoc = 838;
+		rLoc = 672;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -2754,7 +2824,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 120";
 		rLen = 0;
-		rLoc = 3709;
+		rLoc = 4273;
 		rType = 0;
 		vrLen = 1853;
 		vrLoc = 1435;
@@ -2764,7 +2834,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 118";
 		rLen = 0;
-		rLoc = 3438;
+		rLoc = 4002;
 		rType = 0;
 		vrLen = 2205;
 		vrLoc = 1435;
@@ -2774,7 +2844,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 118";
 		rLen = 0;
-		rLoc = 3438;
+		rLoc = 4002;
 		rType = 0;
 		vrLen = 2185;
 		vrLoc = 1435;
@@ -2784,7 +2854,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 136";
 		rLen = 0;
-		rLoc = 4039;
+		rLoc = 4628;
 		rType = 0;
 		vrLen = 2025;
 		vrLoc = 2294;
@@ -2814,7 +2884,7 @@
 		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
 		name = "dateedit.cpp: 38";
 		rLen = 0;
-		rLoc = 673;
+		rLoc = 699;
 		rType = 0;
 		vrLen = 675;
 		vrLoc = 0;
@@ -2864,7 +2934,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 136";
 		rLen = 0;
-		rLoc = 4039;
+		rLoc = 4628;
 		rType = 0;
 		vrLen = 2025;
 		vrLoc = 2294;
@@ -2874,7 +2944,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 211";
 		rLen = 0;
-		rLoc = 6397;
+		rLoc = 7052;
 		rType = 0;
 		vrLen = 2229;
 		vrLoc = 5178;
@@ -2884,7 +2954,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 211";
 		rLen = 0;
-		rLoc = 6392;
+		rLoc = 7047;
 		rType = 0;
 		vrLen = 2209;
 		vrLoc = 5178;
@@ -2894,7 +2964,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 117";
 		rLen = 0;
-		rLoc = 3154;
+		rLoc = 3718;
 		rType = 0;
 		vrLen = 2267;
 		vrLoc = 1725;
@@ -2904,7 +2974,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 95";
 		rLen = 0;
-		rLoc = 2298;
+		rLoc = 2862;
 		rType = 0;
 		vrLen = 1538;
 		vrLoc = 916;
@@ -2914,7 +2984,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 95";
 		rLen = 0;
-		rLoc = 2298;
+		rLoc = 2862;
 		rType = 0;
 		vrLen = 1879;
 		vrLoc = 3192;
@@ -2964,7 +3034,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 95";
 		rLen = 0;
-		rLoc = 2298;
+		rLoc = 2862;
 		rType = 0;
 		vrLen = 1536;
 		vrLoc = 916;
@@ -2974,7 +3044,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 210";
 		rLen = 0;
-		rLoc = 6377;
+		rLoc = 7032;
 		rType = 0;
 		vrLen = 2487;
 		vrLoc = 5251;
@@ -2984,7 +3054,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 209";
 		rLen = 0;
-		rLoc = 6360;
+		rLoc = 7015;
 		rType = 0;
 		vrLen = 2525;
 		vrLoc = 5251;
@@ -3004,7 +3074,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 216";
 		rLen = 0;
-		rLoc = 6943;
+		rLoc = 7598;
 		rType = 0;
 		vrLen = 2525;
 		vrLoc = 5251;
@@ -3014,7 +3084,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 210";
 		rLen = 0;
-		rLoc = 6287;
+		rLoc = 6942;
 		rType = 0;
 		vrLen = 2648;
 		vrLoc = 5279;
@@ -3024,7 +3094,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 210";
 		rLen = 0;
-		rLoc = 6204;
+		rLoc = 6859;
 		rType = 0;
 		vrLen = 2648;
 		vrLoc = 5279;
@@ -3034,7 +3104,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 210";
 		rLen = 0;
-		rLoc = 6204;
+		rLoc = 6859;
 		rType = 0;
 		vrLen = 2648;
 		vrLoc = 5279;
@@ -3044,7 +3114,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 210";
 		rLen = 0;
-		rLoc = 6204;
+		rLoc = 6859;
 		rType = 0;
 		vrLen = 2648;
 		vrLoc = 5279;
@@ -3144,7 +3214,7 @@
 		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
 		name = "lineedit.cpp: 32";
 		rLen = 111;
-		rLoc = 562;
+		rLoc = 611;
 		rType = 0;
 		vrLen = 673;
 		vrLoc = 0;
@@ -3184,7 +3254,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 33";
 		rLen = 0;
-		rLoc = 713;
+		rLoc = 764;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 0;
@@ -3194,7 +3264,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 231";
 		rLen = 0;
-		rLoc = 7132;
+		rLoc = 7787;
 		rType = 0;
 		vrLen = 1366;
 		vrLoc = 0;
@@ -3204,7 +3274,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 39";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 841;
 		vrLoc = 0;
@@ -3214,7 +3284,7 @@
 		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
 		name = "dateedit.cpp: 11";
 		rLen = 0;
-		rLoc = 249;
+		rLoc = 275;
 		rType = 0;
 		vrLen = 673;
 		vrLoc = 0;
@@ -3244,7 +3314,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 33";
 		rLen = 0;
-		rLoc = 713;
+		rLoc = 764;
 		rType = 0;
 		vrLen = 738;
 		vrLoc = 0;
@@ -3254,7 +3324,7 @@
 		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
 		name = "dateedit.cpp: 11";
 		rLen = 0;
-		rLoc = 249;
+		rLoc = 275;
 		rType = 0;
 		vrLen = 673;
 		vrLoc = 0;
@@ -3284,7 +3354,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 39";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 841;
 		vrLoc = 0;
@@ -3304,7 +3374,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 151";
 		rLen = 0;
-		rLoc = 4428;
+		rLoc = 5054;
 		rType = 0;
 		vrLen = 1366;
 		vrLoc = 0;
@@ -3314,7 +3384,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 34";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1407;
 		vrLoc = 0;
@@ -3324,7 +3394,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 169";
 		rLen = 0;
-		rLoc = 4590;
+		rLoc = 5216;
 		rType = 0;
 		vrLen = 1700;
 		vrLoc = 3453;
@@ -3334,7 +3404,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 157";
 		rLen = 0;
-		rLoc = 4311;
+		rLoc = 4937;
 		rType = 0;
 		vrLen = 1701;
 		vrLoc = 3453;
@@ -3344,7 +3414,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 289";
 		rLen = 0;
-		rLoc = 9296;
+		rLoc = 9955;
 		rType = 0;
 		vrLen = 2312;
 		vrLoc = 7251;
@@ -3354,7 +3424,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 46";
 		rLen = 0;
-		rLoc = 836;
+		rLoc = 886;
 		rType = 0;
 		vrLen = 1183;
 		vrLoc = 2;
@@ -3364,7 +3434,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 290";
 		rLen = 0;
-		rLoc = 9296;
+		rLoc = 9955;
 		rType = 0;
 		vrLen = 2398;
 		vrLoc = 7186;
@@ -3374,7 +3444,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 32";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1398;
 		vrLoc = 0;
@@ -3384,7 +3454,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 289";
 		rLen = 0;
-		rLoc = 9296;
+		rLoc = 9955;
 		rType = 0;
 		vrLen = 2312;
 		vrLoc = 7242;
@@ -3394,7 +3464,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 36";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1519;
 		vrLoc = 240;
@@ -3404,7 +3474,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 36";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1520;
 		vrLoc = 240;
@@ -3414,7 +3484,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 290";
 		rLen = 0;
-		rLoc = 9296;
+		rLoc = 9955;
 		rType = 0;
 		vrLen = 2514;
 		vrLoc = 7008;
@@ -3424,7 +3494,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 40";
 		rLen = 0;
-		rLoc = 608;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1460;
 		vrLoc = 18;
@@ -3444,7 +3514,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 40";
 		rLen = 0;
-		rLoc = 608;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1460;
 		vrLoc = 18;
@@ -3454,7 +3524,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 330";
 		rLen = 0;
-		rLoc = 9826;
+		rLoc = 10485;
 		rType = 0;
 		vrLen = 2259;
 		vrLoc = 7576;
@@ -3464,7 +3534,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 330";
 		rLen = 0;
-		rLoc = 9826;
+		rLoc = 10485;
 		rType = 0;
 		vrLen = 1403;
 		vrLoc = 0;
@@ -3494,7 +3564,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 32";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1452;
 		vrLoc = 34;
@@ -3514,7 +3584,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 56";
 		rLen = 0;
-		rLoc = 836;
+		rLoc = 886;
 		rType = 0;
 		vrLen = 1143;
 		vrLoc = 212;
@@ -3534,7 +3604,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 32";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1451;
 		vrLoc = 34;
@@ -3544,7 +3614,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 330";
 		rLen = 0;
-		rLoc = 9826;
+		rLoc = 10485;
 		rType = 0;
 		vrLen = 2101;
 		vrLoc = 7798;
@@ -3554,7 +3624,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 329";
 		rLen = 0;
-		rLoc = 9826;
+		rLoc = 10485;
 		rType = 0;
 		vrLen = 1914;
 		vrLoc = 8005;
@@ -3564,7 +3634,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 35";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1433;
 		vrLoc = 18;
@@ -3574,7 +3644,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 36";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 18;
@@ -3584,7 +3654,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 31";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 64;
@@ -3594,7 +3664,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 56";
 		rLen = 0;
-		rLoc = 836;
+		rLoc = 886;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 44;
@@ -3604,7 +3674,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 31";
 		rLen = 0;
-		rLoc = 602;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 64;
@@ -3614,7 +3684,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 216";
 		rLen = 0;
-		rLoc = 6046;
+		rLoc = 6701;
 		rType = 0;
 		vrLen = 2450;
 		vrLoc = 4688;
@@ -3634,7 +3704,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 216";
 		rLen = 0;
-		rLoc = 6046;
+		rLoc = 6701;
 		rType = 0;
 		vrLen = 2450;
 		vrLoc = 4688;
@@ -3644,7 +3714,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 216";
 		rLen = 0;
-		rLoc = 6046;
+		rLoc = 6701;
 		rType = 0;
 		vrLen = 2369;
 		vrLoc = 7067;
@@ -3654,7 +3724,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 97";
 		rLen = 0;
-		rLoc = 2298;
+		rLoc = 2862;
 		rType = 0;
 		vrLen = 2055;
 		vrLoc = 1083;
@@ -3664,7 +3734,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 39";
 		rLen = 0;
-		rLoc = 842;
+		rLoc = 600;
 		rType = 0;
 		vrLen = 2319;
 		vrLoc = 1510;
@@ -3674,7 +3744,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 177";
 		rLen = 0;
-		rLoc = 4838;
+		rLoc = 5458;
 		rType = 0;
 		vrLen = 1655;
 		vrLoc = 3719;
@@ -3684,7 +3754,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 139";
 		rLen = 0;
-		rLoc = 3921;
+		rLoc = 4510;
 		rType = 0;
 		vrLen = 2237;
 		vrLoc = 2177;
@@ -3694,7 +3764,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 140";
 		rLen = 0;
-		rLoc = 3871;
+		rLoc = 4466;
 		rType = 0;
 		vrLen = 2176;
 		vrLoc = 2109;
@@ -3704,7 +3774,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 158";
 		rLen = 0;
-		rLoc = 4174;
+		rLoc = 4800;
 		rType = 0;
 		vrLen = 1508;
 		vrLoc = 3720;
@@ -3714,10 +3784,710 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 294";
 		rLen = 0;
-		rLoc = 9159;
+		rLoc = 9818;
 		rType = 0;
 		vrLen = 2574;
 		vrLoc = 6928;
+	};
+	3FA4B7DA127A546E0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 293";
+		rLen = 0;
+		rLoc = 9784;
+		rType = 0;
+		vrLen = 2279;
+		vrLoc = 7553;
+	};
+	3FA4B7DB127A54950092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 293";
+		rLen = 0;
+		rLoc = 9784;
+		rType = 0;
+		vrLen = 2279;
+		vrLoc = 7553;
+	};
+	3FA4B7DC127A54950092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
+		name = "templatewidget.h: 33";
+		rLen = 0;
+		rLoc = 764;
+		rType = 0;
+		vrLen = 738;
+		vrLoc = 0;
+	};
+	3FA4B7DD127A54950092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
+		name = "templatewidget.cpp: 33";
+		rLen = 0;
+		rLoc = 644;
+		rType = 0;
+		vrLen = 675;
+		vrLoc = 0;
+	};
+	3FA4B7DE127A54D20092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
+		name = "templatewidget.cpp: 33";
+		rLen = 0;
+		rLoc = 644;
+		rType = 0;
+		vrLen = 675;
+		vrLoc = 0;
+	};
+	3FA4B7DF127A54D20092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C02F51273B3F300D6AD12 /* textedit.cpp */;
+		name = "textedit.cpp: 14";
+		rLen = 0;
+		rLoc = 242;
+		rType = 0;
+		vrLen = 726;
+		vrLoc = 0;
+	};
+	3FA4B7E0127A54D20092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C02EF1273B10300D6AD12 /* draggabletext.pro */;
+		name = "draggabletext.pro: 6";
+		rLen = 0;
+		rLoc = 172;
+		rType = 0;
+		vrLen = 780;
+		vrLoc = 0;
+	};
+	3FA4B7E1127A54D20092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F8277F7127669F500D81BE2 /* hotspot.cpp */;
+		name = "hotspot.cpp: 12";
+		rLen = 0;
+		rLoc = 221;
+		rType = 0;
+		vrLen = 440;
+		vrLoc = 0;
+	};
+	3FA4B7E2127A54D20092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 39";
+		rLen = 0;
+		rLoc = 600;
+		rType = 0;
+		vrLen = 1437;
+		vrLoc = 34;
+	};
+	3FA4B7E3127A54EC0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 181";
+		rLen = 0;
+		rLoc = 5429;
+		rType = 0;
+		vrLen = 2200;
+		vrLoc = 2709;
+	};
+	3FA4B7E4127A56040092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 288";
+		rLen = 0;
+		rLoc = 9705;
+		rType = 0;
+		vrLen = 2436;
+		vrLoc = 1233;
+	};
+	3FA4B7E5127A56040092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 18";
+		rLen = 0;
+		rLoc = 235;
+		rType = 0;
+		vrLen = 1164;
+		vrLoc = 0;
+	};
+	3FA4B7E6127A56040092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 66";
+		rLen = 0;
+		rLoc = 1294;
+		rType = 0;
+		vrLen = 1189;
+		vrLoc = 0;
+	};
+	3FA4B7E7127A56480092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 19";
+		rLen = 0;
+		rLoc = 274;
+		rType = 0;
+		vrLen = 1193;
+		vrLoc = 0;
+	};
+	3FA4B7E8127A56610092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 19";
+		rLen = 0;
+		rLoc = 274;
+		rType = 0;
+		vrLen = 1193;
+		vrLoc = 0;
+	};
+	3FA4B7E9127A56610092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 288";
+		rLen = 0;
+		rLoc = 9705;
+		rType = 0;
+		vrLen = 2436;
+		vrLoc = 1233;
+	};
+	3FA4B7EA127A56610092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 17";
+		rLen = 0;
+		rLoc = 301;
+		rType = 0;
+		vrLen = 1383;
+		vrLoc = 0;
+	};
+	3FA4B7EB127A56840092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 17";
+		rLen = 0;
+		rLoc = 301;
+		rType = 0;
+		vrLen = 1420;
+		vrLoc = 0;
+	};
+	3FA4B7EC127A568B0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 17";
+		rLen = 0;
+		rLoc = 301;
+		rType = 0;
+		vrLen = 1419;
+		vrLoc = 0;
+	};
+	3FA4B7ED127A56E40092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 66";
+		rLen = 0;
+		rLoc = 1431;
+		rType = 0;
+		vrLen = 1609;
+		vrLoc = 781;
+	};
+	3FA4B7EE127A57280092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 67";
+		rLen = 0;
+		rLoc = 1431;
+		rType = 0;
+		vrLen = 1589;
+		vrLoc = 635;
+	};
+	3FA4B7EF127A57280092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 19";
+		rLen = 0;
+		rLoc = 274;
+		rType = 0;
+		vrLen = 1193;
+		vrLoc = 0;
+	};
+	3FA4B7F0127A57280092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 34";
+		rLen = 0;
+		rLoc = 643;
+		rType = 0;
+		vrLen = 1216;
+		vrLoc = 1;
+	};
+	3FA4B7F1127A572E0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 35";
+		rLen = 0;
+		rLoc = 664;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 1;
+	};
+	3FA4B7F2127A574D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 68";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1270;
+		vrLoc = 2;
+	};
+	3FA4B7F3127A574D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 67";
+		rLen = 0;
+		rLoc = 1431;
+		rType = 0;
+		vrLen = 1589;
+		vrLoc = 635;
+	};
+	3FA4B7F4127A574D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 66";
+		rLen = 0;
+		rLoc = 1214;
+		rType = 0;
+		vrLen = 1583;
+		vrLoc = 635;
+	};
+	3FA4B7F5127A575D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 67";
+		rLen = 0;
+		rLoc = 1334;
+		rType = 0;
+		vrLen = 1620;
+		vrLoc = 635;
+	};
+	3FA4B7F6127A57890092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 70";
+		rLen = 0;
+		rLoc = 1404;
+		rType = 0;
+		vrLen = 1700;
+		vrLoc = 635;
+	};
+	3FA4B7F7127A57930092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 70";
+		rLen = 0;
+		rLoc = 1431;
+		rType = 0;
+		vrLen = 1727;
+		vrLoc = 635;
+	};
+	3FA4B7F8127A57AB0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 77";
+		rLen = 0;
+		rLoc = 2001;
+		rType = 0;
+		vrLen = 1657;
+		vrLoc = 900;
+	};
+	3FA4B7F9127A57AF0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 75";
+		rLen = 0;
+		rLoc = 1481;
+		rType = 0;
+		vrLen = 1669;
+		vrLoc = 900;
+	};
+	3FA4B7FA127A57D20092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 76";
+		rLen = 0;
+		rLoc = 1837;
+		rType = 0;
+		vrLen = 1712;
+		vrLoc = 900;
+	};
+	3FA4B7FB127A57ED0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 76";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1713;
+		vrLoc = 900;
+	};
+	3FA4B7FC127A58540092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 67";
+		rLen = 0;
+		rLoc = 1226;
+		rType = 0;
+		vrLen = 1255;
+		vrLoc = 45;
+	};
+	3FA4B7FD127A58540092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 75";
+		rLen = 0;
+		rLoc = 1488;
+		rType = 0;
+		vrLen = 1713;
+		vrLoc = 900;
+	};
+	3FA4B7FE127A58540092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 1";
+		rLen = 10487;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1686;
+		vrLoc = 691;
+	};
+	3FA4B7FF127A58650092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 77";
+		rLen = 0;
+		rLoc = 1515;
+		rType = 0;
+		vrLen = 1685;
+		vrLoc = 697;
+	};
+	3FA4B800127A58870092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 66";
+		rLen = 0;
+		rLoc = 1235;
+		rType = 0;
+		vrLen = 1684;
+		vrLoc = 697;
+	};
+	3FA4B801127A58DC0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 91";
+		rLen = 0;
+		rLoc = 1959;
+		rType = 0;
+		vrLen = 1613;
+		vrLoc = 823;
+	};
+	3FA4B802127A59010092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 31";
+		rLen = 0;
+		rLoc = 600;
+		rType = 0;
+		vrLen = 1713;
+		vrLoc = 238;
+	};
+	3FA4B803127A59130092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 31";
+		rLen = 0;
+		rLoc = 600;
+		rType = 0;
+		vrLen = 1713;
+		vrLoc = 238;
+	};
+	3FA4B804127A59130092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 11";
+		rLen = 0;
+		rLoc = 275;
+		rType = 0;
+		vrLen = 673;
+		vrLoc = 0;
+	};
+	3FA4B805127A59130092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 8";
+		rLen = 0;
+		rLoc = 219;
+		rType = 0;
+		vrLen = 704;
+		vrLoc = 0;
+	};
+	3FA4B806127A59250092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 8";
+		rLen = 0;
+		rLoc = 217;
+		rType = 0;
+		vrLen = 705;
+		vrLoc = 0;
+	};
+	3FA4B807127A59480092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
+		name = "templatewidget.cpp: 33";
+		rLen = 0;
+		rLoc = 644;
+		rType = 0;
+		vrLen = 675;
+		vrLoc = 0;
+	};
+	3FA4B808127A59480092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 8";
+		rLen = 0;
+		rLoc = 217;
+		rType = 0;
+		vrLen = 705;
+		vrLoc = 0;
+	};
+	3FA4B809127A59480092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 8";
+		rLen = 0;
+		rLoc = 198;
+		rType = 0;
+		vrLen = 699;
+		vrLoc = 0;
+	};
+	3FA4B80A127A59530092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 8";
+		rLen = 0;
+		rLoc = 217;
+		rType = 0;
+		vrLen = 699;
+		vrLoc = 0;
+	};
+	3FA4B80B127A595D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 8";
+		rLen = 0;
+		rLoc = 217;
+		rType = 0;
+		vrLen = 699;
+		vrLoc = 0;
+	};
+	3FA4B80C127A597D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
+		name = "dateedit.cpp: 8";
+		rLen = 0;
+		rLoc = 217;
+		rType = 0;
+		vrLen = 699;
+		vrLoc = 0;
+	};
+	3FA4B80D127A597D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C02F51273B3F300D6AD12 /* textedit.cpp */;
+		name = "textedit.cpp: 14";
+		rLen = 0;
+		rLoc = 242;
+		rType = 0;
+		vrLen = 726;
+		vrLoc = 0;
+	};
+	3FA4B80E127A597D0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C02F51273B3F300D6AD12 /* textedit.cpp */;
+		name = "textedit.cpp: 8";
+		rLen = 0;
+		rLoc = 181;
+		rType = 0;
+		vrLen = 726;
+		vrLoc = 0;
+	};
+	3FA4B80F127A598A0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C02F51273B3F300D6AD12 /* textedit.cpp */;
+		name = "textedit.cpp: 8";
+		rLen = 0;
+		rLoc = 181;
+		rType = 0;
+		vrLen = 726;
+		vrLoc = 0;
+	};
+	3FA4B810127A59B50092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C02F51273B3F300D6AD12 /* textedit.cpp */;
+		name = "textedit.cpp: 8";
+		rLen = 0;
+		rLoc = 181;
+		rType = 0;
+		vrLen = 726;
+		vrLoc = 0;
+	};
+	3FA4B811127A59B50092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 32";
+		rLen = 111;
+		rLoc = 611;
+		rType = 0;
+		vrLen = 673;
+		vrLoc = 0;
+	};
+	3FA4B812127A59B50092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 8";
+		rLen = 0;
+		rLoc = 175;
+		rType = 0;
+		vrLen = 698;
+		vrLoc = 0;
+	};
+	3FA4B813127A59CD0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 8";
+		rLen = 0;
+		rLoc = 178;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 0;
+	};
+	3FA4B814127A59CF0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 8";
+		rLen = 0;
+		rLoc = 178;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 0;
+	};
+	3FA4B815127A59EE0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 9";
+		rLen = 0;
+		rLoc = 201;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 0;
+	};
+	3FA4B816127A59FE0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 9";
+		rLen = 0;
+		rLoc = 203;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 0;
+	};
+	3FA4B817127A5A0E0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 9";
+		rLen = 0;
+		rLoc = 202;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 0;
+	};
+	3FA4B818127A5A820092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
+		name = "lineedit.cpp: 9";
+		rLen = 0;
+		rLoc = 202;
+		rType = 0;
+		vrLen = 722;
+		vrLoc = 0;
+	};
+	3FA4B819127A5A820092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 31";
+		rLen = 0;
+		rLoc = 600;
+		rType = 0;
+		vrLen = 1708;
+		vrLoc = 238;
+	};
+	3FA4B81A127A5A820092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 251";
+		rLen = 0;
+		rLoc = 6696;
+		rType = 0;
+		vrLen = 2389;
+		vrLoc = 6427;
+	};
+	3FA4B81B127A5B5A0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
+		name = "dragwidget.h: 11";
+		rLen = 0;
+		rLoc = 167;
+		rType = 0;
+		vrLen = 1210;
+		vrLoc = 99;
+	};
+	3FA4B81C127A5B5A0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
+		name = "templatewidget.h: 24";
+		rLen = 0;
+		rLoc = 510;
+		rType = 0;
+		vrLen = 789;
+		vrLoc = 0;
+	};
+	3FA4B81D127A5B5A0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
+		name = "templatewidget.cpp: 44";
+		rLen = 0;
+		rLoc = 859;
+		rType = 0;
+		vrLen = 861;
+		vrLoc = 0;
+	};
+	3FA4B81E127A5B5A0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 82";
+		rLen = 0;
+		rLoc = 1959;
+		rType = 0;
+		vrLen = 1762;
+		vrLoc = 927;
+	};
+	3FA4B81F127A5B5A0092E35A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
+		name = "dragwidget.cpp: 82";
+		rLen = 0;
+		rLoc = 1971;
+		rType = 0;
+		vrLen = 1760;
+		vrLoc = 927;
 	};
 	3FC1BE3E1273A35300A9A986 /* Source Control */ = {
 		isa = PBXSourceControlManager;
@@ -3736,31 +4506,31 @@
 	3FC1BE421273A37800A9A986 /* templatewidget.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {983, 874}}";
-			sepNavSelRange = "{841, 0}";
-			sepNavVisRange = "{0, 841}";
+			sepNavSelRange = "{859, 0}";
+			sepNavVisRange = "{0, 861}";
 		};
 	};
 	3FC1BE431273A37800A9A986 /* templatewidget.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {983, 874}}";
-			sepNavSelRange = "{713, 0}";
-			sepNavVisRange = "{0, 738}";
+			sepNavSelRange = "{510, 0}";
+			sepNavVisRange = "{0, 789}";
 			sepNavWindowFrame = "{{15, 444}, {989, 969}}";
 		};
 	};
 	3FC1BE441273A37800A9A986 /* dragwidget.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 4004}}";
-			sepNavSelRange = "{9159, 0}";
-			sepNavVisRange = "{6928, 2574}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 4914}}";
+			sepNavSelRange = "{1971, 0}";
+			sepNavVisRange = "{927, 1760}";
 			sepNavWindowFrame = "{{15, 444}, {989, 969}}";
 		};
 	};
 	3FC1BE451273A37800A9A986 /* dragwidget.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 884}}";
-			sepNavSelRange = "{235, 0}";
-			sepNavVisRange = "{0, 1164}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 988}}";
+			sepNavSelRange = "{167, 0}";
+			sepNavVisRange = "{99, 1210}";
 			sepNavWindowFrame = "{{15, 444}, {989, 969}}";
 		};
 	};
@@ -3779,7 +4549,7 @@
 		fRef = 3F6C039F1273DB1C00D6AD12 /* dateedit.cpp */;
 		name = "dateedit.cpp: 29";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 581;
 		rType = 0;
 		vrLen = 563;
 		vrLoc = 0;
@@ -3809,7 +4579,7 @@
 		fRef = 3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */;
 		name = "lineedit.cpp: 30";
 		rLen = 0;
-		rLoc = 558;
+		rLoc = 607;
 		rType = 0;
 		vrLen = 561;
 		vrLoc = 0;
@@ -3819,7 +4589,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 50";
 		rLen = 0;
-		rLoc = 1079;
+		rLoc = 1129;
 		rType = 0;
 		vrLen = 970;
 		vrLoc = 0;
@@ -3829,7 +4599,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 204";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2275;
 		vrLoc = 3699;
@@ -3849,7 +4619,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 31";
 		rLen = 0;
-		rLoc = 728;
+		rLoc = 779;
 		rType = 0;
 		vrLen = 650;
 		vrLoc = 0;
@@ -3859,7 +4629,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 39";
 		rLen = 0;
-		rLoc = 841;
+		rLoc = 861;
 		rType = 0;
 		vrLen = 747;
 		vrLoc = 0;
@@ -3879,7 +4649,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 172";
 		rLen = 0;
-		rLoc = 9506;
+		rLoc = 10165;
 		rType = 0;
 		vrLen = 2212;
 		vrLoc = 3730;

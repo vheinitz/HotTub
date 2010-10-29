@@ -5,7 +5,7 @@
 TextEdit::TextEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
     setLabel(label);
     edit = new QTextEdit;
-    setMinimumSize(150,40);
+    setMinimumSize(250,50);
     addWidget(edit);
 
 }

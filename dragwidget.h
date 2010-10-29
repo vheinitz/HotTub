@@ -16,7 +16,7 @@
 using namespace std;
 
 
- class DragWidget : public QWidget
+ class DragWidget : public QMainWindow
  {
 	Q_OBJECT
 			
@@ -30,7 +30,9 @@ using namespace std;
      void keyPressEvent(QKeyEvent *event);
      void keyReleaseEvent(QKeyEvent *event);
 	 void paintEvent(QPaintEvent *event);
-
+private slots:
+     void beginEditing();
+     
  private:
      void buildHotSpots();
      
@@ -61,6 +63,12 @@ using namespace std;
      
      Action action;
      bool activeAction;
+     
+     bool isEditing;
+     
+     QMenu *editMenu;
+     QAction *beginEditingAction;
+     
  };
 
 

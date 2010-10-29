@@ -14,8 +14,7 @@
 using namespace std;
 
 
- DragWidget::DragWidget(QWidget *parent)
-     : QWidget(parent)
+DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
  {
      TextEdit *edit = new TextEdit("Address", this);
      LineEdit *line = new LineEdit("Name", this);
@@ -28,16 +27,7 @@ using namespace std;
      
      date->move(0,100);
      date->show();
-
-     
-     date->enterEditMode();
-     line->enterEditMode();
-     edit->enterEditMode();
-     
-     date->setActiveCursor(Qt::OpenHandCursor);
-     line->setActiveCursor(Qt::OpenHandCursor);
-     edit->setActiveCursor(Qt::OpenHandCursor);
-     
+ 
           
      widgets.push_back(date);
      widgets.push_back(line);
@@ -63,9 +53,37 @@ using namespace std;
      
      setMouseTracking(true);
 	 //connect(timer, SIGNAL(timeout()), this, SLOT(activeCellChanged()));
+     
+     beginEditingAction = new QAction("Start Editing", this);
+     connect(beginEditingAction, SIGNAL(triggered()), this, SLOT(beginEditing()));
+     
+     editMenu = menuBar()->addMenu("&Edit");
+     editMenu->addAction(beginEditingAction);
 	 
+     isEditing = false;
  }
 
+
+void DragWidget::beginEditing(){
+    if (isEditing) {
+        isEditing = false;
+        beginEditingAction->setText("Start Editing");
+        setMouseTracking(false);
+        for (unsigned int i=0; i<widgets.size(); i++) {
+            widgets[i]->stopEditing();
+        }
+        
+    } else {
+        isEditing = true;
+        beginEditingAction->setText("Stop Editing");
+        setMouseTracking(true);
+        
+        for (unsigned int i=0; i<widgets.size(); i++) {
+            widgets[i]->beginEditing();
+        }
+        
+    }
+}
 
  void DragWidget::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
@@ -133,11 +151,12 @@ void DragWidget::buildHotSpots(){
  void DragWidget::mouseReleaseEvent(QMouseEvent *event)
  {
      Q_UNUSED(event);
+     if ( !isEditing ) return;
      
      buildHotSpots();
      
      if ( activeWidget ) {
-         activeWidget->setActiveCursor(Qt::OpenHandCursor);
+         activeWidget->setCursor(Qt::OpenHandCursor);
      }
      
      activeDragging = false;
@@ -154,6 +173,8 @@ void DragWidget::buildHotSpots(){
 
  void DragWidget::mousePressEvent(QMouseEvent *event)
  {
+     if ( !isEditing ) return;
+     
      activeAction = true;
      QWidget *child = NULL;
 	 
@@ -178,7 +199,7 @@ void DragWidget::buildHotSpots(){
 	 offsetY = event->pos().y() - child->y();
 
 	 activeWidget = templWidget;
-     activeWidget->setActiveCursor(Qt::ClosedHandCursor);
+     activeWidget->setCursor(Qt::ClosedHandCursor);
 	 activeWidget->raise();
 	 activeDragging = true;
      
@@ -223,6 +244,8 @@ void DragWidget::buildHotSpots(){
 
 void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
 	
+    if ( !isEditing ) return;
+    
     if ( activeAction && action == RESIZE_BOTH ) {
         int width = qMax(actionWidget->minimumWidth(), event->pos().x() - actionWidget->x());
         int height = qMax(actionWidget->minimumHeight(), event->pos().y() - actionWidget->y());
@@ -290,7 +313,7 @@ void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
         }
         
         if ( !activeDragging ) {
-        /* Check hot spots */
+            /* Check hot spots */
             for (unsigned int i=0; i<hotSpots.size(); i++) {
                 if ( hotSpots[i].rect().contains(event->pos() ) ) {
                     setCursor(hotSpots[i].getCursor());
