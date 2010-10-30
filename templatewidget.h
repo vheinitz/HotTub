@@ -8,6 +8,7 @@
 
  class TemplateWidget : public QWidget
  {
+     Q_OBJECT
 	
  public:
      TemplateWidget(QWidget *parent);
@@ -20,7 +21,9 @@
      virtual int getTopAlignmentHint() = 0;
      virtual bool allowResizeWidth() = 0;
      virtual bool allowResizeHeight() = 0;
-
+ private slots:
+     void updateLabel(const QString& text);
+     
  protected:
      virtual void enterEditMode() = 0;
      virtual void exitEditMode() = 0;
@@ -32,7 +35,9 @@
  private:
      
      QLabel *label;
+     QLineEdit *labelEdit;
      QHBoxLayout *layout;
+     QStackedLayout *stack;
  };
 
 

@@ -57,7 +57,7 @@ private slots:
      bool overrideHints;
      
      static const int THRESHOLD = 25;
-     static const int MARGIN = 15;
+     static const int MARGIN = 10;
 
 	 QTimer *timer;
      
