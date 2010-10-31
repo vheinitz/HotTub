@@ -30,6 +30,7 @@ using namespace std;
      void keyPressEvent(QKeyEvent *event);
      void keyReleaseEvent(QKeyEvent *event);
 	 void paintEvent(QPaintEvent *event);
+
 private slots:
      void beginEditing();
      
@@ -57,7 +58,7 @@ private slots:
      bool overrideHints;
      
      static const int THRESHOLD = 25;
-     static const int MARGIN = 10;
+     static const int MARGIN = 1;
 
 	 QTimer *timer;
      

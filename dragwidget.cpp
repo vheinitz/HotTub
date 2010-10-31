@@ -27,16 +27,14 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      
      date->move(0,100);
      date->show();
- 
+      
+     
           
      widgets.push_back(date);
      widgets.push_back(line);
      widgets.push_back(edit);
      
-     QPalette newPalette = palette();
-     newPalette.setColor(QPalette::Window, Qt::white);
-     setPalette(newPalette);
-
+     
      setMinimumSize(800, 600);
      
 	 activeDragging = false;
@@ -85,6 +83,8 @@ void DragWidget::beginEditing(){
     }
 }
 
+
+
  void DragWidget::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
 
@@ -107,9 +107,6 @@ void DragWidget::beginEditing(){
                 painter.drawLine(0, hintY, width(), hintY);
             }
          
-            if ( marginY != -1 ) {
-                painter.drawLine(0, marginY, width(), marginY);
-            }
         }
      }
      
@@ -118,6 +115,7 @@ void DragWidget::beginEditing(){
          painter.fillRect(hotSpots[i].rect(), Qt::yellow);
      }*/
  }
+
 
 void showMessage(QString message){
 	QMessageBox msgBox;
@@ -299,14 +297,12 @@ void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
             
             /* Check for margins */
                 if ( hintX > -1 ) {
-                    if ( abs(event->pos().y() - widgets[i]->y() - widgets[i]->height() - offsetY - THRESHOLD) < MARGIN ) {
-                        activeWidget->move(activeWidget->x(), widgets[i]->y() + widgets[i]->height() + MARGIN);
-                        marginY = widgets[i]->y() + widgets[i]->height();
+                    if ( abs(event->pos().y() - widgets[i]->y() - widgets[i]->height() - offsetY) < THRESHOLD ) {
+                        activeWidget->move(activeWidget->x(), widgets[i]->y() + widgets[i]->height());
                     }
            
-                    if ( abs(event->pos().y() - offsetY - widgets[i]->y() + activeWidget->height() + THRESHOLD ) < MARGIN ) {
-                        activeWidget->move(activeWidget->x(), widgets[i]->y() - activeWidget->height() - MARGIN);
-                        marginY = activeWidget->y() + activeWidget->height();
+                    if ( abs(event->pos().y() - offsetY - widgets[i]->y() + activeWidget->height() ) < THRESHOLD ) {
+                        activeWidget->move(activeWidget->x(), widgets[i]->y() - activeWidget->height());
                     }
                 }
             }

@@ -21,6 +21,7 @@
      virtual int getTopAlignmentHint() = 0;
      virtual bool allowResizeWidth() = 0;
      virtual bool allowResizeHeight() = 0;
+     void paintEvent(QPaintEvent *event);
  private slots:
      void updateLabel(const QString& text);
      

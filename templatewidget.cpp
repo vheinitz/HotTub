@@ -13,6 +13,8 @@ TemplateWidget::TemplateWidget(QWidget *parent)
     stack = new QStackedLayout;
 	label = new QLabel;
     labelEdit = new QLineEdit;
+    
+    
 	
     QVBoxLayout *labelLayout = new QVBoxLayout;
     label->setAlignment(Qt::AlignRight);
@@ -28,23 +30,25 @@ TemplateWidget::TemplateWidget(QWidget *parent)
     
     QWidget *editContainer = new QWidget;
     editContainer->setLayout(editLayout);
-    
+
     stack->addWidget(labelContainer);
     stack->addWidget(editContainer);
     
     QWidget *widget = new QWidget;
     widget->setLayout(stack);
-    widget->setMinimumWidth(100);
-    widget->setMaximumWidth(250);
     
-    layout->setContentsMargins(0,0,0,0);
     layout->addWidget(widget);
 	QWidget::setLayout(layout);
     
-    setMinimumSize(200, 50);
-    setContentsMargins(0,0,0,0);
     connect(labelEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateLabel(const QString&)));
     
+}
+
+
+void TemplateWidget::paintEvent(QPaintEvent* event){
+    QPainter painter(this);
+    /*painter.fillRect(0, 0, width(), height(), Qt::red);
+    */QWidget::paintEvent(event);
 }
 
 void TemplateWidget::updateLabel(const QString& text){

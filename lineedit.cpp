@@ -5,8 +5,7 @@
 LineEdit::LineEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
     setLabel(label);
     edit = new QLineEdit;
-    setFixedWidth(150);
-    setMinimumWidth(75);
+    setMinimumSize(285, 65);
     addWidget(edit);
     
 }

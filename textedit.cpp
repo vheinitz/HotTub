@@ -5,9 +5,8 @@
 TextEdit::TextEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
     setLabel(label);
     edit = new QTextEdit;
-    setMinimumSize(250,50);
+    setMinimumSize(300,80);
     addWidget(edit);
-
 }
 
 void TextEdit::enterEditMode(){
@@ -20,8 +19,7 @@ void TextEdit::exitEditMode(){
 }
 
 void TextEdit::setActiveCursor(Qt::CursorShape shape){
-    edit->viewport()->setCursor(shape);
-    
+    edit->viewport()->setCursor(shape);    
 }
 
 int TextEdit::getLeftAlignmentHint(){
@@ -32,7 +30,6 @@ int TextEdit::getTopAlignmentHint(){
     return edit->y();
 }
 
-
 bool TextEdit::allowResizeWidth(){
     return true;
 }
@@ -40,3 +37,5 @@ bool TextEdit::allowResizeWidth(){
 bool TextEdit::allowResizeHeight(){
     return true;
 }
+
+
