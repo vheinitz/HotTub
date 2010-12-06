@@ -9,6 +9,7 @@
 #include "templatewidget.h"
 #include "hotspot.h"
 #include "action.h"
+#include "dateedit.h"
 
  class QDragEnterEvent;
  class QDropEvent;
@@ -33,6 +34,7 @@ using namespace std;
 
 private slots:
      void beginEditing();
+     void changeButtonPushed();
      
  private:
      void buildHotSpots();
@@ -49,6 +51,8 @@ private slots:
 	 
 	 int offsetX;
 	 int offsetY;
+     
+     TemplateWidget *date;
    
      int hintX;
      int hintY;

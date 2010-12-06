@@ -1,12 +1,16 @@
 
 #include "dateedit.h"
 
-DateEdit::DateEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
-    setLabel(label);
+DateEdit::DateEdit(QWidget *parent) : Editor(parent) {
     edit = new QDateTimeEdit;
     edit->setCalendarPopup(true);
-    setMinimumSize(285, 65);
-    addWidget(edit);
+    layout = new QHBoxLayout;
+    layout->addWidget(edit);
+    setLayout(layout);
+}
+
+void DateEdit::setMargins(int top, int right, int bottom, int left){
+    layout->setContentsMargins(top,right,bottom,left);
 }
 
 void DateEdit::enterEditMode(){
@@ -21,14 +25,6 @@ void DateEdit::setActiveCursor(Qt::CursorShape shape){
     edit->setCursor(shape);
 }
 
-int DateEdit::getLeftAlignmentHint(){
-    return edit->x()+2;
-}
-
-int DateEdit::getTopAlignmentHint(){
-    return edit->y();
-}
-
 bool DateEdit::allowResizeWidth(){
     return false;
 }
@@ -37,3 +33,6 @@ bool DateEdit::allowResizeHeight(){
     return false;
 }
 
+QSize DateEdit::sizeHint(){
+    return QSize(120, 35);
+}   

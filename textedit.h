@@ -4,21 +4,21 @@
 
 #include "templatewidget.h"
 
-class TextEdit : public TemplateWidget {
+class TextEdit : public Editor {
  
 public:
-    TextEdit(const QString& label, QWidget *parent);
+    TextEdit(QWidget *);
     
     void enterEditMode();
     void exitEditMode();
     void setActiveCursor(Qt::CursorShape);
-    int getLeftAlignmentHint();
-    int getTopAlignmentHint();
     bool allowResizeWidth();
     bool allowResizeHeight();
-
+    void setMargins(int,int,int,int);
+    QSize sizeHint();
 private:
     QTextEdit *edit;
+    QLayout* layout;
     
 };
 

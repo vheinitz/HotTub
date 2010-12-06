@@ -4,6 +4,7 @@
                textedit.h \
                hotspot.h \
                action.h \
+               editor.h \
                dateedit.h
  RESOURCES   = draggabletext.qrc
  SOURCES     = templatewidget.cpp \
@@ -12,6 +13,7 @@
                lineedit.cpp \
                dateedit.cpp \
                hotspot.cpp \
+               editor.cpp \
                main.cpp
 
  # install

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		3F14BF4D127FB6DA007C54EB /* editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = editor.cpp; path = ../editor.cpp; sourceTree = SOURCE_ROOT; };
+		3F14BF4E127FB6DA007C54EB /* editor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = editor.h; path = ../editor.h; sourceTree = SOURCE_ROOT; };
 		3F6C02EF1273B10300D6AD12 /* draggabletext.pro */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = draggabletext.pro; path = ../draggabletext.pro; sourceTree = SOURCE_ROOT; };
 		3F6C02F51273B3F300D6AD12 /* textedit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = textedit.cpp; path = ../textedit.cpp; sourceTree = SOURCE_ROOT; };
 		3F6C02F61273B3F300D6AD12 /* textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = textedit.h; path = ../textedit.h; sourceTree = SOURCE_ROOT; };
@@ -35,6 +37,8 @@
 				3F6C036E1273D5BC00D6AD12 /* lineedit.cpp */,
 				3F6C036F1273D5BC00D6AD12 /* lineedit.h */,
 				3FC1BE431273A37800A9A986 /* templatewidget.h */,
+				3F14BF4D127FB6DA007C54EB /* editor.cpp */,
+				3F14BF4E127FB6DA007C54EB /* editor.h */,
 				3FC1BE441273A37800A9A986 /* dragwidget.cpp */,
 				3F8277F7127669F500D81BE2 /* hotspot.cpp */,
 				3F8277F8127669F500D81BE2 /* hotspot.h */,

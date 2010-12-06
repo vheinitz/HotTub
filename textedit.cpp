@@ -2,11 +2,15 @@
 
 #include "textedit.h"
 
-TextEdit::TextEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
-    setLabel(label);
+TextEdit::TextEdit(QWidget *parent) : Editor(parent) {
     edit = new QTextEdit;
-    setMinimumSize(300,80);
-    addWidget(edit);
+    layout = new QHBoxLayout;
+    layout->addWidget(edit);
+    setLayout(layout);
+}
+
+void TextEdit::setMargins(int top, int right, int bottom, int left){
+    layout->setContentsMargins(top,right,bottom,left);
 }
 
 void TextEdit::enterEditMode(){
@@ -22,14 +26,6 @@ void TextEdit::setActiveCursor(Qt::CursorShape shape){
     edit->viewport()->setCursor(shape);    
 }
 
-int TextEdit::getLeftAlignmentHint(){
-    return edit->x();
-}
-
-int TextEdit::getTopAlignmentHint(){
-    return edit->y();
-}
-
 bool TextEdit::allowResizeWidth(){
     return true;
 }
@@ -38,4 +34,7 @@ bool TextEdit::allowResizeHeight(){
     return true;
 }
 
+QSize TextEdit::sizeHint(){
+    return QSize(400, 140);
+}
 

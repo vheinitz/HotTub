@@ -16,20 +16,28 @@ using namespace std;
 
 DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
  {
-     TextEdit *edit = new TextEdit("Address", this);
-     LineEdit *line = new LineEdit("Name", this);
-     DateEdit *date = new DateEdit("Birthday", this);
+     TemplateWidget *edit = new TemplateWidget(new TextEdit(this), this);
+     edit->setLabel( "Address" );
+     
+     TemplateWidget *line = new TemplateWidget(new LineEdit(this), this);
+     line->setLabel("Name");
+     
+     date = new TemplateWidget(new DateEdit(this), this);
+     date->setLabel("Birthdate");
+     
      
      line->move(0,0);
+     QSize hint = line->sizeHint();
+     line->setGeometry(0,0,hint.width(), hint.height());
      line->show();
-     edit->move(0,50);
+     hint = edit->sizeHint();
+     edit->setGeometry(0,50,hint.width(), hint.height());
      edit->show();
      
-     date->move(0,100);
+     hint = date->sizeHint();
+     date->setGeometry(0,100,hint.width(), hint.height());
      date->show();
-      
      
-          
      widgets.push_back(date);
      widgets.push_back(line);
      widgets.push_back(edit);
@@ -61,6 +69,15 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      isEditing = false;
  }
 
+void DragWidget::changeButtonPushed(){
+    /*date->hide();
+    
+    LineEdit *line = new LineEdit("Birthday", this);
+    line->move(date->x(), date->y());
+    line->show();
+    line->beginEditing();
+    */
+}
 
 void DragWidget::beginEditing(){
     if (isEditing) {
@@ -70,7 +87,6 @@ void DragWidget::beginEditing(){
         for (unsigned int i=0; i<widgets.size(); i++) {
             widgets[i]->stopEditing();
         }
-        
     } else {
         isEditing = true;
         beginEditingAction->setText("Stop Editing");
@@ -78,8 +94,11 @@ void DragWidget::beginEditing(){
         
         for (unsigned int i=0; i<widgets.size(); i++) {
             widgets[i]->beginEditing();
-        }
-        
+            /*QPushButton *button = new QPushButton("Change", this);
+            button->move(widgets[i]->x()+widgets[i]->width()-20, widgets[i]->y()+widgets[i]->height()-20);
+            button->show();
+            connect(button, SIGNAL(clicked()), this, SLOT(changeButtonPushed()));
+        */}
     }
 }
 

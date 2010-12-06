@@ -2,23 +2,23 @@
 #ifndef DATEEDIT_H
 #define DATEEDIT_H
 
-#include "templatewidget.h"
+#include "editor.h"
 
-class DateEdit : public TemplateWidget {
+class DateEdit : public Editor {
     
 public:
-    DateEdit(const QString& label, QWidget *parent);
+    DateEdit(QWidget *parent);
     
     void enterEditMode();
     void exitEditMode();
     void setActiveCursor(Qt::CursorShape);
-    int getLeftAlignmentHint();
-    int getTopAlignmentHint();
     bool allowResizeWidth();
     bool allowResizeHeight();
-
+    void setMargins(int,int,int,int);
+    QSize sizeHint();
 private:
     QDateTimeEdit *edit;
+    QLayout *layout;
     
 };
 

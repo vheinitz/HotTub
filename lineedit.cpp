@@ -2,12 +2,15 @@
 
 #include "lineedit.h"
 
-LineEdit::LineEdit(const QString& label, QWidget *parent) : TemplateWidget(parent) {
-    setLabel(label);
-    edit = new QLineEdit;
-    setMinimumSize(285, 65);
-    addWidget(edit);
-    
+LineEdit::LineEdit(QWidget *parent) : Editor(parent) {
+    edit = new QLineEdit; 
+    layout = new QHBoxLayout;
+    layout->addWidget(edit);
+    setLayout(layout);
+}
+
+void LineEdit::setMargins(int top, int right, int bottom, int left){
+    layout->setContentsMargins(top,right,bottom,left);
 }
 
 void LineEdit::enterEditMode(){
@@ -23,14 +26,6 @@ void LineEdit::setActiveCursor(Qt::CursorShape shape){
     edit->setCursor(shape);
 }
 
-int LineEdit::getLeftAlignmentHint(){
-    return edit->x();
-}
-
-int LineEdit::getTopAlignmentHint(){
-    return edit->y();
-}
-
 bool LineEdit::allowResizeWidth(){
     return true;
 }
@@ -38,3 +33,12 @@ bool LineEdit::allowResizeWidth(){
 bool LineEdit::allowResizeHeight(){
     return false;
 }
+
+void LineEdit::paintEvent(QPaintEvent *event){
+    QPainter painter(this);
+}
+
+QSize LineEdit::sizeHint() {
+    return QSize(200, 35);
+}
+

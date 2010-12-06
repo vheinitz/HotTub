@@ -4,21 +4,22 @@
 
 #include "templatewidget.h"
 
-class LineEdit : public TemplateWidget {
+class LineEdit : public Editor {
     
 public:
-    LineEdit(const QString& label, QWidget *parent);
+    LineEdit(QWidget *parent);
     
     void enterEditMode();
     void exitEditMode();
     void setActiveCursor(Qt::CursorShape);
-    int getLeftAlignmentHint();
-    int getTopAlignmentHint();
     bool allowResizeWidth();
     bool allowResizeHeight();
+    void setMargins(int,int,int,int);
+    void paintEvent(QPaintEvent *event);
+    QSize sizeHint();
 private:
     QLineEdit *edit;
-    
+    QLayout *layout;
 };
 
 
