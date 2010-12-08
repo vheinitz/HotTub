@@ -63,9 +63,14 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      beginEditingAction = new QAction("Start Editing", this);
      connect(beginEditingAction, SIGNAL(triggered()), this, SLOT(beginEditing()));
      
+     addFieldAction = new QAction("Add A Field", this);
+     connect(addFieldAction, SIGNAL(triggered()), this, SLOT(addField()));
+     
      editMenu = menuBar()->addMenu("&Edit");
+     
      editMenu->addAction(beginEditingAction);
-	 
+	 editMenu->addAction(addFieldAction);
+     
      isEditing = false;
  }
 
@@ -100,6 +105,17 @@ void DragWidget::beginEditing(){
             connect(button, SIGNAL(clicked()), this, SLOT(changeButtonPushed()));
         */}
     }
+}
+
+void DragWidget::addField(){
+    TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+    widget->setLabel("New Field");
+    
+    QSize hint = widget->sizeHint();
+    widget->setGeometry(0,0,hint.width(), hint.height());
+    widget->show();
+    widget->beginEditing();
+    widgets.push_back(widget);    
 }
 
 

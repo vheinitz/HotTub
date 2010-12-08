@@ -18,22 +18,21 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     editor = edit;
     
     QVBoxLayout *labelLayout = new QVBoxLayout;
-    label->setAlignment(Qt::AlignRight);
     labelLayout->addWidget(label);
     labelLayout->addStretch();
     
     QWidget *labelContainer = new QWidget;
-    labelLayout->setContentsMargins(0,5,0,0);
+    labelLayout->setContentsMargins(0,0,0,0);
     labelContainer->setLayout(labelLayout);
     
     QVBoxLayout *editLayout = new QVBoxLayout;
-    editLayout->setContentsMargins(0,5,0,0);
+    editLayout->setContentsMargins(0,0,0,0);
     editLayout->addWidget(labelEdit);
     editLayout->addStretch();
     
     QWidget *editContainer = new QWidget;
     editContainer->setLayout(editLayout);
-    stack->setContentsMargins(0,5,0,0);
+    stack->setContentsMargins(0,MARGIN,0,0);
     stack->addWidget(labelContainer);
     stack->addWidget(editContainer);
 
@@ -46,7 +45,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     layout->addWidget(widget);
     edit->setMargins(0, 0, 0, 0);
     layout->addWidget(edit);
-    layout->setContentsMargins(5,5,5,0);
+    layout->setContentsMargins(5,MARGIN,5,0);
     QWidget::setLayout(layout);
     
     
@@ -56,11 +55,11 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
 
 QSize TemplateWidget::sizeHint(){
     QSize editorHint = editor->sizeHint();
-    return QSize(editorHint.width()+150, editorHint.height());
+    return QSize(editorHint.width()+150, editorHint.height()+MARGIN);
 }
 
 int TemplateWidget::getLeftAlignmentHint(){
-    return editor->x();
+    return editor->x() + editor->getLeftAlignmentHint();
 }
 
 int TemplateWidget::getTopAlignmentHint(){
@@ -108,7 +107,6 @@ bool TemplateWidget::allowResizeWidth(){
 
 bool TemplateWidget::allowResizeHeight() {
     return editor->allowResizeHeight();
-    
 }
 
 

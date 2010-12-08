@@ -39,6 +39,9 @@ void LineEdit::paintEvent(QPaintEvent *event){
 }
 
 QSize LineEdit::sizeHint() {
-    return QSize(200, 35);
+    return edit->sizeHint();
 }
 
+int LineEdit::getLeftAlignmentHint(){
+    return edit->x();
+}

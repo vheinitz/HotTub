@@ -4,7 +4,8 @@
 
 TextEdit::TextEdit(QWidget *parent) : Editor(parent) {
     edit = new QTextEdit;
-    layout = new QHBoxLayout;
+    layout = new QVBoxLayout;
+    layout->addSpacing(4);
     layout->addWidget(edit);
     setLayout(layout);
 }
@@ -35,6 +36,10 @@ bool TextEdit::allowResizeHeight(){
 }
 
 QSize TextEdit::sizeHint(){
-    return QSize(400, 140);
+    return edit->sizeHint();
 }
 
+
+int TextEdit::getLeftAlignmentHint(){
+    return edit->x();
+}

@@ -33,6 +33,8 @@ private:
     QLineEdit *labelEdit;
     QHBoxLayout *layout;
     QStackedLayout *stack;
+    
+    static const int MARGIN=50;
 };
 
 

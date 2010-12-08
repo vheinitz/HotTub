@@ -16,9 +16,10 @@ public:
     bool allowResizeHeight();
     void setMargins(int,int,int,int);
     QSize sizeHint();
+    int getLeftAlignmentHint();
 private:
     QTextEdit *edit;
-    QLayout* layout;
+    QVBoxLayout* layout;
     
 };
 

@@ -17,6 +17,7 @@ public:
     void setMargins(int,int,int,int);
     void paintEvent(QPaintEvent *event);
     QSize sizeHint();
+    int getLeftAlignmentHint();
 private:
     QLineEdit *edit;
     QLayout *layout;

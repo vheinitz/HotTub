@@ -16,6 +16,7 @@ public:
     virtual void exitEditMode() = 0;
     virtual void setMargins(int,int,int,int) = 0;
     virtual QSize sizeHint() = 0;
+    virtual int getLeftAlignmentHint() = 0;
 };
 
 

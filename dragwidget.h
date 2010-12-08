@@ -34,6 +34,7 @@ using namespace std;
 
 private slots:
      void beginEditing();
+     void addField();
      void changeButtonPushed();
      
  private:
@@ -73,6 +74,7 @@ private slots:
      
      QMenu *editMenu;
      QAction *beginEditingAction;
+     QAction *addFieldAction;
      
  };
 

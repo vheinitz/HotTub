@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dragwidget.h'
 **
-** Created: Sun Dec 5 22:06:05 2010
+** Created: Tue Dec 7 23:02:28 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_DragWidget[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,12 +33,13 @@ static const uint qt_meta_data_DragWidget[] = {
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x08,
       27,   11,   11,   11, 0x08,
+      38,   11,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_DragWidget[] = {
-    "DragWidget\0\0beginEditing()\0"
+    "DragWidget\0\0beginEditing()\0addField()\0"
     "changeButtonPushed()\0"
 };
 
@@ -72,10 +73,11 @@ int DragWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: beginEditing(); break;
-        case 1: changeButtonPushed(); break;
+        case 1: addField(); break;
+        case 2: changeButtonPushed(); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

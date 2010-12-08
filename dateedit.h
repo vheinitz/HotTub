@@ -16,6 +16,7 @@ public:
     bool allowResizeHeight();
     void setMargins(int,int,int,int);
     QSize sizeHint();
+    int getLeftAlignmentHint();
 private:
     QDateTimeEdit *edit;
     QLayout *layout;
