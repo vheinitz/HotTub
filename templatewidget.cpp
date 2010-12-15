@@ -22,7 +22,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     labelLayout->addStretch();
     
     QWidget *labelContainer = new QWidget;
-    labelLayout->setContentsMargins(0,0,0,0);
+    labelLayout->setContentsMargins(0,MARGIN,0,0);
     labelContainer->setLayout(labelLayout);
     
     QVBoxLayout *editLayout = new QVBoxLayout;
@@ -32,7 +32,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     
     QWidget *editContainer = new QWidget;
     editContainer->setLayout(editLayout);
-    stack->setContentsMargins(0,MARGIN,0,0);
+    stack->setContentsMargins(0,0,0,0);
     stack->addWidget(labelContainer);
     stack->addWidget(editContainer);
 

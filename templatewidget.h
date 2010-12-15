@@ -34,7 +34,7 @@ private:
     QHBoxLayout *layout;
     QStackedLayout *stack;
     
-    static const int MARGIN=50;
+    static const int MARGIN=5;
 };
 
 

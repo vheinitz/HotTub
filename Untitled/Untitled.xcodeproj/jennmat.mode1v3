@@ -269,7 +269,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -311,7 +311,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>templatewidget.h</string>
+								<string>dateedit.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -319,11 +319,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>templatewidget.h</string>
+										<string>dateedit.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3F7E6B4312AF56E90032BF88</string>
+										<string>3F7E6B5112B1933F0032BF88</string>
 										<key>history</key>
 										<array>
 											<string>3FA4B7A31277D4A90092E35A</string>
@@ -338,10 +338,10 @@
 											<string>3F7E6B2112AF54870032BF88</string>
 											<string>3F7E6B2712AF55080032BF88</string>
 											<string>3F7E6B2812AF55080032BF88</string>
-											<string>3F7E6B3712AF56270032BF88</string>
 											<string>3F7E6B3D12AF56BF0032BF88</string>
-											<string>3F7E6B4112AF56E90032BF88</string>
-											<string>3F7E6B4212AF56E90032BF88</string>
+											<string>3F7E6B4512B07E930032BF88</string>
+											<string>3F7E6B4A12B07FF70032BF88</string>
+											<string>3F7E6B4B12B07FF70032BF88</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
