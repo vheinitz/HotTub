@@ -32,10 +32,12 @@ using namespace std;
      void keyReleaseEvent(QKeyEvent *event);
 	 void paintEvent(QPaintEvent *event);
 
+
 private slots:
      void beginEditing();
      void addField();
      void changeButtonPushed();
+     void widgetRemoved(TemplateWidget *);
      
  private:
      void buildHotSpots();

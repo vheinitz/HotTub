@@ -23,16 +23,33 @@ public:
     void paintEvent(QPaintEvent *event);
     bool allowResizeWidth();
     bool allowResizeHeight();
+    void resizeEvent(QResizeEvent *event);
     QSize sizeHint();
+    
+    void enterEvent(QEvent *event);
+    void leaveEvent(QEvent *event);
+    
+signals:
+    void remove(TemplateWidget *);
+    
 private slots:
     void updateLabel(const QString& text);
+    void showChangeEditorMenu();
     
+    void changeEditorDate();
+    void changeEditorTextarea();
+    void changeEditorText();
+    
+    void deleteWidget();
 private:
     Editor *editor;
     QLabel *label;
     QLineEdit *labelEdit;
     QHBoxLayout *layout;
     QStackedLayout *stack;
+    QToolBar *toolbar;
+    QMenu *changeEditorMenu;
+    bool isEditing;
     
     static const int MARGIN=5;
 };

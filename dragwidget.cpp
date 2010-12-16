@@ -71,8 +71,25 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      editMenu->addAction(beginEditingAction);
 	 editMenu->addAction(addFieldAction);
      
+     connect(date, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
+     connect(line, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
+     connect(edit, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
+     
+     
      isEditing = false;
  }
+
+void DragWidget::widgetRemoved(TemplateWidget *widget){
+    
+    for (int i=0; i<widgets.size(); i++) {
+        if ( widgets[i] == widget ){
+            widgets.erase(widgets.begin()+i);
+        }
+    }
+    
+    delete widget;
+    
+}
 
 void DragWidget::changeButtonPushed(){
     /*date->hide();
@@ -376,6 +393,12 @@ void DragWidget::keyReleaseEvent( QKeyEvent *event ) {
     
     overrideHints = false;
     update();
+
 }
+
+
+
+
+
 
 
