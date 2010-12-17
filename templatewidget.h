@@ -39,6 +39,7 @@ private slots:
     void changeEditorDate();
     void changeEditorTextarea();
     void changeEditorText();
+    void changeEditorComboBox();
     
     void deleteWidget();
 private:

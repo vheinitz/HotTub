@@ -6,12 +6,14 @@
                action.h \
                editor.h \
                dateedit.h
+               combo.h 
  RESOURCES   = draggabletext.qrc
  SOURCES     = templatewidget.cpp \
                dragwidget.cpp \
                textedit.cpp \
                lineedit.cpp \
                dateedit.cpp \
+               combo.cpp \
                hotspot.cpp \
                editor.cpp \
                main.cpp

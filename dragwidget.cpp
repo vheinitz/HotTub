@@ -16,33 +16,6 @@ using namespace std;
 
 DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
  {
-     TemplateWidget *edit = new TemplateWidget(new TextEdit(this), this);
-     edit->setLabel( "Address" );
-     
-     TemplateWidget *line = new TemplateWidget(new LineEdit(this), this);
-     line->setLabel("Name");
-     
-     date = new TemplateWidget(new DateEdit(this), this);
-     date->setLabel("Birthdate");
-     
-     
-     line->move(0,0);
-     QSize hint = line->sizeHint();
-     line->setGeometry(0,0,hint.width(), hint.height());
-     line->show();
-     hint = edit->sizeHint();
-     edit->setGeometry(0,50,hint.width(), hint.height());
-     edit->show();
-     
-     hint = date->sizeHint();
-     date->setGeometry(0,100,hint.width(), hint.height());
-     date->show();
-     
-     widgets.push_back(date);
-     widgets.push_back(line);
-     widgets.push_back(edit);
-     
-     
      setMinimumSize(800, 600);
      
 	 activeDragging = false;
@@ -58,7 +31,6 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
 	 timer = new QTimer(this);
      
      setMouseTracking(true);
-	 //connect(timer, SIGNAL(timeout()), this, SLOT(activeCellChanged()));
      
      beginEditingAction = new QAction("Start Editing", this);
      connect(beginEditingAction, SIGNAL(triggered()), this, SLOT(beginEditing()));
@@ -71,17 +43,13 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      editMenu->addAction(beginEditingAction);
 	 editMenu->addAction(addFieldAction);
      
-     connect(date, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
-     connect(line, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
-     connect(edit, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
-     
      
      isEditing = false;
  }
 
 void DragWidget::widgetRemoved(TemplateWidget *widget){
     
-    for (int i=0; i<widgets.size(); i++) {
+    for (unsigned int i=0; i<widgets.size(); i++) {
         if ( widgets[i] == widget ){
             widgets.erase(widgets.begin()+i);
         }
@@ -132,7 +100,10 @@ void DragWidget::addField(){
     widget->setGeometry(0,0,hint.width(), hint.height());
     widget->show();
     widget->beginEditing();
-    widgets.push_back(widget);    
+    widgets.push_back(widget);
+    
+    connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
+    
 }
 
 

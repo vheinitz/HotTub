@@ -91,7 +91,7 @@
 	};
 	3F14BF4D127FB6DA007C54EB /* editor.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 866}}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 862}}";
 			sepNavSelRange = "{20, 0}";
 			sepNavVisRange = "{0, 77}";
 		};
@@ -197,7 +197,7 @@
 	};
 	3F6C03A01273DB1C00D6AD12 /* dateedit.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 866}}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 862}}";
 			sepNavSelRange = "{236, 0}";
 			sepNavVisRange = "{0, 461}";
 		};
@@ -207,7 +207,7 @@
 		fRef = 3FC1BE441273A37800A9A986 /* dragwidget.cpp */;
 		name = "dragwidget.cpp: 117";
 		rLen = 0;
-		rLoc = 3212;
+		rLoc = 2600;
 		rType = 0;
 		vrLen = 1735;
 		vrLoc = 0;
@@ -267,7 +267,7 @@
 		fRef = 3FC1BE451273A37800A9A986 /* dragwidget.h */;
 		name = "dragwidget.h: 66";
 		rLen = 0;
-		rLoc = 1239;
+		rLoc = 1283;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 234;
@@ -277,7 +277,7 @@
 		fRef = 3FC1BE431273A37800A9A986 /* templatewidget.h */;
 		name = "templatewidget.h: 37";
 		rLen = 0;
-		rLoc = 749;
+		rLoc = 1149;
 		rType = 0;
 		vrLen = 764;
 		vrLoc = 0;
@@ -287,7 +287,7 @@
 		fRef = 3FC1BE421273A37800A9A986 /* templatewidget.cpp */;
 		name = "templatewidget.cpp: 29";
 		rLen = 0;
-		rLoc = 696;
+		rLoc = 762;
 		rType = 0;
 		vrLen = 1734;
 		vrLoc = 0;
@@ -360,32 +360,32 @@
 	};
 	3FC1BE421273A37800A9A986 /* templatewidget.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 1430}}";
-			sepNavSelRange = "{696, 0}";
-			sepNavVisRange = "{0, 1734}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 2808}}";
+			sepNavSelRange = "{3860, 0}";
+			sepNavVisRange = "{2465, 1804}";
 		};
 	};
 	3FC1BE431273A37800A9A986 /* templatewidget.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 866}}";
-			sepNavSelRange = "{749, 0}";
-			sepNavVisRange = "{0, 764}";
-			sepNavWindowFrame = "{{15, 444}, {989, 969}}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 862}}";
+			sepNavSelRange = "{651, 0}";
+			sepNavVisRange = "{0, 1164}";
+			sepNavWindowFrame = "{{906, 252}, {989, 969}}";
 		};
 	};
 	3FC1BE441273A37800A9A986 /* dragwidget.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {983, 5265}}";
-			sepNavSelRange = "{3212, 0}";
-			sepNavVisRange = "{0, 1735}";
+			sepNavIntBoundsRect = "{{0, 0}, {983, 5122}}";
+			sepNavSelRange = "{1021, 0}";
+			sepNavVisRange = "{0, 1472}";
 			sepNavWindowFrame = "{{15, 444}, {989, 969}}";
 		};
 	};
 	3FC1BE451273A37800A9A986 /* dragwidget.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {983, 1079}}";
-			sepNavSelRange = "{1239, 0}";
-			sepNavVisRange = "{234, 1214}";
+			sepNavSelRange = "{779, 0}";
+			sepNavVisRange = "{0, 1207}";
 			sepNavWindowFrame = "{{15, 444}, {989, 969}}";
 		};
 	};

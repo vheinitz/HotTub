@@ -7,6 +7,7 @@
 #include "dateedit.h"
 #include "lineedit.h"
 #include "textedit.h"
+#include "combo.h"
 
 
 using namespace std;
@@ -79,15 +80,22 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     QAction *areaAction = new QAction(changeEditorMenu);
     areaAction->setText("Text Area");
     
+    QAction *comboAction = new QAction(changeEditorMenu);
+    comboAction->setText("Combo Box");
+    
+    
     changeEditorMenu->addAction(textAction);
     changeEditorMenu->addAction(dateAction);
     changeEditorMenu->addAction(areaAction);
+    changeEditorMenu->addAction(comboAction);
+    
     
     connect(labelEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateLabel(const QString&)));
     
     connect(textAction, SIGNAL(triggered()), this, SLOT(changeEditorText()));
     connect(dateAction, SIGNAL(triggered()), this, SLOT(changeEditorDate()));
     connect(areaAction, SIGNAL(triggered()), this, SLOT(changeEditorTextarea()));
+    connect(comboAction, SIGNAL(triggered()), this, SLOT(changeEditorComboBox()));
     
     connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWidget())); 
  
@@ -126,6 +134,18 @@ void TemplateWidget::changeEditorText(){
     toolbar->raise();
     resize(sizeHint());
 }
+
+void TemplateWidget::changeEditorComboBox(){
+    layout->removeWidget(editor);
+    delete editor;
+    editor = new Combo(this);
+    editor->setMargins(0,0,0,0);
+    editor->enterEditMode();
+    layout->addWidget(editor);
+    toolbar->raise();
+    resize(sizeHint());
+}
+
 
 
 void TemplateWidget::showChangeEditorMenu(){
