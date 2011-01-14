@@ -65,6 +65,8 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     deleteAction->setIcon(QIcon("icons/user-trash.png"));
     
     toolbar->addAction(changeAction);
+    
+    
     toolbar->addAction(deleteAction);
     
     toolbar->setVisible(false);
@@ -142,6 +144,11 @@ void TemplateWidget::changeEditorComboBox(){
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
     layout->addWidget(editor);
+    QAction *customAction = editor->configurationAction(toolbar);
+    if ( customAction != NULL ) {
+        toolbar->addAction(customAction);
+    }
+    
     toolbar->raise();
     resize(sizeHint());
 }

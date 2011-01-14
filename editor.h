@@ -17,6 +17,8 @@ public:
     virtual void setMargins(int,int,int,int) = 0;
     virtual QSize sizeHint() = 0;
     virtual int getLeftAlignmentHint() = 0;
+    
+    QAction* configurationAction(QToolBar *toolbar);
 };
 
 

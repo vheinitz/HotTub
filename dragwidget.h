@@ -10,6 +10,7 @@
 #include "hotspot.h"
 #include "action.h"
 #include "dateedit.h"
+#include "attachments.h"
 
  class QDragEnterEvent;
  class QDropEvent;
@@ -31,7 +32,10 @@ using namespace std;
      void keyPressEvent(QKeyEvent *event);
      void keyReleaseEvent(QKeyEvent *event);
 	 void paintEvent(QPaintEvent *event);
-
+     void dragEnterEvent(QDragEnterEvent *event);
+     void dragLeaveEvent(QDragLeaveEvent *event);
+     void dropEvent(QDropEvent *event);
+     void resizeEvent(QResizeEvent *event);
 
 private slots:
      void beginEditing();
@@ -77,6 +81,8 @@ private slots:
      QMenu *editMenu;
      QAction *beginEditingAction;
      QAction *addFieldAction;
+     
+     Attachments *attachments;
      
  };
 

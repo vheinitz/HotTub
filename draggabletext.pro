@@ -5,6 +5,7 @@
                hotspot.h \
                action.h \
                editor.h \
+               attachments.h \
                dateedit.h
                combo.h 
  RESOURCES   = draggabletext.qrc
@@ -16,7 +17,9 @@
                combo.cpp \
                hotspot.cpp \
                editor.cpp \
+               attachments.cpp \
                main.cpp
+        
 
  # install
  target.path = $$[QT_INSTALL_EXAMPLES]/draganddrop/draggabletext

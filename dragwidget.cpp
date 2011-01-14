@@ -10,6 +10,7 @@
 #include "dateedit.h"
 #include "hotspot.h"
 #include "action.h"
+#include "attachments.h"
 
 using namespace std;
 
@@ -43,9 +44,52 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      editMenu->addAction(beginEditingAction);
 	 editMenu->addAction(addFieldAction);
      
+     setAcceptDrops(true);
+     
+     attachments = new Attachments(this);
+     attachments->setGeometry(0,height(),width(),100);
+     attachments->show();
      
      isEditing = false;
  }
+
+void DragWidget::dragEnterEvent(QDragEnterEvent *event)
+{
+    
+    QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
+    animation->setDuration(150);
+    animation->setEasingCurve(QEasingCurve::InOutQuart);
+    animation->setEndValue(QRect(0,height()-100,width(),100));
+    animation->start();
+    
+    
+    event->acceptProposedAction();
+}
+
+void DragWidget::dragLeaveEvent(QDragLeaveEvent *event){
+
+    Q_UNUSED(event);
+    
+    QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
+    animation->setDuration(150);
+    animation->setEasingCurve(QEasingCurve::InOutQuart);
+    animation->setEndValue(QRect(0,height(),width(),100));
+    animation->start();
+    
+    
+}
+
+void DragWidget::dropEvent(QDropEvent *event)
+{
+    event->acceptProposedAction();
+    
+    if ( event->mimeData()->hasUrls() ) {
+        QList<QUrl> urls = event->mimeData()->urls();
+        for(int i=0; i<urls.length(); i++){
+            attachments->acceptUrl(urls[i]);
+        }
+    }
+}
 
 void DragWidget::widgetRemoved(TemplateWidget *widget){
     
@@ -104,6 +148,12 @@ void DragWidget::addField(){
     
     connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
     
+}
+
+void DragWidget::resizeEvent(QResizeEvent *event){
+    Q_UNUSED(event);
+    
+    attachments->setGeometry(0,height(),width(),100);
 }
 
 

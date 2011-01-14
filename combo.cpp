@@ -1,6 +1,6 @@
 
-
 #include "combo.h"
+#include <QtGui>
 
 Combo::Combo(QWidget *parent) : Editor(parent) {
     edit = new QComboBox;
@@ -43,7 +43,12 @@ QSize Combo::sizeHint(){
     return edit->sizeHint();
 }
 
-
 int Combo::getLeftAlignmentHint(){
     return edit->x();
 }
+
+
+QAction* Combo::configurationAction(QToolBar *toolbar){
+    return new QAction(toolbar);
+}
+

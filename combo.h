@@ -1,8 +1,9 @@
 
-#ifndef COMBO_H
-#define COMBO_H
+#ifndef __COMBO_H
+#define __COMBO_H
 
 #include "templatewidget.h"
+#include <QtGui>
 
 class Combo : public Editor {
     
@@ -17,6 +18,7 @@ public:
     void setMargins(int,int,int,int);
     QSize sizeHint();
     int getLeftAlignmentHint();
+    QAction* configurationAction(QToolBar *toolbar);
 private:
     QComboBox *edit;
     QVBoxLayout* layout;
@@ -27,3 +29,4 @@ private:
 
 
 #endif
+

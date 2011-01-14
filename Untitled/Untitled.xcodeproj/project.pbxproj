@@ -11,6 +11,8 @@
 		3F11572A12BB1DC000EE5CBC /* combo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = combo.h; path = ../combo.h; sourceTree = SOURCE_ROOT; };
 		3F14BF4D127FB6DA007C54EB /* editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = editor.cpp; path = ../editor.cpp; sourceTree = SOURCE_ROOT; };
 		3F14BF4E127FB6DA007C54EB /* editor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = editor.h; path = ../editor.h; sourceTree = SOURCE_ROOT; };
+		3F45600B12D438B700BDB935 /* attachments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = attachments.h; path = ../attachments.h; sourceTree = SOURCE_ROOT; };
+		3F45600C12D43AAF00BDB935 /* attachments.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = attachments.cpp; path = ../attachments.cpp; sourceTree = SOURCE_ROOT; };
 		3F6C02EF1273B10300D6AD12 /* draggabletext.pro */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = draggabletext.pro; path = ../draggabletext.pro; sourceTree = SOURCE_ROOT; };
 		3F6C02F51273B3F300D6AD12 /* textedit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = textedit.cpp; path = ../textedit.cpp; sourceTree = SOURCE_ROOT; };
 		3F6C02F61273B3F300D6AD12 /* textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = textedit.h; path = ../textedit.h; sourceTree = SOURCE_ROOT; };
@@ -31,6 +33,7 @@
 		08FB7794FE84155DC02AAC07 /* Untitled */ = {
 			isa = PBXGroup;
 			children = (
+				3F45600C12D43AAF00BDB935 /* attachments.cpp */,
 				3F11572912BB1DC000EE5CBC /* combo.cpp */,
 				3F11572A12BB1DC000EE5CBC /* combo.h */,
 				3F6C02F51273B3F300D6AD12 /* textedit.cpp */,
@@ -44,6 +47,7 @@
 				3F14BF4D127FB6DA007C54EB /* editor.cpp */,
 				3F14BF4E127FB6DA007C54EB /* editor.h */,
 				3FC1BE441273A37800A9A986 /* dragwidget.cpp */,
+				3F45600B12D438B700BDB935 /* attachments.h */,
 				3F8277F7127669F500D81BE2 /* hotspot.cpp */,
 				3F8277F8127669F500D81BE2 /* hotspot.h */,
 				3F6C02EF1273B10300D6AD12 /* draggabletext.pro */,
