@@ -29,6 +29,7 @@ using namespace std;
 	 void mouseMoveEvent(QMouseEvent *event);
      void mousePressEvent(QMouseEvent *event);
      void mouseReleaseEvent(QMouseEvent *event);
+     void mouseLeaveEvent(QMouseEvent *event);
      void keyPressEvent(QKeyEvent *event);
      void keyReleaseEvent(QKeyEvent *event);
 	 void paintEvent(QPaintEvent *event);
@@ -42,6 +43,8 @@ private slots:
      void addField();
      void changeButtonPushed();
      void widgetRemoved(TemplateWidget *);
+     void hideAttachments();
+     void showAttachments();
      
  private:
      void buildHotSpots();
@@ -61,6 +64,8 @@ private slots:
      
      TemplateWidget *date;
    
+     bool attachmentsVisible;
+     
      int hintX;
      int hintY;
      

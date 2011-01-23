@@ -51,24 +51,32 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      attachments->show();
      
      isEditing = false;
+     attachmentsVisible = false;
  }
 
 void DragWidget::dragEnterEvent(QDragEnterEvent *event)
 {
-    
-    QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
-    animation->setDuration(150);
-    animation->setEasingCurve(QEasingCurve::InOutQuart);
-    animation->setEndValue(QRect(0,height()-100,width(),100));
-    animation->start();
-    
+    showAttachments();
     
     event->acceptProposedAction();
 }
 
-void DragWidget::dragLeaveEvent(QDragLeaveEvent *event){
+void DragWidget::showAttachments(){
+    if ( !attachmentsVisible ){ 
+        attachmentsVisible = true;
+    
+    
+        QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
+        animation->setDuration(150);
+        animation->setEasingCurve(QEasingCurve::InOutQuart);
+        animation->setEndValue(QRect(0,height()-100,width(),100));
+        animation->start();
+    }
+    
+}
 
-    Q_UNUSED(event);
+void DragWidget::hideAttachments(){
+    attachmentsVisible = false;
     
     QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
     animation->setDuration(150);
@@ -76,6 +84,14 @@ void DragWidget::dragLeaveEvent(QDragLeaveEvent *event){
     animation->setEndValue(QRect(0,height(),width(),100));
     animation->start();
     
+}
+
+
+void DragWidget::dragLeaveEvent(QDragLeaveEvent *event){
+
+    Q_UNUSED(event);
+    
+    hideAttachments();
     
 }
 
@@ -89,6 +105,8 @@ void DragWidget::dropEvent(QDropEvent *event)
             attachments->acceptUrl(urls[i]);
         }
     }
+    
+    QTimer::singleShot(750, this, SLOT(hideAttachments()));
 }
 
 void DragWidget::widgetRemoved(TemplateWidget *widget){
@@ -313,8 +331,20 @@ void DragWidget::buildHotSpots(){
 
 }*/
 
+void DragWidget::mouseLeaveEvent( QMouseEvent *event ){
+    hideAttachments();
+}
+
 void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
 	
+    
+    if ( event->pos().y() > height()-100 ) {
+        showAttachments();
+    } else {
+        hideAttachments();
+    }
+    
+    
     if ( !isEditing ) return;
     
     if ( activeAction && action == RESIZE_BOTH ) {
@@ -392,6 +422,7 @@ void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
             }
         }
     }
+    
     
     
     
