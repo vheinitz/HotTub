@@ -86,3 +86,12 @@ void Attachments::mousePressEvent(QMouseEvent *event){
     update();
 }
 
+
+void Attachments::mouseDoubleClickEvent(QMouseEvent *event){
+    int col = event->x() / columnWidth;
+        
+    if ( col < files.length() ) {
+        
+    }
+}
+

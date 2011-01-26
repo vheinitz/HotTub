@@ -52,6 +52,7 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      
      isEditing = false;
      attachmentsVisible = false;
+     
  }
 
 void DragWidget::dragEnterEvent(QDragEnterEvent *event)
@@ -78,11 +79,14 @@ void DragWidget::showAttachments(){
 void DragWidget::hideAttachments(){
     attachmentsVisible = false;
     
-    QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
-    animation->setDuration(150);
-    animation->setEasingCurve(QEasingCurve::InOutQuart);
-    animation->setEndValue(QRect(0,height(),width(),100));
-    animation->start();
+    QPoint pos = mapFromGlobal(QCursor::pos());
+    if ( pos.y() < height() - 100 ) {
+        QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
+        animation->setDuration(150);
+        animation->setEasingCurve(QEasingCurve::InOutQuart);
+        animation->setEndValue(QRect(0,height(),width(),100));
+        animation->start();
+    }
     
 }
 
@@ -107,6 +111,7 @@ void DragWidget::dropEvent(QDropEvent *event)
     }
     
     QTimer::singleShot(750, this, SLOT(hideAttachments()));
+    
 }
 
 void DragWidget::widgetRemoved(TemplateWidget *widget){
@@ -332,12 +337,14 @@ void DragWidget::buildHotSpots(){
 }*/
 
 void DragWidget::mouseLeaveEvent( QMouseEvent *event ){
+    Q_UNUSED(event);
     hideAttachments();
 }
 
 void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
 	
-    
+    cout << "Mouse event ";
+    cout.flush();
     if ( event->pos().y() > height()-100 ) {
         showAttachments();
     } else {

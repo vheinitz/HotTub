@@ -35,6 +35,7 @@ bool LineEdit::allowResizeHeight(){
 }
 
 void LineEdit::paintEvent(QPaintEvent *event){
+    Q_UNUSED(event);
     QPainter painter(this);
 }
 

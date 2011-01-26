@@ -14,6 +14,7 @@ public:
     void paintEvent(QPaintEvent *event);
     void acceptUrl(QUrl url);
     void mousePressEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent(QMouseEvent *event);
 private:
     
     QList<QUrl> files;
