@@ -20,6 +20,8 @@ QSize Attachments::sizeHint(){
 void Attachments::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     
+    painter.setRenderHints(QPainter::Antialiasing);
+    
     QLinearGradient linearGrad(QPointF(0, 0), QPointF(5, height()));
     linearGrad.setColorAt(0, Qt::lightGray);
     linearGrad.setColorAt(1, Qt::gray);
@@ -50,8 +52,8 @@ void Attachments::paintEvent(QPaintEvent *event){
             painter.drawText( i*columnWidth+leftmargin, columnHeight-10, columnWidth, 30,
                              Qt::AlignHCenter | Qt::TextWordWrap, filename, &boundingRect );
             
-            boundingRect.setLeft(boundingRect.left()-4);
-            boundingRect.setRight(boundingRect.right()+4);
+            boundingRect.setLeft(boundingRect.left()-5);
+            boundingRect.setRight(boundingRect.right()+5);
             QPainterPath path;
             path.addRoundedRect(boundingRect, 10, 10);
             painter.fillPath(path, QBrush(QColor(46,115,218)));
@@ -77,6 +79,7 @@ void Attachments::paintEvent(QPaintEvent *event){
 
 void Attachments::acceptUrl(QUrl url) {
     files.append(url);
+    update();
 }
 
 
