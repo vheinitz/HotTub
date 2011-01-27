@@ -123,8 +123,6 @@ void Attachments::contextMenuEvent(QContextMenuEvent *event){
 
 
 void Attachments::addFolder(){
-    QMessageBox box;
-    box.exec();
     bool ok;
     QString folderName = QInputDialog::getText(this, "Folder Name", "Enter new folder name", QLineEdit::Normal, QString(), &ok);
     if ( ok ) {
