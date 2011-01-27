@@ -10,6 +10,12 @@ using namespace std;
 
 Attachments::Attachments(QWidget* parent) : QWidget(parent) {
     selectedColumn = -1;
+    
+    contextMenu = new QMenu();
+    QAction *action = new QAction("New Folder", contextMenu);   
+    connect(action, SIGNAL(triggered()), this, SLOT(addFolder()));
+    contextMenu->addAction(action);
+    
 }
 
 QSize Attachments::sizeHint(){
@@ -38,15 +44,19 @@ void Attachments::paintEvent(QPaintEvent *event){
     
     
     for (int i=0; i<files.length(); i++ ) {
-        QString canonicalPath = files[i].toLocalFile();
-        QString filename = canonicalPath.split("/").last();
-      
-        QIcon icon = QIcon("icons/file.png");
-    
+             
+        QString filename = files[i].name;
+        QIcon *icon;
+        if ( files[i].type == ATTACHMENT ) {
+            icon = new QIcon("icons/file.png");
+        } else {
+            icon = new QIcon("icons/folder.png");
+        }
+        
         QRect fileIconRect = QRect(i*columnWidth+leftmargin,0,columnWidth,columnHeight);
         if ( i == selectedColumn ) {
             painter.setPen(QPen(Qt::white));
-            icon.paint(&painter, fileIconRect, Qt::AlignCenter, QIcon::Selected );            
+            icon->paint(&painter, fileIconRect, Qt::AlignCenter, QIcon::Selected );            
             QRect boundingRect;
             
             painter.drawText( i*columnWidth+leftmargin, columnHeight-10, columnWidth, 30,
@@ -63,7 +73,7 @@ void Attachments::paintEvent(QPaintEvent *event){
             
             
         } else {   
-            icon.paint( &painter, fileIconRect );
+            icon->paint( &painter, fileIconRect );
             painter.setPen(QPen(Qt::black));
             painter.drawText( i*columnWidth+leftmargin, columnHeight-10, columnWidth, 30,
                              Qt::AlignHCenter | Qt::TextWordWrap, filename );
@@ -78,7 +88,14 @@ void Attachments::paintEvent(QPaintEvent *event){
 
 
 void Attachments::acceptUrl(QUrl url) {
-    files.append(url);
+    
+    AttachedObject obj;
+    QString canonicalPath = url.toLocalFile();
+    QString filename = canonicalPath.split("/").last();
+    obj.name = filename;
+    obj.type = ATTACHMENT;
+    files.append(obj);
+    
     update();
 }
 
@@ -97,4 +114,33 @@ void Attachments::mouseDoubleClickEvent(QMouseEvent *event){
         
     }
 }
+
+
+void Attachments::contextMenuEvent(QContextMenuEvent *event){
+    QPoint pos = mapToGlobal(event->pos());
+    contextMenu->popup(pos);
+}
+
+
+void Attachments::addFolder(){
+    QMessageBox box;
+    box.exec();
+    bool ok;
+    QString folderName = QInputDialog::getText(this, "Folder Name", "Enter new folder name", QLineEdit::Normal, QString(), &ok);
+    if ( ok ) {
+        AttachedObject obj;
+        obj.name=folderName;
+        obj.type=FOLDER;
+        files.append(obj);
+    
+        update();
+    }
+}
+
+
+
+
+
+
+
 

@@ -6,8 +6,19 @@
 #include <QtGui>
 
 
-class Attachments : public QWidget {
+enum AttachmentType {
+    ATTACHMENT,
+    FOLDER
+};
 
+typedef struct {
+    QString name;
+    AttachmentType type;
+} AttachedObject;
+
+class Attachments : public QWidget {
+    Q_OBJECT
+    
 public:
     Attachments(QWidget *parent);
     QSize sizeHint();
@@ -15,9 +26,14 @@ public:
     void acceptUrl(QUrl url);
     void mousePressEvent(QMouseEvent *event);
     void mouseDoubleClickEvent(QMouseEvent *event);
+    void contextMenuEvent(QContextMenuEvent *event);
+    
+private slots:
+    void addFolder();
+    
 private:
     
-    QList<QUrl> files;
+    QList<AttachedObject> files;
   
     static const int iconWidth = 44;
     static const int iconHeight = 57;
@@ -27,6 +43,8 @@ private:
     int columns;
     int leftmargin;
     int selectedColumn;
+    
+    QMenu *contextMenu;
 };
 
 
