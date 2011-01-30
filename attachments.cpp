@@ -52,6 +52,7 @@ void Attachments::dropEvent(QDropEvent *event){
     }
     
     
+    
     if ( event->mimeData()->hasUrls() ) {
         event->acceptProposedAction();
         QList<QUrl> urls = event->mimeData()->urls();
@@ -123,41 +124,6 @@ void Attachments::paintEvent(QPaintEvent *event){
     
     
     for (int i=0; i<files.length(); i++ ) {
-             
-        /*QString filename = files[i].name;
-        QIcon *icon;
-        if ( files[i].type == ATTACHMENT ) {
-            icon = new QIcon("icons/file.png");
-        } else {
-            icon = new QIcon("icons/folder.png");
-        }
-        
-        QRect fileIconRect = QRect(i*columnWidth+leftmargin,0,columnWidth,columnHeight);
-        if ( i == selectedColumn ) {
-            painter.setPen(QPen(Qt::white));
-            icon->paint(&painter, fileIconRect, Qt::AlignCenter, QIcon::Selected );            
-            QRect boundingRect;
-            
-            painter.drawText( i*columnWidth+leftmargin, columnHeight-10, columnWidth, 30,
-                             Qt::AlignHCenter | Qt::TextWordWrap, filename, &boundingRect );
-            
-            boundingRect.setLeft(boundingRect.left()-5);
-            boundingRect.setRight(boundingRect.right()+5);
-            QPainterPath path;
-            path.addRoundedRect(boundingRect, 10, 10);
-            painter.fillPath(path, QBrush(QColor(46,115,218)));
-            
-            painter.drawText( i*columnWidth+leftmargin, columnHeight-10, columnWidth, 30,
-                             Qt::AlignHCenter | Qt::TextWordWrap, filename, &boundingRect );
-            
-            
-        } else {   
-            icon->paint( &painter, fileIconRect );
-            painter.setPen(QPen(Qt::black));
-            painter.drawText( i*columnWidth+leftmargin, columnHeight-10, columnWidth, 30,
-                             Qt::AlignHCenter | Qt::TextWordWrap, filename );
-            
-        }*/
         QRect fileIconRect = QRect(i*columnWidth+leftmargin,0,columnWidth,columnHeight);
         paintAttachedObject(files[i], painter, fileIconRect, i == selectedColumn);
     }
@@ -173,11 +139,16 @@ void Attachments::acceptUrl(QUrl url) {
     AttachedObject obj;
     QString canonicalPath = url.toLocalFile();
     QString filename = canonicalPath.split("/").last();
-    obj.name = filename;
-    obj.type = ATTACHMENT;
-    files.append(obj);
     
-    update();
+    obj.temporaryFile = new QTemporaryFile();
+    if ( obj.temporaryFile->open() ){ 
+        cout << obj.temporaryFile->fileName().toStdString() << endl;
+        obj.name = filename;
+        obj.type = ATTACHMENT;
+        files.append(obj);
+    
+        update();
+    }
 }
 
 
@@ -215,16 +186,22 @@ void Attachments::mouseMoveEvent(QMouseEvent *event){
     QDrag *drag = new QDrag(this);
     QMimeData *mimeData = new QMimeData;
     QIcon icon = QIcon("icons/file.png");
-    drag->setMimeData(mimeData);
     
     QPixmap map(columnWidth+30,columnHeight+10);
     QPainter painter(&map);
-    painter.begin(&map);
     painter.setOpacity(0.45);
     
     int i = selectedColumn;
     
     paintAttachedObject(files[i], painter, QRect(15,0,columnWidth+15,columnHeight), true);
+    
+    
+    QList<QUrl> urls;
+    cout << files[i].temporaryFile->fileName().toStdString() << endl;
+    urls.append(QUrl(files[i].temporaryFile->fileName()));
+    mimeData->setUrls(urls);
+    drag->setMimeData(mimeData);
+    
     
     drag->setPixmap(map);
     drag->setHotSpot(QPoint(dragStartPosition.x()-selectedColumn*columnWidth+15-leftmargin ,dragStartPosition.y()));

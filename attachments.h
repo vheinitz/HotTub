@@ -14,6 +14,7 @@ enum AttachmentType {
 typedef struct {
     QString name;
     AttachmentType type;
+    QTemporaryFile* temporaryFile;
 } AttachedObject;
 
 class Attachments : public QWidget {
