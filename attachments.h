@@ -26,8 +26,11 @@ public:
     void acceptUrl(QUrl url);
     void mousePressEvent(QMouseEvent *event);
     void mouseDoubleClickEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     void contextMenuEvent(QContextMenuEvent *event);
-    
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dragMoveEvent(QDragMoveEvent *event);
+    void dropEvent(QDropEvent *event);
 private slots:
     void addFolder();
     
@@ -39,12 +42,15 @@ private:
     static const int iconHeight = 57;
     
     int columnWidth;
+    int columnHeight;
     int rowHeight;
     int columns;
     int leftmargin;
     int selectedColumn;
     
     QMenu *contextMenu;
+    QPoint dragStartPosition;
+
 };
 
 
