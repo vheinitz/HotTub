@@ -343,8 +343,6 @@ void DragWidget::mouseLeaveEvent( QMouseEvent *event ){
 
 void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
 	
-    cout << "Mouse event ";
-    cout.flush();
     if ( event->pos().y() > height()-100 ) {
         showAttachments();
     } else {
