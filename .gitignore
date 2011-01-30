@@ -2,5 +2,8 @@ DnD.app
 DnD.app/*
 moc*
 qrc*
-Makefile
+Makefile*
+debug/*
+object_script*
+*.pro
 
