@@ -1,5 +1,4 @@
-DnD.app
-DnD.app/*
+*.app/*
 moc*
 qrc*
 Makefile*

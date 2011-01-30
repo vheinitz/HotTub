@@ -50,6 +50,16 @@ void Attachments::dropEvent(QDropEvent *event){
             return;
         }
     }
+    
+    
+    if ( event->mimeData()->hasUrls() ) {
+        event->acceptProposedAction();
+        QList<QUrl> urls = event->mimeData()->urls();
+        for(int i=0; i<urls.length(); i++){
+            acceptUrl(urls[i]);
+        }
+    }
+    
     event->setDropAction(Qt::IgnoreAction);
     event->accept();
 }
