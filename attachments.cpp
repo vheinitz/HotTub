@@ -12,10 +12,24 @@ Attachments::Attachments(QWidget* parent) : QWidget(parent) {
     selectedColumn = -1;
     
     contextMenu = new QMenu();
-    QAction *action = new QAction("New Folder", contextMenu);   
-    connect(action, SIGNAL(triggered()), this, SLOT(addFolder()));
-    contextMenu->addAction(action);
-
+    newFolderAction = new QAction("New Folder", contextMenu);   
+    connect(newFolderAction, SIGNAL(triggered()), this, SLOT(addFolder()));
+    
+    openAction = new QAction("Open", contextMenu);
+    deleteAction = new QAction("Delete", contextMenu);
+    
+    openAction->setDisabled(true);
+    deleteAction->setDisabled(true);
+    connect(openAction, SIGNAL(triggered()), this, SLOT(openObject()));
+    connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteObject()));
+    
+    
+    
+    contextMenu->addAction(openAction);
+    contextMenu->addAction(deleteAction);
+    contextMenu->addSeparator();
+    contextMenu->addAction(newFolderAction);
+    
     columnWidth = iconWidth * 2;
     columnHeight = iconHeight * 1.5;
     
@@ -102,7 +116,6 @@ void paintAttachedObject(AttachedObject obj, QPainter& painter, QRect rect, bool
         painter.drawText( textRect, Qt::AlignHCenter | Qt::TextWordWrap, filename );
         
     }
-    
 }
 
 void Attachments::paintEvent(QPaintEvent *event){
@@ -216,8 +229,18 @@ void Attachments::mouseMoveEvent(QMouseEvent *event){
 
 
 void Attachments::contextMenuEvent(QContextMenuEvent *event){
+    
+    if ( selectedColumn > -1 && selectedColumn < files.length() ) {
+        openAction->setDisabled(false);
+        deleteAction->setDisabled(false);
+    } else {
+        openAction->setDisabled(true);
+        deleteAction->setDisabled(true);
+    }
+    
     QPoint pos = mapToGlobal(event->pos());
     contextMenu->popup(pos);
+    
 }
 
 
@@ -232,6 +255,21 @@ void Attachments::addFolder(){
     
         update();
     }
+}
+
+bool Attachments::hasSelectedObject(){
+    return selectedColumn > -1 && selectedColumn < files.length();
+}
+
+void Attachments::deleteObject(){
+    if ( hasSelectedObject() ) {
+        files.removeAt(selectedColumn);
+        update();
+    }
+}
+
+void Attachments::openObject(){
+    
 }
 
 

@@ -34,8 +34,12 @@ public:
     void dropEvent(QDropEvent *event);
 private slots:
     void addFolder();
+    void openObject();
+    void deleteObject();
     
 private:
+    
+    bool hasSelectedObject();
     
     QList<AttachedObject> files;
   
@@ -51,6 +55,10 @@ private:
     
     QMenu *contextMenu;
     QPoint dragStartPosition;
+    
+    QAction *openAction;
+    QAction *deleteAction;
+    QAction *newFolderAction;
 
 };
 

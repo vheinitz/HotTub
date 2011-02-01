@@ -44,6 +44,7 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      editMenu->addAction(beginEditingAction);
 	 editMenu->addAction(addFieldAction);
      
+     
      setAcceptDrops(true);
      
      attachments = new Attachments(this);
