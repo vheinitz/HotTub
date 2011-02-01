@@ -140,14 +140,12 @@ void DragWidget::beginEditing(){
     if (isEditing) {
         isEditing = false;
         beginEditingAction->setText("Start Editing");
-        setMouseTracking(false);
         for (unsigned int i=0; i<widgets.size(); i++) {
             widgets[i]->stopEditing();
         }
     } else {
         isEditing = true;
         beginEditingAction->setText("Stop Editing");
-        setMouseTracking(true);
         
         for (unsigned int i=0; i<widgets.size(); i++) {
             widgets[i]->beginEditing();
