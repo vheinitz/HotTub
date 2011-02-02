@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     list->setMinimumWidth(600);
     
     QGridLayout *layout = new QGridLayout;
+    layout->setSpacing(0);
+    layout->setContentsMargins(5,5,5,5);
     layout->addWidget(list, 0, 0);
     layout->addWidget(view, 0, 1);
     setLayout(layout);

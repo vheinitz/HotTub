@@ -24,7 +24,6 @@ View::View(QWidget* parent) : QWidget(parent)
      actionWidget = NULL;
      activeAction = false;
      
-
      hintX = -1;
      hintY = -1;
      overrideHints = false;
