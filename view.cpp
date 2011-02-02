@@ -6,7 +6,7 @@
 
 #include "textedit.h"
 #include "lineedit.h"
-#include "dragwidget.h"
+#include "view.h"
 #include "dateedit.h"
 #include "hotspot.h"
 #include "action.h"
@@ -15,7 +15,7 @@
 using namespace std;
 
 
-DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
+View::View(QWidget* parent) : QMainWindow(parent)
  {
      setMinimumSize(800, 600);
      
@@ -56,14 +56,14 @@ DragWidget::DragWidget(QWidget* parent) : QMainWindow(parent)
      
  }
 
-void DragWidget::dragEnterEvent(QDragEnterEvent *event)
+void View::dragEnterEvent(QDragEnterEvent *event)
 {
     showAttachments();
     
     event->acceptProposedAction();
 }
 
-void DragWidget::showAttachments(){
+void View::showAttachments(){
     if ( !attachmentsVisible ){ 
         attachmentsVisible = true;
     
@@ -77,7 +77,7 @@ void DragWidget::showAttachments(){
     
 }
 
-void DragWidget::hideAttachments(){
+void View::hideAttachments(){
     attachmentsVisible = false;
     
     QPoint pos = mapFromGlobal(QCursor::pos());
@@ -92,7 +92,7 @@ void DragWidget::hideAttachments(){
 }
 
 
-void DragWidget::dragLeaveEvent(QDragLeaveEvent *event){
+void View::dragLeaveEvent(QDragLeaveEvent *event){
 
     Q_UNUSED(event);
     
@@ -100,7 +100,7 @@ void DragWidget::dragLeaveEvent(QDragLeaveEvent *event){
     
 }
 
-void DragWidget::dropEvent(QDropEvent *event)
+void View::dropEvent(QDropEvent *event)
 {
     event->acceptProposedAction();
     
@@ -115,7 +115,7 @@ void DragWidget::dropEvent(QDropEvent *event)
     
 }
 
-void DragWidget::widgetRemoved(TemplateWidget *widget){
+void View::widgetRemoved(TemplateWidget *widget){
     
     for (unsigned int i=0; i<widgets.size(); i++) {
         if ( widgets[i] == widget ){
@@ -127,7 +127,7 @@ void DragWidget::widgetRemoved(TemplateWidget *widget){
     
 }
 
-void DragWidget::changeButtonPushed(){
+void View::changeButtonPushed(){
     /*date->hide();
     
     LineEdit *line = new LineEdit("Birthday", this);
@@ -137,7 +137,7 @@ void DragWidget::changeButtonPushed(){
     */
 }
 
-void DragWidget::beginEditing(){
+void View::beginEditing(){
     if (isEditing) {
         isEditing = false;
         beginEditingAction->setText("Start Editing");
@@ -158,7 +158,7 @@ void DragWidget::beginEditing(){
     }
 }
 
-void DragWidget::addField(){
+void View::addField(){
     TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
     widget->setLabel("New Field");
     
@@ -172,7 +172,7 @@ void DragWidget::addField(){
     
 }
 
-void DragWidget::resizeEvent(QResizeEvent *event){
+void View::resizeEvent(QResizeEvent *event){
     Q_UNUSED(event);
     
     attachments->setGeometry(0,height(),width(),100);
@@ -180,7 +180,7 @@ void DragWidget::resizeEvent(QResizeEvent *event){
 
 
 
- void DragWidget::paintEvent(QPaintEvent *event){
+void View::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
 
      
@@ -218,7 +218,7 @@ void showMessage(QString message){
 	msgBox.exec();
 }
 
-void DragWidget::buildHotSpots(){
+void View::buildHotSpots(){
     hotSpots.clear();
     int x,y,width,height;
     for( unsigned int i=0; i<widgets.size(); i++){
@@ -241,7 +241,7 @@ void DragWidget::buildHotSpots(){
     }
 }
 
- void DragWidget::mouseReleaseEvent(QMouseEvent *event)
+ void View::mouseReleaseEvent(QMouseEvent *event)
  {
      Q_UNUSED(event);
      if ( !isEditing ) return;
@@ -264,7 +264,7 @@ void DragWidget::buildHotSpots(){
      update();
  }
 
- void DragWidget::mousePressEvent(QMouseEvent *event)
+ void View::mousePressEvent(QMouseEvent *event)
  {
      if ( !isEditing ) return;
      
@@ -298,7 +298,7 @@ void DragWidget::buildHotSpots(){
      
  }
 
-/*void DragWidget::activeCellChanged(){
+/*void View::activeCellChanged(){
 
 	if ( activeWidget == NULL ) return;
 
@@ -335,12 +335,12 @@ void DragWidget::buildHotSpots(){
 
 }*/
 
-void DragWidget::mouseLeaveEvent( QMouseEvent *event ){
+void View::mouseLeaveEvent( QMouseEvent *event ){
     Q_UNUSED(event);
     hideAttachments();
 }
 
-void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
+void View::mouseMoveEvent( QMouseEvent *event ) {
 	
     if ( event->pos().y() > height()-100 ) {
         showAttachments();
@@ -435,7 +435,7 @@ void DragWidget::mouseMoveEvent( QMouseEvent *event ) {
 }
 
 
-void DragWidget::keyPressEvent( QKeyEvent *event ) {
+void View::keyPressEvent( QKeyEvent *event ) {
     if ( event->modifiers() && Qt::ControlModifier ) {
         overrideHints = true;
         update();
@@ -444,7 +444,7 @@ void DragWidget::keyPressEvent( QKeyEvent *event ) {
 }
 
 
-void DragWidget::keyReleaseEvent( QKeyEvent *event ) {
+void View::keyReleaseEvent( QKeyEvent *event ) {
     Q_UNUSED(event);
     
     overrideHints = false;

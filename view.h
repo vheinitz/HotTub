@@ -1,7 +1,7 @@
 
 
-#ifndef DRAGWIDGET_H
-#define DRAGWIDGET_H
+#ifndef __VIEW_H
+#define __VIEW_H
 
 #include <QWidget>
 #include <QtGui>
@@ -18,12 +18,12 @@
 using namespace std;
 
 
- class DragWidget : public QMainWindow
+ class View : public QMainWindow
  {
 	Q_OBJECT
 			
  public:
-     DragWidget(QWidget *parent = 0);
+     View(QWidget *parent = 0);
 
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
