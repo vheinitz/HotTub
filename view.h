@@ -18,7 +18,7 @@
 using namespace std;
 
 
- class View : public QMainWindow
+ class View : public QWidget
  {
 	Q_OBJECT
 			

@@ -15,10 +15,9 @@
 using namespace std;
 
 
-View::View(QWidget* parent) : QMainWindow(parent)
+View::View(QWidget* parent) : QWidget(parent)
  {
-     setMinimumSize(800, 600);
-     
+         
 	 activeDragging = false;
      activeWidget = NULL;
      
@@ -39,11 +38,11 @@ View::View(QWidget* parent) : QMainWindow(parent)
      addFieldAction = new QAction("Add A Field", this);
      connect(addFieldAction, SIGNAL(triggered()), this, SLOT(addField()));
      
-     editMenu = menuBar()->addMenu("&Edit");
+     /*editMenu = menuBar()->addMenu("&Edit");
      
      editMenu->addAction(beginEditingAction);
 	 editMenu->addAction(addFieldAction);
-     
+     */
      
      setAcceptDrops(true);
      
@@ -183,14 +182,14 @@ void View::resizeEvent(QResizeEvent *event){
 void View::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
 
-     
+    QPainter painter(this);
+    
      
      if ( !overrideHints ) { 
         if ( hintX != -1 || hintY != -1 ) {
             QPen pen;
             pen.setStyle(Qt::DotLine);
             pen.setColor(Qt::gray);
-            QPainter painter(this);
      
             painter.setPen(pen);
          
