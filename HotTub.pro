@@ -9,13 +9,12 @@ INCLUDEPATH += .
 
 macx {
     INCLUDEPATH += /opt/local/include
-    INCLUDEPATH += ../couchdb/include
+    INCLUDEPATH += ../couchdbpp/include
     
-    LIBS += -L../couchdb/src -lcouchdb++
+    LIBS += -L../couchdbpp/src -lcouchdb++
 }
 
-
-LIBS += 
+CONFIG += DEBUG
 
 # Input
 HEADERS += action.h \
