@@ -28,7 +28,8 @@ HEADERS += action.h \
            main.h \
            templatewidget.h \
            textedit.h \
-           view.h
+           view.h \
+           model.h
 SOURCES += attachments.cpp \
            combo.cpp \
            dateedit.cpp \
@@ -39,4 +40,5 @@ SOURCES += attachments.cpp \
            main.cpp \
            templatewidget.cpp \
            textedit.cpp \
-           view.cpp
+           view.cpp \
+           model.cpp

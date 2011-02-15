@@ -24,6 +24,8 @@ private:
     QDialog *dlg;
     QComboBox *viewsCombo;
     QString selectedDatabase;
+    
+    Connection conn;
 };
 
 #endif

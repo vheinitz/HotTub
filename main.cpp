@@ -6,6 +6,7 @@
 #include "list.h"
 #include "view.h"
 #include "main.h"
+#include "model.h"
 
 #include "couchdb/CouchDB.hpp"
 
@@ -33,13 +34,13 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     layout->addWidget(view, 0, 1);
     setLayout(layout);
     
-    Connection conn;
     doDatabaseSelection(conn);
 
     Database database = conn.getDatabase(selectedDatabase.toStdString());
-
-    getViews(database);
     
+    getViews(database);
+
+    list->setModel(new Model(conn));
 }
 
 void MainWindow::getViews(Database& database){
