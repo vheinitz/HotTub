@@ -81,7 +81,7 @@ void View::hideAttachments(){
     QPoint pos = mapFromGlobal(QCursor::pos());
     if ( pos.y() < height() - 100 ) {
         QPropertyAnimation* animation = new QPropertyAnimation(attachments, "geometry");
-        animation->setDuration(150);
+        animation->setDuration(300);
         animation->setEasingCurve(QEasingCurve::InOutQuart);
         animation->setEndValue(QRect(0,height(),width(),100));
         animation->start();
@@ -93,8 +93,8 @@ void View::hideAttachments(){
 void View::dragLeaveEvent(QDragLeaveEvent *event){
 
     Q_UNUSED(event);
-    
-    hideAttachments();
+    QTimer::singleShot(1500, this, SLOT(hideAttachments()));
+
     
 }
 
@@ -109,7 +109,7 @@ void View::dropEvent(QDropEvent *event)
         }
     }
     
-    QTimer::singleShot(750, this, SLOT(hideAttachments()));
+    QTimer::singleShot(1500, this, SLOT(hideAttachments()));
     
 }
 
@@ -335,7 +335,7 @@ void View::buildHotSpots(){
 
 void View::mouseLeaveEvent( QMouseEvent *event ){
     Q_UNUSED(event);
-    hideAttachments();
+    QTimer::singleShot(1500, this, SLOT(hideAttachments()));
 }
 
 void View::mouseMoveEvent( QMouseEvent *event ) {
@@ -343,7 +343,7 @@ void View::mouseMoveEvent( QMouseEvent *event ) {
     if ( event->pos().y() > height()-100 ) {
         showAttachments();
     } else {
-        hideAttachments();
+        QTimer::singleShot(1500, this, SLOT(hideAttachments()));
     }
     
     
