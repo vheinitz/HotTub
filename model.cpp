@@ -15,13 +15,12 @@ using namespace std;
 Model::Model(Connection& conn) : QAbstractTableModel(), 
 conn( conn )
 {
-    loadDocuments();
     
 }
 
-void Model::loadDocuments(){
-    Database database = conn.getDatabase("addresses");
-    vector<Document> documents = database.listView("example4", "baz", "", "");
+void Model::loadDocuments(const QString& database, const QString& design, const QString &view){
+    Database db = conn.getDatabase(database.toStdString());
+    vector<Document> documents = db.listView(design.toStdString(), view.toStdString(), "", "");
     
     docs.clear();
     for (unsigned int i=0; i<documents.size(); i++) {

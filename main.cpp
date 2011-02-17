@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     setMinimumSize(1200, 600);
     
     View *view = new View(this);
-    List *list = new List(this);
+    list = new List(this);
     
     view->setMinimumWidth(600);
     list->setMinimumWidth(600);
@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     layout->setContentsMargins(5,5,5,5);
     QVBoxLayout *leftLayout = new QVBoxLayout;
     viewsCombo = new QComboBox;
-    leftLayout->addWidget(viewsCombo);
+    leftLayout->addWidget(viewsCombo, 1, Qt::AlignRight);
     leftLayout->addWidget(list);
     layout->addLayout(leftLayout, 0, 0);
     layout->addWidget(view, 0, 1);
@@ -39,10 +39,21 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     Database database = conn.getDatabase(selectedDatabase.toStdString());
     
     getViews(database);
-
-    list->setModel(new Model(conn));
+    
+    connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
 }
 
+ 
+void MainWindow::loadSelectedView(const QString &view){
+    Model* m = new Model(conn);
+    list->setModel(m);
+    
+    QString design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
+    
+    m->loadDocuments(selectedDatabase, design, view);
+}
+            
+            
 void MainWindow::getViews(Database& database){
     vector<Document> views = database.listViews();
     for (unsigned int i=0; i<views.size(); i++ ) {
@@ -54,7 +65,7 @@ void MainWindow::getViews(Database& database){
             Object::iterator it = views.begin();
             Object::iterator end = views.end();
             while( it != end ) {
-                viewsCombo->addItem(QString(it->first.c_str()));
+                viewsCombo->addItem(QString(it->first.c_str()), QString(doc.getID().c_str()));
                 it++;
             }
         }

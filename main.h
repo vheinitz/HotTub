@@ -6,6 +6,8 @@
 #include <QtGui>
 #include "couchdb/CouchDB.hpp"
 
+#include "list.h"
+
 using namespace CouchDB;
 
 class MainWindow : public QWidget {
@@ -16,6 +18,7 @@ public:
     
 public slots:
     void databaseSelected(const QString &);    
+    void loadSelectedView(const QString &);
     
 private:
     void doDatabaseSelection(Connection &conn);
@@ -24,6 +27,7 @@ private:
     QDialog *dlg;
     QComboBox *viewsCombo;
     QString selectedDatabase;
+    List *list;
     
     Connection conn;
 };
