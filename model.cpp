@@ -29,6 +29,21 @@ void Model::loadDocuments(const QString& database, const QString& design, const 
     count = docs.size();
 	cache = new Variant[count];
     
+    if ( count > 0 ) {
+        Variant v = getDocumentData(0);
+        Object obj = boost::any_cast<Object>(*v);
+        
+        Object::iterator it = obj.begin();
+        Object::iterator end = obj.end();
+        while( it != end ) {
+            cout << it->first << endl;
+            fields.push_back(it->first);
+            it++;
+        }
+        
+    }
+    
+    
 }
 
 int Model::rowCount(const QModelIndex &index) const {
@@ -38,7 +53,8 @@ int Model::rowCount(const QModelIndex &index) const {
 
 int Model::columnCount(const QModelIndex &index) const {
 	Q_UNUSED(index);
-	return 2;
+    cout << fields.size() << endl;
+	return fields.size();
 }
 
 
@@ -60,20 +76,15 @@ QVariant Model::data(const QModelIndex &index, int role) const {
 			Variant v = getDocumentData(index.row());
 			Object obj = boost::any_cast<Object>(*v);
 			
-			if (index.column() == 0 ) {
-                if ( obj.find("name") == obj.end() ) {
-                    return QVariant();
-                }
-				string s = boost::any_cast<string>(*obj["name"]);
-				return QVariant(s.c_str());
-			} else if ( index.column() == 1 ) {
-				if ( obj.find("address") == obj.end() ) {
-                    return QVariant();
-                }
-                string s = boost::any_cast<string>(*obj["address"]);
-				return QVariant(s.c_str());	
-			}
-		}
+            string field = fields[index.column()];
+            
+            if ( obj.find(field) == obj.end() ) {
+                return QVariant();
+            }
+            string s = boost::any_cast<string>(*obj[field]);
+            return QVariant(s.c_str());
+			
+        }
 	}
 	return QVariant();
     
@@ -82,8 +93,7 @@ QVariant Model::data(const QModelIndex &index, int role) const {
 QVariant Model::headerData( int section, Qt::Orientation orientation, int role ) const {
 	if ( role == Qt::DisplayRole ) { 
 		if ( orientation == Qt::Horizontal ) {
-			if ( section == 0 ) return QVariant("Name");
-			if ( section == 1 ) return QVariant("Address");
+            return QString(fields[section].c_str());
 		} else {
 			return QVariant(section+1);
 		}

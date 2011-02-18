@@ -35,6 +35,7 @@ private:
     int count;
 	Connection &conn;
 	vector<Document> docs;
+    vector<string> fields;
 	Variant *cache;
 };
 

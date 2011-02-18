@@ -46,11 +46,12 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
  
 void MainWindow::loadSelectedView(const QString &view){
     Model* m = new Model(conn);
-    list->setModel(m);
+    
     
     QString design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
     
     m->loadDocuments(selectedDatabase, design, view);
+    list->setModel(m);
 }
             
             
