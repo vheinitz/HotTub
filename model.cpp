@@ -81,9 +81,12 @@ QVariant Model::data(const QModelIndex &index, int role) const {
             if ( obj.find(field) == obj.end() ) {
                 return QVariant();
             }
-            string s = boost::any_cast<string>(*obj[field]);
-            return QVariant(s.c_str());
-			
+            try { 
+                string s = boost::any_cast<string>(*obj[field]);
+                return QVariant(s.c_str());
+            }catch(boost::bad_any_cast& e){
+                
+            }
         }
 	}
 	return QVariant();
