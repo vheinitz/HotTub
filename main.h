@@ -7,6 +7,8 @@
 #include "couchdb/CouchDB.hpp"
 
 #include "list.h"
+#include "model.h"
+#include "view.h"
 
 using namespace CouchDB;
 
@@ -19,7 +21,7 @@ public:
 public slots:
     void databaseSelected(const QString &);    
     void loadSelectedView(const QString &);
-    
+    void listSelectionChanged(int);
 private:
     void doDatabaseSelection(Connection &conn);
     void getViews(Database &);
@@ -28,7 +30,8 @@ private:
     QComboBox *viewsCombo;
     QString selectedDatabase;
     List *list;
-    
+    Model *model;
+    View *view;
     Connection conn;
 };
 

@@ -43,3 +43,7 @@ QSize TextEdit::sizeHint(){
 int TextEdit::getLeftAlignmentHint(){
     return edit->x();
 }
+
+void TextEdit::loadDocument(CouchDB::Document doc){
+    
+}

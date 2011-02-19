@@ -11,12 +11,13 @@
 #include "action.h"
 #include "dateedit.h"
 #include "attachments.h"
+#include "couchdb/CouchDB.hpp"
 
  class QDragEnterEvent;
  class QDropEvent;
 
 using namespace std;
-
+using namespace CouchDB;
 
  class View : public QWidget
  {
@@ -24,6 +25,7 @@ using namespace std;
 			
  public:
      View(QWidget *parent = 0);
+     void loadDocument(Document doc);
 
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
@@ -37,6 +39,9 @@ using namespace std;
      void dragLeaveEvent(QDragLeaveEvent *event);
      void dropEvent(QDropEvent *event);
      void resizeEvent(QResizeEvent *event);
+     
+     void removeAllWidgets();
+     
 
 private slots:
      void beginEditing();

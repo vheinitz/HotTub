@@ -18,6 +18,9 @@ public:
     void paintEvent(QPaintEvent *event);
     QSize sizeHint();
     int getLeftAlignmentHint();
+    
+    void loadDocument(CouchDB::Document doc);
+    
 private:
     QLineEdit *edit;
     QLayout *layout;

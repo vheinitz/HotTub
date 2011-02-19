@@ -2,6 +2,8 @@
 
 #include "lineedit.h"
 
+using namespace std;
+
 LineEdit::LineEdit(QWidget *parent) : Editor(parent) {
     edit = new QLineEdit; 
     layout = new QHBoxLayout;
@@ -45,4 +47,28 @@ QSize LineEdit::sizeHint() {
 
 int LineEdit::getLeftAlignmentHint(){
     return edit->x();
+}
+
+
+
+void LineEdit::loadDocument(CouchDB::Document doc){
+    Variant v = doc.getData();
+    Object obj = boost::any_cast<Object>(*v);
+    
+    string f = getField().toStdString();
+    
+    if ( obj.find(f) == obj.end() ) {
+        return;
+    }
+    boost::any val = *obj[f];
+    const type_info &t = val.type();
+    if(t == typeid(string)) {
+        string s = boost::any_cast<string>(val);
+        edit->setText(QString(s.c_str()));
+    } else if(t == typeid(int))
+        edit->setText(QString(boost::any_cast<int>(val)));
+        
+    
+    
+    
 }

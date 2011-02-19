@@ -17,6 +17,9 @@ public:
     void setMargins(int,int,int,int);
     QSize sizeHint();
     int getLeftAlignmentHint();
+    
+    void loadDocument(CouchDB::Document doc);
+    
 private:
     QTextEdit *edit;
     QVBoxLayout* layout;

@@ -54,6 +54,39 @@ View::View(QWidget* parent) : QWidget(parent)
      
  }
 
+void View::removeAllWidgets(){
+    for (unsigned int i=0; i<widgets.size(); i++) {
+        delete widgets[i];
+    }
+    widgets.clear();
+    
+}
+
+void View::loadDocument(Document doc){
+    removeAllWidgets();
+    Variant v = doc.getData();
+    Object obj = boost::any_cast<Object>(*v);
+    
+    int x = 50;
+    int y = 50;
+    
+    Object::iterator it = obj.begin();
+    Object::iterator end = obj.end();
+    while( it != end ) {
+        TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+        widget->setLabel(QString(it->first.c_str()));
+        widget->setField(QString(it->first.c_str()));
+        widget->loadDocument(doc);
+        QSize hint = widget->sizeHint();
+        widget->setGeometry(x,y,hint.width(), hint.height());
+        widget->show();
+        widgets.push_back(widget);
+        
+        it++;
+        y += 30;
+    }
+}
+
 void View::dragEnterEvent(QDragEnterEvent *event)
 {
     showAttachments();
@@ -425,9 +458,6 @@ void View::mouseMoveEvent( QMouseEvent *event ) {
         }
     }
     
-    
-    
-    
     update();
 
 }
@@ -447,7 +477,6 @@ void View::keyReleaseEvent( QKeyEvent *event ) {
     
     overrideHints = false;
     update();
-
 }
 
 

@@ -3,8 +3,13 @@
 #define __EDITOR_H
 
 #include <QtGui>
+#include "couchdb/CouchDB.hpp"
+
 
 class Editor : public QWidget {
+private:
+    QString field;
+
 public:
     Editor(QWidget *parent);
     virtual bool allowResizeWidth() = 0;
@@ -16,15 +21,15 @@ public:
     virtual QSize sizeHint() = 0;
     virtual int getLeftAlignmentHint() = 0;
     
+    void setField(QString);
+    QString getField();
+    
+    virtual void loadDocument(CouchDB::Document doc) = 0;
+    
     QAction* configurationAction(QToolBar *toolbar);
+
+
 };
-
-
-
-
-
-
-
 
 
 

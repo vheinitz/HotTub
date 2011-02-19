@@ -6,6 +6,9 @@
 #include <Qt>
 #include <QtGui>
 #include "editor.h"
+#include "couchdb/CouchDB.hpp"
+
+using namespace CouchDB;
 
 class TemplateWidget : public QWidget
 {
@@ -13,7 +16,11 @@ class TemplateWidget : public QWidget
 	
 public:
     TemplateWidget(Editor* editor, QWidget *parent);
-     
+    
+    void setField(const QString &);
+    void loadDocument(Document doc);
+    
+    
     void beginEditing();
     void stopEditing();
     void setCursor(Qt::CursorShape);   

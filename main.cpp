@@ -18,7 +18,7 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     setMinimumSize(1200, 600);
     
-    View *view = new View(this);
+    view = new View(this);
     list = new List(this);
     
     view->setMinimumWidth(600);
@@ -42,17 +42,22 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     getViews(database);
     
     connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
+    
+    connect(list, SIGNAL(selectionChanged(int)), this, SLOT(listSelectionChanged(int)));
 }
 
- 
+void MainWindow::listSelectionChanged(int index){
+    Document doc = model->getDocument(index);
+    view->loadDocument(doc);
+}
+
 void MainWindow::loadSelectedView(const QString &view){
-    Model* m = new Model(conn);
-    
+    model = new Model(conn);
     
     QString design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
     
-    m->loadDocuments(selectedDatabase, design, view);
-    list->setModel(m);
+    model->loadDocuments(selectedDatabase, design, view);
+    list->setModel(model);
 }
             
             

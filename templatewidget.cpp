@@ -9,7 +9,9 @@
 #include "textedit.h"
 #include "combo.h"
 
+#include "couchdb/CouchDB.hpp"
 
+using namespace CouchDB;
 using namespace std;
 
 TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
@@ -248,5 +250,13 @@ void TemplateWidget::leaveEvent(QEvent *event){
     }
 }
 
+void TemplateWidget::setField(const QString &field){
+    editor->setField(field);
+}
+
+
+void TemplateWidget::loadDocument(Document doc){
+    editor->loadDocument(doc);
+}
 
 

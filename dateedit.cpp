@@ -40,3 +40,11 @@ QSize DateEdit::sizeHint(){
 int DateEdit::getLeftAlignmentHint(){
     return edit->x();
 }
+
+void DateEdit::setField(const QString &){
+    
+}
+
+void DateEdit::loadDocument(CouchDB::Document doc){
+    
+}

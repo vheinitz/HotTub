@@ -47,8 +47,12 @@ int Combo::getLeftAlignmentHint(){
     return edit->x();
 }
 
-
 QAction* Combo::configurationAction(QToolBar *toolbar){
     return new QAction(toolbar);
 }
+
+void Combo::loadDocument(CouchDB::Document doc){
+    
+}
+
 

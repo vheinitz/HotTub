@@ -19,6 +19,10 @@ conn( conn )
        
 }
 
+Document Model::getDocument(int index) const{
+    return docs[index];
+}
+
 void Model::loadDocuments(const QString& database, const QString& design, const QString &view){
     Database db = conn.getDatabase(database.toStdString());
     vector<Document> documents = db.listView(design.toStdString(), view.toStdString(), "", "");

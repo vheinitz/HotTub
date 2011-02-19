@@ -17,6 +17,10 @@ public:
     void setMargins(int,int,int,int);
     QSize sizeHint();
     int getLeftAlignmentHint();
+    
+    void setField(const QString &);
+    void loadDocument(CouchDB::Document doc);
+    
 private:
     QDateTimeEdit *edit;
     QLayout *layout;

@@ -19,6 +19,9 @@ public:
     QSize sizeHint();
     int getLeftAlignmentHint();
     QAction* configurationAction(QToolBar *toolbar);
+
+    void loadDocument(CouchDB::Document doc);
+    
 private:
     QComboBox *edit;
     QVBoxLayout* layout;
