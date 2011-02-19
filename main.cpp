@@ -7,6 +7,7 @@
 #include "view.h"
 #include "main.h"
 #include "model.h"
+#include "app.h"
 
 #include "couchdb/CouchDB.hpp"
 
@@ -105,7 +106,7 @@ void MainWindow::doDatabaseSelection(Connection &conn){
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    Application app(argc, argv);
     MainWindow mainWindow;
     mainWindow.show();
     
