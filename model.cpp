@@ -36,14 +36,12 @@ void Model::loadDocuments(const QString& database, const QString& design, const 
         Object::iterator it = obj.begin();
         Object::iterator end = obj.end();
         while( it != end ) {
-            cout << it->first << endl;
-            fields.push_back(it->first);
+            if ( it->first.compare("_id") != 0 && it->first.compare("_rev") != 0 ) {
+                fields.push_back(it->first);
+            }
             it++;
         }
-        
     }
-    
-    
 }
 
 int Model::rowCount(const QModelIndex &index) const {
@@ -53,8 +51,7 @@ int Model::rowCount(const QModelIndex &index) const {
 
 int Model::columnCount(const QModelIndex &index) const {
 	Q_UNUSED(index);
-    cout << fields.size() << endl;
-	return fields.size();
+    return fields.size();
 }
 
 
