@@ -81,12 +81,18 @@ QVariant Model::data(const QModelIndex &index, int role) const {
             if ( obj.find(field) == obj.end() ) {
                 return QVariant();
             }
-            try { 
-                string s = boost::any_cast<string>(*obj[field]);
+            boost::any value = *obj[field];
+            const type_info &type = value.type();
+            if(type == typeid(string)) {
+                string s = boost::any_cast<string>(value);
                 return QVariant(s.c_str());
-            }catch(boost::bad_any_cast& e){
-                
-            }
+            } else if(type == typeid(bool))
+                return QVariant(boost::any_cast<bool>(value));
+            else if(type == typeid(int))
+                return QVariant(boost::any_cast<int>(value));
+            else if(type == typeid(double))
+                return QVariant(boost::any_cast<double>(value));
+            
         }
 	}
 	return QVariant();
