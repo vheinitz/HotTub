@@ -50,6 +50,7 @@ View::View(QWidget* parent) : QWidget(parent)
      attachments->show();
      
      isEditing = false;
+     dropActive = false;
      attachmentsVisible = false;
      
  }
@@ -90,7 +91,7 @@ void View::loadDocument(Document doc){
 void View::dragEnterEvent(QDragEnterEvent *event)
 {
     showAttachments();
-    
+    dropActive = true;
     event->acceptProposedAction();
 }
 
@@ -109,6 +110,8 @@ void View::showAttachments(){
 }
 
 void View::hideAttachments(){
+    if ( dropActive ) return;
+    
     attachmentsVisible = false;
     
     QPoint pos = mapFromGlobal(QCursor::pos());
@@ -126,6 +129,7 @@ void View::hideAttachments(){
 void View::dragLeaveEvent(QDragLeaveEvent *event){
 
     Q_UNUSED(event);
+    dropActive = false;
     QTimer::singleShot(1500, this, SLOT(hideAttachments()));
 
     
@@ -141,6 +145,8 @@ void View::dropEvent(QDropEvent *event)
             attachments->acceptUrl(urls[i]);
         }
     }
+    
+    dropActive = false;
     
     QTimer::singleShot(1500, this, SLOT(hideAttachments()));
     

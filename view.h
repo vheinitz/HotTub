@@ -63,7 +63,8 @@ private slots:
      
      QLabel *label;
 	 bool activeDragging;
-	 
+	 bool dropActive;
+     
 	 int offsetX;
 	 int offsetY;
      
