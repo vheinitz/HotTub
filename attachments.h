@@ -32,6 +32,9 @@ public:
     void dragEnterEvent(QDragEnterEvent *event);
     void dragMoveEvent(QDragMoveEvent *event);
     void dropEvent(QDropEvent *event);
+signals:
+    void fileAttached(QUrl url);
+    
 private slots:
     void addFolder();
     void openObject();

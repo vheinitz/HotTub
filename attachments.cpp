@@ -160,6 +160,7 @@ void Attachments::acceptUrl(QUrl url) {
         obj.type = ATTACHMENT;
         files.append(obj);
     
+        emit fileAttached(url);
         update();
     }
 }

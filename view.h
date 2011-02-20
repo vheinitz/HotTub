@@ -24,8 +24,8 @@ using namespace CouchDB;
 	Q_OBJECT
 			
  public:
-     View(QWidget *parent = 0);
-     void loadDocument(Document doc);
+     View(Connection&, QWidget *parent = 0);
+     void loadDocument(string, string, string);
 
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
@@ -50,8 +50,11 @@ private slots:
      void widgetRemoved(TemplateWidget *);
      void hideAttachments();
      void showAttachments();
+     void fileAttached(QUrl url);
      
  private:
+     Connection &conn;
+     
      void buildHotSpots();
      
      vector<int> leftAlignmentHints;
@@ -94,6 +97,10 @@ private slots:
      QAction *addFieldAction;
      
      Attachments *attachments;
+
+     string database;
+     string id;
+     string rev;
      
  };
 

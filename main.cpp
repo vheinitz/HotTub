@@ -18,7 +18,7 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     setMinimumSize(1200, 600);
     
-    view = new View(this);
+    view = new View(conn, this);
     list = new List(this);
     
     view->setMinimumWidth(600);
@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
 void MainWindow::listSelectionChanged(int index){
     Document doc = model->getDocument(index);
-    view->loadDocument(doc);
+    view->loadDocument(selectedDatabase.toStdString(), doc.getID(), doc.getRevision());
 }
 
 void MainWindow::loadSelectedView(const QString &view){

@@ -15,7 +15,8 @@
 using namespace std;
 
 
-View::View(QWidget* parent) : QWidget(parent)
+View::View(Connection& conn, QWidget* parent) : QWidget(parent),
+ conn(conn)
  {
          
 	 activeDragging = false;
@@ -53,7 +54,23 @@ View::View(QWidget* parent) : QWidget(parent)
      dropActive = false;
      attachmentsVisible = false;
      
+     connect(attachments, SIGNAL(fileAttached(QUrl)), this, SLOT(fileAttached(QUrl)));
+     
+     
  }
+
+void View::fileAttached(QUrl url) {
+    
+    QString canonicalFilename = url.toLocalFile();
+    QString filename = canonicalFilename.split("/").last();
+    
+    Database db = conn.getDatabase(database);
+    Document doc = db.getDocument(id, rev);
+    
+    
+    doc.uploadAttachment(filename.toStdString(), "application/octet-stream", canonicalFilename.toStdString()	); 
+     
+}
 
 void View::removeAllWidgets(){
     for (unsigned int i=0; i<widgets.size(); i++) {
@@ -63,7 +80,14 @@ void View::removeAllWidgets(){
     
 }
 
-void View::loadDocument(Document doc){
+void View::loadDocument(string _database, string _id, string _rev){
+    database = _database;
+    id = _id;
+    rev = _rev;
+    
+    Database db = conn.getDatabase(database);
+    Document doc = db.getDocument(id, rev);
+    
     removeAllWidgets();
     Variant v = doc.getData();
     Object obj = boost::any_cast<Object>(*v);
