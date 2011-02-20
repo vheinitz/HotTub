@@ -68,7 +68,4 @@ void LineEdit::loadDocument(CouchDB::Document doc){
     } else if(t == typeid(int))
         edit->setText(QString(boost::any_cast<int>(val)));
         
-    
-    
-    
 }
