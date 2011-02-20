@@ -4,9 +4,10 @@
 #include <QtGui>
 #include "attachments.h"
 #include <iostream>
+#include "couchdb/CouchDB.hpp"
 
 using namespace std;
-
+using namespace CouchDB;
 
 Attachments::Attachments(QWidget* parent) : QWidget(parent) {
     selectedColumn = -1;
@@ -274,6 +275,26 @@ void Attachments::openObject(){
 }
 
 
+
+void Attachments::loadDocument(Document &doc){
+    files.clear();
+    
+    vector<Attachment> attachments = doc.getAllAttachments();
+    for(unsigned int i=0; i<attachments.size(); i++){
+        AttachedObject obj;
+        
+        obj.temporaryFile = new QTemporaryFile();
+        if ( obj.temporaryFile->open() ){ 
+            obj.name = QString(attachments[i].getID().c_str());
+            obj.type = ATTACHMENT;
+            files.append(obj);
+            
+        }
+        
+    }
+    update();
+    
+}
 
 
 

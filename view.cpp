@@ -98,18 +98,23 @@ void View::loadDocument(string _database, string _id, string _rev){
     Object::iterator it = obj.begin();
     Object::iterator end = obj.end();
     while( it != end ) {
-        TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
-        widget->setLabel(QString(it->first.c_str()));
-        widget->setField(QString(it->first.c_str()));
-        widget->loadDocument(doc);
-        QSize hint = widget->sizeHint();
-        widget->setGeometry(x,y,hint.width(), hint.height());
-        widget->show();
-        widgets.push_back(widget);
+        if ( it->first.compare("_attachments") != 0 && it->first.compare("_rev") != 0 ) { 
+            TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+            widget->setLabel(QString(it->first.c_str()));
+            widget->setField(QString(it->first.c_str()));
+            widget->loadDocument(doc);
+            QSize hint = widget->sizeHint();
+            widget->setGeometry(x,y,hint.width(), hint.height());
+            widget->show();
+            widgets.push_back(widget);
         
+            y += 30;
+        }
         it++;
-        y += 30;
+        
     }
+    
+    attachments->loadDocument(doc);
 }
 
 void View::dragEnterEvent(QDragEnterEvent *event)

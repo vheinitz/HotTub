@@ -4,7 +4,9 @@
 #define __ATTACHMENTS_H
 
 #include <QtGui>
+#include "couchdb/CouchDB.hpp"
 
+using namespace CouchDB;
 
 enum AttachmentType {
     ATTACHMENT,
@@ -32,6 +34,8 @@ public:
     void dragEnterEvent(QDragEnterEvent *event);
     void dragMoveEvent(QDragMoveEvent *event);
     void dropEvent(QDropEvent *event);
+    
+    void loadDocument(Document &);
 signals:
     void fileAttached(QUrl url);
     
