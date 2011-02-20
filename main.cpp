@@ -92,8 +92,9 @@ void MainWindow::doDatabaseSelection(Connection &conn){
     QFormLayout layout;
     
     QComboBox *combo = new QComboBox(dlg);
+    combo->insertItem(0, "");
     for(unsigned int i=0; i<dbs.size(); i++){
-        combo->insertItem(i, QString(dbs[i].c_str()));
+        combo->insertItem(i+1, QString(dbs[i].c_str()));
     }
     
     connect(combo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(databaseSelected(const QString &)));
