@@ -14,6 +14,14 @@ macx {
     LIBS += -L../couchdbpp/src -lcouchdb++
 }
 
+win32 {
+    INCLUDEPATH += ../couchdbpp/include
+    INCLUDEPATH += "C:/Program Files/boost/boost_1_44/"
+    INCLUDEPATH += ../Curl/include
+
+    LIBS += ../couchdbpp/couchdbpp.dll
+}
+
 CONFIG += DEBUG
 
 # Input
@@ -44,3 +52,4 @@ SOURCES += attachments.cpp \
            view.cpp \
            model.cpp \
            app.cpp
+	   
