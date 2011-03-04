@@ -5,6 +5,7 @@
 #include <QApplication>
 #include <QtGui>
 #include "qcouch/document.h"
+#include "qcouch/qcouch.h"
 
 #include "list.h"
 #include "model.h"
@@ -22,7 +23,7 @@ public slots:
     void listSelectionChanged(int);
 private:
     void doDatabaseSelection();
-    void getViews();
+    void getViews(QString&);
     
     QDialog *dlg;
     QComboBox *viewsCombo;
@@ -30,6 +31,8 @@ private:
     List *list;
     Model *model;
     View *view;
+    
+    QCouch couch;
 };
 
 #endif

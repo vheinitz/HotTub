@@ -9,6 +9,8 @@
 #include "model.h"
 #include "app.h"
 
+#include "qcouch/qcouch.h"
+
 
 using namespace std;
 
@@ -33,15 +35,16 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     layout->addWidget(view, 0, 1);
     setLayout(layout);
     
-    //doDatabaseSelection(conn);
+    couch.connect("http://localhost", 5984);
+    
+    doDatabaseSelection();
 
-    //Database database = conn.getDatabase(selectedDatabase.toStdString());
+    getViews(selectedDatabase);
     
-    //getViews(database);
-    
-    connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
+    /*connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
     
     connect(list, SIGNAL(selectionChanged(int)), this, SLOT(listSelectionChanged(int)));
+     */
 }
 
 void MainWindow::listSelectionChanged(int index){
@@ -59,7 +62,11 @@ void MainWindow::loadSelectedView(const QString &view){
 }
             
             
-void MainWindow::getViews(){
+void MainWindow::getViews(QString& db){
+    QList<QVariant> views = couch.listViews(db);
+    foreach(QVariant view, views){
+        qDebug() << view;
+    }
     /*vector<Document> views = database.listViews();
     for (unsigned int i=0; i<views.size(); i++ ) {
         Document doc = views[i];
@@ -84,15 +91,17 @@ void MainWindow::databaseSelected(const QString &database){
 }
 
 void MainWindow::doDatabaseSelection(){
-    /*vector<string> dbs = conn.listDatabases();
+    QList<QString> dbs = couch.listDatabases();
     
     dlg = new QDialog;
     QFormLayout layout;
     
     QComboBox *combo = new QComboBox(dlg);
     combo->insertItem(0, "");
-    for(unsigned int i=0; i<dbs.size(); i++){
-        combo->insertItem(i+1, QString(dbs[i].c_str()));
+    int i = 0;
+    foreach(QString str, dbs){
+        combo->insertItem(i+1, str);
+        i++;
     }
     
     connect(combo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(databaseSelected(const QString &)));
@@ -101,7 +110,7 @@ void MainWindow::doDatabaseSelection(){
     dlg->setLayout(&layout);
     dlg->setFixedSize(350, 100);            
     dlg->exec();
-    */
+    
     
 }
 
