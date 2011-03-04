@@ -6,9 +6,8 @@
 #include <QAbstractItemModel>
 #include <QVariant>
 #include <vector>
-#include "couchdb/CouchDB.hpp"
+#include "qcouch/document.h"
 
-using namespace CouchDB;
 using namespace std;
 
 class QVariant;
@@ -20,7 +19,7 @@ class Model : public QAbstractTableModel {
 	Q_OBJECT
 	
 public:
-	Model(Connection &conn);
+	Model();
 	
 	int rowCount(const QModelIndex &) const;
 	int columnCount(const QModelIndex &) const;
@@ -31,12 +30,9 @@ public:
     void loadDocuments(const QString &, const QString&, const QString &);
 	
 private:
-	Variant getDocumentData(const int) const;
-    int count;
-	Connection &conn;
+	int count;
 	vector<Document> docs;
     vector<string> fields;
-	Variant *cache;
 };
 
 

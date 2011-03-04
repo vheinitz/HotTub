@@ -4,9 +4,7 @@
 #define __ATTACHMENTS_H
 
 #include <QtGui>
-#include "couchdb/CouchDB.hpp"
-
-using namespace CouchDB;
+#include "qcouch/document.h"
 
 enum AttachmentType {
     ATTACHMENT,
@@ -16,7 +14,7 @@ enum AttachmentType {
 typedef struct {
     QString name;
     AttachmentType type;
-    QTemporaryFile* temporaryFile;
+    QUrl url;
 } AttachedObject;
 
 class Attachments : public QWidget {

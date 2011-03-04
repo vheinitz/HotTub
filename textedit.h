@@ -3,6 +3,7 @@
 #define TEXTEDIT_H
 
 #include "templatewidget.h"
+#include "qcouch/document.h"
 
 class TextEdit : public Editor {
  
@@ -18,7 +19,7 @@ public:
     QSize sizeHint();
     int getLeftAlignmentHint();
     
-    void loadDocument(CouchDB::Document doc);
+    void loadDocument(Document doc);
     
 private:
     QTextEdit *edit;

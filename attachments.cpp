@@ -4,10 +4,10 @@
 #include <QtGui>
 #include "attachments.h"
 #include <iostream>
-#include "couchdb/CouchDB.hpp"
+#include "qcouch/document.h"
 
 using namespace std;
-using namespace CouchDB;
+
 
 Attachments::Attachments(QWidget* parent) : QWidget(parent) {
     selectedColumn = -1;
@@ -154,16 +154,13 @@ void Attachments::acceptUrl(QUrl url) {
     QString canonicalPath = url.toLocalFile();
     QString filename = canonicalPath.split("/").last();
     
-    obj.temporaryFile = new QTemporaryFile();
-    if ( obj.temporaryFile->open() ){ 
-        cout << obj.temporaryFile->fileName().toStdString() << endl;
-        obj.name = filename;
-        obj.type = ATTACHMENT;
-        files.append(obj);
+    obj.name = filename;
+    obj.type = ATTACHMENT;
+    obj.url  = url;
+    files.append(obj);
     
-        emit fileAttached(url);
-        update();
-    }
+    emit fileAttached(url);
+    update();
 }
 
 
@@ -212,8 +209,9 @@ void Attachments::mouseMoveEvent(QMouseEvent *event){
     
     
     QList<QUrl> urls;
-    cout << files[i].temporaryFile->fileName().toStdString() << endl;
-    urls.append(QUrl(files[i].temporaryFile->fileName()));
+    urls.append(files[i].url);
+    QString str = files[i].url.toString();
+    cout << str.toStdString() << endl;
     mimeData->setUrls(urls);
     drag->setMimeData(mimeData);
     
@@ -265,6 +263,7 @@ bool Attachments::hasSelectedObject(){
 
 void Attachments::deleteObject(){
     if ( hasSelectedObject() ) {
+        
         files.removeAt(selectedColumn);
         update();
     }
@@ -278,21 +277,23 @@ void Attachments::openObject(){
 
 void Attachments::loadDocument(Document &doc){
     files.clear();
-    
-    vector<Attachment> attachments = doc.getAllAttachments();
-    for(unsigned int i=0; i<attachments.size(); i++){
-        AttachedObject obj;
+        /*vector<Attachment> attachments = doc.getAllAttachments();
+        for(unsigned int i=0; i<attachments.size(); i++){
+            AttachedObject obj;
         
-        obj.temporaryFile = new QTemporaryFile();
-        if ( obj.temporaryFile->open() ){ 
             obj.name = QString(attachments[i].getID().c_str());
             obj.type = ATTACHMENT;
+            string url = "http://localhost:5984/addresses/";
+            url.append(doc.getID());
+            url.append("/");
+            url.append(attachments[i].getID());
+            obj.url = QUrl(QString(url.c_str()));
+            
             files.append(obj);
             
-        }
         
-    }
-    update();
+        }*/
+        update();
     
 }
 

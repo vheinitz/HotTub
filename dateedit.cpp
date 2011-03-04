@@ -1,5 +1,6 @@
 
 #include "dateedit.h"
+#include "qcouch/document.h"
 
 DateEdit::DateEdit(QWidget *parent) : Editor(parent) {
     edit = new QDateTimeEdit;
@@ -45,6 +46,6 @@ void DateEdit::setField(const QString &){
     
 }
 
-void DateEdit::loadDocument(CouchDB::Document doc){
+void DateEdit::loadDocument(Document doc){
     
 }

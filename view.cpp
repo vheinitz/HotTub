@@ -15,8 +15,7 @@
 using namespace std;
 
 
-View::View(Connection& conn, QWidget* parent) : QWidget(parent),
- conn(conn)
+View::View(QWidget* parent) : QWidget(parent)
  {
          
 	 activeDragging = false;
@@ -64,12 +63,11 @@ void View::fileAttached(QUrl url) {
     QString canonicalFilename = url.toLocalFile();
     QString filename = canonicalFilename.split("/").last();
     
-    Database db = conn.getDatabase(database);
-    Document doc = db.getDocument(id, rev);
+    //Document& doc = store->document();
     
     
-    doc.uploadAttachment(filename.toStdString(), "application/octet-stream", canonicalFilename.toStdString()	); 
-     
+    //doc.uploadAttachment(filename.toStdString(), "application/octet-stream", canonicalFilename.toStdString()); 
+    
 }
 
 void View::removeAllWidgets(){
@@ -80,17 +78,15 @@ void View::removeAllWidgets(){
     
 }
 
-void View::loadDocument(string _database, string _id, string _rev){
-    database = _database;
-    id = _id;
-    rev = _rev;
+/*
+void View::setStore(Store* _store){
+    store = _store;
     
-    Database db = conn.getDatabase(database);
-    Document doc = db.getDocument(id, rev);
+    //Document& doc = store->document();
     
     removeAllWidgets();
-    Variant v = doc.getData();
-    Object obj = boost::any_cast<Object>(*v);
+    //Variant v = doc.getData();
+    //Object obj = boost::any_cast<Object>(*v);
     
     int x = 50;
     int y = 50;
@@ -116,7 +112,8 @@ void View::loadDocument(string _database, string _id, string _rev){
     
     attachments->loadDocument(doc);
 }
-
+*/
+ 
 void View::dragEnterEvent(QDragEnterEvent *event)
 {
     showAttachments();

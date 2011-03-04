@@ -11,22 +11,20 @@
 #include "action.h"
 #include "dateedit.h"
 #include "attachments.h"
-#include "couchdb/CouchDB.hpp"
+#include "qcouch/document.h"
 
  class QDragEnterEvent;
  class QDropEvent;
 
 using namespace std;
-using namespace CouchDB;
 
  class View : public QWidget
  {
 	Q_OBJECT
 			
  public:
-     View(Connection&, QWidget *parent = 0);
-     void loadDocument(string, string, string);
-
+     View( QWidget *parent = 0);
+     
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
      void mousePressEvent(QMouseEvent *event);
@@ -41,8 +39,7 @@ using namespace CouchDB;
      void resizeEvent(QResizeEvent *event);
      
      void removeAllWidgets();
-     
-
+   
 private slots:
      void beginEditing();
      void addField();
@@ -53,8 +50,6 @@ private slots:
      void fileAttached(QUrl url);
      
  private:
-     Connection &conn;
-     
      void buildHotSpots();
      
      vector<int> leftAlignmentHints;
@@ -98,10 +93,6 @@ private slots:
      
      Attachments *attachments;
 
-     string database;
-     string id;
-     string rev;
-     
  };
 
 

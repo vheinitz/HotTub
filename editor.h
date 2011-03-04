@@ -3,7 +3,7 @@
 #define __EDITOR_H
 
 #include <QtGui>
-#include "couchdb/CouchDB.hpp"
+#include "qcouch/document.h"
 
 
 class Editor : public QWidget {
@@ -24,7 +24,7 @@ public:
     void setField(QString);
     QString getField();
     
-    virtual void loadDocument(CouchDB::Document doc) = 0;
+    virtual void loadDocument(Document doc) = 0;
     
     QAction* configurationAction(QToolBar *toolbar);
 

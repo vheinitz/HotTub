@@ -1,6 +1,7 @@
 
 
 #include "lineedit.h"
+#include "qcouch/document.h"
 
 using namespace std;
 
@@ -51,8 +52,8 @@ int LineEdit::getLeftAlignmentHint(){
 
 
 
-void LineEdit::loadDocument(CouchDB::Document doc){
-    Variant v = doc.getData();
+void LineEdit::loadDocument(Document doc){
+    /*Variant v = doc.getData();
     Object obj = boost::any_cast<Object>(*v);
     
     string f = getField().toStdString();
@@ -67,5 +68,5 @@ void LineEdit::loadDocument(CouchDB::Document doc){
         edit->setText(QString(s.c_str()));
     } else if(t == typeid(int))
         edit->setText(QString(boost::any_cast<int>(val)));
-        
+        */
 }

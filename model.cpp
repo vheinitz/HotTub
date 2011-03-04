@@ -7,24 +7,18 @@
 #include <QVariant>
 #include <QHeaderView>
 #include <vector>
+#include "qcouch/document.h"
 
-#include "couchdb/CouchDB.hpp"
 
-using namespace CouchDB;
 using namespace std;
 
-Model::Model(Connection& conn) : QAbstractTableModel(), 
-conn( conn )
+Model::Model() : QAbstractTableModel() 
 {
        
 }
 
-Document Model::getDocument(int index) const{
-    return docs[index];
-}
-
 void Model::loadDocuments(const QString& database, const QString& design, const QString &view){
-    Database db = conn.getDatabase(database.toStdString());
+    /*Database db = conn.getDatabase(database.toStdString());
     vector<Document> documents = db.listView(design.toStdString(), view.toStdString(), "", "");
     
     docs.clear();
@@ -35,7 +29,7 @@ void Model::loadDocuments(const QString& database, const QString& design, const 
 	cache = new Variant[count];
     
     if ( count > 0 ) {
-        /*Object obj;
+        Object obj;
         Document doc = documents[0];
         boost::any value = doc.getValue();
         cout << "Got value" << endl;
@@ -43,20 +37,20 @@ void Model::loadDocuments(const QString& database, const QString& design, const 
         cout << "Got value type" << endl;
         if ( type == typeid(Object) ){
             obj = boost::any_cast<Object>(value);
-        } else {*/
+        } else {
             Variant v = getDocumentData(0);
             Object obj = boost::any_cast<Object>(*v);
-        /*}*/
+        }
         
         Object::iterator it = obj.begin();
         Object::iterator end = obj.end();
         while( it != end ) {
-            if ( it->first.compare("_id") != 0 && it->first.compare("_rev") != 0 ) {
+            if ( it->first.compare("_id") != 0 && it->first.compare("_rev") != 0 && it->first.compare("_attachments") != 0 ) {
                 fields.push_back(it->first);
             }
             it++;
         }
-    }
+    }*/
 }
 
 int Model::rowCount(const QModelIndex &index) const {
@@ -66,11 +60,11 @@ int Model::rowCount(const QModelIndex &index) const {
 
 int Model::columnCount(const QModelIndex &index) const {
 	Q_UNUSED(index);
-    return fields.size();
+    //return fields.size();
 }
 
-
-Variant Model::getDocumentData(const int index) const {
+/*
+void Model::getDocumentData(const int index) const {
 	Variant v;
 	Document doc = docs[index];
 	if ( cache[index] == NULL ){
@@ -80,21 +74,21 @@ Variant Model::getDocumentData(const int index) const {
 		v = cache[index];
 	}
     return v;
-}
+}*/
 
 QVariant Model::data(const QModelIndex &index, int role) const {
-	if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
+	/*if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
 		if ( (unsigned int)index.row() < docs.size() ) {
-            /*Object obj;
+            Object obj;
             boost::any value = docs[index.row()].getValue();
             const type_info &type = value.type();
             
             if ( type == typeid(Object) ){
                 obj = boost::any_cast<Object>(value);
-            } else {*/
+            } else {
                 Variant v = getDocumentData(index.row());
                 Object obj = boost::any_cast<Object>(*v);
-			/*}*/
+			}
                 
             string field = fields[index.column()];
             
@@ -114,24 +108,25 @@ QVariant Model::data(const QModelIndex &index, int role) const {
                 return QVariant(boost::any_cast<double>(val));
             
         }
-	}
+	}*/
 	return QVariant();
     
 }
 
 QVariant Model::headerData( int section, Qt::Orientation orientation, int role ) const {
-	if ( role == Qt::DisplayRole ) { 
+	/*if ( role == Qt::DisplayRole ) { 
 		if ( orientation == Qt::Horizontal ) {
             return QString(fields[section].c_str());
 		} else {
 			return QVariant(section+1);
 		}
 	}
-	return QVariant();
+	return QVariant();*/
 }
 
 
 Qt::ItemFlags Model::flags( const QModelIndex &index ) const {
-	Q_UNUSED( index );
+	/*Q_UNUSED( index );
 	return Qt::ItemIsSelectable | Qt::ItemIsEnabled; 
+     */
 }

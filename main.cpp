@@ -9,16 +9,14 @@
 #include "model.h"
 #include "app.h"
 
-#include "couchdb/CouchDB.hpp"
 
-using namespace CouchDB;
 using namespace std;
 
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     setMinimumSize(1200, 600);
     
-    view = new View(conn, this);
+    view = new View(this);
     list = new List(this);
     
     view->setMinimumWidth(600);
@@ -35,11 +33,11 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     layout->addWidget(view, 0, 1);
     setLayout(layout);
     
-    doDatabaseSelection(conn);
+    //doDatabaseSelection(conn);
 
-    Database database = conn.getDatabase(selectedDatabase.toStdString());
+    //Database database = conn.getDatabase(selectedDatabase.toStdString());
     
-    getViews(database);
+    //getViews(database);
     
     connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
     
@@ -47,22 +45,22 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 }
 
 void MainWindow::listSelectionChanged(int index){
-    Document doc = model->getDocument(index);
-    view->loadDocument(selectedDatabase.toStdString(), doc.getID(), doc.getRevision());
+    /*store = new Store(model->getDocument(index));
+    view->setStore(store);*/
 }
 
 void MainWindow::loadSelectedView(const QString &view){
-    model = new Model(conn);
+    /*model = new Model();
     
     QString design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
     
     model->loadDocuments(selectedDatabase, design, view);
-    list->setModel(model);
+    list->setModel(model);*/
 }
             
             
-void MainWindow::getViews(Database& database){
-    vector<Document> views = database.listViews();
+void MainWindow::getViews(){
+    /*vector<Document> views = database.listViews();
     for (unsigned int i=0; i<views.size(); i++ ) {
         Document doc = views[i];
         Variant v = doc.getData();
@@ -77,7 +75,7 @@ void MainWindow::getViews(Database& database){
             }
         }
         
-    }
+    }*/
 }
 
 void MainWindow::databaseSelected(const QString &database){
@@ -85,8 +83,8 @@ void MainWindow::databaseSelected(const QString &database){
     dlg->accept();
 }
 
-void MainWindow::doDatabaseSelection(Connection &conn){
-    vector<string> dbs = conn.listDatabases();
+void MainWindow::doDatabaseSelection(){
+    /*vector<string> dbs = conn.listDatabases();
     
     dlg = new QDialog;
     QFormLayout layout;
@@ -103,7 +101,7 @@ void MainWindow::doDatabaseSelection(Connection &conn){
     dlg->setLayout(&layout);
     dlg->setFixedSize(350, 100);            
     dlg->exec();
-    
+    */
     
 }
 

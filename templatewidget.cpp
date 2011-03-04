@@ -9,9 +9,7 @@
 #include "textedit.h"
 #include "combo.h"
 
-#include "couchdb/CouchDB.hpp"
 
-using namespace CouchDB;
 using namespace std;
 
 TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)

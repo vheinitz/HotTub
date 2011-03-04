@@ -44,6 +44,6 @@ int TextEdit::getLeftAlignmentHint(){
     return edit->x();
 }
 
-void TextEdit::loadDocument(CouchDB::Document doc){
+void TextEdit::loadDocument(Document doc){
     
 }

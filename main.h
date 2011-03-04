@@ -4,13 +4,11 @@
 
 #include <QApplication>
 #include <QtGui>
-#include "couchdb/CouchDB.hpp"
+#include "qcouch/document.h"
 
 #include "list.h"
 #include "model.h"
 #include "view.h"
-
-using namespace CouchDB;
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -23,8 +21,8 @@ public slots:
     void loadSelectedView(const QString &);
     void listSelectionChanged(int);
 private:
-    void doDatabaseSelection(Connection &conn);
-    void getViews(Database &);
+    void doDatabaseSelection();
+    void getViews();
     
     QDialog *dlg;
     QComboBox *viewsCombo;
@@ -32,7 +30,6 @@ private:
     List *list;
     Model *model;
     View *view;
-    Connection conn;
 };
 
 #endif

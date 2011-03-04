@@ -3,6 +3,7 @@
 #define DATEEDIT_H
 
 #include "editor.h"
+#include "qcouch/document.h"
 
 class DateEdit : public Editor {
     
@@ -19,7 +20,7 @@ public:
     int getLeftAlignmentHint();
     
     void setField(const QString &);
-    void loadDocument(CouchDB::Document doc);
+    void loadDocument(Document doc);
     
 private:
     QDateTimeEdit *edit;

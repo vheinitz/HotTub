@@ -3,6 +3,7 @@
 #define __COMBO_H
 
 #include "templatewidget.h"
+#include "qcouch/document.h"
 #include <QtGui>
 
 class Combo : public Editor {
@@ -20,7 +21,7 @@ public:
     int getLeftAlignmentHint();
     QAction* configurationAction(QToolBar *toolbar);
 
-    void loadDocument(CouchDB::Document doc);
+    void loadDocument(Document doc);
     
 private:
     QComboBox *edit;

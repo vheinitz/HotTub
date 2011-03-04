@@ -6,9 +6,6 @@
 #include <Qt>
 #include <QtGui>
 #include "editor.h"
-#include "couchdb/CouchDB.hpp"
-
-using namespace CouchDB;
 
 class TemplateWidget : public QWidget
 {

@@ -1,5 +1,6 @@
 
 #include "combo.h"
+#include "qcouch/document.h"
 #include <QtGui>
 
 Combo::Combo(QWidget *parent) : Editor(parent) {
@@ -51,7 +52,7 @@ QAction* Combo::configurationAction(QToolBar *toolbar){
     return new QAction(toolbar);
 }
 
-void Combo::loadDocument(CouchDB::Document doc){
+void Combo::loadDocument(Document doc){
     
 }
 

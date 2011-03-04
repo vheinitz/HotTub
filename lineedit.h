@@ -3,6 +3,7 @@
 #define LINEEDIT_H
 
 #include "templatewidget.h"
+#include "qcouch/document.h"
 
 class LineEdit : public Editor {
     
@@ -19,7 +20,7 @@ public:
     QSize sizeHint();
     int getLeftAlignmentHint();
     
-    void loadDocument(CouchDB::Document doc);
+    void loadDocument(Document doc);
     
 private:
     QLineEdit *edit;

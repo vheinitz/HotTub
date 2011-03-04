@@ -7,20 +7,15 @@ TARGET =
 DEPENDPATH += .
 INCLUDEPATH += .
 
+
+QT += network 
+
+
 macx {
     INCLUDEPATH += /opt/local/include
-    INCLUDEPATH += ../couchdbpp/include
-    
-    LIBS += -L../couchdbpp/src -lcouchdb++
+    LIBS += -L/opt/local/lib -lqjson
 }
 
-win32 {
-    INCLUDEPATH += ../couchdbpp/include
-    INCLUDEPATH += "C:/Program Files/boost/boost_1_44/"
-    INCLUDEPATH += ../Curl/include
-
-    LIBS += ../couchdbpp/couchdbpp.dll
-}
 
 CONFIG += DEBUG
 
@@ -38,7 +33,9 @@ HEADERS += action.h \
            textedit.h \
            view.h \
            model.h \
-           app.h 
+           app.h \
+           qcouch/document.h \
+           qcouch/qcouch.h
 SOURCES += attachments.cpp \
            combo.cpp \
            dateedit.cpp \
@@ -51,5 +48,8 @@ SOURCES += attachments.cpp \
            textedit.cpp \
            view.cpp \
            model.cpp \
-           app.cpp
+           app.cpp \
+           qcouch/document.cpp \
+           qcouch/qcouch.cpp
+           
 	   
