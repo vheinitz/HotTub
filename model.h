@@ -28,14 +28,15 @@ public:
 	QVariant headerData( int, Qt::Orientation, int ) const; 
 	Qt::ItemFlags flags( const QModelIndex & ) const;
 	
-    void setDocuments( QList<QVariant> );
+    void loadView( QString database, QString design, QString view );
 private:
 	int count;
     QList<QString> columns;
-    QList<QVariant> documents;
     
     QString database;
     QCouch &couch;
+    
+    QList<Document> documents;
 };
 
 

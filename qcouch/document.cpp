@@ -8,7 +8,7 @@ Document::Document(){
 
 Document::Document(QVariant& var){
     map = var.toMap();
-    id = map["id"].toString();
+    id = map["_id"].toString();
     revision = map["_rev"].toString();
     
 }

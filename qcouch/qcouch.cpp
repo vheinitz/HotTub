@@ -223,7 +223,7 @@ Document QCouch::getDocument(QString database, QString id, QString revision){
     
     QNetworkReply *reply = doGet(url);
     QByteArray results = reply->readAll();
-    
+    qDebug() << "Results from call to getDocument " << results;
     QVariant var = parser.parse(results);
     
     return Document(var);

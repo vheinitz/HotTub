@@ -55,11 +55,8 @@ void MainWindow::listSelectionChanged(int index){
 void MainWindow::loadSelectedView(const QString &view){
     QString design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
     
-    QList<QVariant> results = couch.getView(selectedDatabase, design, view);
-    
-    
     model = new Model(selectedDatabase, couch);
-    model->setDocuments(results);
+    model->loadView( selectedDatabase, design, view );
     
     list->setModel(model);
                    /*model = new Model();

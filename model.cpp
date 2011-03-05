@@ -19,24 +19,31 @@ couch(couch)
     database = _database;
 }
 
-void Model::setDocuments(QList<QVariant> _documents){
-    documents = _documents;
+
+
+void Model::loadView( QString database, QString design, QString view ) {
     
-    if (documents.size() > 0 ){
-        QVariant var = documents[0];
-        QVariantMap map = var.toMap();
+    QList<QVariant> results = couch.getView(database, design, view);
+    
+    foreach(QVariant result, results ) {
+        QVariantMap map = result.toMap();
         QString id = map["id"].toString();
         
         Document doc = couch.getDocument(database, id, "");
+        documents.append(doc);
+    }
+    
+    if ( documents.length() > 0 ) {
+        Document doc = documents[0];
         QVariantMap fields = doc.getMap();
-        
+    
         foreach(QString key, fields.keys() ){
             if ( key != "_id" && key != "_rev" ) {
                 columns.append(key);
             }
         }
-        
     }
+    
 }
 
 //void Model::loadDocuments(const QString& database, const QString& design, const QString &view){
@@ -101,11 +108,7 @@ void Model::getDocumentData(const int index) const {
 QVariant Model::data(const QModelIndex &index, int role) const {
 	if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
 		if ( index.row() < documents.size() ) {
-            QVariant var = documents[index.row()];
-            QVariantMap map = var.toMap();
-            QString id = map["id"].toString();
-            
-            Document doc = couch.getDocument(database, id, "");
+            Document doc = documents[index.row()];
             QVariantMap fields = doc.getMap();
             QString col = columns[index.column()];
             return fields[col];
@@ -129,7 +132,7 @@ QVariant Model::headerData( int section, Qt::Orientation orientation, int role )
 
 
 Qt::ItemFlags Model::flags( const QModelIndex &index ) const {
-	/*Q_UNUSED( index );
+	Q_UNUSED( index );
 	return Qt::ItemIsSelectable | Qt::ItemIsEnabled; 
-     */
+     
 }
