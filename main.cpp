@@ -41,8 +41,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
     getViews(selectedDatabase);
     
-    /*connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
-    
+    connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
+    /*
     connect(list, SIGNAL(selectionChanged(int)), this, SLOT(listSelectionChanged(int)));
      */
 }
@@ -53,9 +53,17 @@ void MainWindow::listSelectionChanged(int index){
 }
 
 void MainWindow::loadSelectedView(const QString &view){
-    /*model = new Model();
-    
     QString design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
+    
+    QList<QVariant> results = couch.getView(selectedDatabase, design, view);
+    
+    
+    model = new Model(selectedDatabase, couch);
+    model->setDocuments(results);
+    
+    list->setModel(model);
+                   /*model = new Model();
+    
     
     model->loadDocuments(selectedDatabase, design, view);
     list->setModel(model);*/
@@ -66,7 +74,14 @@ void MainWindow::getViews(QString& db){
     QList<QVariant> views = couch.listViews(db);
     foreach(QVariant view, views){
         qDebug() << view;
+        QVariantMap map = view.toMap();
+        QVariantMap doc = map["doc"].toMap();
+        QVariantMap views = doc["views"].toMap();
+        foreach(QString key, views.keys() ){
+            viewsCombo->addItem(key, map["id"]);
+        }
     }
+    viewsCombo->setCurrentIndex(-1);
     /*vector<Document> views = database.listViews();
     for (unsigned int i=0; i<views.size(); i++ ) {
         Document doc = views[i];
@@ -97,12 +112,10 @@ void MainWindow::doDatabaseSelection(){
     QFormLayout layout;
     
     QComboBox *combo = new QComboBox(dlg);
-    combo->insertItem(0, "");
-    int i = 0;
     foreach(QString str, dbs){
-        combo->insertItem(i+1, str);
-        i++;
+        combo->addItem(str);
     }
+    combo->setCurrentIndex(-1);
     
     connect(combo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(databaseSelected(const QString &)));
     

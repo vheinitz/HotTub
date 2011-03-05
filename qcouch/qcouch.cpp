@@ -157,7 +157,7 @@ QList<QString> QCouch::listDatabases(){
 }
 
 QList<QVariant> QCouch::listViews(QString database){
-    QString params = "startkey=\"_design/\"&endkey=\"_design0\"";
+    QString params = "startkey=\"_design/\"&endkey=\"_design0\"&include_docs=true";
     QString encodedParams = QUrl::toPercentEncoding(params, "=&", "/");
     
     QNetworkReply *reply = doGet("/" + database + "/_all_docs?" + encodedParams);
@@ -193,10 +193,11 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
     params.append("limit=");
     params.append(QString::number(limit));
     
+    
     qDebug() << params;
     QString encodedParams = QUrl::toPercentEncoding(params, "=&", "/");
     
-    QNetworkReply *reply = doGet("/" + database + "/_design/" + design + "/_view/" + view + "?" + encodedParams);
+    QNetworkReply *reply = doGet("/" + database + "/" + design + "/_view/" + view + "?" + encodedParams);
     
     QByteArray bytes = reply->readAll();
     QVariant var = parser.parse(bytes);
@@ -215,7 +216,12 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
 
 
 Document QCouch::getDocument(QString database, QString id, QString revision){
-    QNetworkReply *reply = doGet("/" + database + "/" + id + "?rev="+revision);
+    QString url = "/" + database + "/" + id;
+    if (revision.length() > 0 ){
+        url.append("?rev="+revision);
+    }
+    
+    QNetworkReply *reply = doGet(url);
     QByteArray results = reply->readAll();
     
     QVariant var = parser.parse(results);

@@ -7,6 +7,7 @@
 #include <QVariant>
 #include <vector>
 #include "qcouch/document.h"
+#include "qcouch/qcouch.h"
 
 using namespace std;
 
@@ -19,20 +20,22 @@ class Model : public QAbstractTableModel {
 	Q_OBJECT
 	
 public:
-	Model();
+	Model(QString, QCouch &);
 	
 	int rowCount(const QModelIndex &) const;
 	int columnCount(const QModelIndex &) const;
 	QVariant data(const QModelIndex &, int) const;
 	QVariant headerData( int, Qt::Orientation, int ) const; 
 	Qt::ItemFlags flags( const QModelIndex & ) const;
-    Document getDocument( const int) const;
-    void loadDocuments(const QString &, const QString&, const QString &);
 	
+    void setDocuments( QList<QVariant> );
 private:
 	int count;
-	vector<Document> docs;
-    vector<string> fields;
+    QList<QString> columns;
+    QList<QVariant> documents;
+    
+    QString database;
+    QCouch &couch;
 };
 
 
