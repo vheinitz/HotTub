@@ -86,20 +86,11 @@ void View::fileAttached(QUrl url) {
     
     QString canonicalFilename = url.toLocalFile();
     QString filename = canonicalFilename.split("/").last();
-    qDebug() << canonicalFilename;
-    qDebug() << filename;
-    qDebug() << currentDoc.getId();
-    qDebug() << couch.getHost();
     QFile file(canonicalFilename);
     if ( file.open(QIODevice::ReadOnly) ) {
         couch.putAttachment(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), filename, &file);
+        file.close();
     }
-    
-    //Document& doc = store->document();
-    
-    
-    //doc.uploadAttachment(filename.toStdString(), "application/octet-stream", canonicalFilename.toStdString()); 
-    
 }
 
 void View::removeAllWidgets(){
@@ -109,41 +100,6 @@ void View::removeAllWidgets(){
     widgets.clear();
     
 }
-
-/*
-void View::setStore(Store* _store){
-    store = _store;
-    
-    //Document& doc = store->document();
-    
-    removeAllWidgets();
-    //Variant v = doc.getData();
-    //Object obj = boost::any_cast<Object>(*v);
-    
-    
-    
-    Object::iterator it = obj.begin();
-    Object::iterator end = obj.end();
-    while( it != end ) {
-        if ( it->first.compare("_attachments") != 0 && it->first.compare("_rev") != 0 ) { 
-            TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
-            widget->setLabel(QString(it->first.c_str()));
-            widget->setField(QString(it->first.c_str()));
-            widget->loadDocument(doc);
-            QSize hint = widget->sizeHint();
-            widget->setGeometry(x,y,hint.width(), hint.height());
-            widget->show();
-            widgets.push_back(widget);
-        
-            y += 30;
-        }
-        it++;
-        
-    }
-    
-    attachments->loadDocument(doc);
-}
-*/
  
 void View::dragEnterEvent(QDragEnterEvent *event)
 {
