@@ -42,12 +42,16 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     getViews(selectedDatabase);
     
     connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
-    /*
+    
     connect(list, SIGNAL(selectionChanged(int)), this, SLOT(listSelectionChanged(int)));
-     */
+    
 }
 
 void MainWindow::listSelectionChanged(int index){
+    Document doc = model->getDocument(index);
+    
+    view->loadDocument(doc);
+    
     /*store = new Store(model->getDocument(index));
     view->setStore(store);*/
 }

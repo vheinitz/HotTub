@@ -17,8 +17,7 @@ using namespace std;
 
 View::View(QWidget* parent) : QWidget(parent)
  {
-         
-	 activeDragging = false;
+     activeDragging = false;
      activeWidget = NULL;
      
      actionWidget = NULL;
@@ -58,6 +57,28 @@ View::View(QWidget* parent) : QWidget(parent)
      
  }
 
+void View::loadDocument(Document doc){
+    int x = 50;
+    int y = 50;
+    
+    QVariantMap map = doc.getMap();
+    foreach(QString key, map.keys() ){
+        if ( key != "_rev" && key != "_attachments" ) {
+            TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+            widget->setLabel(key);
+            widget->setField(key);
+            widget->loadDocument(doc);
+            QSize hint = widget->sizeHint();
+            widget->setGeometry(x,y,hint.width(), hint.height());
+            widget->show();
+            widgets.push_back(widget);
+            
+            y += 30;
+            
+        }
+    }
+}
+
 void View::fileAttached(QUrl url) {
     
     QString canonicalFilename = url.toLocalFile();
@@ -88,8 +109,7 @@ void View::setStore(Store* _store){
     //Variant v = doc.getData();
     //Object obj = boost::any_cast<Object>(*v);
     
-    int x = 50;
-    int y = 50;
+    
     
     Object::iterator it = obj.begin();
     Object::iterator end = obj.end();

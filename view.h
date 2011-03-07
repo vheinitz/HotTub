@@ -24,7 +24,7 @@ using namespace std;
 			
  public:
      View( QWidget *parent = 0);
-     
+     void loadDocument(Document);
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
      void mousePressEvent(QMouseEvent *event);

@@ -29,6 +29,7 @@ public:
 	Qt::ItemFlags flags( const QModelIndex & ) const;
 	
     void loadView( QString database, QString design, QString view );
+    Document getDocument(int);
 private:
 	int count;
     QList<QString> columns;

@@ -53,6 +53,10 @@ int LineEdit::getLeftAlignmentHint(){
 
 
 void LineEdit::loadDocument(Document doc){
+    QVariantMap map = doc.getMap();
+    QVariant val = map[getField()];
+    edit->setText(val.toString());
+    
     /*Variant v = doc.getData();
     Object obj = boost::any_cast<Object>(*v);
     

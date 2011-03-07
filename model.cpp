@@ -92,6 +92,10 @@ int Model::columnCount(const QModelIndex &index) const {
     return columns.size();
 }
 
+Document Model::getDocument(int index){
+    return documents[index];
+}
+
 /*
 void Model::getDocumentData(const int index) const {
 	Variant v;
