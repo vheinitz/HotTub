@@ -38,7 +38,7 @@ void Model::loadView( QString database, QString design, QString view ) {
         QVariantMap fields = doc.getMap();
     
         foreach(QString key, fields.keys() ){
-            if ( key != "_id" && key != "_rev" ) {
+            if ( key != "_id" && key != "_rev" && key != "_attachments" ) {
                 columns.append(key);
             }
         }

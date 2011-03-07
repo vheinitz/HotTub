@@ -18,7 +18,7 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     setMinimumSize(1200, 600);
     
-    view = new View(this);
+    view = new View(couch, this);
     list = new List(this);
     
     view->setMinimumWidth(600);

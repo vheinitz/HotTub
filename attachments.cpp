@@ -277,7 +277,15 @@ void Attachments::openObject(){
 
 void Attachments::loadDocument(Document &doc){
     files.clear();
-        /*vector<Attachment> attachments = doc.getAllAttachments();
+    QList<QString> attachments = doc.getAttachmentIds();
+    foreach(QString attachment, attachments ) {
+        AttachedObject obj;
+        obj.name = attachment;
+        obj.type = ATTACHMENT;
+        files.append(obj);
+    }
+    
+    /*vector<Attachment> attachments = doc.getAllAttachments();
         for(unsigned int i=0; i<attachments.size(); i++){
             AttachedObject obj;
         

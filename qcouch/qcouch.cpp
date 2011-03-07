@@ -52,6 +52,10 @@ void QCouch::connect(QString _host, int _port){
     
 }
 
+QString QCouch::getHost(){
+    return host;
+}
+
 
 bool QCouch::hasErrors(QVariant var){
     QVariantMap map = var.toMap();
@@ -226,7 +230,7 @@ Document QCouch::getDocument(QString database, QString id, QString revision){
     qDebug() << "Results from call to getDocument " << results;
     QVariant var = parser.parse(results);
     
-    return Document(var);
+    return Document(database, var);
 }
 
 
@@ -296,14 +300,20 @@ void QCouch::putAttachment(QString database, QString id, QString revision, QStri
     QNetworkRequest request;
     QUrl url;
     
+    QEventLoop loop;
+    
     url.setUrl(host + "/" + database + "/" + id + "/" + name + "?rev=" + revision);
     url.setPort(port);
-    
     request.setUrl(url);
+    
     QNetworkReply *reply = manager->put( request, source );
     
     QObject::connect(reply, SIGNAL(uploadProgress(qint64, qint64)), this, SLOT(uploadProgressSlot(qint64, qint64)));
     QObject::connect(reply, SIGNAL(finished()), this, SLOT(uploadCompleteSlot()));
+    
+    QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    
+    loop.exec();
 }
 
 

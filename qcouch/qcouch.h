@@ -47,6 +47,7 @@ public:
     
     void connect(QString host, int port);
     
+    QString getHost();
     void createDatabase(QString name);
     void deleteDatabase(QString name);
     

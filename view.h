@@ -12,6 +12,7 @@
 #include "dateedit.h"
 #include "attachments.h"
 #include "qcouch/document.h"
+#include "qcouch/qcouch.h"
 
  class QDragEnterEvent;
  class QDropEvent;
@@ -23,7 +24,7 @@ using namespace std;
 	Q_OBJECT
 			
  public:
-     View( QWidget *parent = 0);
+     View( QCouch& couch, QWidget *parent = 0);
      void loadDocument(Document);
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
@@ -52,6 +53,7 @@ private slots:
  private:
      void buildHotSpots();
      
+     QCouch &couch;
      vector<int> leftAlignmentHints;
      vector<Hotspot> hotSpots;
 	 vector<TemplateWidget*> widgets;
@@ -92,6 +94,8 @@ private slots:
      QAction *addFieldAction;
      
      Attachments *attachments;
+     
+     Document currentDoc;
 
  };
 

@@ -10,11 +10,12 @@
 class Document {
 public:
     Document();
-    Document(QVariant &);
+    Document(QString database, QVariant &);
     
     QString getId();
     QString getKey();
     QString getRevision();
+    QString getSourceDatabase();
     QVariantMap getMap();
     
     QList<QString> getAttachmentIds();
@@ -26,6 +27,7 @@ private:
     QString id;
     QString key;
     QString revision;
+    QString database;
     QVariantMap map;
     
 };

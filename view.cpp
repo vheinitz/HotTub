@@ -15,7 +15,7 @@
 using namespace std;
 
 
-View::View(QWidget* parent) : QWidget(parent)
+View::View(QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
  {
      activeDragging = false;
      activeWidget = NULL;
@@ -60,6 +60,7 @@ View::View(QWidget* parent) : QWidget(parent)
 void View::loadDocument(Document doc){
     int x = 50;
     int y = 50;
+    currentDoc = doc;
     
     QVariantMap map = doc.getMap();
     foreach(QString key, map.keys() ){
@@ -77,12 +78,22 @@ void View::loadDocument(Document doc){
             
         }
     }
+    
+    attachments->loadDocument(doc);
 }
 
 void View::fileAttached(QUrl url) {
     
     QString canonicalFilename = url.toLocalFile();
     QString filename = canonicalFilename.split("/").last();
+    qDebug() << canonicalFilename;
+    qDebug() << filename;
+    qDebug() << currentDoc.getId();
+    qDebug() << couch.getHost();
+    QFile file(canonicalFilename);
+    if ( file.open(QIODevice::ReadOnly) ) {
+        couch.putAttachment(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), filename, &file);
+    }
     
     //Document& doc = store->document();
     
