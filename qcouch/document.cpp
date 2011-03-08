@@ -56,3 +56,8 @@ QString Document::getSourceDatabase(){
 void Document::setValue(QString key, QVariant value){
     map[key] = value;
 }
+
+void Document::setSourceDatabase(QString _database){
+    database = _database;
+
+}

@@ -65,6 +65,7 @@ public:
     void putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source); 
     void getAttachment(QString database, QString id, QString name);
     
+    QString getUUID();
     
 private slots:
     void connectFinished();

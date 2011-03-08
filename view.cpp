@@ -17,7 +17,7 @@
 using namespace std;
 
 
-View::View(QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
+View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
  {
      activeDragging = false;
      activeWidget = NULL;
@@ -63,7 +63,7 @@ View::View(QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      
      connect(saveButton, SIGNAL(clicked()), this, SLOT(saveDocument()));
      connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteDocument()));
-     
+     connect(newButton, SIGNAL(clicked()), this, SLOT(newDocument()));
      
      QVBoxLayout *buttonLayout1 = new QVBoxLayout;
      buttonLayout1->addSpacing(50);
@@ -82,6 +82,10 @@ View::View(QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      mainLayout->addLayout(buttonLayout1, 0, 1, Qt::AlignRight);
      setLayout(mainLayout);
      
+ }
+
+void View::setDatabase(QString _database){
+     database = _database;
      
  }
 
@@ -89,13 +93,16 @@ void View::saveDocument(){
     foreach(TemplateWidget* widget, widgets){
         widget->saveChanges(currentDoc);
     }
+    qDebug() << currentDoc.getSourceDatabase();
     couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
     emit documentUpdated(currentDoc);
 }
 
 void View::newDocument(){
     Document doc;
-    
+    doc.setId(couch.getUUID());
+    doc.setSourceDatabase(database);
+    loadDocument(doc);
     emit(documentAdded(doc));
 }
 
@@ -124,11 +131,24 @@ void View::loadDocument(Document doc){
     int x = 50;
     int y = 50;
     currentDoc = doc;
+    removeAllWidgets();
+    
+    TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+    widget->setLabel("Id");
+    widget->setField("_id");
+    widget->loadDocument(doc);
+    
+    QSize hint = widget->sizeHint();
+    widget->setGeometry(x,y,hint.width(), hint.height());
+    widget->show();
+    widgets.push_back(widget);
+    
+    y += 30;
     
     QVariantMap map = doc.getMap();
     foreach(QString key, map.keys() ){
-        if ( key != "_rev" && key != "_attachments" ) {
-            TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+        if ( key != "_rev" && key != "_attachments" && key != "_id" ) {
+            widget = new TemplateWidget(new LineEdit(this), this);
             widget->setLabel(key);
             widget->setField(key);
             widget->loadDocument(doc);
@@ -138,7 +158,6 @@ void View::loadDocument(Document doc){
             widgets.push_back(widget);
             
             y += 30;
-            
         }
     }
     

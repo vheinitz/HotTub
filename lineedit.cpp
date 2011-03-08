@@ -56,10 +56,13 @@ bool LineEdit::hasChanges(){
 }
 
 void LineEdit::loadDocument(Document doc){
-    QVariantMap map = doc.getMap();
-    QVariant val = map[getField()];
-    edit->setText(val.toString());
-    
+    if ( getField() == "_id" ) {
+        edit->setText(doc.getId());
+    } else {
+        QVariantMap map = doc.getMap();
+        QVariant val = map[getField()];
+        edit->setText(val.toString());
+    }
 }
 
 void LineEdit::saveChanges(Document& doc){

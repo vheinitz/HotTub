@@ -23,7 +23,7 @@ public:
     void setId(QString);
     void setRevision(QString);
     void setValue(QString key, QVariant value);
-    
+    void setSourceDatabase(QString);
 private:
     QString id;
     QString key;

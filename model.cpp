@@ -118,8 +118,9 @@ void Model::removeDocument(Document &document){
     }
 }
 
-void addDocument(Document &doc){
-    
+void Model::addDocument(Document &doc){
+    documents.append(doc);
+    emit layoutChanged();
 }
 
 
