@@ -21,7 +21,9 @@ public:
     
     void setField(const QString &);
     void loadDocument(Document doc);
+    void saveChanges(Document& doc);
     
+    bool hasChanges();
 private:
     QDateTimeEdit *edit;
     QLayout *layout;

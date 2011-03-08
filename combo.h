@@ -22,7 +22,9 @@ public:
     QAction* configurationAction(QToolBar *toolbar);
 
     void loadDocument(Document doc);
+    void saveChanges(Document& doc);
     
+    bool hasChanges();
 private:
     QComboBox *edit;
     QVBoxLayout* layout;

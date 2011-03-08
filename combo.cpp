@@ -56,4 +56,12 @@ void Combo::loadDocument(Document doc){
     
 }
 
+void Combo::saveChanges(Document& doc){
+    
+}
+
+bool Combo::hasChanges(){
+    return false;
+}
+
 

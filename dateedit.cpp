@@ -49,3 +49,12 @@ void DateEdit::setField(const QString &){
 void DateEdit::loadDocument(Document doc){
     
 }
+
+void DateEdit::saveChanges(Document& doc){
+    
+}
+
+
+bool DateEdit::hasChanges(){
+    return false;
+}

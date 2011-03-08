@@ -49,14 +49,14 @@ private slots:
      void hideAttachments();
      void showAttachments();
      void fileAttached(QUrl url);
-     
+     void saveDocument();
  private:
      void buildHotSpots();
      
      QCouch &couch;
      vector<int> leftAlignmentHints;
      vector<Hotspot> hotSpots;
-	 vector<TemplateWidget*> widgets;
+	 QList<TemplateWidget*> widgets;
      
      TemplateWidget* activeWidget;
      QWidget* actionWidget;

@@ -21,7 +21,8 @@ public:
     int getLeftAlignmentHint();
     
     void loadDocument(Document doc);
-    
+    void saveChanges(Document& doc);
+    bool hasChanges();
 private:
     QLineEdit *edit;
     QLayout *layout;

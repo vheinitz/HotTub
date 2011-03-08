@@ -251,7 +251,7 @@ Document QCouch::createDocument(QString database, QString id, QVariant var){
 bool QCouch::updateDocument(QString database, QString id, QString revision, QVariant var){
     const QByteArray bytes = serializer.serialize(var);
     QNetworkReply *reply = doPut("/" + database + "/" + id + "?rev=" + revision, bytes);
-    
+    qDebug() << bytes;
     QVariant ret = reply->readAll();
     return hasErrors(ret);
 }

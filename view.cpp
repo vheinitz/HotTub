@@ -2,6 +2,7 @@
 #include <QtGui>
 #include <QPen>
 #include <QPropertyAnimation>
+#include <QDebug>
 #include <iostream>
 
 #include "textedit.h"
@@ -11,6 +12,7 @@
 #include "hotspot.h"
 #include "action.h"
 #include "attachments.h"
+
 
 using namespace std;
 
@@ -54,8 +56,43 @@ View::View(QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      
      connect(attachments, SIGNAL(fileAttached(QUrl)), this, SLOT(fileAttached(QUrl)));
      
+     QPushButton *newButton = new QPushButton(tr("&New"));
+     QPushButton *saveButton = new QPushButton(tr("&Save"));
+     QPushButton *deleteButton = new QPushButton(tr("&Delete"));
+     
+     
+     connect(saveButton, SIGNAL(clicked()), this, SLOT(saveDocument()));
+     /*connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteContact()));
+     */
+     
+     QVBoxLayout *buttonLayout1 = new QVBoxLayout;
+     buttonLayout1->addSpacing(50);
+     buttonLayout1->addWidget(newButton, Qt::AlignTop);
+     buttonLayout1->addWidget(saveButton);
+     buttonLayout1->addWidget(deleteButton);
+     buttonLayout1->addStretch();
+     
+     
+  
+     
+     QGridLayout *mainLayout = new QGridLayout;
+     
+     QGridLayout *documentLayout = new QGridLayout;
+     mainLayout->addLayout(documentLayout, 0, 0);
+     mainLayout->addLayout(buttonLayout1, 0, 1, Qt::AlignRight);
+     setLayout(mainLayout);
+     
      
  }
+
+void View::saveDocument(){
+    foreach(TemplateWidget* widget, widgets){
+        widget->saveChanges(currentDoc);
+    }
+    qDebug() << currentDoc.getMap();
+    couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
+}
+
 
 void View::loadDocument(Document doc){
     int x = 50;
@@ -94,7 +131,7 @@ void View::fileAttached(QUrl url) {
 }
 
 void View::removeAllWidgets(){
-    for (unsigned int i=0; i<widgets.size(); i++) {
+    for (int i=0; i<widgets.size(); i++) {
         delete widgets[i];
     }
     widgets.clear();
@@ -167,7 +204,7 @@ void View::dropEvent(QDropEvent *event)
 
 void View::widgetRemoved(TemplateWidget *widget){
     
-    for (unsigned int i=0; i<widgets.size(); i++) {
+    for (int i=0; i<widgets.size(); i++) {
         if ( widgets[i] == widget ){
             widgets.erase(widgets.begin()+i);
         }
@@ -191,14 +228,14 @@ void View::beginEditing(){
     if (isEditing) {
         isEditing = false;
         beginEditingAction->setText("Start Editing");
-        for (unsigned int i=0; i<widgets.size(); i++) {
+        for (int i=0; i<widgets.size(); i++) {
             widgets[i]->stopEditing();
         }
     } else {
         isEditing = true;
         beginEditingAction->setText("Stop Editing");
         
-        for (unsigned int i=0; i<widgets.size(); i++) {
+        for (int i=0; i<widgets.size(); i++) {
             widgets[i]->beginEditing();
             /*QPushButton *button = new QPushButton("Change", this);
             button->move(widgets[i]->x()+widgets[i]->width()-20, widgets[i]->y()+widgets[i]->height()-20);
@@ -271,7 +308,7 @@ void showMessage(QString message){
 void View::buildHotSpots(){
     hotSpots.clear();
     int x,y,width,height;
-    for( unsigned int i=0; i<widgets.size(); i++){
+    for( int i=0; i<widgets.size(); i++){
         if ( widgets[i]->allowResizeWidth() ) {
             x=widgets[i]->x();
             y=widgets[i]->y();
@@ -321,7 +358,7 @@ void View::buildHotSpots(){
      activeAction = true;
      QWidget *child = NULL;
 	 
-     for (unsigned int i=0; i<widgets.size(); i++) {
+     for (int i=0; i<widgets.size(); i++) {
          if ( widgets[i]->geometry().contains(event->pos())) {
              child = widgets[i];
              continue;
@@ -436,7 +473,7 @@ void View::mouseMoveEvent( QMouseEvent *event ) {
         activeWidgetHintX = activeWidget->getLeftAlignmentHint();
         activeWidgetHintY = activeWidget->getTopAlignmentHint();
     }
-    for(unsigned int i=0; i<widgets.size(); i++){
+    for(int i=0; i<widgets.size(); i++){
         if ( widgets[i] != activeWidget ) {
             if ( activeWidget != NULL && !overrideHints ) {
                 int hint = widgets[i]->getLeftAlignmentHint() + widgets[i]->x();

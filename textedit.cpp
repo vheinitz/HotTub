@@ -47,3 +47,12 @@ int TextEdit::getLeftAlignmentHint(){
 void TextEdit::loadDocument(Document doc){
     
 }
+
+bool TextEdit::hasChanges(){
+    return false;
+}
+
+void TextEdit::saveChanges(Document& doc){
+    
+}
+

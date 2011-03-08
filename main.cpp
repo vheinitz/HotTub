@@ -51,9 +51,6 @@ void MainWindow::listSelectionChanged(int index){
     Document doc = model->getDocument(index);
     
     view->loadDocument(doc);
-    
-    /*store = new Store(model->getDocument(index));
-    view->setStore(store);*/
 }
 
 void MainWindow::loadSelectedView(const QString &view){
@@ -63,18 +60,13 @@ void MainWindow::loadSelectedView(const QString &view){
     model->loadView( selectedDatabase, design, view );
     
     list->setModel(model);
-                   /*model = new Model();
-    
-    
-    model->loadDocuments(selectedDatabase, design, view);
-    list->setModel(model);*/
+
 }
             
             
 void MainWindow::getViews(QString& db){
     QList<QVariant> views = couch.listViews(db);
     foreach(QVariant view, views){
-        qDebug() << view;
         QVariantMap map = view.toMap();
         QVariantMap doc = map["doc"].toMap();
         QVariantMap views = doc["views"].toMap();
@@ -83,22 +75,6 @@ void MainWindow::getViews(QString& db){
         }
     }
     viewsCombo->setCurrentIndex(-1);
-    /*vector<Document> views = database.listViews();
-    for (unsigned int i=0; i<views.size(); i++ ) {
-        Document doc = views[i];
-        Variant v = doc.getData();
-        Object obj = boost::any_cast<Object>(*v);
-        if ( obj.find("views") != obj.end() ) {
-            Object views = boost::any_cast<Object>(*obj["views"]);
-            Object::iterator it = views.begin();
-            Object::iterator end = views.end();
-            while( it != end ) {
-                viewsCombo->addItem(QString(it->first.c_str()), QString(doc.getID().c_str()));
-                it++;
-            }
-        }
-        
-    }*/
 }
 
 void MainWindow::databaseSelected(const QString &database){

@@ -22,6 +22,7 @@ public:
    
     void setId(QString);
     void setRevision(QString);
+    void setValue(QString key, QVariant value);
     
 private:
     QString id;

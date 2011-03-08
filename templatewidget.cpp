@@ -257,4 +257,7 @@ void TemplateWidget::loadDocument(Document doc){
     editor->loadDocument(doc);
 }
 
+void TemplateWidget::saveChanges(Document& doc){
+    editor->saveChanges(doc);
+}
 

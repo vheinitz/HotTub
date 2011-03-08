@@ -2,7 +2,7 @@
 
 #include "lineedit.h"
 #include "qcouch/document.h"
-
+#include <QDebug>
 using namespace std;
 
 LineEdit::LineEdit(QWidget *parent) : Editor(parent) {
@@ -51,26 +51,17 @@ int LineEdit::getLeftAlignmentHint(){
 }
 
 
+bool LineEdit::hasChanges(){
+    return false;
+}
 
 void LineEdit::loadDocument(Document doc){
     QVariantMap map = doc.getMap();
     QVariant val = map[getField()];
     edit->setText(val.toString());
     
-    /*Variant v = doc.getData();
-    Object obj = boost::any_cast<Object>(*v);
-    
-    string f = getField().toStdString();
-    
-    if ( obj.find(f) == obj.end() ) {
-        return;
-    }
-    boost::any val = *obj[f];
-    const type_info &t = val.type();
-    if(t == typeid(string)) {
-        string s = boost::any_cast<string>(val);
-        edit->setText(QString(s.c_str()));
-    } else if(t == typeid(int))
-        edit->setText(QString(boost::any_cast<int>(val)));
-        */
+}
+
+void LineEdit::saveChanges(Document& doc){
+    doc.setValue(getField(), QVariant(edit->text()));
 }
