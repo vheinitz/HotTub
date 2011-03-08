@@ -64,4 +64,8 @@ bool Combo::hasChanges(){
     return false;
 }
 
+void Combo::reset() {
+    
+}
+
 

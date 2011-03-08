@@ -23,7 +23,7 @@ public:
 
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
-    
+    void reset();
     bool hasChanges();
 private:
     QComboBox *edit;

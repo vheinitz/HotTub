@@ -58,3 +58,7 @@ void DateEdit::saveChanges(Document& doc){
 bool DateEdit::hasChanges(){
     return false;
 }
+
+void DateEdit::reset(){
+
+}

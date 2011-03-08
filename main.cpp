@@ -42,9 +42,25 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     getViews(selectedDatabase);
     
     connect(viewsCombo, SIGNAL(currentIndexChanged(const QString &)), this, SLOT(loadSelectedView(const QString &)));
-    
     connect(list, SIGNAL(selectionChanged(int)), this, SLOT(listSelectionChanged(int)));
     
+    connect(view, SIGNAL(documentUpdated(Document &)), this, SLOT(documentUpdated(Document &)));
+    connect(view, SIGNAL(documentDeleted(Document &)), this, SLOT(documentDeleted(Document &)));
+    connect(view, SIGNAL(documentAdded(Document &)), this, SLOT(documentAdded(Document &)));
+}
+
+void MainWindow::documentUpdated(Document& doc){
+    model->updateDocument(doc);
+}
+
+void MainWindow::documentDeleted(Document& doc){
+    model->removeDocument(doc);
+}
+
+void MainWindow::documentAdded(Document& doc){
+    QMessageBox box;
+    box.setText("Doc added");
+    box.exec();
 }
 
 void MainWindow::listSelectionChanged(int index){

@@ -23,6 +23,7 @@ public:
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
     bool hasChanges();
+    void reset();
 private:
     QLineEdit *edit;
     QLayout *layout;

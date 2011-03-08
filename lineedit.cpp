@@ -65,3 +65,8 @@ void LineEdit::loadDocument(Document doc){
 void LineEdit::saveChanges(Document& doc){
     doc.setValue(getField(), QVariant(edit->text()));
 }
+
+void LineEdit::reset(){
+    edit->setText("");
+
+}

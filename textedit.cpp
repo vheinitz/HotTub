@@ -56,3 +56,6 @@ void TextEdit::saveChanges(Document& doc){
     
 }
 
+void TextEdit::reset(){
+
+}

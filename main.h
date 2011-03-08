@@ -21,6 +21,10 @@ public slots:
     void databaseSelected(const QString &);    
     void loadSelectedView(const QString &);
     void listSelectionChanged(int);
+    void documentUpdated(Document &);
+    void documentDeleted(Document &);
+    void documentAdded(Document &);
+    
 private:
     void doDatabaseSelection();
     void getViews(QString&);

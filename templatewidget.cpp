@@ -261,3 +261,7 @@ void TemplateWidget::saveChanges(Document& doc){
     editor->saveChanges(doc);
 }
 
+void TemplateWidget::reset(){
+    editor->reset();
+}
+

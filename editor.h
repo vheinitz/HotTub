@@ -27,6 +27,7 @@ public:
     virtual bool hasChanges() = 0;
     virtual void loadDocument(Document doc) = 0;
     virtual void saveChanges(Document& doc) = 0;
+    virtual void reset() = 0;
     QAction* configurationAction(QToolBar *toolbar);
 
 

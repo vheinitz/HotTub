@@ -62,8 +62,8 @@ View::View(QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      
      
      connect(saveButton, SIGNAL(clicked()), this, SLOT(saveDocument()));
-     /*connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteContact()));
-     */
+     connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteDocument()));
+     
      
      QVBoxLayout *buttonLayout1 = new QVBoxLayout;
      buttonLayout1->addSpacing(50);
@@ -89,10 +89,36 @@ void View::saveDocument(){
     foreach(TemplateWidget* widget, widgets){
         widget->saveChanges(currentDoc);
     }
-    qDebug() << currentDoc.getMap();
     couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
+    emit documentUpdated(currentDoc);
 }
 
+void View::newDocument(){
+    Document doc;
+    
+    emit(documentAdded(doc));
+}
+
+void View::reset(){
+    foreach(TemplateWidget* widget, widgets){
+        widget->reset();
+    }
+}
+
+void View::deleteDocument(){
+    QMessageBox msgBox;
+    msgBox.setText("You are about to delete this document.");
+    msgBox.setInformativeText("Are you sure you want to continue?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::Yes);
+    msgBox.setIcon(QMessageBox::Question);
+    int ret = msgBox.exec();
+    if ( ret == QMessageBox::Yes ) {
+        couch.deleteDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision());
+        reset();
+        emit(documentDeleted(currentDoc));
+    }
+}
 
 void View::loadDocument(Document doc){
     int x = 50;

@@ -46,41 +46,6 @@ void Model::loadView( QString database, QString design, QString view ) {
     
 }
 
-//void Model::loadDocuments(const QString& database, const QString& design, const QString &view){
-    /*Database db = conn.getDatabase(database.toStdString());
-    vector<Document> documents = db.listView(design.toStdString(), view.toStdString(), "", "");
-    
-    docs.clear();
-    for (unsigned int i=0; i<documents.size(); i++) {
-        docs.push_back(documents[i]);
-    }
-    count = docs.size();
-	cache = new Variant[count];
-    
-    if ( count > 0 ) {
-        Object obj;
-        Document doc = documents[0];
-        boost::any value = doc.getValue();
-        cout << "Got value" << endl;
-        const type_info &type = value.type();
-        cout << "Got value type" << endl;
-        if ( type == typeid(Object) ){
-            obj = boost::any_cast<Object>(value);
-        } else {
-            Variant v = getDocumentData(0);
-            Object obj = boost::any_cast<Object>(*v);
-        }
-        
-        Object::iterator it = obj.begin();
-        Object::iterator end = obj.end();
-        while( it != end ) {
-            if ( it->first.compare("_id") != 0 && it->first.compare("_rev") != 0 && it->first.compare("_attachments") != 0 ) {
-                fields.push_back(it->first);
-            }
-            it++;
-        }
-    }*/
-//}
 
 int Model::rowCount(const QModelIndex &index) const {
 	Q_UNUSED(index);
@@ -96,18 +61,7 @@ Document Model::getDocument(int index){
     return documents[index];
 }
 
-/*
-void Model::getDocumentData(const int index) const {
-	Variant v;
-	Document doc = docs[index];
-	if ( cache[index] == NULL ){
-		v = doc.getData();
-		cache[index] = v;
-	} else {
-		v = cache[index];
-	}
-    return v;
-}*/
+
 
 QVariant Model::data(const QModelIndex &index, int role) const {
 	if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
@@ -140,3 +94,32 @@ Qt::ItemFlags Model::flags( const QModelIndex &index ) const {
 	return Qt::ItemIsSelectable | Qt::ItemIsEnabled; 
      
 }
+
+void Model::updateDocument(Document &document){
+    for( int i=0; i<documents.size(); i++){
+        if ( documents[i].getId() == document.getId() ) {
+            documents.replace(i, document);
+            const QModelIndex topLeft = createIndex(i, 0);
+            const QModelIndex bottomRight = createIndex(i, columns.size());
+            emit dataChanged(topLeft, bottomRight);
+            return;
+        }
+    }
+    
+}
+
+void Model::removeDocument(Document &document){
+    for( int i=0; i<documents.size(); i++){
+        if ( documents[i].getId() == document.getId() ) {
+            documents.removeAt(i);
+            emit layoutChanged();
+            return;
+        }
+    }
+}
+
+void addDocument(Document &doc){
+    
+}
+
+

@@ -30,6 +30,11 @@ public:
 	
     void loadView( QString database, QString design, QString view );
     Document getDocument(int);
+
+    void updateDocument(Document &doc);
+    void removeDocument(Document &doc);
+    void addDocument(Document &doc);
+
 private:
 	int count;
     QList<QString> columns;

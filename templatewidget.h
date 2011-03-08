@@ -17,6 +17,7 @@ public:
     void setField(const QString &);
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
+    void reset();
     
     void beginEditing();
     void stopEditing();

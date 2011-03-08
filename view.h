@@ -26,6 +26,7 @@ using namespace std;
  public:
      View( QCouch& couch, QWidget *parent = 0);
      void loadDocument(Document);
+     void reset();
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
      void mousePressEvent(QMouseEvent *event);
@@ -50,6 +51,13 @@ private slots:
      void showAttachments();
      void fileAttached(QUrl url);
      void saveDocument();
+     void deleteDocument();
+     void newDocument();
+signals:
+     void documentDeleted(Document& doc);
+     void documentUpdated(Document& doc);
+     void documentAdded(Document& doc);
+     
  private:
      void buildHotSpots();
      

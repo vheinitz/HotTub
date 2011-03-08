@@ -24,6 +24,7 @@ public:
     void saveChanges(Document& doc);
     
     bool hasChanges();
+    void reset();
 private:
     QDateTimeEdit *edit;
     QLayout *layout;
