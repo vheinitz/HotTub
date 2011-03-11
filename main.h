@@ -35,6 +35,9 @@ private:
     List *list;
     Model *model;
     View *view;
+
+    QString design;
+    QString currentView;
     
     QCouch couch;
 };

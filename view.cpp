@@ -110,7 +110,7 @@ void View::newDocument(){
     Document doc;
     doc.setId(couch.getUUID());
     doc.setSourceDatabase(database);
-    loadDocument(doc);
+    loadDocument("temp", "temp", doc);
     emit(documentAdded(doc));
 }
 
@@ -135,14 +135,14 @@ void View::deleteDocument(){
     }
 }
 
-void View::loadDocument(Document doc){
+void View::loadDocument(QString design, QString view, Document doc){
     int x = 50;
     int y = 50;
     currentDoc = doc;
     removeAllWidgets();
     
     TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
-    widget->setLabel("Id");
+    widget->setLabel("_id");
     widget->setField("_id");
     widget->loadDocument(doc);
     
@@ -152,6 +152,9 @@ void View::loadDocument(Document doc){
     widgets.push_back(widget);
     
     y += 30;
+
+    QList<QVariant> fields = QList<QVariant>();
+
     
     QVariantMap map = doc.getMap();
     foreach(QString key, map.keys() ){
@@ -164,10 +167,30 @@ void View::loadDocument(Document doc){
             widget->setGeometry(x,y,hint.width(), hint.height());
             widget->show();
             widgets.push_back(widget);
+
+
+	    QVariantMap fieldMap = QVariantMap();
+	    fieldMap["key"] = key;
+	    fieldMap["x"] = x;
+            fieldMap["y"] = y;
+            fieldMap["editor"] = "LineEdit"; 
+	
+	    fields.append(QVariant(fieldMap));
             
             y += 30;
         }
     }
+
+    QVariantMap _template = QVariantMap();
+    _template["fields"] = QVariant(fields);
+    _template["design"] = design;
+    _template["view"] = view;
+    _template["type"] = "template";
+
+    QVariant var = QVariant(_template);
+
+    QString id = couch.getUUID(); 
+    couch.createDocument(doc.getSourceDatabase(), id, var);
     
     attachments->loadDocument(doc);
 }

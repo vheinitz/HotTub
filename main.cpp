@@ -65,11 +65,12 @@ void MainWindow::documentAdded(Document& doc){
 void MainWindow::listSelectionChanged(int index){
     Document doc = model->getDocument(index);
     
-    view->loadDocument(doc);
+    view->loadDocument(design, currentView, doc);
 }
 
-void MainWindow::loadSelectedView(const QString &view){
-    QString design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
+void MainWindow::loadSelectedView(const QString& view){
+    design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
+    currentView = view;
     
     model = new Model(selectedDatabase, couch);
     model->loadView( selectedDatabase, design, view );

@@ -234,14 +234,18 @@ Document QCouch::getDocument(QString database, QString id, QString revision){
 
 Document QCouch::createDocument(QString database, QString id, QVariant var){
     const QByteArray bytes = serializer.serialize(var);
+    qDebug() << bytes;
     QNetworkReply * reply = doPut("/" + database + "/" + id, bytes);
     
     QVariant ret = parser.parse(reply->readAll());
     QVariantMap map = ret.toMap();
+
+    checkErrors(ret);
     
     Document doc;
     doc.setId(map["id"].toString());
     doc.setRevision(map["rev"].toString());
+
     
     return doc;
 }
