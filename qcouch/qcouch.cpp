@@ -57,13 +57,11 @@ QString QCouch::getHost(){
 }
 
 
-bool QCouch::hasErrors(QVariant var){
+void QCouch::checkErrors(QVariant var){
     QVariantMap map = var.toMap();
     
     if ( map.find("error") != map.end() ) {
 	throw CouchException(map["reason"].toString());
-    } else {
-        return false;
     }
 }
 
@@ -248,15 +246,22 @@ Document QCouch::createDocument(QString database, QString id, QVariant var){
     return doc;
 }
 
-bool QCouch::updateDocument(QString database, QString id, QString revision, QVariant var){
-    const QByteArray bytes = serializer.serialize(var);
+QString QCouch::updateDocument(QString database, QString id, QString revision, QVariant var){
     QString url = "/" + database + "/" + id;
     if ( revision.length() > 0 ) {
-        url.append("?rev="+revision);
+	QVariantMap map = var.toMap();
+	map["_rev"] = QVariant(revision);
+	var = QVariant(map);
     }
+    const QByteArray bytes = serializer.serialize(var);
     QNetworkReply *reply = doPut(url, bytes);
     QVariant ret = parser.parse(reply->readAll());
-    return hasErrors(ret);
+    checkErrors(ret);
+
+    QVariantMap map = ret.toMap();
+	qDebug() << map["rev"].toString();
+    return map["rev"].toString();
+
 }
 
 
@@ -264,8 +269,8 @@ bool QCouch::deleteDocument(QString database, QString id, QString revision){
     QNetworkReply *reply = doDelete("/" + database + "/" + id + "?rev=" + revision);
 
     QVariant var = parser.parse(reply->readAll());
-    return hasErrors(var);
-    
+    checkErrors(var);
+    return true;
 }
 
 void QCouch::uploadCompleteSlot(){

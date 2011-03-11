@@ -94,8 +94,9 @@ void View::saveDocument(){
         widget->saveChanges(currentDoc);
     }
     try {
-    couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
-    emit documentUpdated(currentDoc);
+      QString newRevision = couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
+      currentDoc.setRevision(newRevision);
+      emit documentUpdated(currentDoc);
     } catch (CouchException& e){
 	QString str = "Unable to update document -- ";
 	str.append(e.what());

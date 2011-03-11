@@ -59,7 +59,7 @@ public:
     Document getDocument(QString database, QString id, QString revision);
     
     Document createDocument(QString database, QString id, QVariant var);
-    bool updateDocument(QString database, QString id, QString revision, QVariant var); 
+    QString updateDocument(QString database, QString id, QString revision, QVariant var); 
     bool deleteDocument(QString database, QString id, QString revision);
     
     void putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source); 
@@ -83,7 +83,7 @@ signals:
     void downloadComplete();
     
 private:
-    bool hasErrors(QVariant response);
+    void checkErrors(QVariant response);
     
     QNetworkReply* doRequest(Method, QString, const QByteArray);
     QNetworkReply* doGet(QString url);
