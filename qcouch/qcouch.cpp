@@ -61,7 +61,7 @@ bool QCouch::hasErrors(QVariant var){
     QVariantMap map = var.toMap();
     
     if ( map.find("error") != map.end() ) {
-        return true;
+	throw CouchException(map["reason"].toString());
     } else {
         return false;
     }
@@ -255,8 +255,7 @@ bool QCouch::updateDocument(QString database, QString id, QString revision, QVar
         url.append("?rev="+revision);
     }
     QNetworkReply *reply = doPut(url, bytes);
-    qDebug() << bytes;
-    QVariant ret = reply->readAll();
+    QVariant ret = parser.parse(reply->readAll());
     return hasErrors(ret);
 }
 

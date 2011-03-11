@@ -93,10 +93,17 @@ void View::saveDocument(){
     foreach(TemplateWidget* widget, widgets){
         widget->saveChanges(currentDoc);
     }
-    qDebug() << currentDoc.getSourceDatabase();
+    try {
     couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
     emit documentUpdated(currentDoc);
+    } catch (CouchException& e){
+	QString str = "Unable to update document -- ";
+	str.append(e.what());
+	QMessageBox::critical(this, "Hot Tub", str);
+    }
+
 }
+ 
 
 void View::newDocument(){
     Document doc;
