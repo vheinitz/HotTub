@@ -4,4 +4,5 @@ qrc*
 Makefile*
 debug/*
 object_script*
+*.o
 
