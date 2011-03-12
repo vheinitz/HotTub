@@ -26,7 +26,9 @@ using namespace std;
  public:
      View( QCouch& couch, QWidget *parent = 0);
      void setDatabase(QString);
-     void loadDocument(QString, QString, Document);
+     void setDesign(QString);
+     void setView(QString);
+     void loadDocument(Document);
      void reset();
  protected:
 	 void mouseMoveEvent(QMouseEvent *event);
@@ -64,6 +66,8 @@ signals:
      
      QCouch &couch;
      QString database;
+     QString design;
+     QString view;
      vector<int> leftAlignmentHints;
      vector<Hotspot> hotSpots;
 	 QList<TemplateWidget*> widgets;

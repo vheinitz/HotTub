@@ -86,8 +86,15 @@ View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
 
 void View::setDatabase(QString _database){
      database = _database;
-     
  }
+
+void View::setDesign(QString _design){
+   design = _design;    
+}
+
+void View::setView(QString _view){
+   view = _view;   
+}
 
 void View::saveDocument(){
     foreach(TemplateWidget* widget, widgets){
@@ -110,7 +117,7 @@ void View::newDocument(){
     Document doc;
     doc.setId(couch.getUUID());
     doc.setSourceDatabase(database);
-    loadDocument("temp", "temp", doc);
+    loadDocument(doc);
     emit(documentAdded(doc));
 }
 
@@ -135,7 +142,7 @@ void View::deleteDocument(){
     }
 }
 
-void View::loadDocument(QString design, QString view, Document doc){
+void View::loadDocument(Document doc){
     int x = 50;
     int y = 50;
     currentDoc = doc;
