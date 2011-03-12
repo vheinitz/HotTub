@@ -79,6 +79,7 @@ QNetworkReply* QCouch::doRequest(Method method, QString _url, const QByteArray b
     QUrl url = QUrl();
     url.setEncodedUrl(QString(host + _url).toUtf8());
     url.setPort(port);
+    qDebug() << url;
     
     QTimer timeout;
     QEventLoop loop;
@@ -124,6 +125,7 @@ QNetworkReply* QCouch::doPut(QString url, const QByteArray bytes){
 
 QNetworkReply* QCouch::doGet(QString url){
     const QByteArray emptyBytes;
+    qDebug() << url;
     return doRequest(GET, url, emptyBytes);
 }
 
@@ -171,22 +173,24 @@ QList<QVariant> QCouch::listViews(QString database){
 
 
 
-QList<QVariant> QCouch::getView(QString database, QString design, QString view, QString startkey, QString endkey, int limit){
+QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, int limit){
   
     QString params;
 
-    if ( startkey.length() > 0 ) {
-        params.append("startkey=\"");
-        params.append(startkey);
-        params.append("\"");
+    if ( startkey != NULL ) {
+        params.append("startkey=");
+	const QByteArray startKeyBytes = serializer.serialize(startkey);
+	QString encodedStartKey = QUrl::toPercentEncoding(startKeyBytes);
+        params.append(encodedStartKey);
     }
-    if ( endkey.length() > 0 ){ 
+    if ( endkey != NULL ){ 
         if ( params.length() > 0 ) {
             params.append("&");
         }
-        params.append("endkey=\"");
-        params.append(endkey );
-        params.append("\"");
+        params.append("endkey=");
+	const QByteArray endKeyBytes = serializer.serialize(endkey);
+	QString encodedEndKey = QUrl::toPercentEncoding(endKeyBytes);
+        params.append(encodedEndKey);
     }
     
     if ( params.length() > 0 ){
@@ -199,7 +203,7 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
     qDebug() << params;
     QString encodedParams = QUrl::toPercentEncoding(params, "=&", "/");
     
-    QNetworkReply *reply = doGet("/" + database + "/" + design + "/_view/" + view + "?" + encodedParams);
+    QNetworkReply *reply = doGet("/" + database + "/" + design + "/_view/" + view + "?" + params);
     
     QByteArray bytes = reply->readAll();
     QVariant var = parser.parse(bytes);

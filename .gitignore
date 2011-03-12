@@ -6,4 +6,6 @@ debug/*
 object_script*
 *.o
 *.swp
+*.xcodeproj
+Info.plist
 

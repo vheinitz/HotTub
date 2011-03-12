@@ -140,58 +140,99 @@ void View::loadDocument(QString design, QString view, Document doc){
     int y = 50;
     currentDoc = doc;
     removeAllWidgets();
-    
-    TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
-    widget->setLabel("_id");
-    widget->setField("_id");
-    widget->loadDocument(doc);
-    
-    QSize hint = widget->sizeHint();
-    widget->setGeometry(x,y,hint.width(), hint.height());
-    widget->show();
-    widgets.push_back(widget);
-    
-    y += 30;
-
-    QList<QVariant> fields = QList<QVariant>();
-
-    
-    QVariantMap map = doc.getMap();
-    foreach(QString key, map.keys() ){
-        if ( key != "_rev" && key != "_attachments" && key != "_id" ) {
-            widget = new TemplateWidget(new LineEdit(this), this);
-            widget->setLabel(key);
-            widget->setField(key);
-            widget->loadDocument(doc);
-            QSize hint = widget->sizeHint();
-            widget->setGeometry(x,y,hint.width(), hint.height());
-            widget->show();
-            widgets.push_back(widget);
 
 
-	    QVariantMap fieldMap = QVariantMap();
-	    fieldMap["key"] = key;
-	    fieldMap["x"] = x;
-            fieldMap["y"] = y;
-            fieldMap["editor"] = "LineEdit"; 
+    /* Check for an existing template */
+    QList<QVariant> startKey = QList<QVariant>();
+    startKey.append(design);
+    startKey.append(view);
+
+    QList<QVariant> endKey = QList<QVariant>();
+    endKey.append(design);
+    endKey.append(view);
+    endKey.append(QVariantMap());
+
+    QList<QVariant> results = couch.getView(database, "_design/templates", "all", QVariant(startKey), QVariant(endKey));
+    if ( results.size() == 1 ) {
+	QVariantMap map = results[0].toMap();
+	Document templateDoc = couch.getDocument(database, map["id"].toString());
+	QVariantMap templateMap = templateDoc.getMap();
+	QList<QVariant> fields = templateMap["fields"].toList();
+	foreach(QVariant field, fields){
+	    QVariantMap fieldMap = field.toMap();
+	    QString editor = fieldMap["editor"].toString();
+	    QString key = fieldMap["key"].toString();
+	    int x = fieldMap["x"].toInt();
+	    int y = fieldMap["y"].toInt();
+
+	    if( editor == "LineEdit" ) {
+    		TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+    		widget->setLabel(key);
+    		widget->setField(key);
+    		widget->loadDocument(doc);
+    		
+    		QSize hint = widget->sizeHint();
+    		widget->setGeometry(x,y,hint.width(), hint.height());
+    		widget->show();
+    		widgets.push_back(widget);
+	    } 
+	}
+    } else {
+
+	/* None found, generate one */
+    
+    	TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+    	widget->setLabel("_id");
+    	widget->setField("_id");
+    	widget->loadDocument(doc);
+    	
+    	QSize hint = widget->sizeHint();
+    	widget->setGeometry(x,y,hint.width(), hint.height());
+    	widget->show();
+    	widgets.push_back(widget);
+    	
+    	y += 30;
 	
-	    fields.append(QVariant(fieldMap));
+    	QList<QVariant> fields = QList<QVariant>();
+	
+    	
+    	QVariantMap map = doc.getMap();
+    	   foreach(QString key, map.keys() ){
+        	if ( key != "_rev" && key != "_attachments" && key != "_id" ) {
+          	  widget = new TemplateWidget(new LineEdit(this), this);
+            	  widget->setLabel(key);
+            	  widget->setField(key);
+            	  widget->loadDocument(doc);
+            	  QSize hint = widget->sizeHint();
+            	  widget->setGeometry(x,y,hint.width(), hint.height());
+            	  widget->show();
+            	  widgets.push_back(widget);
+
+
+	          QVariantMap fieldMap = QVariantMap();
+	    	  fieldMap["key"] = key;
+	          fieldMap["x"] = x;
+                  fieldMap["y"] = y;
+                  fieldMap["editor"] = "LineEdit"; 
+	
+	          fields.append(QVariant(fieldMap));
             
-            y += 30;
+                  y += 30;
+            }
         }
+
+    	QVariantMap _template = QVariantMap();
+    	_template["fields"] = QVariant(fields);
+    	_template["design"] = design;
+    	_template["view"] = view;
+    	_template["type"] = "template";
+
+    	QVariant var = QVariant(_template);
+	
+    	QString id = couch.getUUID(); 
+    	couch.createDocument(doc.getSourceDatabase(), id, var);
     }
-
-    QVariantMap _template = QVariantMap();
-    _template["fields"] = QVariant(fields);
-    _template["design"] = design;
-    _template["view"] = view;
-    _template["type"] = "template";
-
-    QVariant var = QVariant(_template);
-
-    QString id = couch.getUUID(); 
-    couch.createDocument(doc.getSourceDatabase(), id, var);
-    
+    	
     attachments->loadDocument(doc);
 }
 
