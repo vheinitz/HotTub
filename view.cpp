@@ -121,6 +121,12 @@ void View::newDocument(){
     emit(documentAdded(doc));
 }
 
+
+void View::clear(){
+   removeAllWidgets();
+}
+
+
 void View::reset(){
     foreach(TemplateWidget* widget, widgets){
         widget->reset();
@@ -185,7 +191,6 @@ void View::loadDocument(Document doc){
 	    } 
 	}
     } else {
-
 	/* None found, generate one */
     
     	TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);

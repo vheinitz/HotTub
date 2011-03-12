@@ -63,9 +63,11 @@ void MainWindow::documentAdded(Document& doc){
 }
 
 void MainWindow::listSelectionChanged(int index){
-    Document doc = model->getDocument(index);
+    if( index >= 0 ){
+      Document doc = model->getDocument(index);
+      view->loadDocument(doc);
+    }
     
-    view->loadDocument(doc);
 }
 
 void MainWindow::loadSelectedView(const QString& selectedView){
@@ -74,7 +76,7 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     
     model = new Model(selectedDatabase, couch);
     model->loadView( selectedDatabase, design, selectedView );
-    
+    view->clear(); 
     view->setDesign(design);
     view->setView(selectedView);
 

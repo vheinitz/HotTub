@@ -174,7 +174,6 @@ QList<QVariant> QCouch::listViews(QString database){
 
 
 QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, int limit){
-  
     QString params;
 
     if ( startkey != NULL ) {
@@ -198,10 +197,6 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
     }
     params.append("limit=");
     params.append(QString::number(limit));
-    
-    
-    qDebug() << params;
-    QString encodedParams = QUrl::toPercentEncoding(params, "=&", "/");
     
     QNetworkReply *reply = doGet("/" + database + "/" + design + "/_view/" + view + "?" + params);
     
