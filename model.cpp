@@ -21,9 +21,20 @@ couch(couch)
 
 
 
-void Model::loadView( QString database, QString design, QString view ) {
+void Model::loadView( QString database, QString design, QString view, QString startkey, QString endkey ) {
     
-    QList<QVariant> results = couch.getView(database, design, view);
+    QVariant startKeyVariant = NULL;
+    QVariant endKeyVariant = NULL;
+    if( startkey.size() > 0 ) {
+       startKeyVariant = QVariant(startkey);
+    }
+    if( endkey.size() > 0 ){
+       endKeyVariant = QVariant(endkey);
+    }
+   
+    documents.clear();
+    columns.clear();
+    QList<QVariant> results = couch.getView(database, design, view, startKeyVariant, endKeyVariant);
     
     foreach(QVariant result, results ) {
         QVariantMap map = result.toMap();
@@ -43,7 +54,7 @@ void Model::loadView( QString database, QString design, QString view ) {
             }
         }
     }
-    
+    emit layoutChanged();
 }
 
 

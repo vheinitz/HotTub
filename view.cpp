@@ -73,11 +73,9 @@ View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      buttonLayout1->addStretch();
      
      
-  
-     
      QGridLayout *mainLayout = new QGridLayout;
      
-     QGridLayout *documentLayout = new QGridLayout;
+     documentLayout = new QGridLayout;
      mainLayout->addLayout(documentLayout, 0, 0);
      mainLayout->addLayout(buttonLayout1, 0, 1, Qt::AlignRight);
      setLayout(mainLayout);
@@ -153,7 +151,6 @@ void View::loadDocument(Document doc){
     int y = 50;
     currentDoc = doc;
     removeAllWidgets();
-
 
     /* Check for an existing template */
     QList<QVariant> startKey = QList<QVariant>();

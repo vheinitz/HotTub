@@ -71,7 +71,9 @@ signals:
      QString view;
      vector<int> leftAlignmentHints;
      vector<Hotspot> hotSpots;
-	 QList<TemplateWidget*> widgets;
+     QList<TemplateWidget*> widgets;
+ 
+     QGridLayout *documentLayout;
      
      TemplateWidget* activeWidget;
      QWidget* actionWidget;
@@ -109,7 +111,6 @@ signals:
      QAction *addFieldAction;
      
      Attachments *attachments;
-     
      Document currentDoc;
 
  };

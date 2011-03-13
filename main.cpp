@@ -29,8 +29,24 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     layout->setContentsMargins(5,5,5,5);
     QVBoxLayout *leftLayout = new QVBoxLayout;
     viewsCombo = new QComboBox;
-    leftLayout->addWidget(viewsCombo, 1, Qt::AlignRight);
-    leftLayout->addWidget(list);
+
+    startKeyEdit = new QLineEdit;
+    endKeyEdit = new QLineEdit;
+    QLabel *startLabel = new QLabel("Start Key:");
+    QLabel *endLabel = new QLabel("End Key:");
+
+    QHBoxLayout *topLayout = new QHBoxLayout;
+    topLayout->setSpacing(5);
+    topLayout->addWidget(viewsCombo);
+    topLayout->addStretch();
+    topLayout->addWidget(startLabel);
+    topLayout->addWidget(startKeyEdit);
+    topLayout->addWidget(endLabel);
+    topLayout->addWidget(endKeyEdit);
+    leftLayout->setSpacing(5);
+    leftLayout->addLayout(topLayout, 0);
+
+    leftLayout->addWidget(list, 1);
     layout->addLayout(leftLayout, 0, 0);
     layout->addWidget(view, 0, 1);
     setLayout(layout);
@@ -48,6 +64,25 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     connect(view, SIGNAL(documentUpdated(Document &)), this, SLOT(documentUpdated(Document &)));
     connect(view, SIGNAL(documentDeleted(Document &)), this, SLOT(documentDeleted(Document &)));
     connect(view, SIGNAL(documentAdded(Document &)), this, SLOT(documentAdded(Document &)));
+
+
+    connect(startKeyEdit, SIGNAL(textChanged(const QString &)), this, SLOT(startKeyChanged(const QString &)));
+    connect(endKeyEdit, SIGNAL(textChanged(const QString &)), this, SLOT(endKeyChanged(const QString &)));
+
+}
+
+void MainWindow::startKeyChanged(const QString& text){
+    Q_UNUSED(text);
+    QString startkey = startKeyEdit->text();
+    QString endkey = endKeyEdit->text();
+    model->loadView( selectedDatabase, design, currentView, startkey, endkey );
+}
+
+void MainWindow::endKeyChanged(const QString& text) {
+    Q_UNUSED(text);
+    QString startkey = startKeyEdit->text();
+    QString endkey = endKeyEdit->text();
+    model->loadView( selectedDatabase, design, currentView, startkey, endkey );
 }
 
 void MainWindow::documentUpdated(Document& doc){
@@ -75,7 +110,9 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     currentView = selectedView;
     
     model = new Model(selectedDatabase, couch);
-    model->loadView( selectedDatabase, design, selectedView );
+    QString startkey = startKeyEdit->text();
+    QString endkey = endKeyEdit->text();
+    model->loadView( selectedDatabase, design, selectedView, startkey, endkey );
     view->clear(); 
     view->setDesign(design);
     view->setView(selectedView);

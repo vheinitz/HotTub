@@ -24,13 +24,17 @@ public slots:
     void documentUpdated(Document &);
     void documentDeleted(Document &);
     void documentAdded(Document &);
-    
+    void startKeyChanged(const QString &);    
+    void endKeyChanged(const QString &);
 private:
     void doDatabaseSelection();
     void getViews(QString&);
     
     QDialog *dlg;
     QComboBox *viewsCombo;
+    QLineEdit *startKeyEdit;
+    QLineEdit *endKeyEdit;
+
     QString selectedDatabase;
     List *list;
     Model *model;

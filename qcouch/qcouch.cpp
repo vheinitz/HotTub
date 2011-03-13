@@ -79,7 +79,6 @@ QNetworkReply* QCouch::doRequest(Method method, QString _url, const QByteArray b
     QUrl url = QUrl();
     url.setEncodedUrl(QString(host + _url).toUtf8());
     url.setPort(port);
-    qDebug() << url;
     
     QTimer timeout;
     QEventLoop loop;
@@ -125,7 +124,6 @@ QNetworkReply* QCouch::doPut(QString url, const QByteArray bytes){
 
 QNetworkReply* QCouch::doGet(QString url){
     const QByteArray emptyBytes;
-    qDebug() << url;
     return doRequest(GET, url, emptyBytes);
 }
 
@@ -197,6 +195,8 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
     }
     params.append("limit=");
     params.append(QString::number(limit));
+
+    QList<QVariant> results;
     
     QNetworkReply *reply = doGet("/" + database + "/" + design + "/_view/" + view + "?" + params);
     
@@ -204,15 +204,13 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
     QVariant var = parser.parse(bytes);
     QVariantMap map = var.toMap();
     
-    QList<QVariant> results;
     
     QList<QVariant> rows = map["rows"].toList();
     foreach(QVariant row, rows){
         results.append(row);
     }
-    
+
     return results;
-    
 }
 
 
@@ -224,7 +222,6 @@ Document QCouch::getDocument(QString database, QString id, QString revision){
     
     QNetworkReply *reply = doGet(url);
     QByteArray results = reply->readAll();
-    qDebug() << "Results from call to getDocument " << results;
     QVariant var = parser.parse(results);
     
     return Document(database, var);
@@ -233,7 +230,6 @@ Document QCouch::getDocument(QString database, QString id, QString revision){
 
 Document QCouch::createDocument(QString database, QString id, QVariant var){
     const QByteArray bytes = serializer.serialize(var);
-    qDebug() << bytes;
     QNetworkReply * reply = doPut("/" + database + "/" + id, bytes);
     
     QVariant ret = parser.parse(reply->readAll());
@@ -262,7 +258,6 @@ QString QCouch::updateDocument(QString database, QString id, QString revision, Q
     checkErrors(ret);
 
     QVariantMap map = ret.toMap();
-	qDebug() << map["rev"].toString();
     return map["rev"].toString();
 
 }
