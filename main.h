@@ -26,6 +26,7 @@ public slots:
     void documentAdded(Document &);
     void startKeyChanged(const QString &);    
     void endKeyChanged(const QString &);
+    void updateView();
 private:
     void doDatabaseSelection();
     void getViews(QString&);
@@ -44,6 +45,7 @@ private:
     QString currentView;
     
     QCouch couch;
+    QTimer keyTimer;
 };
 
 #endif

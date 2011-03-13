@@ -66,23 +66,31 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     connect(view, SIGNAL(documentAdded(Document &)), this, SLOT(documentAdded(Document &)));
 
 
+    keyTimer.setSingleShot(true);
+    connect(&keyTimer, SIGNAL(timeout()), this, SLOT(updateView()));
+
     connect(startKeyEdit, SIGNAL(textChanged(const QString &)), this, SLOT(startKeyChanged(const QString &)));
     connect(endKeyEdit, SIGNAL(textChanged(const QString &)), this, SLOT(endKeyChanged(const QString &)));
 
 }
 
-void MainWindow::startKeyChanged(const QString& text){
-    Q_UNUSED(text);
+
+void MainWindow::updateView(){
     QString startkey = startKeyEdit->text();
     QString endkey = endKeyEdit->text();
     model->loadView( selectedDatabase, design, currentView, startkey, endkey );
 }
 
+void MainWindow::startKeyChanged(const QString& text){
+    Q_UNUSED(text);
+    keyTimer.stop();
+    keyTimer.start(500);
+}
+
 void MainWindow::endKeyChanged(const QString& text) {
     Q_UNUSED(text);
-    QString startkey = startKeyEdit->text();
-    QString endkey = endKeyEdit->text();
-    model->loadView( selectedDatabase, design, currentView, startkey, endkey );
+    keyTimer.stop();
+    keyTimer.start(500);
 }
 
 void MainWindow::documentUpdated(Document& doc){
