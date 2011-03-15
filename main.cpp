@@ -34,15 +34,16 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     endKeyEdit = new QLineEdit;
     QLabel *startLabel = new QLabel("Start Key:");
     QLabel *endLabel = new QLabel("End Key:");
-
+	descending = new QCheckBox("Desc", this);
     QHBoxLayout *topLayout = new QHBoxLayout;
     topLayout->setSpacing(5);
     topLayout->addWidget(viewsCombo);
     topLayout->addStretch();
-    topLayout->addWidget(startLabel);
+	topLayout->addWidget(startLabel);
     topLayout->addWidget(startKeyEdit);
     topLayout->addWidget(endLabel);
     topLayout->addWidget(endKeyEdit);
+    topLayout->addWidget(descending);
     leftLayout->setSpacing(5);
     leftLayout->addLayout(topLayout, 0);
 
@@ -65,6 +66,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     connect(view, SIGNAL(documentDeleted(Document &)), this, SLOT(documentDeleted(Document &)));
     connect(view, SIGNAL(documentAdded(Document &)), this, SLOT(documentAdded(Document &)));
 
+    connect(descending, SIGNAL(stateChanged(int)), this, SLOT(descendingCheckStateChanged(int)));
 
     keyTimer.setSingleShot(true);
     connect(&keyTimer, SIGNAL(timeout()), this, SLOT(updateView()));
@@ -78,7 +80,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 void MainWindow::updateView(){
     QString startkey = startKeyEdit->text();
     QString endkey = endKeyEdit->text();
-    model->loadView( selectedDatabase, design, currentView, startkey, endkey );
+    bool desc = descending->checkState() == Qt::Checked;
+    model->loadView( selectedDatabase, design, currentView, startkey, endkey, desc);
     list->resizeColumnsToContents();
 }
 
@@ -86,6 +89,11 @@ void MainWindow::startKeyChanged(const QString& text){
     Q_UNUSED(text);
     keyTimer.stop();
     keyTimer.start(500);
+}
+
+void MainWindow::descendingCheckStateChanged(int state){
+    Q_UNUSED(state);
+    updateView();
 }
 
 void MainWindow::endKeyChanged(const QString& text) {
@@ -121,7 +129,8 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     model = new Model(selectedDatabase, couch);
     QString startkey = startKeyEdit->text();
     QString endkey = endKeyEdit->text();
-    model->loadView( selectedDatabase, design, selectedView, startkey, endkey );
+    bool desc = descending->checkState() == Qt::Checked;
+    model->loadView( selectedDatabase, design, selectedView, startkey, endkey, desc );
     view->clear(); 
     view->setDesign(design);
     view->setView(selectedView);

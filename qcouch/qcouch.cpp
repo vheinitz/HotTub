@@ -171,7 +171,7 @@ QList<QVariant> QCouch::listViews(QString database){
 
 
 
-QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, int limit){
+QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, bool descending, int limit){
     QString params;
 
     if ( startkey.isValid() ) {
@@ -196,6 +196,11 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
     params.append("limit=");
     params.append(QString::number(limit));
 
+    if ( descending ) {
+        params.append("&descending=true");
+    }
+    
+    
     QList<QVariant> results;
     
     QNetworkReply *reply = doGet("/" + database + "/" + design + "/_view/" + view + "?" + params);

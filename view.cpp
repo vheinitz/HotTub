@@ -255,8 +255,6 @@ void View::fileAttached(QUrl url) {
         file.close();
     }
     
-    emit documentUpdated(doc);
-    
     
 }
 

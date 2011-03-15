@@ -27,6 +27,7 @@ public slots:
     void startKeyChanged(const QString &);    
     void endKeyChanged(const QString &);
     void updateView();
+    void descendingCheckStateChanged(int);
 private:
     void doDatabaseSelection();
     void getViews(QString&);
@@ -35,6 +36,7 @@ private:
     QComboBox *viewsCombo;
     QLineEdit *startKeyEdit;
     QLineEdit *endKeyEdit;
+    QCheckBox *descending;
 
     QString selectedDatabase;
     List *list;

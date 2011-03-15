@@ -28,7 +28,7 @@ public:
 	QVariant headerData( int, Qt::Orientation, int ) const; 
 	Qt::ItemFlags flags( const QModelIndex & ) const;
 	
-    void loadView( QString database, QString design, QString view, QString startkey, QString endkey );
+    void loadView( QString database, QString design, QString view, QString startkey, QString endkey, bool descending );
     Document getDocument(int);
 
     void updateDocument(Document &doc);
