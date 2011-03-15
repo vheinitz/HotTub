@@ -254,6 +254,10 @@ void View::fileAttached(QUrl url) {
         couch.putAttachment(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), filename, &file);
         file.close();
     }
+    
+    emit documentUpdated(doc);
+    
+    
 }
 
 void View::removeAllWidgets(){

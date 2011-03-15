@@ -174,13 +174,13 @@ QList<QVariant> QCouch::listViews(QString database){
 QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, int limit){
     QString params;
 
-    if ( startkey != NULL ) {
+    if ( startkey.isValid() ) {
         params.append("startkey=");
 	const QByteArray startKeyBytes = serializer.serialize(startkey);
 	QString encodedStartKey = QUrl::toPercentEncoding(startKeyBytes);
         params.append(encodedStartKey);
     }
-    if ( endkey != NULL ){ 
+    if ( endkey.isValid() ){ 
         if ( params.length() > 0 ) {
             params.append("&");
         }

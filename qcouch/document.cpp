@@ -11,6 +11,9 @@ Document::Document(QString _database, QVariant& var){
     map = var.toMap();
     id = map["_id"].toString();
     revision = map["_rev"].toString();
+    if ( map.find("_attachments") != map.end() ) {
+        attachments = map["_attachments"];
+    }
     database = _database;
 }
 
@@ -28,6 +31,14 @@ QString Document::getRevision(){
 
 QVariantMap Document::getMap(){
     return map;
+}
+
+QVariant Document::getAttachments(){
+    return attachments;
+}
+
+void Document::setAttachments(QVariant _attachments){
+    attachments = _attachments;
 }
 
 QList<QString> Document::getAttachmentIds(){

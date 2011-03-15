@@ -23,8 +23,8 @@ couch(couch)
 
 void Model::loadView( QString database, QString design, QString view, QString startkey, QString endkey ) {
     
-    QVariant startKeyVariant = NULL;
-    QVariant endKeyVariant = NULL;
+    QVariant startKeyVariant;
+    QVariant endKeyVariant;
     if( startkey.size() > 0 ) {
        startKeyVariant = QVariant(startkey);
     }

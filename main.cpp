@@ -79,6 +79,7 @@ void MainWindow::updateView(){
     QString startkey = startKeyEdit->text();
     QString endkey = endKeyEdit->text();
     model->loadView( selectedDatabase, design, currentView, startkey, endkey );
+    list->resizeColumnsToContents();
 }
 
 void MainWindow::startKeyChanged(const QString& text){
@@ -126,6 +127,7 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     view->setView(selectedView);
 
     list->setModel(model);
+    list->resizeColumnsToContents();
 }
             
             

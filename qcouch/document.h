@@ -15,6 +15,7 @@ public:
     QString getId();
     QString getKey();
     QString getRevision();
+    QVariant getAttachments();
     QString getSourceDatabase();
     QVariantMap getMap();
     
@@ -23,6 +24,7 @@ public:
     void setId(QString);
     void setRevision(QString);
     void setValue(QString key, QVariant value);
+    void setAttachments(QVariant);
     void setSourceDatabase(QString);
 private:
     QString id;
@@ -30,6 +32,7 @@ private:
     QString revision;
     QString database;
     QVariantMap map;
+    QVariant attachments;
     
 };
 
