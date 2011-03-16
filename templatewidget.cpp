@@ -248,8 +248,13 @@ void TemplateWidget::leaveEvent(QEvent *event){
     }
 }
 
-void TemplateWidget::setField(const QString &field){
+void TemplateWidget::setField(const QString& _field){
+    field = _field;
     editor->setField(field);
+}
+
+QString TemplateWidget::getField(){
+    return field;
 }
 
 

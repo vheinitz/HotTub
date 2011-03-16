@@ -45,7 +45,7 @@ using namespace std;
      void resizeEvent(QResizeEvent *event);
      
      void removeAllWidgets();
-   
+     void saveTemplate();
 private slots:
      void beginEditing();
      void addField();
@@ -57,6 +57,7 @@ private slots:
      void saveDocument();
      void deleteDocument();
      void newDocument();
+
 signals:
      void documentDeleted(Document& doc);
      void documentUpdated(Document& doc);
@@ -64,6 +65,7 @@ signals:
      
  private:
      void buildHotSpots();
+     Document findTemplate();
      
      QCouch &couch;
      QString database;

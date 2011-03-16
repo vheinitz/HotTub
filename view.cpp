@@ -60,12 +60,17 @@ View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      QPushButton *saveButton = new QPushButton(tr("&Save"));
      QPushButton *deleteButton = new QPushButton(tr("&Delete"));
      
-     
+     QToolButton *editButton = new QToolButton(this);
+     editButton->setIcon(QIcon("icons/edit.png"));
+
      connect(saveButton, SIGNAL(clicked()), this, SLOT(saveDocument()));
      connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteDocument()));
      connect(newButton, SIGNAL(clicked()), this, SLOT(newDocument()));
      
+     connect(editButton, SIGNAL(clicked()), this, SLOT(beginEditing()));
+     
      QVBoxLayout *buttonLayout1 = new QVBoxLayout;
+     buttonLayout1->addWidget(editButton, Qt::AlignTop);
      buttonLayout1->addSpacing(50);
      buttonLayout1->addWidget(newButton, Qt::AlignTop);
      buttonLayout1->addWidget(saveButton);
@@ -99,13 +104,13 @@ void View::saveDocument(){
         widget->saveChanges(currentDoc);
     }
     try {
-      QString newRevision = couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
-      currentDoc.setRevision(newRevision);
-      emit documentUpdated(currentDoc);
+        QString newRevision = couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
+        currentDoc.setRevision(newRevision);
+        emit documentUpdated(currentDoc);
     } catch (CouchException& e){
-	QString str = "Unable to update document -- ";
-	str.append(e.what());
-	QMessageBox::critical(this, "Hot Tub", str);
+        QString str = "Unable to update document -- ";
+        str.append(e.what());
+        QMessageBox::critical(this, "Hot Tub", str);
     }
 
 }
@@ -146,49 +151,93 @@ void View::deleteDocument(){
     }
 }
 
+
+void View::saveTemplate(){
+    
+    QList<QVariant> fields = QList<QVariant>();
+	
+    for(int i=0; i<widgets.size(); i++){
+        QVariantMap fieldMap = QVariantMap();
+        TemplateWidget* widget = widgets[i];
+        
+        fieldMap["key"] = widget->getField();
+        fieldMap["x"] = widget->x();
+        fieldMap["y"] = widget->y();
+        fieldMap["editor"] = "LineEdit"; 
+        
+        fields.append(QVariant(fieldMap));   
+    }
+    
+    
+    QVariantMap _template = QVariantMap();
+    _template["fields"] = QVariant(fields);
+    _template["design"] = design;
+    _template["view"] = view;
+    _template["type"] = "template";
+    
+    QVariant var = QVariant(_template);
+	
+    try {
+        Document doc = findTemplate();
+        couch.updateDocument(database, doc.getId(), doc.getRevision(), var);
+    }catch(int){
+        QString id = couch.getUUID(); 
+    	couch.createDocument(database, id, var);
+    }
+}
+
+Document View::findTemplate(){
+    
+    /* Check for an existing template */
+    QList<QVariant> startKey = QList<QVariant>();
+    startKey.append(design);
+    startKey.append(view);
+    
+    QList<QVariant> endKey = QList<QVariant>();
+    endKey.append(design);
+    endKey.append(view);
+    endKey.append(QVariantMap());
+    
+    QList<QVariant> results = couch.getView(database, "_design/templates", "all", QVariant(startKey), QVariant(endKey));
+    if ( results.size() == 1 ) {
+        QVariantMap map = results[0].toMap();
+        Document templateDoc = couch.getDocument(database, map["id"].toString());
+        return templateDoc;
+    }
+    throw 2;
+}
+
 void View::loadDocument(Document doc){
     int x = 50;
     int y = 50;
     currentDoc = doc;
     removeAllWidgets();
 
-    /* Check for an existing template */
-    QList<QVariant> startKey = QList<QVariant>();
-    startKey.append(design);
-    startKey.append(view);
+    try {
+        Document templateDoc = findTemplate();
+        QVariantMap templateMap = templateDoc.getMap();
+        QList<QVariant> fields = templateMap["fields"].toList();
+        foreach(QVariant field, fields){
+            QVariantMap fieldMap = field.toMap();
+            QString editor = fieldMap["editor"].toString();
+            QString key = fieldMap["key"].toString();
+            int x = fieldMap["x"].toInt();
+            int y = fieldMap["y"].toInt();
 
-    QList<QVariant> endKey = QList<QVariant>();
-    endKey.append(design);
-    endKey.append(view);
-    endKey.append(QVariantMap());
-
-    QList<QVariant> results = couch.getView(database, "_design/templates", "all", QVariant(startKey), QVariant(endKey));
-    if ( results.size() == 1 ) {
-	QVariantMap map = results[0].toMap();
-	Document templateDoc = couch.getDocument(database, map["id"].toString());
-	QVariantMap templateMap = templateDoc.getMap();
-	QList<QVariant> fields = templateMap["fields"].toList();
-	foreach(QVariant field, fields){
-	    QVariantMap fieldMap = field.toMap();
-	    QString editor = fieldMap["editor"].toString();
-	    QString key = fieldMap["key"].toString();
-	    int x = fieldMap["x"].toInt();
-	    int y = fieldMap["y"].toInt();
-
-	    if( editor == "LineEdit" ) {
-    		TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
-    		widget->setLabel(key);
-    		widget->setField(key);
-    		widget->loadDocument(doc);
+            if( editor == "LineEdit" ) {
+                TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+                widget->setLabel(key);
+                widget->setField(key);
+                widget->loadDocument(doc);
     		
-    		QSize hint = widget->sizeHint();
-    		widget->setGeometry(x,y,hint.width(), hint.height());
-    		widget->show();
-    		widgets.push_back(widget);
-	    } 
-	}
-    } else {
-	/* None found, generate one */
+                QSize hint = widget->sizeHint();
+                widget->setGeometry(x,y,hint.width(), hint.height());
+                widget->show();
+                widgets.push_back(widget);
+            }
+        }
+    } catch (int) {
+        /* None found, generate one */
     
     	TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
     	widget->setLabel("_id");
@@ -202,8 +251,7 @@ void View::loadDocument(Document doc){
     	
     	y += 30;
 	
-    	QList<QVariant> fields = QList<QVariant>();
-	
+    	
     	
     	QVariantMap map = doc.getMap();
     	   foreach(QString key, map.keys() ){
@@ -218,28 +266,12 @@ void View::loadDocument(Document doc){
             	  widgets.push_back(widget);
 
 
-	          QVariantMap fieldMap = QVariantMap();
-	    	  fieldMap["key"] = key;
-	          fieldMap["x"] = x;
-                  fieldMap["y"] = y;
-                  fieldMap["editor"] = "LineEdit"; 
-	
-	          fields.append(QVariant(fieldMap));
-            
+	                     
                   y += 30;
             }
         }
 
-    	QVariantMap _template = QVariantMap();
-    	_template["fields"] = QVariant(fields);
-    	_template["design"] = design;
-    	_template["view"] = view;
-    	_template["type"] = "template";
-
-    	QVariant var = QVariant(_template);
-	
-    	QString id = couch.getUUID(); 
-    	couch.createDocument(doc.getSourceDatabase(), id, var);
+        saveTemplate();
     }
     	
     attachments->loadDocument(doc);
@@ -359,6 +391,9 @@ void View::beginEditing(){
         for (int i=0; i<widgets.size(); i++) {
             widgets[i]->stopEditing();
         }
+        
+        saveTemplate();
+        
     } else {
         isEditing = true;
         beginEditingAction->setText("Stop Editing");
@@ -370,6 +405,7 @@ void View::beginEditing(){
             button->show();
             connect(button, SIGNAL(clicked()), this, SLOT(changeButtonPushed()));
         */}
+        
     }
 }
 

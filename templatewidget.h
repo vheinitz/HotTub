@@ -15,6 +15,7 @@ public:
     TemplateWidget(Editor* editor, QWidget *parent);
     
     void setField(const QString &);
+    QString getField();
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
     void reset();
@@ -56,7 +57,7 @@ private:
     QToolBar *toolbar;
     QMenu *changeEditorMenu;
     bool isEditing;
-    
+    QString field;
     static const int MARGIN=5;
 };
 
