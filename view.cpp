@@ -244,6 +244,7 @@ void View::loadDocument(Document doc){
             widget->setLabel(key);
             widget->setField(key);
             widget->loadDocument(doc);
+            connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
     		QSize hint = widget->sizeHint();
             if ( width == 0 ) width = hint.width();
             if ( height == 0 ) height = hint.height();
