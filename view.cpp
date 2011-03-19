@@ -63,15 +63,19 @@ View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      
      QToolButton *editButton = new QToolButton(this);
      editButton->setIcon(QIcon("icons/edit.png"));
+     
+     QPushButton *addFieldButton = new QPushButton(tr("&Add Field"));
 
      connect(saveButton, SIGNAL(clicked()), this, SLOT(saveDocument()));
      connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteDocument()));
      connect(newButton, SIGNAL(clicked()), this, SLOT(newDocument()));
      
      connect(editButton, SIGNAL(clicked()), this, SLOT(beginEditing()));
+     connect(addFieldButton, SIGNAL(clicked()), this, SLOT(addField()));
      
      QVBoxLayout *buttonLayout1 = new QVBoxLayout;
      buttonLayout1->addWidget(editButton, Qt::AlignTop);
+     buttonLayout1->addWidget(addFieldButton);
      buttonLayout1->addSpacing(50);
      buttonLayout1->addWidget(newButton, Qt::AlignTop);
      buttonLayout1->addWidget(saveButton);

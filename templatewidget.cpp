@@ -190,6 +190,7 @@ void TemplateWidget::updateLabel(const QString& text){
 
 void TemplateWidget::setLabel(const QString& text){
     label->setText(text);
+    setField(text);
     labelEdit->setText(text);
 }
 
