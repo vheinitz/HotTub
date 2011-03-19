@@ -42,16 +42,19 @@ int DateEdit::getLeftAlignmentHint(){
     return edit->x();
 }
 
-void DateEdit::setField(const QString &){
-    
-}
-
 void DateEdit::loadDocument(Document doc){
-    
+    QVariantMap map = doc.getMap();
+    QVariant val = map[getField()];
+
+    bool ok;
+    uint secs = val.toUInt(&ok);
+    if ( ok ){
+        edit->setDateTime(QDateTime::fromTime_t(secs));
+    }
 }
 
 void DateEdit::saveChanges(Document& doc){
-    
+    doc.setValue(getField(), QVariant(edit->dateTime().toTime_t()));
 }
 
 

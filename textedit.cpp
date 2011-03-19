@@ -45,6 +45,9 @@ int TextEdit::getLeftAlignmentHint(){
 }
 
 void TextEdit::loadDocument(Document doc){
+    QVariantMap map = doc.getMap();
+    QVariant val = map[getField()];
+    edit->setText(val.toString());
     
 }
 
@@ -53,11 +56,12 @@ bool TextEdit::hasChanges(){
 }
 
 void TextEdit::saveChanges(Document& doc){
-    
+    doc.setValue(getField(), QVariant(edit->toPlainText()));
+
 }
 
 void TextEdit::reset(){
-
+    edit->clear();
 }
 
 QString TextEdit::type(){   
