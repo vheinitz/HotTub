@@ -35,6 +35,8 @@ public:
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);
     
+    QString getEditorType();
+    
 signals:
     void remove(TemplateWidget *);
     

@@ -19,7 +19,7 @@ public:
     void paintEvent(QPaintEvent *event);
     QSize sizeHint();
     int getLeftAlignmentHint();
-    
+    QString type();
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
     bool hasChanges();

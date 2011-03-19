@@ -68,4 +68,7 @@ void Combo::reset() {
     
 }
 
+QString Combo::type(){
+    return "combo";
+}
 

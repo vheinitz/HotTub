@@ -270,3 +270,7 @@ void TemplateWidget::reset(){
     editor->reset();
 }
 
+QString TemplateWidget::getEditorType(){
+    return editor->type();
+}
+

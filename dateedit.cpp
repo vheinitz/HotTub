@@ -62,3 +62,8 @@ bool DateEdit::hasChanges(){
 void DateEdit::reset(){
 
 }
+
+QString DateEdit::type(){  
+    return "dateedit";
+
+}

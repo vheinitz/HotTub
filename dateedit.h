@@ -22,7 +22,7 @@ public:
     void setField(const QString &);
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
-    
+    QString type();
     bool hasChanges();
     void reset();
 private:

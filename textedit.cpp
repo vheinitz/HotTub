@@ -59,3 +59,7 @@ void TextEdit::saveChanges(Document& doc){
 void TextEdit::reset(){
 
 }
+
+QString TextEdit::type(){   
+    return "textedit";
+}

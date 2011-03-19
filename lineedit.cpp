@@ -71,5 +71,8 @@ void LineEdit::saveChanges(Document& doc){
 
 void LineEdit::reset(){
     edit->setText("");
+}
 
+QString LineEdit::type(){
+    return "lineedit";
 }

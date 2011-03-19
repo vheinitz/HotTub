@@ -18,7 +18,7 @@ public:
     void setMargins(int,int,int,int);
     QSize sizeHint();
     int getLeftAlignmentHint();
-    
+    QString type();
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
     bool hasChanges();

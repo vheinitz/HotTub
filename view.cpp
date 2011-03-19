@@ -9,6 +9,7 @@
 #include "lineedit.h"
 #include "view.h"
 #include "dateedit.h"
+#include "combo.h"
 #include "hotspot.h"
 #include "action.h"
 #include "attachments.h"
@@ -163,7 +164,9 @@ void View::saveTemplate(){
         fieldMap["key"] = widget->getField();
         fieldMap["x"] = widget->x();
         fieldMap["y"] = widget->y();
-        fieldMap["editor"] = "LineEdit"; 
+        fieldMap["width"] = widget->width();
+        fieldMap["height"] = widget->height();
+        fieldMap["editor"] = widget->getEditorType(); 
         
         fields.append(QVariant(fieldMap));   
     }
@@ -219,22 +222,36 @@ void View::loadDocument(Document doc){
         QList<QVariant> fields = templateMap["fields"].toList();
         foreach(QVariant field, fields){
             QVariantMap fieldMap = field.toMap();
-            QString editor = fieldMap["editor"].toString();
+            QString editorType = fieldMap["editor"].toString();
             QString key = fieldMap["key"].toString();
             int x = fieldMap["x"].toInt();
             int y = fieldMap["y"].toInt();
-
-            if( editor == "LineEdit" ) {
-                TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
-                widget->setLabel(key);
-                widget->setField(key);
-                widget->loadDocument(doc);
-    		
-                QSize hint = widget->sizeHint();
-                widget->setGeometry(x,y,hint.width(), hint.height());
-                widget->show();
-                widgets.push_back(widget);
+            int width = fieldMap["width"].toInt();
+            int height = fieldMap["height"].toInt();
+            Editor *editor;
+            
+            if( editorType == "lineedit" ) {
+                editor = new LineEdit(this);
+            } else if ( editorType == "textedit" ) {
+                editor = new TextEdit(this);
+            } else if ( editorType == "combo" ) {
+                editor = new Combo(this);
+            } else if ( editorType == "dateedit" ) {
+                editor = new DateEdit(this);
             }
+                
+            TemplateWidget *widget = new TemplateWidget(editor, this);
+            widget->setLabel(key);
+            widget->setField(key);
+            widget->loadDocument(doc);
+    		QSize hint = widget->sizeHint();
+            if ( width == 0 ) width = hint.width();
+            if ( height == 0 ) height = hint.height();
+                
+            widget->setGeometry(x,y,width,height);
+            widget->show();
+            widgets.push_back(widget);
+        
         }
     } catch (int) {
         /* None found, generate one */

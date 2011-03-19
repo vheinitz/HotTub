@@ -20,7 +20,7 @@ public:
     QSize sizeHint();
     int getLeftAlignmentHint();
     QAction* configurationAction(QToolBar *toolbar);
-
+    QString type();
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
     void reset();
