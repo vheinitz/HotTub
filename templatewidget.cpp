@@ -63,6 +63,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     
     QAction *deleteAction = new QAction(toolbar);
     deleteAction->setIcon(QIcon("icons/user-trash.png"));
+    connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWidget())); 
     
     toolbar->addAction(changeAction);
     
@@ -101,7 +102,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     connect(areaAction, SIGNAL(triggered()), this, SLOT(changeEditorTextarea()));
     connect(comboAction, SIGNAL(triggered()), this, SLOT(changeEditorComboBox()));
     
-    connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWidget())); 
+    
  
     isEditing = false;
 }

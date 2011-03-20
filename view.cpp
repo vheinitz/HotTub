@@ -390,7 +390,10 @@ void View::widgetRemoved(TemplateWidget *widget){
         }
     }
     
-    delete widget;
+    /*delete widget;
+    */
+    widget->hide();
+    widget->deleteLater();
     
 }
 
