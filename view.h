@@ -78,6 +78,13 @@ signals:
      TemplateWidget* activeWidget;
      QWidget* actionWidget;
      
+     QPushButton *editButton;
+     QPushButton *addFieldButton;
+     QPushButton *newButton;
+     QPushButton *saveButton;
+     QPushButton *deleteButton;
+     
+     
      QLabel *label;
 	 bool activeDragging;
 	 bool dropActive;
