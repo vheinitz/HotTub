@@ -49,7 +49,6 @@ using namespace std;
 private slots:
      void beginEditing();
      void addField();
-     void changeButtonPushed();
      void widgetRemoved(TemplateWidget *);
      void hideAttachments();
      void showAttachments();

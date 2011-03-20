@@ -165,14 +165,9 @@ void View::saveTemplate(){
         QVariantMap fieldMap = QVariantMap();
         TemplateWidget* widget = widgets[i];
         
-        fieldMap["key"] = widget->getField();
-        fieldMap["x"] = widget->x();
-        fieldMap["y"] = widget->y();
-        fieldMap["width"] = widget->width();
-        fieldMap["height"] = widget->height();
-        fieldMap["editor"] = widget->getEditorType(); 
+        QVariant var = widget->saveConfiguration();
         
-        fields.append(QVariant(fieldMap));   
+        fields.append(var);   
     }
     
     
@@ -247,16 +242,19 @@ void View::loadDocument(Document doc){
             TemplateWidget *widget = new TemplateWidget(editor, this);
             widget->setLabel(key);
             widget->setField(key);
-            widget->loadDocument(doc);
             connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
     		QSize hint = widget->sizeHint();
             if ( width == 0 ) width = hint.width();
             if ( height == 0 ) height = hint.height();
                 
             widget->setGeometry(x,y,width,height);
+            widget->loadConfiguration(field);
             widget->show();
             widgets.push_back(widget);
-        
+            
+            
+            widget->loadDocument(doc);
+            
         }
     } catch (int) {
         /* None found, generate one */
@@ -396,16 +394,6 @@ void View::widgetRemoved(TemplateWidget *widget){
     
 }
 
-void View::changeButtonPushed(){
-    /*date->hide();
-    
-    LineEdit *line = new LineEdit("Birthday", this);
-    line->move(date->x(), date->y());
-    line->show();
-    line->beginEditing();
-    */
-}
-
 void View::beginEditing(){
     if (isEditing) {
         isEditing = false;
@@ -422,11 +410,7 @@ void View::beginEditing(){
         
         for (int i=0; i<widgets.size(); i++) {
             widgets[i]->beginEditing();
-            /*QPushButton *button = new QPushButton("Change", this);
-            button->move(widgets[i]->x()+widgets[i]->width()-20, widgets[i]->y()+widgets[i]->height()-20);
-            button->show();
-            connect(button, SIGNAL(clicked()), this, SLOT(changeButtonPushed()));
-        */}
+        }
         
     }
 }

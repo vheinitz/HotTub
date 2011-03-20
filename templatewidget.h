@@ -36,6 +36,8 @@ public:
     void leaveEvent(QEvent *event);
     
     QString getEditorType();
+    QVariant saveConfiguration();
+    void loadConfiguration(QVariant&);
     
 signals:
     void remove(TemplateWidget *);

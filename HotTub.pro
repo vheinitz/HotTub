@@ -26,6 +26,7 @@ HEADERS += action.h \
            templatewidget.h \
            textedit.h \
            view.h \
+           comboconfig.h \
            qcouch/document.h \
            qcouch/qcouch.h \
            qcouch/qjson/json_parser.hh \
@@ -53,6 +54,7 @@ SOURCES += app.cpp \
            model.cpp \
            templatewidget.cpp \
            textedit.cpp \
+           comboconfig.cpp \
            view.cpp \
            qcouch/document.cpp \
            qcouch/qcouch.cpp \

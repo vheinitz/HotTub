@@ -71,6 +71,8 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     
     toolbar->setVisible(false);
     
+    edit->configurationAction(toolbar);
+    
     changeEditorMenu = new QMenu(toolbar);
     
     QAction *textAction = new QAction(changeEditorMenu);
@@ -110,6 +112,7 @@ void TemplateWidget::changeEditorDate(){
     editor = new DateEdit(this);
     editor->setMargins(0, 0, 0, 0);
     editor->enterEditMode();
+    editor->configurationAction(toolbar);
     layout->addWidget(editor);
     toolbar->raise();
     resize(sizeHint());
@@ -121,6 +124,7 @@ void TemplateWidget::changeEditorTextarea(){
     editor = new TextEdit(this);
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
+    editor->configurationAction(toolbar);
     layout->addWidget(editor);
     toolbar->raise();
     resize(sizeHint());
@@ -132,6 +136,7 @@ void TemplateWidget::changeEditorText(){
     editor = new LineEdit(this);
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
+    editor->configurationAction(toolbar);
     layout->addWidget(editor);
     toolbar->raise();
     resize(sizeHint());
@@ -144,10 +149,7 @@ void TemplateWidget::changeEditorComboBox(){
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
     layout->addWidget(editor);
-    QAction *customAction = editor->configurationAction(toolbar);
-    if ( customAction != NULL ) {
-        toolbar->addAction(customAction);
-    }
+    editor->configurationAction(toolbar);
     
     toolbar->raise();
     resize(sizeHint());
@@ -274,4 +276,60 @@ void TemplateWidget::reset(){
 QString TemplateWidget::getEditorType(){
     return editor->type();
 }
+
+QVariant TemplateWidget::saveConfiguration(){
+    
+    QVariantMap map;
+    map["key"] = getField();
+    map["x"] = x();
+    map["y"] = y();
+    map["width"] = width();
+    map["height"] = height();
+    map["editor"] = getEditorType(); 
+    
+    editor->saveConfiguration(map);
+    
+    return QVariant(map);
+}
+
+
+void TemplateWidget::loadConfiguration(QVariant& var){
+    
+    editor->loadConfiguration(var);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

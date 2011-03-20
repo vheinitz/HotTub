@@ -29,8 +29,9 @@ public:
     virtual void loadDocument(Document doc) = 0;
     virtual void saveChanges(Document& doc) = 0;
     virtual void reset() = 0;
-    QAction* configurationAction(QToolBar *toolbar);
-
+    virtual void configurationAction(QToolBar *toolbar);
+    virtual void saveConfiguration(QVariantMap &);
+    virtual void loadConfiguration(QVariant&);
 
 };
 

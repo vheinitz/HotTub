@@ -7,9 +7,8 @@ Editor::Editor(QWidget* parent) : QWidget(parent) {
 }
 
 
-QAction* Editor::configurationAction(QToolBar *toolbar){
+void Editor::configurationAction(QToolBar *toolbar){
     Q_UNUSED(toolbar);
-    return NULL;
 }
 
 
@@ -20,4 +19,12 @@ void Editor::setField(QString _field){
 
 QString Editor::getField(){
     return field;
+}
+
+void Editor::saveConfiguration(QVariantMap& map){
+
+}
+
+void Editor::loadConfiguration(QVariant& var){
+
 }

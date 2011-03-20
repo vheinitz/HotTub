@@ -66,11 +66,39 @@ void Combo::comboConfigAccepted(){
 }
 
 void Combo::loadDocument(Document doc){
+    qDebug() << "Loading document";
+    QVariantMap map = doc.getMap();
+    QVariant val = map[getField()];
+    int index = edit->findText(val.toString());
+    if ( index >= 0 ) {
+        edit->setCurrentIndex(index);
+    }
     
 }
 
 void Combo::saveChanges(Document& doc){
+    if ( edit->currentIndex() >= 0 ) {
+        doc.setValue(getField(), edit->currentText());
+    }
+}
+
+void Combo::saveConfiguration(QVariantMap& map){
+    QStringList items;
+    for (int i=0; i<edit->count(); i++) {
+        qDebug() << edit->itemText(i);
+        items.append(edit->itemText(i));
+    }
+    map["values"] = QVariant(items);
+}
+
+void Combo::loadConfiguration(QVariant& var){
     
+    qDebug() << "Loading configuration";
+    QVariantMap map = var.toMap();
+    QVariant values = map["values"];
+    
+    QStringList items = values.toStringList();
+    edit->insertItems(0, items);
 }
 
 bool Combo::hasChanges(){
@@ -84,6 +112,8 @@ void Combo::reset() {
 QString Combo::type(){
     return "combo";
 }
+
+
 
 
             

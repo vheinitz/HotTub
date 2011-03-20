@@ -29,6 +29,8 @@ public:
     void saveChanges(Document& doc);
     void reset();
     bool hasChanges();
+    void saveConfiguration(QVariantMap& map);
+    void loadConfiguration(QVariant&);
 private slots:
     void configureItems();
     void comboConfigAccepted();
