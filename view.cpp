@@ -96,13 +96,6 @@ void View::setDatabase(QString _database){
      database = _database;
  }
 
-void View::setDesign(QString _design){
-   design = _design;    
-}
-
-void View::setView(QString _view){
-   view = _view;   
-}
 
 void View::saveDocument(){
     foreach(TemplateWidget* widget, widgets){
@@ -153,6 +146,96 @@ void View::deleteDocument(){
         couch.deleteDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision());
         reset();
         emit(documentDeleted(currentDoc));
+    }
+}
+
+void View::loadTemplate(QString _design, QString _view){
+    design = _design;
+    view = _view;
+    
+    int x=50;
+    int y=50;
+    
+    try {
+        Document templateDoc = findTemplate();
+        QVariantMap templateMap = templateDoc.getMap();
+        QList<QVariant> fields = templateMap["fields"].toList();
+        foreach(QVariant field, fields){
+            QVariantMap fieldMap = field.toMap();
+            QString editorType = fieldMap["editor"].toString();
+            QString key = fieldMap["key"].toString();
+            int x = fieldMap["x"].toInt();
+            int y = fieldMap["y"].toInt();
+            int width = fieldMap["width"].toInt();
+            int height = fieldMap["height"].toInt();
+            Editor *editor;
+            
+            if( editorType == "lineedit" ) {
+                editor = new LineEdit(this);
+            } else if ( editorType == "textedit" ) {
+                editor = new TextEdit(this);
+            } else if ( editorType == "combo" ) {
+                editor = new Combo(this);
+            } else if ( editorType == "dateedit" ) {
+                editor = new DateEdit(this);
+            }
+            
+            TemplateWidget *widget = new TemplateWidget(editor, this);
+            widget->setLabel(key);
+            widget->setField(key);
+            connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
+    		QSize hint = widget->sizeHint();
+            if ( width == 0 ) width = hint.width();
+            if ( height == 0 ) height = hint.height();
+            
+            widget->setGeometry(x,y,width,height);
+            widget->loadConfiguration(field);
+            widget->show();
+            widgets.push_back(widget);
+        }
+    } catch (int) {
+        /* None found, generate one */
+        
+    	TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
+    	widget->setLabel("_id");
+    	widget->setField("_id");
+    	
+    	QSize hint = widget->sizeHint();
+    	widget->setGeometry(x,y,hint.width(), hint.height());
+    	widget->show();
+    	widgets.push_back(widget);
+    	
+    	y += 30;
+        
+    	
+        /* Get a sample document to decide what the generic template should look like */
+        QList<QVariant> docs = couch.getView(database, design, view, QVariant(), QVariant(), false, 1 );
+        if ( docs.length() > 0 ) {
+            
+            QVariant var = docs[0];
+            QVariantMap map = var.toMap();
+            if ( map.find("id") != map.end() ) {
+                Document doc = couch.getDocument(database, map["id"].toString());
+        
+                QVariantMap map = doc.getMap();
+                foreach(QString key, map.keys() ){
+                    if ( key != "_rev" && key != "_attachments" && key != "_id" ) {
+                        widget = new TemplateWidget(new LineEdit(this), this);
+                        widget->setLabel(key);
+                        widget->setField(key);
+                        QSize hint = widget->sizeHint();
+                        widget->setGeometry(x,y,hint.width(), hint.height());
+                        widget->show();
+                        widgets.push_back(widget);
+                
+                        y += 30;
+                    }
+                }
+            
+        
+                saveTemplate();
+            }
+        }
     }
 }
 
@@ -210,89 +293,13 @@ Document View::findTemplate(){
 }
 
 void View::loadDocument(Document doc){
-    int x = 50;
-    int y = 50;
-    currentDoc = doc;
-    removeAllWidgets();
-
-    try {
-        Document templateDoc = findTemplate();
-        QVariantMap templateMap = templateDoc.getMap();
-        QList<QVariant> fields = templateMap["fields"].toList();
-        foreach(QVariant field, fields){
-            QVariantMap fieldMap = field.toMap();
-            QString editorType = fieldMap["editor"].toString();
-            QString key = fieldMap["key"].toString();
-            int x = fieldMap["x"].toInt();
-            int y = fieldMap["y"].toInt();
-            int width = fieldMap["width"].toInt();
-            int height = fieldMap["height"].toInt();
-            Editor *editor;
-            
-            if( editorType == "lineedit" ) {
-                editor = new LineEdit(this);
-            } else if ( editorType == "textedit" ) {
-                editor = new TextEdit(this);
-            } else if ( editorType == "combo" ) {
-                editor = new Combo(this);
-            } else if ( editorType == "dateedit" ) {
-                editor = new DateEdit(this);
-            }
-                
-            TemplateWidget *widget = new TemplateWidget(editor, this);
-            widget->setLabel(key);
-            widget->setField(key);
-            connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
-    		QSize hint = widget->sizeHint();
-            if ( width == 0 ) width = hint.width();
-            if ( height == 0 ) height = hint.height();
-                
-            widget->setGeometry(x,y,width,height);
-            widget->loadConfiguration(field);
-            widget->show();
-            widgets.push_back(widget);
-            
-            
-            widget->loadDocument(doc);
-            
-        }
-    } catch (int) {
-        /* None found, generate one */
     
-    	TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
-    	widget->setLabel("_id");
-    	widget->setField("_id");
-    	widget->loadDocument(doc);
-    	
-    	QSize hint = widget->sizeHint();
-    	widget->setGeometry(x,y,hint.width(), hint.height());
-    	widget->show();
-    	widgets.push_back(widget);
-    	
-    	y += 30;
-	
-    	
-    	
-    	QVariantMap map = doc.getMap();
-    	   foreach(QString key, map.keys() ){
-        	if ( key != "_rev" && key != "_attachments" && key != "_id" ) {
-          	  widget = new TemplateWidget(new LineEdit(this), this);
-            	  widget->setLabel(key);
-            	  widget->setField(key);
-            	  widget->loadDocument(doc);
-            	  QSize hint = widget->sizeHint();
-            	  widget->setGeometry(x,y,hint.width(), hint.height());
-            	  widget->show();
-            	  widgets.push_back(widget);
-
-
-	                     
-                  y += 30;
-            }
-        }
-
-        saveTemplate();
+    currentDoc = doc;
+    
+    for (int i=0; i<widgets.size(); i++) {
+        widgets[i]->loadDocument(doc);
     }
+    
     	
     attachments->loadDocument(doc);
 }

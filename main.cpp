@@ -132,9 +132,10 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     bool desc = descending->checkState() == Qt::Checked;
     model->loadView( selectedDatabase, design, selectedView, startkey, endkey, desc );
     view->clear(); 
-    view->setDesign(design);
-    view->setView(selectedView);
-
+    
+    view->loadTemplate(design, selectedView);
+    
+    
     list->setModel(model);
     list->resizeColumnsToContents();
 }

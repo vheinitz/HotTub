@@ -26,8 +26,7 @@ using namespace std;
  public:
      View( QCouch& couch, QWidget *parent = 0);
      void setDatabase(QString);
-     void setDesign(QString);
-     void setView(QString);
+     void loadTemplate(QString, QString);
      void loadDocument(Document);
      void reset();
      void clear();
