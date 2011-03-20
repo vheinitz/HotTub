@@ -4,10 +4,14 @@
 
 #include "templatewidget.h"
 #include "qcouch/document.h"
+#include "comboconfig.h"
 #include <QtGui>
 
+
+
+
 class Combo : public Editor {
-    
+    Q_OBJECT
 public:
     Combo(QWidget *);
     
@@ -19,15 +23,20 @@ public:
     void setMargins(int,int,int,int);
     QSize sizeHint();
     int getLeftAlignmentHint();
-    QAction* configurationAction(QToolBar *toolbar);
+    void configurationAction(QToolBar *toolbar);
     QString type();
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
     void reset();
     bool hasChanges();
+private slots:
+    void configureItems();
+    void comboConfigAccepted();
 private:
     QComboBox *edit;
     QVBoxLayout* layout;
+    
+    ComboConfigurationDialog* dlg;
     
 };
 

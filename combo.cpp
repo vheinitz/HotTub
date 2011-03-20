@@ -1,6 +1,9 @@
 
 #include "combo.h"
 #include "qcouch/document.h"
+#include "comboconfig.h"
+
+
 #include <QtGui>
 
 Combo::Combo(QWidget *parent) : Editor(parent) {
@@ -10,9 +13,8 @@ Combo::Combo(QWidget *parent) : Editor(parent) {
     layout->addWidget(edit);
     setLayout(layout);
     
-    edit->insertItem(0,"One");
-    edit->insertItem(1,"Two");
-    edit->insertItem(2,"Three");
+    dlg = new ComboConfigurationDialog();
+    connect(dlg, SIGNAL(accepted()), this, SLOT(comboConfigAccepted()));
 }
 
 void Combo::setMargins(int top, int right, int bottom, int left){
@@ -48,8 +50,19 @@ int Combo::getLeftAlignmentHint(){
     return edit->x();
 }
 
-QAction* Combo::configurationAction(QToolBar *toolbar){
-    return new QAction(toolbar);
+void Combo::configurationAction(QToolBar *toolbar){
+    QAction* action = new QAction(toolbar);
+    action->setIcon(QIcon("icons/items.png"));
+    connect(action, SIGNAL(triggered()), this, SLOT(configureItems()));
+    toolbar->addAction(action);
+}
+
+void Combo::configureItems(){
+    dlg->show();
+}
+
+void Combo::comboConfigAccepted(){
+    edit->insertItems(0, dlg->stringList());
 }
 
 void Combo::loadDocument(Document doc){
@@ -71,4 +84,10 @@ void Combo::reset() {
 QString Combo::type(){
     return "combo";
 }
+
+
+            
+            
+
+
 
