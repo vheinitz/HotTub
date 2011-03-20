@@ -8,8 +8,7 @@
 
 Combo::Combo(QWidget *parent) : Editor(parent) {
     edit = new QComboBox;
-    layout = new QVBoxLayout;
-    layout->addSpacing(4);
+    layout = new QHBoxLayout;
     layout->addWidget(edit);
     setLayout(layout);
     
@@ -19,6 +18,11 @@ Combo::Combo(QWidget *parent) : Editor(parent) {
 
 void Combo::setMargins(int top, int right, int bottom, int left){
     layout->setContentsMargins(top,right,bottom,left);
+}
+
+void Combo::paintEvent(QPaintEvent* event){
+    QWidget::paintEvent(event);
+    QPainter painter(this);
 }
 
 void Combo::enterEditMode(){
@@ -66,7 +70,7 @@ void Combo::comboConfigAccepted(){
 }
 
 void Combo::loadDocument(Document doc){
-    qDebug() << "Loading document";
+    
     QVariantMap map = doc.getMap();
     QVariant val = map[getField()];
     int index = edit->findText(val.toString());
@@ -93,7 +97,6 @@ void Combo::saveConfiguration(QVariantMap& map){
 
 void Combo::loadConfiguration(QVariant& var){
     
-    qDebug() << "Loading configuration";
     QVariantMap map = var.toMap();
     QVariant values = map["values"];
     

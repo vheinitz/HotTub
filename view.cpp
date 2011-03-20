@@ -319,7 +319,8 @@ void View::fileAttached(QUrl url) {
 
 void View::removeAllWidgets(){
     for (int i=0; i<widgets.size(); i++) {
-        delete widgets[i];
+        widgets[i]->hide();
+        widgets[i]->deleteLater();
     }
     widgets.clear();
     

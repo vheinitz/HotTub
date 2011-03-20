@@ -31,12 +31,13 @@ public:
     bool hasChanges();
     void saveConfiguration(QVariantMap& map);
     void loadConfiguration(QVariant&);
+    void paintEvent(QPaintEvent* event);
 private slots:
     void configureItems();
     void comboConfigAccepted();
 private:
     QComboBox *edit;
-    QVBoxLayout* layout;
+    QHBoxLayout* layout;
     
     ComboConfigurationDialog* dlg;
     

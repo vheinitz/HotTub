@@ -42,8 +42,14 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
 
     
     QWidget *widget = new QWidget;
-    widget->setMaximumWidth(100);
-    widget->setMinimumWidth(100);
+    if ( edit->type() == "combo" ) {
+        /* TODO: Fix this fudge factor */
+        widget->setMaximumWidth(80);
+        widget->setMinimumWidth(80);
+    } else {
+        widget->setMaximumWidth(100);
+        widget->setMinimumWidth(100);
+    }    
     widget->setLayout(stack);
     
     layout->addWidget(widget);
@@ -169,7 +175,7 @@ void TemplateWidget::deleteWidget(){
 
 QSize TemplateWidget::sizeHint(){
     QSize editorHint = editor->sizeHint();
-    return QSize(editorHint.width()+150, editorHint.height()+MARGIN);
+    return QSize(editorHint.width()+100, editorHint.height()+MARGIN);
 }
 
 int TemplateWidget::getLeftAlignmentHint(){
