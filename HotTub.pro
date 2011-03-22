@@ -4,8 +4,8 @@
 
 TEMPLATE = app
 TARGET = 
-DEPENDPATH += . qcouch qcouch/qjson
-INCLUDEPATH += . qcouch qcouch/qjson
+DEPENDPATH += . editors qcouch qcouch/qjson
+INCLUDEPATH += . editors qcouch qcouch/qjson
 
 CONFIG += debug
 
@@ -15,18 +15,19 @@ QT += network
 HEADERS += action.h \
            app.h \
            attachments.h \
-           combo.h \
-           dateedit.h \
            editor.h \
            hotspot.h \
-           lineedit.h \
            list.h \
            main.h \
            model.h \
            templatewidget.h \
-           textedit.h \
            view.h \
-           comboconfig.h \
+           editors/comboconfig.h \
+           editors/lineedit.h \
+           editors/textedit.h \
+           editors/combo.h \
+           editors/dateedit.h \
+           editors/listedit.h \
            qcouch/document.h \
            qcouch/qcouch.h \
            qcouch/qjson/json_parser.hh \
@@ -44,18 +45,19 @@ HEADERS += action.h \
            qcouch/qjson/stack.hh
 SOURCES += app.cpp \
            attachments.cpp \
-           combo.cpp \
-           dateedit.cpp \
            editor.cpp \
            hotspot.cpp \
-           lineedit.cpp \
            list.cpp \
            main.cpp \
            model.cpp \
            templatewidget.cpp \
-           textedit.cpp \
-           comboconfig.cpp \
            view.cpp \
+           editors/listedit.cpp \
+           editors/comboconfig.cpp \
+           editors/combo.cpp \
+           editors/dateedit.cpp \
+           editors/textedit.cpp \
+           editors/lineedit.cpp \
            qcouch/document.cpp \
            qcouch/qcouch.cpp \
            qcouch/qjson/json_parser.cc \
@@ -65,3 +67,5 @@ SOURCES += app.cpp \
            qcouch/qjson/qobjecthelper.cpp \
            qcouch/qjson/serializer.cpp \
            qcouch/qjson/serializerrunnable.cpp
+
+

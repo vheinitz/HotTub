@@ -8,6 +8,7 @@
 #include "lineedit.h"
 #include "textedit.h"
 #include "combo.h"
+#include "listedit.h"
 
 
 using namespace std;
@@ -94,11 +95,14 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     QAction *comboAction = new QAction(changeEditorMenu);
     comboAction->setText("Combo Box");
     
+    QAction *listAction = new QAction(changeEditorMenu);
+    listAction->setText("List");
     
     changeEditorMenu->addAction(textAction);
     changeEditorMenu->addAction(dateAction);
     changeEditorMenu->addAction(areaAction);
     changeEditorMenu->addAction(comboAction);
+    changeEditorMenu->addAction(listAction);
     
     
     connect(labelEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateLabel(const QString&)));
@@ -107,7 +111,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     connect(dateAction, SIGNAL(triggered()), this, SLOT(changeEditorDate()));
     connect(areaAction, SIGNAL(triggered()), this, SLOT(changeEditorTextarea()));
     connect(comboAction, SIGNAL(triggered()), this, SLOT(changeEditorComboBox()));
-    
+    connect(listAction, SIGNAL(triggered()), this, SLOT(changeEditorList()));
     
  
     isEditing = false;
@@ -115,7 +119,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
 
 void TemplateWidget::changeEditorDate(){
     layout->removeWidget(editor);
-    delete editor;
+    editor->deleteLater();
     editor = new DateEdit(this);
     editor->setMargins(0, 0, 0, 0);
     editor->enterEditMode();
@@ -127,7 +131,7 @@ void TemplateWidget::changeEditorDate(){
 
 void TemplateWidget::changeEditorTextarea(){
     layout->removeWidget(editor);
-    delete editor;
+    editor->deleteLater();
     editor = new TextEdit(this);
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
@@ -139,7 +143,7 @@ void TemplateWidget::changeEditorTextarea(){
 
 void TemplateWidget::changeEditorText(){
     layout->removeWidget(editor);
-    delete editor;
+    editor->deleteLater();
     editor = new LineEdit(this);
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
@@ -151,7 +155,7 @@ void TemplateWidget::changeEditorText(){
 
 void TemplateWidget::changeEditorComboBox(){
     layout->removeWidget(editor);
-    delete editor;
+    editor->deleteLater();
     editor = new Combo(this);
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
@@ -163,6 +167,18 @@ void TemplateWidget::changeEditorComboBox(){
 }
 
 
+void TemplateWidget::changeEditorList(){
+    layout->removeWidget(editor);
+    editor->deleteLater();
+    editor = new ListEdit(this);
+    editor->setMargins(0,0,0,0);
+    editor->enterEditMode();
+    layout->addWidget(editor);
+    editor->configurationAction(toolbar);
+    
+    toolbar->raise();
+    resize(sizeHint());
+}
 
 void TemplateWidget::showChangeEditorMenu(){
     changeEditorMenu->move(mapToGlobal(QPoint(toolbar->x(), toolbar->y()+toolbar->height())));

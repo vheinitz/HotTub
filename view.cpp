@@ -7,6 +7,7 @@
 
 #include "textedit.h"
 #include "lineedit.h"
+#include "listedit.h"
 #include "view.h"
 #include "dateedit.h"
 #include "combo.h"
@@ -181,6 +182,8 @@ void View::loadTemplate(QString _design, QString _view){
                 editor = new Combo(this);
             } else if ( editorType == "dateedit" ) {
                 editor = new DateEdit(this);
+            } else if ( editorType == "listedit" ) {
+                editor = new ListEdit(this);
             }
             
             TemplateWidget *widget = new TemplateWidget(editor, this);
