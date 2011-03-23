@@ -9,6 +9,7 @@
 #include "textedit.h"
 #include "combo.h"
 #include "listedit.h"
+#include "grid.h"
 
 
 using namespace std;
@@ -98,12 +99,15 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     QAction *listAction = new QAction(changeEditorMenu);
     listAction->setText("List");
     
+    QAction *gridAction = new QAction(changeEditorMenu);
+    gridAction->setText("Grid");
+    
     changeEditorMenu->addAction(textAction);
     changeEditorMenu->addAction(dateAction);
     changeEditorMenu->addAction(areaAction);
     changeEditorMenu->addAction(comboAction);
     changeEditorMenu->addAction(listAction);
-    
+    changeEditorMenu->addAction(gridAction);
     
     connect(labelEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateLabel(const QString&)));
     
@@ -112,7 +116,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     connect(areaAction, SIGNAL(triggered()), this, SLOT(changeEditorTextarea()));
     connect(comboAction, SIGNAL(triggered()), this, SLOT(changeEditorComboBox()));
     connect(listAction, SIGNAL(triggered()), this, SLOT(changeEditorList()));
-    
+    connect(gridAction, SIGNAL(triggered()), this, SLOT(changeEditorGrid()));
  
     isEditing = false;
 }
@@ -171,6 +175,19 @@ void TemplateWidget::changeEditorList(){
     layout->removeWidget(editor);
     editor->deleteLater();
     editor = new ListEdit(this);
+    editor->setMargins(0,0,0,0);
+    editor->enterEditMode();
+    layout->addWidget(editor);
+    editor->configurationAction(toolbar);
+    
+    toolbar->raise();
+    resize(sizeHint());
+}
+
+void TemplateWidget::changeEditorGrid(){
+    layout->removeWidget(editor);
+    editor->deleteLater();
+    editor = new Grid(this);
     editor->setMargins(0,0,0,0);
     editor->enterEditMode();
     layout->addWidget(editor);

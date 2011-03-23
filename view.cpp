@@ -11,6 +11,7 @@
 #include "view.h"
 #include "dateedit.h"
 #include "combo.h"
+#include "grid.h"
 #include "hotspot.h"
 #include "action.h"
 #include "attachments.h"
@@ -184,6 +185,8 @@ void View::loadTemplate(QString _design, QString _view){
                 editor = new DateEdit(this);
             } else if ( editorType == "listedit" ) {
                 editor = new ListEdit(this);
+            } else if ( editorType == "grid" ) {
+                editor = new Grid(this);
             }
             
             TemplateWidget *widget = new TemplateWidget(editor, this);
@@ -213,7 +216,6 @@ void View::loadTemplate(QString _design, QString _view){
     	
     	y += 30;
         
-    	
         /* Get a sample document to decide what the generic template should look like */
         QList<QVariant> docs = couch.getView(database, design, view, QVariant(), QVariant(), false, 1 );
         if ( docs.length() > 0 ) {

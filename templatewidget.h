@@ -51,6 +51,7 @@ private slots:
     void changeEditorText();
     void changeEditorComboBox();
     void changeEditorList();
+    void changeEditorGrid();
     
     void deleteWidget();
 private:

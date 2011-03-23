@@ -28,6 +28,8 @@ HEADERS += action.h \
            editors/combo.h \
            editors/dateedit.h \
            editors/listedit.h \
+           editors/grid.h \
+           editors/gridmodel.h \
            qcouch/document.h \
            qcouch/qcouch.h \
            qcouch/qjson/json_parser.hh \
@@ -58,6 +60,8 @@ SOURCES += app.cpp \
            editors/dateedit.cpp \
            editors/textedit.cpp \
            editors/lineedit.cpp \
+           editors/grid.cpp \
+           editors/gridmodel.cpp \
            qcouch/document.cpp \
            qcouch/qcouch.cpp \
            qcouch/qjson/json_parser.cc \
