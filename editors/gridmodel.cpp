@@ -8,14 +8,12 @@
 #include <QDebug>
 
 
-GridModel::GridModel(QVariant _var) : QAbstractTableModel()
+GridModel::GridModel(QVariant _var, QStringList _headers) : QAbstractTableModel()
 {
     var = _var;
+    headers = _headers;
     list = var.toList();
-    
-    headers << "type";
-    headers << "phone";
-    
+
 }
 
 
@@ -23,6 +21,10 @@ QVariant GridModel::getVariant(){
     return QVariant(list);
 }
 
+void GridModel::setHeaders(QStringList _headers){
+    headers = _headers;
+    emit layoutChanged();
+}
 
 int GridModel::rowCount(const QModelIndex &index) const {
 	Q_UNUSED(index);

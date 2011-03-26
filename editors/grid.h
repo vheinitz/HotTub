@@ -7,6 +7,7 @@
 #include "editor.h"
 #include "gridmodel.h"
 #include "qcouch/document.h"
+#include "listconfig.h"
 
 
 
@@ -29,10 +30,21 @@ public:
     void saveChanges(Document& doc);
     bool hasChanges();
     void reset();
+    void configurationAction(QToolBar *toolbar);
+    
+    void saveConfiguration(QVariantMap& map);
+    void loadConfiguration(QVariant&);
+    
+private slots:
+    void columnsConfigAccepted();
+    void configureItems();
+
 private:
     QTableView *view;
     QHBoxLayout *layout;
     GridModel *model;
+    QStringList headers;
+    ListConfigurationDialog *dlg;
 };
 
 

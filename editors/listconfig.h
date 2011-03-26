@@ -1,19 +1,19 @@
 
 
-#ifndef __COMBOCONFIG_H
-#define __COMBOCONFIG_H
+#ifndef __LISTCONFIG_H
+#define __LISTCONFIG_H
 
 
 #include <QtGui>
 
 
 
-class ComboConfigurationDialog : public QDialog {
+class ListConfigurationDialog : public QDialog {
     Q_OBJECT
 public:
-    ComboConfigurationDialog();
+    ListConfigurationDialog();
     QStringList stringList();
-    
+    void addAll(QStringList&);
 private slots:
     void addItem();
     void okButtonClicked();

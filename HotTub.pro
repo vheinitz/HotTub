@@ -22,7 +22,7 @@ HEADERS += action.h \
            model.h \
            templatewidget.h \
            view.h \
-           editors/comboconfig.h \
+           editors/listconfig.h \
            editors/lineedit.h \
            editors/textedit.h \
            editors/combo.h \
@@ -55,7 +55,7 @@ SOURCES += app.cpp \
            templatewidget.cpp \
            view.cpp \
            editors/listedit.cpp \
-           editors/comboconfig.cpp \
+           editors/listconfig.cpp \
            editors/combo.cpp \
            editors/dateedit.cpp \
            editors/textedit.cpp \

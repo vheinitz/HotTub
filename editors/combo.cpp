@@ -1,7 +1,7 @@
 
 #include "combo.h"
 #include "qcouch/document.h"
-#include "comboconfig.h"
+#include "listconfig.h"
 
 
 #include <QtGui>
@@ -12,7 +12,7 @@ Combo::Combo(QWidget *parent) : Editor(parent) {
     layout->addWidget(edit);
     setLayout(layout);
     
-    dlg = new ComboConfigurationDialog();
+    dlg = new ListConfigurationDialog();
     connect(dlg, SIGNAL(accepted()), this, SLOT(comboConfigAccepted()));
 }
 

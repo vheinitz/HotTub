@@ -1,9 +1,9 @@
 
 
-#include "comboconfig.h"
+#include "listconfig.h"
 
 
-ComboConfigurationDialog::ComboConfigurationDialog() {
+ListConfigurationDialog::ListConfigurationDialog() {
     
     model = new QStringListModel();
         
@@ -47,25 +47,31 @@ ComboConfigurationDialog::ComboConfigurationDialog() {
     
 }
 
+void ListConfigurationDialog::addAll(QStringList& _list){
+    list.clear();
+    list << _list;
+    model->setStringList(list);
+}
 
-void ComboConfigurationDialog::addItem(){
+
+void ListConfigurationDialog::addItem(){
     list << edit->text();
     model->setStringList(list);
     edit->clear();
 }
 
 
-void ComboConfigurationDialog::okButtonClicked(){
+void ListConfigurationDialog::okButtonClicked(){
     emit accepted();
     close();
 }
 
-void ComboConfigurationDialog::cancelButtonClicked(){
+void ListConfigurationDialog::cancelButtonClicked(){
     emit rejected();
     close();
 }
 
-QStringList ComboConfigurationDialog::stringList(){
+QStringList ListConfigurationDialog::stringList(){
     return list;
 }
 

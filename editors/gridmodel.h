@@ -13,7 +13,7 @@
 class GridModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-	GridModel(QVariant var);
+	GridModel(QVariant var, QStringList headers);
 	
 	int rowCount(const QModelIndex &) const;
 	int columnCount(const QModelIndex &) const;
@@ -23,7 +23,7 @@ public:
 	bool setData(const QModelIndex&, const QVariant&, int role = Qt::EditRole);
     
     QVariant getVariant();
-    
+    void setHeaders(QStringList);
 private:
     QVariant var;
     QList<QVariant> list;

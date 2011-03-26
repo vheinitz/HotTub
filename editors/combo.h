@@ -4,7 +4,7 @@
 
 #include "templatewidget.h"
 #include "qcouch/document.h"
-#include "comboconfig.h"
+#include "listconfig.h"
 #include <QtGui>
 
 
@@ -39,7 +39,7 @@ private:
     QComboBox *edit;
     QHBoxLayout* layout;
     
-    ComboConfigurationDialog* dlg;
+    ListConfigurationDialog* dlg;
     
 };
 
