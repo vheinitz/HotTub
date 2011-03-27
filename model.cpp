@@ -50,7 +50,12 @@ void Model::loadView( QString database, QString design, QString view, QString st
     
         foreach(QString key, fields.keys() ){
             if ( key != "_id" && key != "_rev" && key != "_attachments" ) {
-                columns.append(key);
+		QVariant val = fields[key];
+		if ( val.canConvert(QVariant::Int) ||  
+		     val.canConvert(QVariant::String) ||
+		     val.canConvert(QVariant::Bool) ) {
+               		columns.append(key);
+		}
             }
         }
     }
