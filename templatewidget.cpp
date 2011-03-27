@@ -19,7 +19,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
 {
     layout = new QHBoxLayout;
     stack = new QStackedLayout;
-	label = new QLabel;
+    label = new QLabel;
     labelEdit = new QLineEdit;
     editor = edit;
     
