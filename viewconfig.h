@@ -4,8 +4,8 @@
 
 #include <QtGui>
 
-
 class ViewConfig : public QDialog {
+	Q_OBJECT
 public:
 	ViewConfig();
 	void addColumn(QString text);
@@ -25,10 +25,8 @@ private:
 	void addSelected();
 	void removeSelected();
 
-
 	QListWidget *allColumnsListWidget;
 	QListWidget *currentColumnsListWidget;
-	
 };
 
 
