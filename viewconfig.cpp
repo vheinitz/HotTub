@@ -1,11 +1,11 @@
 
 
-#include "gridconfig.h"
+#include "viewconfig.h"
 #include <QtGui>
 #include <QDebug>
 
 
-GridConfig::GridConfig() : QDialog(){
+ViewConfig::ViewConfig() : QDialog(){
 
 	QVBoxLayout *mainLayout = new QVBoxLayout;
 
@@ -56,32 +56,45 @@ GridConfig::GridConfig() : QDialog(){
 
 }
 
-void GridConfig::okClicked(){
+void ViewConfig::okClicked(){
 	emit accepted();
 	close();
 }
 
-void GridConfig::cancelClicked(){
+void ViewConfig::cancelClicked(){
 	emit rejected();
 	close();
 }
 
-void GridConfig::addDoubleClicked(QListWidgetItem * item){
+void ViewConfig::addDoubleClicked(QListWidgetItem * item){
 	Q_UNUSED(item);
 	addSelected();
 }
 
-void GridConfig::removeDoubleClicked(QListWidgetItem * item){
+void ViewConfig::removeDoubleClicked(QListWidgetItem * item){
 	Q_UNUSED(item);
 	removeSelected();
 }
 
-void GridConfig::addColumn(QString text){
+void ViewConfig::addColumn(QString text){
 	allColumnsListWidget->addItem(text);
 }
 
+void ViewConfig::addCurrentColumn(QString text){
+	currentColumnsListWidget->addItem(text);
+}
 
-void GridConfig::addSelected(){
+QStringList ViewConfig::getCurrentColumns(){
+	QStringList currentColumns;
+	for(int i=0; i<currentColumnsListWidget->count(); i++){
+		QListWidgetItem *item = currentColumnsListWidget->item(i);
+		currentColumns << item->text();	
+	}
+	return currentColumns;
+}
+
+
+void ViewConfig::addSelected(){
 	int row = allColumnsListWidget->currentRow();
 	if ( row >= 0 ){
 		QListWidgetItem *item = allColumnsListWidget->takeItem(row);
@@ -89,7 +102,7 @@ void GridConfig::addSelected(){
 	}	
 }
 
-void GridConfig::removeSelected(){
+void ViewConfig::removeSelected(){
 	int row = currentColumnsListWidget->currentRow();
 	if ( row >= 0 ){
 		QListWidgetItem *item = currentColumnsListWidget->takeItem(row);
@@ -98,22 +111,22 @@ void GridConfig::removeSelected(){
 }
 
 
-void GridConfig::addClicked(){
+void ViewConfig::addClicked(){
 	addSelected();
 }
 
-void GridConfig::addAllClicked(){
+void ViewConfig::addAllClicked(){
 	while ( allColumnsListWidget->count() > 0 ){
 		QListWidgetItem *item = allColumnsListWidget->takeItem(0);
 		currentColumnsListWidget->addItem(item);
 	}
 }
 
-void GridConfig::removeClicked(){
+void ViewConfig::removeClicked(){
 	removeSelected();
 }
 
-void GridConfig::removeAllClicked(){
+void ViewConfig::removeAllClicked(){
 	while ( currentColumnsListWidget->count() > 0 ){
 		QListWidgetItem *item = currentColumnsListWidget->takeItem(0);
 		allColumnsListWidget->addItem(item);

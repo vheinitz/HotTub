@@ -8,7 +8,7 @@
 #include "main.h"
 #include "model.h"
 #include "app.h"
-
+#include "listconfig.h"
 #include "qcouch/qcouch.h"
 
 
@@ -34,12 +34,12 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     endKeyEdit = new QLineEdit;
     QLabel *startLabel = new QLabel("Start Key:");
     QLabel *endLabel = new QLabel("End Key:");
-	descending = new QCheckBox("Desc", this);
+    descending = new QCheckBox("Desc", this);
     QHBoxLayout *topLayout = new QHBoxLayout;
     topLayout->setSpacing(5);
     topLayout->addWidget(viewsCombo);
     topLayout->addStretch();
-	topLayout->addWidget(startLabel);
+    topLayout->addWidget(startLabel);
     topLayout->addWidget(startKeyEdit);
     topLayout->addWidget(endLabel);
     topLayout->addWidget(endKeyEdit);
@@ -48,6 +48,14 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     leftLayout->addLayout(topLayout, 0);
 
     leftLayout->addWidget(list, 1);
+
+    QPushButton *configureViewButton = new QPushButton(tr("Configure"));
+    connect(configureViewButton, SIGNAL(clicked()), this, SLOT(configureViewColumns()));
+    QHBoxLayout *viewSouthLayout = new QHBoxLayout;
+    viewSouthLayout->addWidget(configureViewButton);    
+    viewSouthLayout->addStretch();
+    leftLayout->addLayout(viewSouthLayout, 0);
+
     layout->addLayout(leftLayout, 0, 0);
     layout->addWidget(view, 0, 1);
     setLayout(layout);
@@ -181,6 +189,25 @@ void MainWindow::doDatabaseSelection(){
     
 }
 
+
+void MainWindow::configureViewColumns(){
+	viewConfig = new ViewConfig;
+
+	connect(viewConfig, SIGNAL(accepted()), this, SLOT(columnConfigAccepted()));	
+	viewConfig->show();
+	QStringList headers = model->getColumns();
+	
+	foreach(QString header, headers){
+		viewConfig->addCurrentColumn(header);
+	}
+}
+
+
+void MainWindow::columnConfigAccepted(){
+	QStringList columns = viewConfig->getCurrentColumns();
+	qDebug() << columns;
+	model->setColumns(columns);	
+}
 
 
 

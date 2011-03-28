@@ -20,6 +20,14 @@ couch(couch)
 }
 
 
+QStringList Model::getColumns(){
+	return columns;
+}
+
+void Model::setColumns(QStringList _columns){
+	columns = _columns;	
+	emit layoutChanged();
+}
 
 void Model::loadView( QString database, QString design, QString view, QString startkey, QString endkey, bool descending ) {
     
@@ -82,12 +90,11 @@ Document Model::getDocument(int index){
 QVariant Model::data(const QModelIndex &index, int role) const {
 	if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
 		if ( index.row() < documents.size() ) {
-            Document doc = documents[index.row()];
-            QVariantMap fields = doc.getMap();
-            QString col = columns[index.column()];
-            return fields[col];
-            
-        }
+            		Document doc = documents[index.row()];
+            		QVariantMap fields = doc.getMap();
+            		QString col = columns[index.column()];
+            		return fields[col];
+        	}
 	}
 	return QVariant();
     

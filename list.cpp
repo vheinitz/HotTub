@@ -17,3 +17,4 @@ void List::selectionChanged ( const QItemSelection &selected, const QItemSelecti
     
 } 
 
+

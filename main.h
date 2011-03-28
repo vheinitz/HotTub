@@ -10,6 +10,7 @@
 #include "list.h"
 #include "model.h"
 #include "view.h"
+#include "viewconfig.h"
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -28,6 +29,8 @@ public slots:
     void endKeyChanged(const QString &);
     void updateView();
     void descendingCheckStateChanged(int);
+    void configureViewColumns();
+    void columnConfigAccepted();
 private:
     void doDatabaseSelection();
     void getViews(QString&);
@@ -42,6 +45,8 @@ private:
     List *list;
     Model *model;
     View *view;
+
+    ViewConfig *viewConfig;
 
     QString design;
     QString currentView;

@@ -35,6 +35,8 @@ public:
     void removeDocument(Document &doc);
     void addDocument(Document &doc);
 
+    QStringList getColumns(); 
+    void setColumns(QStringList);
 private:
 	int count;
     QList<QString> columns;
