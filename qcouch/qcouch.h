@@ -28,6 +28,7 @@ class TimeoutException : public std::exception {
 
 class CouchException : public std::exception {
 public:
+    CouchException();
     CouchException(QString message);
     virtual const char* what() const throw();
     virtual ~CouchException() throw();
@@ -36,6 +37,11 @@ private:
     QString message;
     
     
+};
+
+class DocumentNotFoundException : public CouchException {
+public:
+    DocumentNotFoundException();
 };
 
 

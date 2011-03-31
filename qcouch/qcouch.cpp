@@ -22,6 +22,8 @@ using namespace QJson;
 using namespace std;
 
 
+CouchException::CouchException() { }
+
 CouchException::CouchException(QString str) {
     message = str;
 }
@@ -32,6 +34,8 @@ CouchException::~CouchException() throw() {
 const char* CouchException::what() const throw() {
     return message.toStdString().c_str();
 }
+
+DocumentNotFoundException::DocumentNotFoundException(){}
 
 
 QCouch::QCouch(){
@@ -220,12 +224,16 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
 
 
 Document QCouch::getDocument(QString database, QString id, QString revision){
-    QString url = "/" + database + "/" + id;
+    QString encodedId = QUrl::toPercentEncoding(id);
+    QString url = "/" + database + "/" + encodedId;
     if (revision.length() > 0 ){
         url.append("?rev="+revision);
     }
     
     QNetworkReply *reply = doGet(url);
+    if ( reply->error() == QNetworkReply::ContentNotFoundError ) {
+        throw DocumentNotFoundException();
+    }
     QByteArray results = reply->readAll();
     QVariant var = parser.parse(results);
     
@@ -235,7 +243,9 @@ Document QCouch::getDocument(QString database, QString id, QString revision){
 
 Document QCouch::createDocument(QString database, QString id, QVariant var){
     const QByteArray bytes = serializer.serialize(var);
-    QNetworkReply * reply = doPut("/" + database + "/" + id, bytes);
+    QString encodedId = QUrl::toPercentEncoding(id);
+
+    QNetworkReply * reply = doPut("/" + database + "/" + encodedId, bytes);
     
     QVariant ret = parser.parse(reply->readAll());
     QVariantMap map = ret.toMap();
@@ -251,7 +261,8 @@ Document QCouch::createDocument(QString database, QString id, QVariant var){
 }
 
 QString QCouch::updateDocument(QString database, QString id, QString revision, QVariant var){
-    QString url = "/" + database + "/" + id;
+    QString encodedId = QUrl::toPercentEncoding(id);
+    QString url = "/" + database + "/" + encodedId;
     if ( revision.length() > 0 ) {
 	QVariantMap map = var.toMap();
 	map["_rev"] = QVariant(revision);

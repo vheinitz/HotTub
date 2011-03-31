@@ -90,6 +90,9 @@ void MainWindow::updateView(){
     QString endkey = endKeyEdit->text();
     bool desc = descending->checkState() == Qt::Checked;
     model->loadView( selectedDatabase, design, currentView, startkey, endkey, desc);
+    loadViewConfiguration();
+ 
+    
     list->resizeColumnsToContents();
 }
 
@@ -130,6 +133,10 @@ void MainWindow::listSelectionChanged(int index){
     
 }
 
+void MainWindow::loadViewConfiguration(){
+     
+}
+
 void MainWindow::loadSelectedView(const QString& selectedView){
     design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
     currentView = selectedView;
@@ -139,6 +146,8 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     QString endkey = endKeyEdit->text();
     bool desc = descending->checkState() == Qt::Checked;
     model->loadView( selectedDatabase, design, selectedView, startkey, endkey, desc );
+    loadViewConfiguration();
+    
     view->clear(); 
     
     view->loadTemplate(design, selectedView);
@@ -200,13 +209,30 @@ void MainWindow::configureViewColumns(){
 	foreach(QString header, headers){
 		viewConfig->addCurrentColumn(header);
 	}
+    
+    QStringList hiddenColumns = model->getHiddenColumns();
+    foreach(QString hiddenColumn, hiddenColumns){
+        viewConfig->addColumn(hiddenColumn);
+    }
 }
 
 
 void MainWindow::columnConfigAccepted(){
 	QStringList columns = viewConfig->getCurrentColumns();
-	qDebug() << columns;
+
+    QVariantMap map;
+    map["columns"] = QVariant(columns);
+    
+    try {
+        Document doc = couch.getDocument(selectedDatabase, "templates/"+design+"/_list/"+currentView);
+        couch.updateDocument(selectedDatabase, doc.getId(), doc.getRevision(), QVariant(map));
+    }catch (DocumentNotFoundException) {
+        couch.createDocument(selectedDatabase, "templates/"+design+"/_list/"+currentView, QVariant(map));
+    }
+    
 	model->setColumns(columns);	
+    list->resizeColumnsToContents();
+
 }
 
 

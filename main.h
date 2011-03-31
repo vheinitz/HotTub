@@ -34,6 +34,7 @@ public slots:
 private:
     void doDatabaseSelection();
     void getViews(QString&);
+    void loadViewConfiguration();
     
     QDialog *dlg;
     QComboBox *viewsCombo;

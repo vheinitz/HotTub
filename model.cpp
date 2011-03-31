@@ -24,6 +24,10 @@ QStringList Model::getColumns(){
 	return columns;
 }
 
+QStringList Model::getHiddenColumns(){
+    return hiddenColumns;
+}
+
 void Model::setColumns(QStringList _columns){
 	columns = _columns;	
 	emit layoutChanged();
@@ -52,21 +56,56 @@ void Model::loadView( QString database, QString design, QString view, QString st
         documents.append(doc);
     }
     
-    if ( documents.length() > 0 ) {
-        Document doc = documents[0];
+    QSet<QString> potentialColumns;
+    foreach(Document doc, documents){
         QVariantMap fields = doc.getMap();
-    
+        
         foreach(QString key, fields.keys() ){
             if ( key != "_id" && key != "_rev" && key != "_attachments" ) {
-		QVariant val = fields[key];
-		if ( val.canConvert(QVariant::Int) ||  
-		     val.canConvert(QVariant::String) ||
-		     val.canConvert(QVariant::Bool) ) {
-               		columns.append(key);
-		}
+                QVariant val = fields[key];
+                if ( val.canConvert(QVariant::Int) ||  
+                     val.canConvert(QVariant::String) ||
+                     val.canConvert(QVariant::Bool) ) {
+                    potentialColumns.insert(key);
+                }
             }
         }
     }
+    
+    
+    try {
+        /* If there is a saved preference for what columns to show, use that */
+        Document doc = couch.getDocument(database, "templates/"+design+"/_list/"+view);
+        QVariantMap map = doc.getMap();
+        if ( map.find("columns") != map.end() ) {
+            columns = map["columns"].toStringList();
+            /* Everything not shown is hidden */
+            foreach(const QString potentialColumn, potentialColumns ) {
+                if ( !columns.contains(potentialColumn) ) {
+                    hiddenColumns << potentialColumn;
+                }
+            }
+        }
+    }catch( DocumentNotFoundException ){
+        /* Go through the documents looking for potential fields to include */
+        if ( documents.length() > 0 ) {
+            Document doc = documents[0];
+            QVariantMap fields = doc.getMap();
+            
+            foreach(QString key, fields.keys() ){
+                if ( key != "_id" && key != "_rev" && key != "_attachments" ) {
+                    QVariant val = fields[key];
+                    if ( val.canConvert(QVariant::Int) ||  
+                        val.canConvert(QVariant::String) ||
+                        val.canConvert(QVariant::Bool) ) {
+                        columns.append(key);
+                    }
+                }
+            }
+        }    
+    } 
+    
+    
     emit layoutChanged();
 }
 

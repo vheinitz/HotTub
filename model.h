@@ -36,10 +36,12 @@ public:
     void addDocument(Document &doc);
 
     QStringList getColumns(); 
+    QStringList getHiddenColumns();
     void setColumns(QStringList);
 private:
 	int count;
     QList<QString> columns;
+    QList<QString> hiddenColumns;
     
     QString database;
     QCouch &couch;
