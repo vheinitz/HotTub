@@ -33,7 +33,7 @@ void Model::setColumns(QStringList _columns){
 	emit layoutChanged();
 }
 
-void Model::loadView( QString database, QString design, QString view, QString startkey, QString endkey, bool descending ) {
+void Model::loadView( QString database, QString design, QString view, QString startkey, QString endkey, bool descending, QString startKeyDocId ) {
     
     QVariant startKeyVariant;
     QVariant endKeyVariant;
@@ -46,9 +46,10 @@ void Model::loadView( QString database, QString design, QString view, QString st
    
     documents.clear();
     columns.clear();
-    QList<QVariant> results = couch.getView(database, design, view, startKeyVariant, endKeyVariant, descending);
+    QList<QVariant> results = couch.getView(database, design, view, startKeyVariant, endKeyVariant, descending, 26, startKeyDocId);
     
-    foreach(QVariant result, results ) {
+    for(int i=0; i<results.length() && i<25; i++){
+        QVariant result = results[i];
         QVariantMap map = result.toMap();
         QString id = map["id"].toString();
         
@@ -105,8 +106,54 @@ void Model::loadView( QString database, QString design, QString view, QString st
         }    
     } 
     
+    /* Store the nextStartKey and the nextStartKeyDocId for nextPage */
+    if( results.length() == 26 ) {
+        QVariant var = results[25];
+        QVariantMap map = var.toMap();
+        if ( map.find("key") != map.end() && map.find("id") != map.end() ) {
+            nextStartKey = map["key"].toString();
+            nextStartKeyDocId = map["id"].toString();
+        }
+        var = results[0];
+        map = var.toMap();
+        if ( map.find("key") != map.end() && map.find("id") != map.end() ) {
+            currentStartKey = map["key"].toString();
+            currentStartKeyDocId = map["id"].toString();
+            qDebug() << previousStack;
+        }
+        
+    } else {
+        nextStartKey = "";
+        nextStartKeyDocId = "";
+    }
+    
     
     emit layoutChanged();
+}
+
+bool Model::hasNextPage(){
+    if ( nextStartKey.length() > 0 ){
+        return true;
+    }
+    return false;
+}
+
+bool Model::hasPreviousPage(){
+    return !previousStack.isEmpty();
+}
+
+void Model::nextPage(QString database, QString design, QString view, bool descending ){
+    if ( hasNextPage() ) {
+        previousStack.push(qMakePair(currentStartKey, currentStartKeyDocId));
+        loadView(database, design, view, nextStartKey, "", descending, nextStartKeyDocId);
+    }
+}
+
+void Model::previousPage(QString database, QString design, QString view, bool descending ){
+    if ( hasPreviousPage() ) {
+        QPair<QString, QString> pair = previousStack.pop();
+        loadView(database, design, view, pair.first, "", descending, pair.second);
+    }
 }
 
 

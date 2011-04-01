@@ -51,9 +51,19 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
     QPushButton *configureViewButton = new QPushButton(tr("Configure"));
     connect(configureViewButton, SIGNAL(clicked()), this, SLOT(configureViewColumns()));
+    
+    nextPageButton = new QPushButton(tr("Next Page"));
+    connect(nextPageButton, SIGNAL(clicked()), this, SLOT(nextPage()));
+    
+    previousPageButton = new QPushButton(tr("Previous Page"));
+    connect(previousPageButton, SIGNAL(clicked()), this, SLOT(previousPage()));
+    
     QHBoxLayout *viewSouthLayout = new QHBoxLayout;
     viewSouthLayout->addWidget(configureViewButton);    
     viewSouthLayout->addStretch();
+    viewSouthLayout->addWidget(previousPageButton);
+    viewSouthLayout->addWidget(nextPageButton);
+    
     leftLayout->addLayout(viewSouthLayout, 0);
 
     layout->addLayout(leftLayout, 0, 0);
@@ -78,10 +88,28 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
     keyTimer.setSingleShot(true);
     connect(&keyTimer, SIGNAL(timeout()), this, SLOT(updateView()));
-
+    
     connect(startKeyEdit, SIGNAL(textChanged(const QString &)), this, SLOT(startKeyChanged(const QString &)));
     connect(endKeyEdit, SIGNAL(textChanged(const QString &)), this, SLOT(endKeyChanged(const QString &)));
 
+    previousPageButton->setDisabled(true);
+}
+
+void MainWindow::nextPage(){
+    bool desc = descending->checkState() == Qt::Checked;
+    model->nextPage( selectedDatabase, design, currentView, desc);
+    previousPageButton->setDisabled(false);
+    if( !model->hasNextPage()){
+        nextPageButton->setDisabled(true);
+    }
+}
+
+void MainWindow::previousPage(){
+    bool desc = descending->checkState() == Qt::Checked;
+    model->previousPage( selectedDatabase, design, currentView, desc);
+    if ( !model->hasPreviousPage() ) {
+        previousPageButton->setDisabled(true);
+    }
 }
 
 
@@ -92,6 +120,11 @@ void MainWindow::updateView(){
     model->loadView( selectedDatabase, design, currentView, startkey, endkey, desc);
     loadViewConfiguration();
  
+    if( !model->hasNextPage()){
+        nextPageButton->setDisabled(true);
+    } else {
+        nextPageButton->setDisabled(false);
+    }
     
     list->resizeColumnsToContents();
 }
@@ -155,6 +188,13 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     
     list->setModel(model);
     list->resizeColumnsToContents();
+    
+    if( !model->hasNextPage()){
+        nextPageButton->setDisabled(true);
+    } else {
+        nextPageButton->setDisabled(false);
+    }
+    
 }
             
             

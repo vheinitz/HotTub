@@ -175,7 +175,7 @@ QList<QVariant> QCouch::listViews(QString database){
 
 
 
-QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, bool descending, int limit){
+QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, bool descending, int limit, QString startKeyDocId){
     QString params;
 
     if ( startkey.isValid() ) {
@@ -202,6 +202,11 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
 
     if ( descending ) {
         params.append("&descending=true");
+    }
+    
+    if ( startKeyDocId.length() > 0 ){
+        params.append("&startKeyDocId=");
+        params.append(startKeyDocId);
     }
     
     
@@ -347,7 +352,5 @@ QString QCouch::getUUID(){
     QList<QVariant> uuids = map["uuids"].toList();
     
     return uuids[0].toString();
-    
-    
 }
 

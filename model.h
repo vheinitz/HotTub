@@ -5,6 +5,7 @@
 #include <QAbstractTableModel>
 #include <QAbstractItemModel>
 #include <QVariant>
+#include <QStack>
 #include <vector>
 #include "qcouch/document.h"
 #include "qcouch/qcouch.h"
@@ -28,7 +29,11 @@ public:
 	QVariant headerData( int, Qt::Orientation, int ) const; 
 	Qt::ItemFlags flags( const QModelIndex & ) const;
 	
-    void loadView( QString database, QString design, QString view, QString startkey, QString endkey, bool descending );
+    void loadView( QString database, QString design, QString view, QString startkey, QString endkey, bool descending, QString startKeyDocId="" );
+    void nextPage( QString database, QString design, QString view, bool descending );
+    void previousPage( QString database, QString design, QString view, bool descending );
+    bool hasNextPage();
+    bool hasPreviousPage();
     Document getDocument(int);
 
     void updateDocument(Document &doc);
@@ -47,6 +52,14 @@ private:
     QCouch &couch;
     
     QList<Document> documents;
+    
+    QString nextStartKey;
+    QString nextStartKeyDocId;
+    
+    QString currentStartKey;
+    QString currentStartKeyDocId;
+    
+    QStack<QPair<QString, QString> > previousStack;
 };
 
 

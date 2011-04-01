@@ -31,6 +31,8 @@ public slots:
     void descendingCheckStateChanged(int);
     void configureViewColumns();
     void columnConfigAccepted();
+    void nextPage();
+    void previousPage();
 private:
     void doDatabaseSelection();
     void getViews(QString&);
@@ -41,6 +43,9 @@ private:
     QLineEdit *startKeyEdit;
     QLineEdit *endKeyEdit;
     QCheckBox *descending;
+    
+    QPushButton *nextPageButton;
+    QPushButton *previousPageButton;
 
     QString selectedDatabase;
     List *list;

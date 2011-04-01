@@ -60,7 +60,7 @@ public:
     QList<QString> listDatabases();
     QList<QVariant> listViews(QString database);
     
-    QList<QVariant> getView(QString database, QString design, QString view, QVariant startkey=QVariant(), QVariant endkey=QVariant(), bool descending=false, int limit=25);
+    QList<QVariant> getView(QString database, QString design, QString view, QVariant startkey=QVariant(), QVariant endkey=QVariant(), bool descending=false, int limit=25, QString startKeyDocId="");
     
     Document getDocument(QString database, QString id, QString revision="");
     
