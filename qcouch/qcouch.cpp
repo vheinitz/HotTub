@@ -205,7 +205,7 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
     }
     
     if ( startKeyDocId.length() > 0 ){
-        params.append("&startKeyDocId=");
+        params.append("&startkey_docid=");
         params.append(startKeyDocId);
     }
     
