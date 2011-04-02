@@ -27,6 +27,8 @@ public:
 private:
     QLineEdit *edit;
     QLayout *layout;
+    
+    QString originalValue;
 };
 
 

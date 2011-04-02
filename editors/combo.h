@@ -32,6 +32,7 @@ public:
     void saveConfiguration(QVariantMap& map);
     void loadConfiguration(QVariant&);
     void paintEvent(QPaintEvent* event);
+    bool isDirty();
 private slots:
     void configureItems();
     void comboConfigAccepted();
@@ -40,7 +41,7 @@ private:
     QHBoxLayout* layout;
     
     ListConfigurationDialog* dlg;
-    
+    int originalIndex;
 };
 
 

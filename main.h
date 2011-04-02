@@ -12,11 +12,11 @@
 #include "view.h"
 #include "viewconfig.h"
 
-class MainWindow : public QWidget {
+class MainWindow : public QMainWindow {
     Q_OBJECT
     
 public:
-    MainWindow(QWidget *parent = 0);
+    MainWindow();
     
 public slots:
     void databaseSelected(const QString &);    
@@ -37,6 +37,7 @@ private:
     void doDatabaseSelection();
     void getViews(QString&);
     void loadViewConfiguration();
+    void closeEvent(QCloseEvent *event);
     
     QDialog *dlg;
     QComboBox *viewsCombo;

@@ -17,6 +17,7 @@ ListEdit::ListEdit(QWidget* parent) : Editor(parent){
 
     setLayout(layout);
 
+    changed = false;
     connect(edit, SIGNAL(returnPressed()), this, SLOT(returnPressed()));
 }
 
@@ -25,6 +26,7 @@ void ListEdit::returnPressed(){
         list << edit->text();
         model->setStringList(list);
         edit->clear();
+        changed = true;
     }
 }
 
@@ -64,8 +66,10 @@ QString ListEdit::type(){
 void ListEdit::loadDocument(Document doc){
     QVariantMap map = doc.getMap();
     QVariant val = map[getField()];
-
-    model->setStringList(val.toStringList());
+    qDebug() << val;
+    list.clear();
+    list << val.toStringList();
+    model->setStringList(list);
 }
 
 void ListEdit::saveChanges(Document& doc){
@@ -73,9 +77,11 @@ void ListEdit::saveChanges(Document& doc){
 }
 
 bool ListEdit::hasChanges(){
-    return false;
+    return changed;
 }
 
 void ListEdit::reset(){
+    list.clear();
+    model->setStringList(list);
 }
 

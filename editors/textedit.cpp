@@ -47,20 +47,21 @@ int TextEdit::getLeftAlignmentHint(){
 void TextEdit::loadDocument(Document doc){
     QVariantMap map = doc.getMap();
     QVariant val = map[getField()];
+    originalValue = val.toString();
     edit->setText(val.toString());
     
 }
 
 bool TextEdit::hasChanges(){
-    return false;
+    return originalValue != edit->toPlainText();
 }
 
 void TextEdit::saveChanges(Document& doc){
     doc.setValue(getField(), QVariant(edit->toPlainText()));
-
 }
 
 void TextEdit::reset(){
+    originalValue = "";
     edit->clear();
 }
 

@@ -27,9 +27,11 @@ using namespace std;
      View( QCouch& couch, QWidget *parent = 0);
      void setDatabase(QString);
      void loadTemplate(QString, QString);
-     void loadDocument(Document);
+     bool loadDocument(Document, bool force = false);
      void reset();
      void clear();
+     bool hasChanges();
+     void saveChanges();
  protected:
      void mouseMoveEvent(QMouseEvent *event);
      void mousePressEvent(QMouseEvent *event);
@@ -119,6 +121,7 @@ signals:
      
      Attachments *attachments;
      Document currentDoc;
+     bool hasDocument;
 
  };
 

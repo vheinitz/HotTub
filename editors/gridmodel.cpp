@@ -14,6 +14,7 @@ GridModel::GridModel(QVariant _var, QStringList _headers) : QAbstractTableModel(
     headers = _headers;
     list = var.toList();
 
+    changed = false;
 }
 
 
@@ -36,6 +37,9 @@ int GridModel::columnCount(const QModelIndex &index) const {
     return headers.size();
 }
 
+bool GridModel::hasChanges(){
+    return changed;
+}
 
 
 QVariant GridModel::data(const QModelIndex &index, int role) const {
@@ -57,12 +61,14 @@ bool GridModel::setData(const QModelIndex& index, const QVariant& value, int rol
         QVariantMap map = QVariantMap();
         map[headers[index.column()]] = value;
         list << QVariant(map);
+        changed = true;
         return true;
     } else {
         QVariant var = list[index.row()];
         QVariantMap map = var.toMap();
         map[headers[index.column()]] = value;
         list[index.row()] = QVariant(map);
+        changed = true;
         return true;
     }
 }

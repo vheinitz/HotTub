@@ -15,7 +15,7 @@
 using namespace std;
 
 
-MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
+MainWindow::MainWindow() : QMainWindow() {
     setMinimumSize(1200, 600);
     
     view = new View(couch, this);
@@ -68,7 +68,9 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
     layout->addLayout(leftLayout, 0, 0);
     layout->addWidget(view, 0, 1);
-    setLayout(layout);
+    QWidget *mainWidget = new QWidget;
+    mainWidget->setLayout(layout);
+    setCentralWidget(mainWidget);
     
     couch.connect("http://localhost", 5984);
     
@@ -163,7 +165,6 @@ void MainWindow::listSelectionChanged(int index){
       Document doc = model->getDocument(index);
       view->loadDocument(doc);
     }
-    
 }
 
 void MainWindow::loadViewConfiguration(){
@@ -171,6 +172,27 @@ void MainWindow::loadViewConfiguration(){
 }
 
 void MainWindow::loadSelectedView(const QString& selectedView){
+    if ( view->hasChanges() ) {
+        QMessageBox msgBox;
+        msgBox.setText("The document has been modified.");
+        msgBox.setInformativeText("Do you want to save your changes before continuing?");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        msgBox.setIcon(QMessageBox::Question);
+        msgBox.setDefaultButton(QMessageBox::Yes);
+        int ret = msgBox.exec();
+        
+        switch( ret ) {
+            case QMessageBox::Yes:
+                view->saveChanges();
+                break;
+            case QMessageBox::No:
+            default: // just for sanity
+                break;
+           
+        }
+    }
+    
+    
     QVariant var = viewsCombo->itemData(viewsCombo->currentIndex());
     QVariantMap map = var.toMap();
     design = map["design"].toString();
@@ -186,7 +208,6 @@ void MainWindow::loadSelectedView(const QString& selectedView){
     view->clear(); 
     
     view->loadTemplate(design, currentView);
-    
     
     list->setModel(model);
     list->resizeColumnsToContents();
@@ -280,6 +301,34 @@ void MainWindow::columnConfigAccepted(){
 	model->setColumns(columns);	
     list->resizeColumnsToContents();
 
+}
+
+void MainWindow::closeEvent(QCloseEvent *event){
+    if ( view->hasChanges() ) {
+        QMessageBox msgBox;
+        msgBox.setText("The document has been modified.");
+        msgBox.setInformativeText("Do you want to save your changes?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setIcon(QMessageBox::Question);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
+        
+        switch( ret ) {
+            case QMessageBox::Save:
+                view->saveChanges();
+                event->accept();
+                break;
+            case QMessageBox::Cancel:
+            default: // just for sanity
+                event->ignore();
+                break;
+            case QMessageBox::Discard:
+                event->accept();
+                break;
+        }
+    } else {
+        event->accept();
+    }
 }
 
 

@@ -76,7 +76,11 @@ void Combo::loadDocument(Document doc){
     int index = edit->findText(val.toString());
     if ( index >= 0 ) {
         edit->setCurrentIndex(index);
+    } else {
+        edit->setCurrentIndex(-1);
     }
+    originalIndex = edit->currentIndex();
+    
     
 }
 
@@ -105,7 +109,7 @@ void Combo::loadConfiguration(QVariant& var){
 }
 
 bool Combo::hasChanges(){
-    return false;
+    return originalIndex != edit->currentIndex();
 }
 
 void Combo::reset() {

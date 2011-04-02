@@ -95,6 +95,8 @@ View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      mainLayout->addLayout(buttonLayout1, 0, 1, Qt::AlignRight);
      setLayout(mainLayout);
      
+     hasDocument = false;
+     
  }
 
 void View::setDatabase(QString _database){
@@ -109,13 +111,13 @@ void View::saveDocument(){
     try {
         QString newRevision = couch.updateDocument(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), QVariant(currentDoc.getMap()));
         currentDoc.setRevision(newRevision);
+        loadDocument(currentDoc, true);
         emit documentUpdated(currentDoc);
     } catch (CouchException& e){
         QString str = "Unable to update document -- ";
         str.append(e.what());
         QMessageBox::critical(this, "Hot Tub", str);
     }
-
 }
  
 
@@ -137,6 +139,23 @@ void View::reset(){
     foreach(TemplateWidget* widget, widgets){
         widget->reset();
     }
+    hasDocument = false;
+}
+
+bool View::hasChanges(){
+    if ( hasDocument ) {
+        foreach(TemplateWidget* widget, widgets){
+            if ( widget->hasChanges() ) {
+                qDebug() << widget->getField();
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+void View::saveChanges(){
+    saveDocument();
 }
 
 void View::deleteDocument(){
@@ -155,6 +174,7 @@ void View::deleteDocument(){
 }
 
 void View::loadTemplate(QString _design, QString _view){
+    hasDocument = false;
     design = _design;
     view = _view;
     
@@ -300,7 +320,29 @@ Document View::findTemplate(){
     throw 2;
 }
 
-void View::loadDocument(Document doc){
+bool View::loadDocument(Document doc, bool force){
+    
+    if ( !force && hasChanges() ) {
+        QMessageBox msgBox;
+        msgBox.setText("The document has been modified.");
+        msgBox.setInformativeText("Do you want to save your changes before continuing?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setIcon(QMessageBox::Question);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
+        
+        switch( ret ) {
+            case QMessageBox::Save:
+                saveChanges();
+                break;
+            case QMessageBox::Cancel:
+            default: // just for sanity
+                return false;
+                break;
+            case QMessageBox::Discard:
+                break;
+        }
+    }
     
     currentDoc = doc;
     
@@ -310,6 +352,9 @@ void View::loadDocument(Document doc){
     
     	
     attachments->loadDocument(doc);
+    
+    hasDocument = true;
+    return true;
 }
 
 void View::fileAttached(QUrl url) {

@@ -27,6 +27,7 @@ private:
     QTextEdit *edit;
     QVBoxLayout* layout;
     
+    QString originalValue;
 };
 
 

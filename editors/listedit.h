@@ -36,6 +36,8 @@ private:
     QLineEdit *edit;
     QStringList list;
     QStringListModel *model;
+    
+    bool changed;
 };
 
 

@@ -22,12 +22,14 @@ public:
 	Qt::ItemFlags flags( const QModelIndex & ) const;
 	bool setData(const QModelIndex&, const QVariant&, int role = Qt::EditRole);
     
+    bool hasChanges();
     QVariant getVariant();
     void setHeaders(QStringList);
 private:
     QVariant var;
     QList<QVariant> list;
     QStringList headers;
+    bool changed;
 };
 
 

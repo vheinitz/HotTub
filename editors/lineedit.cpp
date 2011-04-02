@@ -52,7 +52,7 @@ int LineEdit::getLeftAlignmentHint(){
 
 
 bool LineEdit::hasChanges(){
-    return false;
+    return originalValue != edit->text();
 }
 
 void LineEdit::loadDocument(Document doc){
@@ -63,6 +63,7 @@ void LineEdit::loadDocument(Document doc){
         QVariant val = map[getField()];
         edit->setText(val.toString());
     }
+    originalValue = edit->text();
 }
 
 void LineEdit::saveChanges(Document& doc){

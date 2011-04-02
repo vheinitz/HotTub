@@ -29,6 +29,8 @@ private:
     QDateTimeEdit *edit;
     QLayout *layout;
     
+    uint originalValue;
+    
 };
 
 

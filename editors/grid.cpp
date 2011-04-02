@@ -107,7 +107,7 @@ void Grid::saveChanges(Document& doc){
 }
 
 bool Grid::hasChanges(){
-    return false;
+    return model->hasChanges();
 }
 
 void Grid::reset(){

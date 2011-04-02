@@ -339,6 +339,10 @@ void TemplateWidget::loadConfiguration(QVariant& var){
     
 }
 
+bool TemplateWidget::hasChanges(){
+    return editor->hasChanges();
+}
+
 
 
 

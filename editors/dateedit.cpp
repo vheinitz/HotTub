@@ -8,6 +8,7 @@ DateEdit::DateEdit(QWidget *parent) : Editor(parent) {
     layout = new QHBoxLayout;
     layout->addWidget(edit);
     setLayout(layout);
+    
 }
 
 void DateEdit::setMargins(int top, int right, int bottom, int left){
@@ -51,6 +52,8 @@ void DateEdit::loadDocument(Document doc){
     if ( ok ){
         edit->setDateTime(QDateTime::fromTime_t(secs));
     }
+    originalValue = edit->dateTime().toTime_t();
+   
 }
 
 void DateEdit::saveChanges(Document& doc){
@@ -59,7 +62,7 @@ void DateEdit::saveChanges(Document& doc){
 
 
 bool DateEdit::hasChanges(){
-    return false;
+    return originalValue != edit->dateTime().toTime_t();
 }
 
 void DateEdit::reset(){
