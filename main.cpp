@@ -171,19 +171,21 @@ void MainWindow::loadViewConfiguration(){
 }
 
 void MainWindow::loadSelectedView(const QString& selectedView){
-    design = viewsCombo->itemData(viewsCombo->currentIndex()).toString();
-    currentView = selectedView;
+    QVariant var = viewsCombo->itemData(viewsCombo->currentIndex());
+    QVariantMap map = var.toMap();
+    design = map["design"].toString();
+    currentView = map["view"].toString();
     
     model = new Model(selectedDatabase, couch);
     QString startkey = startKeyEdit->text();
     QString endkey = endKeyEdit->text();
     bool desc = descending->checkState() == Qt::Checked;
-    model->loadView( selectedDatabase, design, selectedView, startkey, endkey, desc );
+    model->loadView( selectedDatabase, design, currentView, startkey, endkey, desc );
     loadViewConfiguration();
     
     view->clear(); 
     
-    view->loadTemplate(design, selectedView);
+    view->loadTemplate(design, currentView);
     
     
     list->setModel(model);
@@ -203,9 +205,14 @@ void MainWindow::getViews(QString& db){
     foreach(QVariant view, views){
         QVariantMap map = view.toMap();
         QVariantMap doc = map["doc"].toMap();
+        QString design = doc["_id"].toString();
+        QString designName = design.split("/")[1];
         QVariantMap views = doc["views"].toMap();
         foreach(QString key, views.keys() ){
-            viewsCombo->addItem(key, map["id"]);
+            QVariantMap data;
+            data["design"] = design;
+            data["view" ] = key;
+            viewsCombo->addItem(designName+": "+key, QVariant(data) );
         }
     }
     viewsCombo->setCurrentIndex(-1);
