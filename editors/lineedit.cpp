@@ -10,6 +10,7 @@ LineEdit::LineEdit(QWidget *parent) : Editor(parent) {
     layout = new QHBoxLayout;
     layout->addWidget(edit);
     setLayout(layout);
+    
 }
 
 void LineEdit::setMargins(int top, int right, int bottom, int left){
@@ -64,6 +65,9 @@ void LineEdit::loadDocument(Document doc){
         edit->setText(val.toString());
     }
     originalValue = edit->text();
+    setBackgroundColor(QColor(255,255,255));
+    connect(edit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
+
 }
 
 void LineEdit::saveChanges(Document& doc){
@@ -77,3 +81,17 @@ void LineEdit::reset(){
 QString LineEdit::type(){
     return "lineedit";
 }
+
+void LineEdit::setBackgroundColor(QColor color){
+    QPalette pal = edit->palette();
+    pal.setColor(edit->backgroundRole(), color);
+    edit->setPalette(pal);
+    
+}
+
+void LineEdit::textChanged(const QString &text){
+    setBackgroundColor(QColor(255,229,229));
+}
+
+
+

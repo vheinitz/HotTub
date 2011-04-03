@@ -6,7 +6,7 @@
 #include "qcouch/document.h"
 
 class LineEdit : public Editor {
-    
+    Q_OBJECT
 public:
     LineEdit(QWidget *parent);
     
@@ -24,7 +24,11 @@ public:
     void saveChanges(Document& doc);
     bool hasChanges();
     void reset();
+private slots:
+    void textChanged(const QString &);
 private:
+    void setBackgroundColor(QColor);
+    
     QLineEdit *edit;
     QLayout *layout;
     

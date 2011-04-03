@@ -6,7 +6,7 @@
 #include "qcouch/document.h"
 
 class TextEdit : public Editor {
- 
+    Q_OBJECT
 public:
     TextEdit(QWidget *);
     
@@ -23,7 +23,11 @@ public:
     void saveChanges(Document& doc);
     bool hasChanges();
     void reset();
+private slots:
+    void textChanged();
 private:
+    void setBackgroundColor(QColor);
+    
     QTextEdit *edit;
     QVBoxLayout* layout;
     

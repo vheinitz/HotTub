@@ -8,6 +8,7 @@ TextEdit::TextEdit(QWidget *parent) : Editor(parent) {
     layout->addSpacing(4);
     layout->addWidget(edit);
     setLayout(layout);
+
 }
 
 void TextEdit::setMargins(int top, int right, int bottom, int left){
@@ -50,6 +51,9 @@ void TextEdit::loadDocument(Document doc){
     originalValue = val.toString();
     edit->setText(val.toString());
     
+    setBackgroundColor(QColor(255,255,255));
+    connect(edit, SIGNAL(textChanged()), this, SLOT(textChanged()));
+    
 }
 
 bool TextEdit::hasChanges(){
@@ -67,4 +71,16 @@ void TextEdit::reset(){
 
 QString TextEdit::type(){   
     return "textedit";
+}
+
+
+void TextEdit::setBackgroundColor(QColor color){
+    QPalette pal = edit->palette();
+    pal.setColor(QPalette::Base, color);
+    edit->setPalette(pal);
+    
+}
+
+void TextEdit::textChanged(){
+    setBackgroundColor(QColor(255,229,229));
 }
