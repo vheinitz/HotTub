@@ -248,7 +248,28 @@ void View::loadTemplate(QString _design, QString _view){
                 QVariantMap map = doc.getMap();
                 foreach(QString key, map.keys() ){
                     if ( key != "_rev" && key != "_attachments" && key != "_id" ) {
-                        widget = new TemplateWidget(new LineEdit(this), this);
+                        QVariant var = map[key];
+                        Editor *editor;
+                        if ( var.canConvert(QVariant::Int) || var.canConvert(QVariant::String) || var.canConvert(QVariant::Bool) ) {
+                            editor = new LineEdit(this);
+                        } else if ( var.canConvert( QVariant::List ) ) {
+                            QList<QVariant> list = var.toList();
+                            if ( list.length() > 0 ){
+                                QVariant val = list[0];
+                                if ( val.canConvert(QVariant::String ) ){
+                                    editor = new ListEdit(this);
+                                } else {
+                                    Grid* grid = new Grid(this);
+                                    QVariantMap valMap = val.toMap();
+                                    grid->setColumnHeaders(valMap.keys());
+                                    editor = grid;
+                                }
+                            }
+                            
+                        } else {
+                            editor = new LineEdit(this);
+                        } 
+                        widget = new TemplateWidget(editor, this);
                         widget->setLabel(key);
                         widget->setField(key);
                         QSize hint = widget->sizeHint();
@@ -256,7 +277,7 @@ void View::loadTemplate(QString _design, QString _view){
                         widget->show();
                         widgets.push_back(widget);
                 
-                        y += 30;
+                        y += widget->sizeHint().height();
                     }
                 }
             

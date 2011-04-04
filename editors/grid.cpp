@@ -25,6 +25,17 @@ Grid::Grid(QWidget* parent) : Editor(parent){
     
 }
 
+void Grid::setColumnHeaders(QStringList headers ){
+    dlg->addAll(headers);
+    if ( model == NULL ) {
+        model = new GridModel(QVariant(), headers);
+        view->setModel(model);
+    } else {
+        model->setHeaders(headers);
+    }
+    
+}
+
 void Grid::columnsConfigAccepted(){
     headers.clear();
     headers << dlg->stringList();
@@ -123,6 +134,6 @@ void Grid::loadConfiguration(QVariant& var){
     QVariant values = map["values"];
     headers.clear();
     headers << values.toStringList();
-    dlg->addAll(headers);
+    setColumnHeaders(headers);
 }
 

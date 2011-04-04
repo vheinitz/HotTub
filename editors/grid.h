@@ -34,7 +34,7 @@ public:
     
     void saveConfiguration(QVariantMap& map);
     void loadConfiguration(QVariant&);
-    
+    void setColumnHeaders(QStringList);
 private slots:
     void columnsConfigAccepted();
     void configureItems();
