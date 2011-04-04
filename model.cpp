@@ -53,7 +53,6 @@ void Model::loadView( QString database, QString design, QString view, QString st
         QVariantMap map = result.toMap();
         QString id = map["id"].toString();
         Document doc = Document(database, map["doc"]);
-        //Document doc = couch.getDocument(database, id, "");
         documents.append(doc);
     }
     

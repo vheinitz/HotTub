@@ -222,7 +222,7 @@ void View::loadTemplate(QString _design, QString _view){
             widget->show();
             widgets.push_back(widget);
         }
-    } catch (int) {
+    } catch (DocumentNotFoundException) {
         /* None found, generate one */
         
     	TemplateWidget *widget = new TemplateWidget(new LineEdit(this), this);
@@ -293,8 +293,8 @@ void View::saveTemplate(){
     try {
         Document doc = findTemplate();
         couch.updateDocument(database, doc.getId(), doc.getRevision(), var);
-    }catch(int){
-        QString id = couch.getUUID(); 
+    }catch(DocumentNotFoundException){
+        QString id = "templates/"+design+"/_view/"+view;
     	couch.createDocument(database, id, var);
     }
 }
@@ -311,13 +311,11 @@ Document View::findTemplate(){
     endKey.append(view);
     endKey.append(QVariantMap());
     
-    QList<QVariant> results = couch.getView(database, "_design/templates", "all", QVariant(startKey), QVariant(endKey));
-    if ( results.size() == 1 ) {
-        QVariantMap map = results[0].toMap();
-        Document templateDoc = couch.getDocument(database, map["id"].toString());
-        return templateDoc;
-    }
-    throw 2;
+    QString id = "templates/"+design+"/_view/"+view;
+    
+    Document templateDoc = couch.getDocument(database, id);
+    return templateDoc;
+    
 }
 
 bool View::loadDocument(Document doc, bool force){
