@@ -46,14 +46,14 @@ void Model::loadView( QString database, QString design, QString view, QString st
    
     documents.clear();
     columns.clear();
-    QList<QVariant> results = couch.getView(database, design, view, startKeyVariant, endKeyVariant, descending, 26, startKeyDocId);
+    QList<QVariant> results = couch.getView(database, design, view, startKeyVariant, endKeyVariant, descending, 26, true, startKeyDocId);
     
     for(int i=0; i<results.length() && i<25; i++){
         QVariant result = results[i];
         QVariantMap map = result.toMap();
         QString id = map["id"].toString();
-        
-        Document doc = couch.getDocument(database, id, "");
+        Document doc = Document(database, map["doc"]);
+        //Document doc = couch.getDocument(database, id, "");
         documents.append(doc);
     }
     

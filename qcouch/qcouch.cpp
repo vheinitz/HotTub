@@ -175,7 +175,7 @@ QList<QVariant> QCouch::listViews(QString database){
 
 
 
-QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, bool descending, int limit, QString startKeyDocId){
+QList<QVariant> QCouch::getView(QString database, QString design, QString view, QVariant startkey, QVariant endkey, bool descending, int limit, bool includeDocs, QString startKeyDocId){
     QString params;
 
     if ( startkey.isValid() ) {
@@ -208,7 +208,10 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
         params.append("&startkey_docid=");
         params.append(startKeyDocId);
     }
-    
+
+    if ( includeDocs ){
+        params.append("&include_docs=true");
+    }
     
     QList<QVariant> results;
     

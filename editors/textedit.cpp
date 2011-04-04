@@ -50,10 +50,9 @@ void TextEdit::loadDocument(Document doc){
     QVariant val = map[getField()];
     originalValue = val.toString();
     edit->setText(val.toString());
-    
+   
     setBackgroundColor(QColor(255,255,255));
     connect(edit, SIGNAL(textChanged()), this, SLOT(textChanged()));
-    
 }
 
 bool TextEdit::hasChanges(){
@@ -64,7 +63,7 @@ void TextEdit::saveChanges(Document& doc){
     doc.setValue(getField(), QVariant(edit->toPlainText()));
 }
 
-void TextEdit::reset(){
+ void TextEdit::reset(){
     originalValue = "";
     edit->clear();
 }
