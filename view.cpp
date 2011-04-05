@@ -553,10 +553,9 @@ void View::paintEvent(QPaintEvent *event){
         }
      }
      
-     /*QPainter painter(this);
      for (unsigned int i=0; i<hotSpots.size(); i++) {
          painter.fillRect(hotSpots[i].rect(), Qt::yellow);
-     }*/
+     }
  }
 
 

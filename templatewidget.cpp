@@ -129,7 +129,7 @@ void TemplateWidget::changeEditorDate(){
     editor->enterEditMode();
     editor->configurationAction(toolbar);
     layout->addWidget(editor);
-    toolbar->raise();
+    //toolbar->raise();
     resize(sizeHint());
 }
 
@@ -141,7 +141,7 @@ void TemplateWidget::changeEditorTextarea(){
     editor->enterEditMode();
     editor->configurationAction(toolbar);
     layout->addWidget(editor);
-    toolbar->raise();
+    //toolbar->raise();
     resize(sizeHint());
 }
 
@@ -153,7 +153,7 @@ void TemplateWidget::changeEditorText(){
     editor->enterEditMode();
     editor->configurationAction(toolbar);
     layout->addWidget(editor);
-    toolbar->raise();
+    //toolbar->raise();
     resize(sizeHint());
 }
 
@@ -166,7 +166,7 @@ void TemplateWidget::changeEditorComboBox(){
     layout->addWidget(editor);
     editor->configurationAction(toolbar);
     
-    toolbar->raise();
+    //toolbar->raise();
     resize(sizeHint());
 }
 
@@ -180,7 +180,7 @@ void TemplateWidget::changeEditorList(){
     layout->addWidget(editor);
     editor->configurationAction(toolbar);
     
-    toolbar->raise();
+    //toolbar->raise();
     resize(sizeHint());
 }
 
@@ -193,7 +193,7 @@ void TemplateWidget::changeEditorGrid(){
     layout->addWidget(editor);
     editor->configurationAction(toolbar);
     
-    toolbar->raise();
+    //toolbar->raise();
     resize(sizeHint());
 }
 
@@ -223,6 +223,8 @@ void TemplateWidget::paintEvent(QPaintEvent* event){
     QPainter painter(this);
     //painter.fillRect(0, 0, width()-1, height()-1, Qt::red);
     //painter.drawRect(0,0,width()-1,height()-1);
+    painter.setPen(Qt::DashLine);
+    painter.drawRect(0,0,width()-1,height()-1);
     QWidget::paintEvent(event);
 }
 
@@ -269,8 +271,8 @@ bool TemplateWidget::allowResizeHeight() {
 void TemplateWidget::resizeEvent(QResizeEvent *event){
     Q_UNUSED(event);
     
-    int toolbarWidth = toolbar->width(); int toolbarHeight = toolbar->height();
-    toolbar->move(width()-toolbarWidth, height()-toolbarHeight);
+    /*int toolbarWidth = toolbar->width(); int toolbarHeight = toolbar->height();
+    toolbar->move(width()-toolbarWidth, height()-toolbarHeight);*/
 }
 
 
@@ -278,7 +280,7 @@ void TemplateWidget::enterEvent(QEvent *event){
     Q_UNUSED(event);
     
     if ( isEditing ) {
-        toolbar->setVisible(true);
+        //toolbar->setVisible(true);
     }
 }
 
