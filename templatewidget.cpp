@@ -44,14 +44,8 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
 
     
     QWidget *widget = new QWidget;
-    if ( edit->type() == "combo" ) {
-        /* TODO: Fix this fudge factor */
-        widget->setMaximumWidth(80);
-        widget->setMinimumWidth(80);
-    } else {
-        widget->setMaximumWidth(100);
-        widget->setMinimumWidth(100);
-    }    
+	widget->setMaximumWidth(100);
+	widget->setMinimumWidth(100);
     widget->setLayout(stack);
     
     layout->addWidget(widget);

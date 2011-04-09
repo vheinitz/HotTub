@@ -8,6 +8,7 @@
 #include <QModelIndex>
 #include <QVariant>
 #include <QHeaderView>
+#include <QStringList>
 #include <QDebug>
 
 class GridModel : public QAbstractTableModel {

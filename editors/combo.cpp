@@ -10,6 +10,7 @@ Combo::Combo(QWidget *parent) : Editor(parent) {
     edit = new QComboBox;
     layout = new QHBoxLayout;
     layout->addWidget(edit);
+	layout->addStretch();
     setLayout(layout);
     
     dlg = new ListConfigurationDialog();
@@ -43,7 +44,7 @@ bool Combo::allowResizeWidth(){
 }
 
 bool Combo::allowResizeHeight(){
-    return true;
+    return false;
 }
 
 QSize Combo::sizeHint(){
