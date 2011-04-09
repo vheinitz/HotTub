@@ -247,7 +247,7 @@ void View::loadTemplate(QString _design, QString _view){
         
                 QVariantMap map = doc.getMap();
                 foreach(QString key, map.keys() ){
-                    if ( key != "_rev" && key != "_attachments" && key != "_id" ) {
+                    if ( key != "_attachments" && key != "_id" ) {
                         QVariant var = map[key];
                         Editor *editor;
                         if ( var.canConvert(QVariant::Int) || var.canConvert(QVariant::String) || var.canConvert(QVariant::Bool) ) {

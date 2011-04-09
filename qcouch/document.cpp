@@ -57,6 +57,7 @@ void Document::setId(QString _id){
 
 void Document::setRevision(QString _revision){
     revision = _revision;
+	map["_rev"] = revision;
 }
 
 QString Document::getSourceDatabase(){
