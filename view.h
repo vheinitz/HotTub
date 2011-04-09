@@ -79,6 +79,8 @@ signals:
      
      TemplateWidget* activeWidget;
      QWidget* actionWidget;
+
+	 TemplateWidget* selectedWidget;
      
      QPushButton *editButton;
      QPushButton *addFieldButton;

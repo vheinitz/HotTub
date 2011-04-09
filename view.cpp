@@ -261,6 +261,7 @@ void View::loadTemplate(QString _design, QString _view){
                                 } else {
                                     Grid* grid = new Grid(this);
                                     QVariantMap valMap = val.toMap();
+					qDebug() << valMap.keys();
                                     grid->setColumnHeaders(valMap.keys());
                                     editor = grid;
                                 }
@@ -494,6 +495,7 @@ void View::beginEditing(){
         
     } else {
         isEditing = true;
+     	buildHotSpots();
         editButton->setText("Stop Editing");
         addFieldButton->setVisible(true);
         newButton->setVisible(false);
@@ -504,6 +506,7 @@ void View::beginEditing(){
         }
         
     }
+	update();
 }
 
 void View::addField(){
@@ -553,9 +556,20 @@ void View::paintEvent(QPaintEvent *event){
         }
      }
      
-     for (unsigned int i=0; i<hotSpots.size(); i++) {
+     /*for (unsigned int i=0; i<hotSpots.size(); i++) {
          painter.fillRect(hotSpots[i].rect(), Qt::yellow);
-     }
+     }*/
+
+	
+	if ( selectedWidget != NULL && isEditing && !activeDragging && !activeAction ){
+        QPen pen;
+        pen.setStyle(Qt::DashLine);
+        pen.setColor(Qt::darkGray);
+     
+        painter.setPen(pen);
+       
+		painter.drawRect(selectedWidget->geometry());	
+	}
  }
 
 
@@ -633,12 +647,14 @@ void View::buildHotSpots(){
 		parent = parent->parentWidget();
 	 }*/
 
+
 	 TemplateWidget *templWidget = static_cast<TemplateWidget*>(child);
 	 
 	 offsetX = event->pos().x() - child->x();
 	 offsetY = event->pos().y() - child->y();
 
 	 activeWidget = templWidget;
+	 selectedWidget = templWidget;
      activeWidget->setCursor(Qt::ClosedHandCursor);
 	 activeWidget->raise();
 	 activeDragging = true;

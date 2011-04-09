@@ -223,8 +223,6 @@ void TemplateWidget::paintEvent(QPaintEvent* event){
     QPainter painter(this);
     //painter.fillRect(0, 0, width()-1, height()-1, Qt::red);
     //painter.drawRect(0,0,width()-1,height()-1);
-    painter.setPen(Qt::DashLine);
-    painter.drawRect(0,0,width()-1,height()-1);
     QWidget::paintEvent(event);
 }
 
