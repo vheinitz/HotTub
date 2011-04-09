@@ -61,13 +61,17 @@ void Grid::configureItems(){
 
 
 void Grid::enterEditMode(){
+    view->setDisabled(true);
 }
 
 void Grid::exitEditMode(){
+    view->setDisabled(false);
 }
 
-void Grid::setActiveCursor(Qt::CursorShape){
+void Grid::setActiveCursor(Qt::CursorShape shape){
+	view->setCursor(shape);
 }
+
 
 bool Grid::allowResizeWidth(){
     return true;
