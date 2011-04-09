@@ -569,6 +569,23 @@ void View::paintEvent(QPaintEvent *event){
         painter.setPen(pen);
        
 		painter.drawRect(selectedWidget->geometry());	
+		QRect rect = selectedWidget->geometry();
+		QPoint bottomRight = rect.bottomRight();
+		QPoint center = rect.center();
+		QPoint right, bottom;
+		right.setX(rect.x() + rect.width());
+		right.setY(center.y());
+		bottom.setX(center.x());
+		bottom.setY(rect.y()+rect.height());
+		if ( selectedWidget->allowResizeHeight() && selectedWidget->allowResizeWidth() ) {
+			painter.fillRect(bottomRight.x()-1,bottomRight.y()-1, 6, 6, Qt::darkGray);
+			painter.fillRect(right.x()-1,right.y()-1, 6, 6, Qt::darkGray);
+			painter.fillRect(bottom.x()-1,bottom.y()-1, 6, 6, Qt::darkGray);
+		} else if ( selectedWidget->allowResizeWidth() ){
+			painter.fillRect(right.x()-1,right.y()-1, 6, 6, Qt::darkGray);
+		} else if ( selectedWidget->allowResizeHeight() ) {
+			painter.fillRect(bottom.x()-1,bottom.y()-1, 6, 6, Qt::darkGray);
+		}
 	}
  }
 
