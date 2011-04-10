@@ -26,6 +26,8 @@ public:
     bool hasChanges();
     QVariant getVariant();
     void setHeaders(QStringList);
+signals:
+	void dataChanged();
 private:
     QVariant var;
     QList<QVariant> list;

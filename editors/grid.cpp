@@ -22,13 +22,13 @@ Grid::Grid(QWidget* parent) : Editor(parent){
     
     dlg = new ListConfigurationDialog();
     connect(dlg, SIGNAL(accepted()), this, SLOT(columnsConfigAccepted()));
-    
 }
 
 void Grid::setColumnHeaders(QStringList headers ){
     dlg->addAll(headers);
     if ( model == NULL ) {
         model = new GridModel(QVariant(), headers);
+		connect(model, SIGNAL(dataChanged()), this, SLOT(dataChanged()));
         view->setModel(model);
     } else {
         model->setHeaders(headers);
@@ -41,12 +41,16 @@ void Grid::columnsConfigAccepted(){
     headers << dlg->stringList();
     if ( model == NULL ) {
         model = new GridModel(QVariant(), headers);
+		connect(model, SIGNAL(dataChanged()), this, SLOT(dataChanged()));
         view->setModel(model);
     } else {
         model->setHeaders(headers);
     }
 }
 
+void Grid::dataChanged(){
+    setBackgroundColor(QColor(255,229,229));
+}
 
 void Grid::configurationAction(QToolBar *toolbar){
     QAction* action = new QAction(toolbar);
@@ -113,8 +117,10 @@ void Grid::loadDocument(Document doc){
     }
     
     model = new GridModel(val, headers);
+	connect(model, SIGNAL(dataChanged()), this, SLOT(dataChanged()));
     view->setModel(model);
     view->resizeColumnsToContents();
+	setBackgroundColor(QColor(255,255,255));
 }
 
 void Grid::saveChanges(Document& doc){
@@ -140,4 +146,11 @@ void Grid::loadConfiguration(QVariant& var){
     headers << values.toStringList();
     setColumnHeaders(headers);
 }
+
+void Grid::setBackgroundColor(QColor color){
+    QPalette pal = view->palette();
+    pal.setColor(QPalette::Base, color);
+    view->setPalette(pal);
+}
+
 

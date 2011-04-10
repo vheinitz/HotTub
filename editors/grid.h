@@ -38,15 +38,15 @@ public:
 private slots:
     void columnsConfigAccepted();
     void configureItems();
-
+	void dataChanged();
 private:
+	void setBackgroundColor(QColor color);
     QTableView *view;
     QHBoxLayout *layout;
     GridModel *model;
     QStringList headers;
     ListConfigurationDialog *dlg;
 };
-
 
 
 #endif

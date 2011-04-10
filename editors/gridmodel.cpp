@@ -62,6 +62,7 @@ bool GridModel::setData(const QModelIndex& index, const QVariant& value, int rol
         map[headers[index.column()]] = value;
         list << QVariant(map);
         changed = true;
+		emit dataChanged();
         return true;
     } else {
         QVariant var = list[index.row()];
@@ -69,6 +70,7 @@ bool GridModel::setData(const QModelIndex& index, const QVariant& value, int rol
         map[headers[index.column()]] = value;
         list[index.row()] = QVariant(map);
         changed = true;
+		emit dataChanged();
         return true;
     }
 }
