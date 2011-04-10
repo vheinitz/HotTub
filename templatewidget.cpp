@@ -55,149 +55,14 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     QWidget::setLayout(layout);
     
     
-    toolbar = new QToolBar(this);
-    toolbar->setFloatable(true);
     
-    QAction *changeAction = new QAction(toolbar);
-    changeAction->setIcon(QIcon("icons/preferences-system.png"));
+    //edit->configurationAction(toolbar);
     
-    connect(changeAction, SIGNAL(triggered()), this, SLOT(showChangeEditorMenu()));
-    
-    QAction *deleteAction = new QAction(toolbar);
-    deleteAction->setIcon(QIcon("icons/user-trash.png"));
-    connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWidget())); 
-    
-    toolbar->addAction(changeAction);
-    
-    
-    toolbar->addAction(deleteAction);
-    
-    toolbar->setVisible(false);
-    
-    edit->configurationAction(toolbar);
-    
-    changeEditorMenu = new QMenu(toolbar);
-    
-    QAction *textAction = new QAction(changeEditorMenu);
-    textAction->setText("Text");
-    
-    QAction *dateAction = new QAction(changeEditorMenu);
-    dateAction->setText("Date");
-    
-    QAction *areaAction = new QAction(changeEditorMenu);
-    areaAction->setText("Text Area");
-    
-    QAction *comboAction = new QAction(changeEditorMenu);
-    comboAction->setText("Combo Box");
-    
-    QAction *listAction = new QAction(changeEditorMenu);
-    listAction->setText("List");
-    
-    QAction *gridAction = new QAction(changeEditorMenu);
-    gridAction->setText("Grid");
-    
-    changeEditorMenu->addAction(textAction);
-    changeEditorMenu->addAction(dateAction);
-    changeEditorMenu->addAction(areaAction);
-    changeEditorMenu->addAction(comboAction);
-    changeEditorMenu->addAction(listAction);
-    changeEditorMenu->addAction(gridAction);
     
     connect(labelEdit, SIGNAL(textChanged(const QString&)), this, SLOT(updateLabel(const QString&)));
     
-    connect(textAction, SIGNAL(triggered()), this, SLOT(changeEditorText()));
-    connect(dateAction, SIGNAL(triggered()), this, SLOT(changeEditorDate()));
-    connect(areaAction, SIGNAL(triggered()), this, SLOT(changeEditorTextarea()));
-    connect(comboAction, SIGNAL(triggered()), this, SLOT(changeEditorComboBox()));
-    connect(listAction, SIGNAL(triggered()), this, SLOT(changeEditorList()));
-    connect(gridAction, SIGNAL(triggered()), this, SLOT(changeEditorGrid()));
  
     isEditing = false;
-}
-
-void TemplateWidget::changeEditorDate(){
-    layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new DateEdit(this);
-    editor->setMargins(0, 0, 0, 0);
-    editor->enterEditMode();
-    editor->configurationAction(toolbar);
-    layout->addWidget(editor);
-    //toolbar->raise();
-    resize(sizeHint());
-}
-
-void TemplateWidget::changeEditorTextarea(){
-    layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new TextEdit(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    editor->configurationAction(toolbar);
-    layout->addWidget(editor);
-    //toolbar->raise();
-    resize(sizeHint());
-}
-
-void TemplateWidget::changeEditorText(){
-    layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new LineEdit(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    editor->configurationAction(toolbar);
-    layout->addWidget(editor);
-    //toolbar->raise();
-    resize(sizeHint());
-}
-
-void TemplateWidget::changeEditorComboBox(){
-    layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new Combo(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    layout->addWidget(editor);
-    editor->configurationAction(toolbar);
-    
-    //toolbar->raise();
-    resize(sizeHint());
-}
-
-
-void TemplateWidget::changeEditorList(){
-    layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new ListEdit(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    layout->addWidget(editor);
-    editor->configurationAction(toolbar);
-    
-    //toolbar->raise();
-    resize(sizeHint());
-}
-
-void TemplateWidget::changeEditorGrid(){
-    layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new Grid(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    layout->addWidget(editor);
-    editor->configurationAction(toolbar);
-    
-    //toolbar->raise();
-    resize(sizeHint());
-}
-
-void TemplateWidget::showChangeEditorMenu(){
-    changeEditorMenu->move(mapToGlobal(QPoint(toolbar->x(), toolbar->y()+toolbar->height())));
-    changeEditorMenu->show();
-}
-
-void TemplateWidget::deleteWidget(){
-    emit remove(this);
 }
 
 QSize TemplateWidget::sizeHint(){
@@ -263,8 +128,6 @@ bool TemplateWidget::allowResizeHeight() {
 void TemplateWidget::resizeEvent(QResizeEvent *event){
     Q_UNUSED(event);
     
-    /*int toolbarWidth = toolbar->width(); int toolbarHeight = toolbar->height();
-    toolbar->move(width()-toolbarWidth, height()-toolbarHeight);*/
 }
 
 
@@ -272,7 +135,6 @@ void TemplateWidget::enterEvent(QEvent *event){
     Q_UNUSED(event);
     
     if ( isEditing ) {
-        //toolbar->setVisible(true);
     }
 }
 
@@ -281,7 +143,6 @@ void TemplateWidget::leaveEvent(QEvent *event){
     Q_UNUSED(event);
     
     if ( isEditing ) {
-        toolbar->setVisible(false);
     }
 }
 

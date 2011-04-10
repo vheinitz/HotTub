@@ -58,6 +58,16 @@ private slots:
      void deleteDocument();
      void newDocument();
 
+     void showChangeEditorMenu();
+    
+     void changeEditorDate();
+     void changeEditorTextarea();
+     void changeEditorText();
+     void changeEditorComboBox();
+     void changeEditorList();
+     void changeEditorGrid();
+     
+     void deleteWidget();
 signals:
      void documentDeleted(Document& doc);
      void documentUpdated(Document& doc);
@@ -66,6 +76,9 @@ signals:
  private:
      void buildHotSpots();
      Document findTemplate();
+
+	 QToolBar *toolbar;
+     QMenu *changeEditorMenu;
      
      QCouch &couch;
      QString database;

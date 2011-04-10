@@ -1,7 +1,7 @@
 
 
-#ifndef DRAGLABEL_H
-#define DRAGLABEL_H
+#ifndef __TEMPLATEWIDGET_H
+#define __TEMPLATEWIDGET_H
 
 #include <Qt>
 #include <QtGui>
@@ -44,24 +44,12 @@ signals:
     
 private slots:
     void updateLabel(const QString& text);
-    void showChangeEditorMenu();
-    
-    void changeEditorDate();
-    void changeEditorTextarea();
-    void changeEditorText();
-    void changeEditorComboBox();
-    void changeEditorList();
-    void changeEditorGrid();
-    
-    void deleteWidget();
 private:
     Editor *editor;
     QLabel *label;
     QLineEdit *labelEdit;
     QHBoxLayout *layout;
     QStackedLayout *stack;
-    QToolBar *toolbar;
-    QMenu *changeEditorMenu;
     bool isEditing;
     QString field;
     static const int MARGIN=5;
