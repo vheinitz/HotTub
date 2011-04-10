@@ -30,7 +30,8 @@ public:
     void saveChanges(Document& doc);
     bool hasChanges();
     void reset();
-    void configurationAction(QToolBar *toolbar);
+    void addConfigurationAction(QToolBar *toolbar);
+    void removeConfigurationAction(QToolBar *toolbar);
     
     void saveConfiguration(QVariantMap& map);
     void loadConfiguration(QVariant&);
@@ -46,6 +47,8 @@ private:
     GridModel *model;
     QStringList headers;
     ListConfigurationDialog *dlg;
+	
+	QAction *action;
 };
 
 

@@ -34,11 +34,14 @@ public:
     
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);
+	
+	Editor* getEditor();
     
     QString getEditorType();
     QVariant saveConfiguration();
     void loadConfiguration(QVariant&);
     
+	void changeEditor(Editor *);
 signals:
     void remove(TemplateWidget *);
     

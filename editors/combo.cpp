@@ -3,7 +3,6 @@
 #include "qcouch/document.h"
 #include "listconfig.h"
 
-
 #include <QtGui>
 
 Combo::Combo(QWidget *parent) : Editor(parent) {
@@ -55,11 +54,15 @@ int Combo::getLeftAlignmentHint(){
     return edit->x();
 }
 
-void Combo::configurationAction(QToolBar *toolbar){
-    QAction* action = new QAction(toolbar);
+void Combo::addConfigurationAction(QToolBar *toolbar){
+    action = new QAction(toolbar);
     action->setIcon(QIcon("icons/items.png"));
     connect(action, SIGNAL(triggered()), this, SLOT(configureItems()));
     toolbar->addAction(action);
+}
+
+void Combo::removeConfigurationAction(QToolBar *toolbar){
+	toolbar->removeAction(action);
 }
 
 void Combo::configureItems(){

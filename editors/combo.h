@@ -23,7 +23,8 @@ public:
     void setMargins(int,int,int,int);
     QSize sizeHint();
     int getLeftAlignmentHint();
-    void configurationAction(QToolBar *toolbar);
+    void addConfigurationAction(QToolBar *toolbar);
+    void removeConfigurationAction(QToolBar *toolbar);
     QString type();
     void loadDocument(Document doc);
     void saveChanges(Document& doc);
@@ -42,6 +43,8 @@ private:
     
     ListConfigurationDialog* dlg;
     int originalIndex;
+
+	QAction *action;
 };
 
 

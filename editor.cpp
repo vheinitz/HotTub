@@ -7,7 +7,11 @@ Editor::Editor(QWidget* parent) : QWidget(parent) {
 }
 
 
-void Editor::configurationAction(QToolBar *toolbar){
+void Editor::addConfigurationAction(QToolBar *toolbar){
+    Q_UNUSED(toolbar);
+}
+
+void Editor::removeConfigurationAction(QToolBar *toolbar){
     Q_UNUSED(toolbar);
 }
 

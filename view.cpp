@@ -24,6 +24,8 @@ View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
  {
      activeDragging = false;
      activeWidget = NULL;
+
+	 selectedWidget = NULL;
      
      actionWidget = NULL;
      activeAction = false;
@@ -263,7 +265,6 @@ void View::loadTemplate(QString _design, QString _view){
             TemplateWidget *widget = new TemplateWidget(editor, this);
             widget->setLabel(key);
             widget->setField(key);
-            connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
     		QSize hint = widget->sizeHint();
             if ( width == 0 ) width = hint.width();
             if ( height == 0 ) height = hint.height();
@@ -514,7 +515,7 @@ void View::dropEvent(QDropEvent *event)
     
 }
 
-void View::widgetRemoved(TemplateWidget *widget){
+void View::removeWidget(TemplateWidget *widget){
     
     for (int i=0; i<widgets.size(); i++) {
         if ( widgets[i] == widget ){
@@ -543,6 +544,11 @@ void View::beginEditing(){
         }
         
         saveTemplate();
+		toolbar->setVisible(false);
+	    if ( selectedWidget != NULL ){
+	 		selectedWidget->getEditor()->removeConfigurationAction(toolbar);
+		}
+		selectedWidget = NULL;
         
     } else {
         isEditing = true;
@@ -569,8 +575,6 @@ void View::addField(){
     widget->show();
     widget->beginEditing();
     widgets.push_back(widget);
-    
-    connect(widget, SIGNAL(remove(TemplateWidget *)), this, SLOT(widgetRemoved(TemplateWidget *)));
     
 }
 
@@ -722,11 +726,18 @@ void View::buildHotSpots(){
 	 offsetY = event->pos().y() - child->y();
 
 	 activeWidget = templWidget;
+	 if ( selectedWidget != NULL ){
+	 	selectedWidget->getEditor()->removeConfigurationAction(toolbar);
+	 }
 	 selectedWidget = templWidget;
+	 selectedWidget->getEditor()->addConfigurationAction(toolbar);
+	 toolbar->resize(toolbar->sizeHint());
+	 toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
+	 toolbar->setVisible(true);
      activeWidget->setCursor(Qt::ClosedHandCursor);
 	 activeWidget->raise();
 	 activeDragging = true;
-     
+	 toolbar->raise();
  }
 
 /*void View::activeCellChanged(){
@@ -882,74 +893,28 @@ void View::keyReleaseEvent( QKeyEvent *event ) {
 
 
 void View::changeEditorDate(){
-    /*layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new DateEdit(this);
-    editor->setMargins(0, 0, 0, 0);
-    editor->enterEditMode();
-    editor->configurationAction(toolbar);
-    layout->addWidget(editor);
-    resize(sizeHint());*/
+	selectedWidget->changeEditor(new DateEdit(this));
 }
 
 void View::changeEditorTextarea(){
-    /*layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new TextEdit(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    editor->configurationAction(toolbar);
-    layout->addWidget(editor);
-    resize(sizeHint());*/
+	selectedWidget->changeEditor(new TextEdit(this));
 }
 
 void View::changeEditorText(){
-    /*layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new LineEdit(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    editor->configurationAction(toolbar);
-    layout->addWidget(editor);
-    resize(sizeHint());*/
+	selectedWidget->changeEditor(new LineEdit(this));
 }
 
 void View::changeEditorComboBox(){
-    /*layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new Combo(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    layout->addWidget(editor);
-    editor->configurationAction(toolbar);
-    
-    toolbar->raise();
-    resize(sizeHint());*/
+	selectedWidget->changeEditor(new Combo(this));
 }
 
 
 void View::changeEditorList(){
-    /*layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new ListEdit(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    layout->addWidget(editor);
-    editor->configurationAction(toolbar);
-    
-    resize(sizeHint());*/
+	selectedWidget->changeEditor(new ListEdit(this));
 }
 
 void View::changeEditorGrid(){
-    /*layout->removeWidget(editor);
-    editor->deleteLater();
-    editor = new Grid(this);
-    editor->setMargins(0,0,0,0);
-    editor->enterEditMode();
-    layout->addWidget(editor);
-    editor->configurationAction(toolbar);
-    
-    resize(sizeHint());*/
+	selectedWidget->changeEditor(new Grid(this));
 }
 
 void View::showChangeEditorMenu(){
@@ -958,6 +923,10 @@ void View::showChangeEditorMenu(){
 }
 
 void View::deleteWidget(){
+	removeWidget(selectedWidget);
+	selectedWidget = NULL;
+	toolbar->setVisible(false);
+	update();
 }
 
 

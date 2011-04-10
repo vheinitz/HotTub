@@ -50,7 +50,6 @@ using namespace std;
 private slots:
      void beginEditing();
      void addField();
-     void widgetRemoved(TemplateWidget *);
      void hideAttachments();
      void showAttachments();
      void fileAttached(QUrl url);
@@ -76,6 +75,7 @@ signals:
  private:
      void buildHotSpots();
      Document findTemplate();
+     void removeWidget(TemplateWidget *);
 
 	 QToolBar *toolbar;
      QMenu *changeEditorMenu;

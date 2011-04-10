@@ -199,36 +199,17 @@ bool TemplateWidget::hasChanges(){
 }
 
 
+void TemplateWidget::changeEditor(Editor *newEditor){
+    layout->removeWidget(editor);
+    editor->deleteLater();
+	editor = newEditor;
+    editor->setMargins(0,0,0,0);
+   	editor->enterEditMode();
+    layout->addWidget(editor);
+    resize(sizeHint());
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Editor* TemplateWidget::getEditor(){
+	return editor;	
+}
 

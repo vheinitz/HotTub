@@ -52,11 +52,15 @@ void Grid::dataChanged(){
     setBackgroundColor(QColor(255,229,229));
 }
 
-void Grid::configurationAction(QToolBar *toolbar){
-    QAction* action = new QAction(toolbar);
+void Grid::addConfigurationAction(QToolBar *toolbar){
+    action = new QAction(toolbar);
     action->setIcon(QIcon("icons/items.png"));
     connect(action, SIGNAL(triggered()), this, SLOT(configureItems()));
     toolbar->addAction(action);
+}
+
+void Grid::removeConfigurationAction(QToolBar *toolbar){
+    toolbar->removeAction(action);
 }
 
 void Grid::configureItems(){
