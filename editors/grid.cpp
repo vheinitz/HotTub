@@ -22,6 +22,9 @@ Grid::Grid(QWidget* parent) : Editor(parent){
     
     dlg = new ListConfigurationDialog();
     connect(dlg, SIGNAL(accepted()), this, SLOT(columnsConfigAccepted()));
+
+    action = NULL;
+    model = NULL;
 }
 
 void Grid::setColumnHeaders(QStringList headers ){
@@ -60,7 +63,9 @@ void Grid::addConfigurationAction(QToolBar *toolbar){
 }
 
 void Grid::removeConfigurationAction(QToolBar *toolbar){
-    toolbar->removeAction(action);
+    if ( action != NULL ){
+        toolbar->removeAction(action);
+    }
 }
 
 void Grid::configureItems(){
@@ -132,7 +137,7 @@ void Grid::saveChanges(Document& doc){
 }
 
 bool Grid::hasChanges(){
-    return model->hasChanges();
+    return model != NULL && model->hasChanges();
 }
 
 void Grid::reset(){
