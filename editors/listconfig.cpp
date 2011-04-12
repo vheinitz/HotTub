@@ -45,6 +45,12 @@ ListConfigurationDialog::ListConfigurationDialog() {
     connect(okButton, SIGNAL(clicked()), this, SLOT(okButtonClicked()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonClicked()));
     
+    connect(listView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(doubleClicked(const QModelIndex &)));
+}
+
+void ListConfigurationDialog::doubleClicked(const QModelIndex &index){
+    list.removeAt(index.row());
+    model->setStringList(list);
 }
 
 void ListConfigurationDialog::addAll(QStringList& _list){

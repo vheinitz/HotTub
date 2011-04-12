@@ -70,6 +70,7 @@ void Combo::configureItems(){
 }
 
 void Combo::comboConfigAccepted(){
+    edit->clear();
     edit->insertItems(0, dlg->stringList());
 }
 
@@ -110,6 +111,7 @@ void Combo::loadConfiguration(QVariant& var){
     
     QStringList items = values.toStringList();
     edit->insertItems(0, items);
+    dlg->addAll(items);
 }
 
 bool Combo::hasChanges(){

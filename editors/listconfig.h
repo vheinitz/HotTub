@@ -18,7 +18,7 @@ private slots:
     void addItem();
     void okButtonClicked();
     void cancelButtonClicked();
-    
+    void doubleClicked(const QModelIndex &);
 private:
     QStringListModel* model;
     QStringList list;
