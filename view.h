@@ -76,7 +76,8 @@ signals:
      void buildHotSpots();
      Document findTemplate();
      void removeWidget(TemplateWidget *);
-
+     
+     
 	 QToolBar *toolbar;
      QMenu *changeEditorMenu;
      

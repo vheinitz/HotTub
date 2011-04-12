@@ -54,7 +54,7 @@ TemplateWidget::TemplateWidget(Editor* edit, QWidget *parent)
     layout->setContentsMargins(5,MARGIN,5,0);
     QWidget::setLayout(layout);
     
-    
+    setFocusProxy(editor);
     
     //edit->configurationAction(toolbar);
     
@@ -206,6 +206,7 @@ void TemplateWidget::changeEditor(Editor *newEditor){
     editor->setMargins(0,0,0,0);
    	editor->enterEditMode();
     layout->addWidget(editor);
+    setFocusProxy(editor);
     resize(sizeHint());
 }
 

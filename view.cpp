@@ -20,6 +20,11 @@
 using namespace std;
 
 
+
+bool widgetLocationSort(TemplateWidget* a, TemplateWidget* b){
+    return a->y() < b->y();
+}
+
 View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
  {
      activeDragging = false;
@@ -234,6 +239,8 @@ void View::loadTemplate(QString _design, QString _view){
     int x=50;
     int y=50;
     
+    QList<QPair<int, TemplateWidget *> > tabOrder;
+    
     try {
         Document templateDoc = findTemplate();
         QVariantMap templateMap = templateDoc.getMap();
@@ -273,6 +280,8 @@ void View::loadTemplate(QString _design, QString _view){
             widget->loadConfiguration(field);
             widget->show();
             widgets.push_back(widget);
+            
+            tabOrder.append(qMakePair(y, widget));
         }
     } catch (DocumentNotFoundException) {
         /* None found, generate one */
@@ -313,8 +322,7 @@ void View::loadTemplate(QString _design, QString _view){
                                 } else {
                                     Grid* grid = new Grid(this);
                                     QVariantMap valMap = val.toMap();
-					qDebug() << valMap.keys();
-                                    grid->setColumnHeaders(valMap.keys());
+					                grid->setColumnHeaders(valMap.keys());
                                     editor = grid;
                                 }
                             }
@@ -329,7 +337,9 @@ void View::loadTemplate(QString _design, QString _view){
                         widget->setGeometry(x,y,hint.width(), hint.height());
                         widget->show();
                         widgets.push_back(widget);
-                
+                        
+                        tabOrder.append(qMakePair(y, widget));
+                                        
                         y += widget->sizeHint().height();
                     }
                 }
@@ -339,22 +349,28 @@ void View::loadTemplate(QString _design, QString _view){
             }
         }
     }
+    
+    /* Sort the tab order list and use it to set the tab orders on each widget */
+    /*qSort(tabOrder.begin(), tabOrder.end(), widgetLocationSort);
+    int i = 0;
+    
+    for(; i<tabOrder.size()-1; i++){
+        qDebug() << tabOrder[i].second->getField();
+        QWidget::setTabOrder(tabOrder[i].second->getEditor(), tabOrder[i+1].second->getEditor());
+    }*/
 }
 
 
 void View::saveTemplate(){
     
     QList<QVariant> fields = QList<QVariant>();
-	
+	qSort(widgets.begin(), widgets.end(), widgetLocationSort);
     for(int i=0; i<widgets.size(); i++){
         QVariantMap fieldMap = QVariantMap();
         TemplateWidget* widget = widgets[i];
-        
         QVariant var = widget->saveConfiguration();
-        
         fields.append(var);   
     }
-    
     
     QVariantMap _template = QVariantMap();
     _template["fields"] = QVariant(fields);
