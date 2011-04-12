@@ -20,7 +20,6 @@ ListConfigurationDialog::ListConfigurationDialog() {
     edit = new QLineEdit;
     QPushButton* button = new QPushButton(tr("Add"));
     
-    QPushButton* deleteButton = new QPushButton(tr("Delete"));
     QPushButton* okButton = new QPushButton(tr("Ok"));
     QPushButton* cancelButton = new QPushButton(tr("Cancel"));
     

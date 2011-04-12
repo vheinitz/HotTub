@@ -90,6 +90,7 @@ void LineEdit::setBackgroundColor(QColor color){
 }
 
 void LineEdit::textChanged(const QString &text){
+    Q_UNUSED(text);
     setBackgroundColor(QColor(255,229,229));
 }
 

@@ -26,9 +26,10 @@ QString Editor::getField(){
 }
 
 void Editor::saveConfiguration(QVariantMap& map){
+    Q_UNUSED(map);
 
 }
 
 void Editor::loadConfiguration(QVariant& var){
-
+    Q_UNUSED(var);
 }

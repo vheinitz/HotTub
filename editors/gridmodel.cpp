@@ -23,8 +23,8 @@ QVariant GridModel::getVariant(){
 }
 
 void GridModel::setHeaders(QStringList _headers){
-    /*headers = _headers;
-    emit layoutChanged();*/
+    headers = _headers;
+    emit layoutChanged();
 }
 
 int GridModel::rowCount(const QModelIndex &index) const {
@@ -57,6 +57,7 @@ QVariant GridModel::data(const QModelIndex &index, int role) const {
 }
 
 bool GridModel::setData(const QModelIndex& index, const QVariant& value, int role)  {
+    Q_UNUSED(role);
     if ( index.row() >= list.size() ) {
         QVariantMap map = QVariantMap();
         map[headers[index.column()]] = value;

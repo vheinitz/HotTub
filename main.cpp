@@ -173,6 +173,7 @@ void MainWindow::loadViewConfiguration(){
 }
 
 void MainWindow::loadSelectedView(const QString& selectedView){
+    Q_UNUSED(selectedView);
     if ( view->hasChanges() ) {
         QMessageBox msgBox;
         msgBox.setText("The document has been modified.");
