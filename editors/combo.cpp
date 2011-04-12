@@ -14,6 +14,8 @@ Combo::Combo(QWidget *parent) : Editor(parent) {
     
     dlg = new ListConfigurationDialog();
     connect(dlg, SIGNAL(accepted()), this, SLOT(comboConfigAccepted()));
+
+    action = NULL;
 }
 
 void Combo::setMargins(int top, int right, int bottom, int left){
@@ -62,7 +64,9 @@ void Combo::addConfigurationAction(QToolBar *toolbar){
 }
 
 void Combo::removeConfigurationAction(QToolBar *toolbar){
-	toolbar->removeAction(action);
+	if ( action != NULL ){
+        toolbar->removeAction(action);
+    }    
 }
 
 void Combo::configureItems(){
