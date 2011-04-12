@@ -46,6 +46,7 @@ void Model::loadView( QString database, QString design, QString view, QString st
    
     documents.clear();
     columns.clear();
+    hiddenColumns.clear();
     QList<QVariant> results = couch.getView(database, design, view, startKeyVariant, endKeyVariant, descending, 26, true, startKeyDocId);
     
     for(int i=0; i<results.length() && i<25; i++){
@@ -91,7 +92,6 @@ void Model::loadView( QString database, QString design, QString view, QString st
         if ( documents.length() > 0 ) {
             Document doc = documents[0];
             QVariantMap fields = doc.getMap();
-            
             foreach(QString key, fields.keys() ){
                 if ( key != "_id" && key != "_rev" && key != "_attachments" ) {
                     QVariant val = fields[key];
