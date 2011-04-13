@@ -596,7 +596,6 @@ void View::addField(){
 
 void View::resizeEvent(QResizeEvent *event){
     Q_UNUSED(event);
-    
     attachments->setGeometry(0,height(),width(),100);
 }
 
@@ -813,10 +812,12 @@ void View::mouseMoveEvent( QMouseEvent *event ) {
         int width = qMax(actionWidget->minimumWidth(), event->pos().x() - actionWidget->x());
         int height = qMax(actionWidget->minimumHeight(), event->pos().y() - actionWidget->y());
         actionWidget->setGeometry(actionWidget->x(), actionWidget->y(), width, height );
+        toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
         return;
     } else if ( activeAction && action == RESIZE_WIDTH ) {
         int width = qMax(actionWidget->minimumWidth(), event->pos().x() - actionWidget->x());
         actionWidget->setGeometry(actionWidget->x(), actionWidget->y(), width, actionWidget->height() );
+        toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
         return;
     } else if ( activeAction && action == RESIZE_HEIGHT ) {
         int height = qMax(actionWidget->minimumHeight(), event->pos().y() - actionWidget->y());
@@ -827,6 +828,8 @@ void View::mouseMoveEvent( QMouseEvent *event ) {
     
     if ( activeDragging ) {
         activeWidget->move(event->pos().x()-offsetX, event->pos().y()-offsetY);
+        toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
+        
         
     }
         
@@ -851,12 +854,14 @@ void View::mouseMoveEvent( QMouseEvent *event ) {
         
                 if ( abs(hint - (event->pos().x() + activeWidgetHintX) + offsetX ) < THRESHOLD ) {
                     activeWidget->move(hint - activeWidgetHintX, activeWidget->y());
+                    toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
                     hintX = hint;
                 }
             
                 hint = widgets[i]->getTopAlignmentHint() + widgets[i]->y();
                 if ( abs( hint - (event->pos().y() + activeWidgetHintY) + offsetY ) < THRESHOLD ) {
                     activeWidget->move(activeWidget->x(), hint - activeWidgetHintY);
+                    toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
                     hintY = hint;
                 }
             
@@ -864,10 +869,12 @@ void View::mouseMoveEvent( QMouseEvent *event ) {
                 if ( hintX > -1 ) {
                     if ( abs(event->pos().y() - widgets[i]->y() - widgets[i]->height() - offsetY) < THRESHOLD ) {
                         activeWidget->move(activeWidget->x(), widgets[i]->y() + widgets[i]->height());
+                        toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
                     }
            
                     if ( abs(event->pos().y() - offsetY - widgets[i]->y() + activeWidget->height() ) < THRESHOLD ) {
                         activeWidget->move(activeWidget->x(), widgets[i]->y() - activeWidget->height());
+                        toolbar->move(selectedWidget->width()+selectedWidget->x()-toolbar->width(), selectedWidget->y()-toolbar->height());
                     }
                 }
             }
