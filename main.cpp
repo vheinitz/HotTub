@@ -68,6 +68,9 @@ MainWindow::MainWindow() : QMainWindow() {
 
     layout->addLayout(leftLayout, 0, 0);
     layout->addWidget(view, 0, 1);
+    
+    layout->setColumnStretch(0,0);
+    layout->setColumnStretch(1,1);
     QWidget *mainWidget = new QWidget;
     mainWidget->setLayout(layout);
     setCentralWidget(mainWidget);
