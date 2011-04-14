@@ -9,6 +9,11 @@ INCLUDEPATH += . qcouch editors qcouch/qjson
 
 QT += network
 CONFIG += debug
+CONFIG += create_prl
+
+windows: {
+  DEFINES += QJSON_MAKEDLL
+}
 
 # Input
 HEADERS += action.h \
