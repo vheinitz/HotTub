@@ -180,7 +180,7 @@ void Attachments::mouseDoubleClickEvent(QMouseEvent *event){
         
     if ( col < files.length() ) {
         AttachedObject obj = files[col];
-        QDesktopServices::openUrl(QUrl("file://"+obj.downloadFileName));
+        QDesktopServices::openUrl(QUrl("file:///"+obj.downloadFileName));
     }
 }
 
