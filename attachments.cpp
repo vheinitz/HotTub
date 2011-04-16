@@ -9,7 +9,7 @@
 using namespace std;
 
 
-Attachments::Attachments(QWidget* parent) : QWidget(parent) {
+Attachments::Attachments(QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch) {
     selectedColumn = -1;
     
     contextMenu = new QMenu();
@@ -179,7 +179,8 @@ void Attachments::mouseDoubleClickEvent(QMouseEvent *event){
     int col = event->x() / columnWidth;
         
     if ( col < files.length() ) {
-        
+        AttachedObject obj = files[col];
+        QDesktopServices::openUrl(QUrl("file://"+obj.downloadFileName));
     }
 }
 
@@ -282,7 +283,11 @@ void Attachments::loadDocument(Document &doc){
         AttachedObject obj;
         obj.name = attachment;
         obj.type = ATTACHMENT;
+        obj.downloadFileName = couch.getAttachment(doc.getSourceDatabase(), doc.getId(), attachment);
+        
         files.append(obj);
+        
+        
     }
     
     /*vector<Attachment> attachments = doc.getAllAttachments();

@@ -2,6 +2,7 @@
 
 #include "qcouch.h"
 #include "document.h"
+#include "qdownloader.h"
 
 
 #include <QString>
@@ -13,6 +14,9 @@
 #include <QTimer>
 #include <QDebug>
 #include <QEventLoop>
+#include <QFile>
+#include <QTemporaryFile>
+#include <QDir>
 
 #include "qjson/parser.h"
 #include "qjson/serializer.h"
@@ -54,6 +58,7 @@ void QCouch::connect(QString _host, int _port){
     QNetworkReply *reply = manager->get(QNetworkRequest(url));
     QObject::connect(reply, SIGNAL(finished()), this, SLOT(connectFinished()));
     
+    
 }
 
 QString QCouch::getHost(){
@@ -65,7 +70,7 @@ void QCouch::checkErrors(QVariant var){
     QVariantMap map = var.toMap();
     
     if ( map.find("error") != map.end() ) {
-	throw CouchException(map["reason"].toString());
+        throw CouchException(map["reason"].toString());
     }
 }
 
@@ -180,8 +185,8 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
 
     if ( startkey.isValid() ) {
         params.append("startkey=");
-	const QByteArray startKeyBytes = serializer.serialize(startkey);
-	QString encodedStartKey = QUrl::toPercentEncoding(startKeyBytes);
+        const QByteArray startKeyBytes = serializer.serialize(startkey);
+        QString encodedStartKey = QUrl::toPercentEncoding(startKeyBytes);
         params.append(encodedStartKey);
     }
     if ( endkey.isValid() ){ 
@@ -189,8 +194,8 @@ QList<QVariant> QCouch::getView(QString database, QString design, QString view, 
             params.append("&");
         }
         params.append("endkey=");
-	const QByteArray endKeyBytes = serializer.serialize(endkey);
-	QString encodedEndKey = QUrl::toPercentEncoding(endKeyBytes);
+        const QByteArray endKeyBytes = serializer.serialize(endkey);
+        QString encodedEndKey = QUrl::toPercentEncoding(endKeyBytes);
         params.append(encodedEndKey);
     }
     
@@ -312,18 +317,25 @@ void QCouch::downloadCompleteSlot(){
     emit downloadComplete();
 }
 
-void QCouch::getAttachment(QString database, QString id, QString name){
-    QNetworkRequest request;
+QString QCouch::getAttachment(QString database, QString id, QString name){
     QUrl url;
-    
     url.setUrl(host + "/" + database + "/" + id + "/" + name);
     url.setPort(port);
+    QDir dir;
+    dir.mkpath(QDir::tempPath()+"/"+id);
     
-    request.setUrl(url);
-    QNetworkReply *reply = manager->get( request );
+    QEventLoop loop;
     
-    QObject::connect(reply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(downloadProgressSlot(qint64, qint64)));
-    QObject::connect(reply, SIGNAL(finished()), this, SLOT(downloadCompleteSlot()));
+    
+    QFile* file = new QFile(QDir::tempPath() + "/" + id + "/" + name);
+    QDownloader* downloader = new QDownloader(manager, url, file );
+    QObject::connect(downloader, SIGNAL(finished()), &loop, SLOT(quit()));
+    downloader->beginDownload();
+    
+    loop.exec();
+    qDebug() << file->fileName();
+    return file->fileName();
+    
 }
 
 void QCouch::putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source) {

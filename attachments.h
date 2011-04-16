@@ -5,6 +5,7 @@
 
 #include <QtGui>
 #include "qcouch/document.h"
+#include "qcouch/qcouch.h"
 
 enum AttachmentType {
     ATTACHMENT,
@@ -15,13 +16,14 @@ typedef struct {
     QString name;
     AttachmentType type;
     QUrl url;
+    QString downloadFileName;
 } AttachedObject;
 
 class Attachments : public QWidget {
     Q_OBJECT
     
 public:
-    Attachments(QWidget *parent);
+    Attachments(QCouch& couch, QWidget *parent);
     QSize sizeHint();
     void paintEvent(QPaintEvent *event);
     void acceptUrl(QUrl url);
@@ -43,7 +45,7 @@ private slots:
     void deleteObject();
     
 private:
-    
+    QCouch& couch;
     bool hasSelectedObject();
     
     QList<AttachedObject> files;

@@ -56,7 +56,7 @@ View::View( QCouch& couch, QWidget* parent) : QWidget(parent), couch(couch)
      
      setAcceptDrops(true);
      
-     attachments = new Attachments(this);
+     attachments = new Attachments(couch, this);
      attachments->setGeometry(0,height(),width(),100);
      attachments->show();
      

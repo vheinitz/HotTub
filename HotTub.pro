@@ -37,6 +37,7 @@ HEADERS += action.h \
            editors/textedit.h \
            qcouch/document.h \
            qcouch/qcouch.h \
+           qcouch/qdownloader.h \
            qcouch/qjson/json_parser.hh \
            qcouch/qjson/json_scanner.h \
            qcouch/qjson/location.hh \
@@ -70,6 +71,7 @@ SOURCES += app.cpp \
            editors/textedit.cpp \
            qcouch/document.cpp \
            qcouch/qcouch.cpp \
+           qcouch/qdownloader.cpp \
            qcouch/qjson/json_parser.cc \
            qcouch/qjson/json_scanner.cpp \
            qcouch/qjson/parser.cpp \

@@ -6,6 +6,7 @@
 #include "document.h"
 #include <QNetworkAccessManager>
 #include <QStringList>
+#include <QSignalMapper>
 
 #include "qjson/parser.h"
 #include "qjson/serializer.h"
@@ -69,7 +70,7 @@ public:
     bool deleteDocument(QString database, QString id, QString revision);
     
     void putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source); 
-    void getAttachment(QString database, QString id, QString name);
+    QString getAttachment(QString database, QString id, QString name);
     
     QString getUUID();
     
@@ -80,7 +81,6 @@ private slots:
     void uploadCompleteSlot();
     void downloadProgressSlot(qint64, qint64);
     void downloadCompleteSlot();
-    
 signals:
     void connected();
     void downloadProgress(qint64, qint64);
@@ -103,6 +103,7 @@ private:
     QNetworkAccessManager *manager;
     QJson::Parser parser;
     QJson::Serializer serializer;
+    
 };
 
 
