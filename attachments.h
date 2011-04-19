@@ -16,6 +16,9 @@ typedef struct {
     QString name;
     AttachmentType type;
     QUrl url;
+    QString database;
+    QString id;
+    QString revision;
     QString downloadFileName;
 } AttachedObject;
 

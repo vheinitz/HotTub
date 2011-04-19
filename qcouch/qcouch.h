@@ -71,6 +71,7 @@ public:
     
     void putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source); 
     QString getAttachment(QString database, QString id, QString name);
+    void removeAttachment(QString database, QString id, QString revision, QString name);
     
     QString getUUID();
     

@@ -36,7 +36,7 @@ bool DateEdit::allowResizeHeight(){
 }
 
 QSize DateEdit::sizeHint(){
-    return QSize(120, edit->sizeHint().height());
+    return edit->sizeHint();
 }   
 
 int DateEdit::getLeftAlignmentHint(){

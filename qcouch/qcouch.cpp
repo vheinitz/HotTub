@@ -293,7 +293,8 @@ QString QCouch::updateDocument(QString database, QString id, QString revision, Q
 
 
 bool QCouch::deleteDocument(QString database, QString id, QString revision){
-    QNetworkReply *reply = doDelete("/" + database + "/" + id + "?rev=" + revision);
+    QString encodedId = QUrl::toPercentEncoding(id);
+    QNetworkReply *reply = doDelete("/" + database + "/" + encodedId + "?rev=" + revision);
 
     QVariant var = parser.parse(reply->readAll());
     checkErrors(var);
@@ -319,7 +320,8 @@ void QCouch::downloadCompleteSlot(){
 
 QString QCouch::getAttachment(QString database, QString id, QString name){
     QUrl url;
-    url.setUrl(host + "/" + database + "/" + id + "/" + name);
+    QString encodedId = QUrl::toPercentEncoding(id);
+    url.setUrl(host + "/" + database + "/" + encodedId + "/" + name);
     url.setPort(port);
     QDir dir;
     dir.mkpath(QDir::tempPath()+"/"+id);
@@ -333,7 +335,6 @@ QString QCouch::getAttachment(QString database, QString id, QString name){
     downloader->beginDownload();
     
     loop.exec();
-    qDebug() << file->fileName();
     return file->fileName();
     
 }
@@ -357,6 +358,15 @@ void QCouch::putAttachment(QString database, QString id, QString revision, QStri
     
     loop.exec();
 }
+
+void QCouch::removeAttachment(QString database, QString id, QString revision, QString name) {
+    QString encodedId = QUrl::toPercentEncoding(id);
+    QNetworkReply *reply = doDelete("/" + database + "/" + encodedId + "/" + name + "?rev=" + revision);
+    
+    QVariant var = parser.parse(reply->readAll());
+    checkErrors(var);
+}
+
 
 
 QString QCouch::getUUID(){

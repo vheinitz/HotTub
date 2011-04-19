@@ -17,9 +17,9 @@ public:
 private slots:
     void dataReady();
     void downloadComplete();
-    void slotError(QNetworkReply::NetworkError);
 signals:
     void finished();
+    void downloadError(QNetworkReply::NetworkError);
 
     
 private:

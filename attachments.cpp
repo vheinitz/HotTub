@@ -210,9 +210,7 @@ void Attachments::mouseMoveEvent(QMouseEvent *event){
     
     
     QList<QUrl> urls;
-    urls.append(files[i].url);
-    QString str = files[i].url.toString();
-    cout << str.toStdString() << endl;
+    urls.append(files[i].downloadFileName);
     mimeData->setUrls(urls);
     drag->setMimeData(mimeData);
     
@@ -221,11 +219,7 @@ void Attachments::mouseMoveEvent(QMouseEvent *event){
     drag->setHotSpot(QPoint(dragStartPosition.x()-selectedColumn*columnWidth+15-leftmargin ,dragStartPosition.y()));
     
     Qt::DropAction dropAction = drag->exec(Qt::MoveAction);
-    if ( dropAction == Qt::MoveAction ) {
-        files.removeAt(i);
-        selectedColumn = -1;
-        update();
-    }
+    
 }
 
 
@@ -264,7 +258,8 @@ bool Attachments::hasSelectedObject(){
 
 void Attachments::deleteObject(){
     if ( hasSelectedObject() ) {
-        
+        AttachedObject obj = files[selectedColumn];
+        couch.removeAttachment(obj.database, obj.id, obj.revision, obj.name );
         files.removeAt(selectedColumn);
         update();
     }
@@ -283,30 +278,14 @@ void Attachments::loadDocument(Document &doc){
         AttachedObject obj;
         obj.name = attachment;
         obj.type = ATTACHMENT;
+        obj.database = doc.getSourceDatabase();
+        obj.id = doc.getId();
+        obj.revision = doc.getRevision();
         obj.downloadFileName = couch.getAttachment(doc.getSourceDatabase(), doc.getId(), attachment);
-        
         files.append(obj);
         
-        
     }
-    
-    /*vector<Attachment> attachments = doc.getAllAttachments();
-        for(unsigned int i=0; i<attachments.size(); i++){
-            AttachedObject obj;
-        
-            obj.name = QString(attachments[i].getID().c_str());
-            obj.type = ATTACHMENT;
-            string url = "http://localhost:5984/addresses/";
-            url.append(doc.getID());
-            url.append("/");
-            url.append(attachments[i].getID());
-            obj.url = QUrl(QString(url.c_str()));
-            
-            files.append(obj);
-            
-        
-        }*/
-        update();
+    update();
     
 }
 
