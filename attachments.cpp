@@ -2,6 +2,7 @@
 
 
 #include <QtGui>
+#include <QFile>
 #include "attachments.h"
 #include <iostream>
 #include "qcouch/document.h"
@@ -281,7 +282,13 @@ void Attachments::loadDocument(Document &doc){
         obj.database = doc.getSourceDatabase();
         obj.id = doc.getId();
         obj.revision = doc.getRevision();
-        obj.downloadFileName = couch.getAttachment(doc.getSourceDatabase(), doc.getId(), attachment);
+        
+        QDir dir;
+        dir.mkpath(QDir::tempPath()+"/.hottub/"+doc.getId());
+        
+        QFile* file = new QFile(QDir::tempPath() + "/.hottub/" + doc.getId() + "/" + attachment);
+        qDebug() << "Downloading to " << file->fileName();
+        obj.downloadFileName = couch.getAttachment(doc.getSourceDatabase(), doc.getId(), attachment, file);
         files.append(obj);
         
     }

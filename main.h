@@ -38,6 +38,7 @@ private:
     void getViews(QString&);
     void loadViewConfiguration();
     void closeEvent(QCloseEvent *event);
+    void removeDirectory(QString);
     
     QDialog *dlg;
     QComboBox *viewsCombo;

@@ -308,7 +308,29 @@ void MainWindow::columnConfigAccepted(){
 
 }
 
+
+void MainWindow::removeDirectory(QString dirName)
+{
+    QDir dir(dirName);
+    
+    QFileInfoList files = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files);
+    for(int file = 0; file < files.count(); file++) {
+        dir.remove(files.at(file).fileName());
+    }
+    
+    QFileInfoList dirs = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Dirs);
+    for(int dir = 0; dir < dirs.count(); dir++)  {
+        this->removeDirectory(dirs.at(dir).absoluteFilePath ());
+    }
+    
+    dir.rmdir(dir.path());
+}
+
 void MainWindow::closeEvent(QCloseEvent *event){
+    
+    /* Clean up downloaded attachments */
+    removeDirectory(QDir::tempPath()+"/.hottub");
+    
     if ( view->hasChanges() ) {
         QMessageBox msgBox;
         msgBox.setText("The document has been modified.");

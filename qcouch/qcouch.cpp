@@ -318,18 +318,13 @@ void QCouch::downloadCompleteSlot(){
     emit downloadComplete();
 }
 
-QString QCouch::getAttachment(QString database, QString id, QString name){
+QString QCouch::getAttachment(QString database, QString id, QString name, QFile *file){
     QUrl url;
     QString encodedId = QUrl::toPercentEncoding(id);
     url.setUrl(host + "/" + database + "/" + encodedId + "/" + name);
     url.setPort(port);
-    QDir dir;
-    dir.mkpath(QDir::tempPath()+"/"+id);
     
     QEventLoop loop;
-    
-    
-    QFile* file = new QFile(QDir::tempPath() + "/" + id + "/" + name);
     QDownloader* downloader = new QDownloader(manager, url, file );
     QObject::connect(downloader, SIGNAL(finished()), &loop, SLOT(quit()));
     downloader->beginDownload();

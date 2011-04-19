@@ -7,6 +7,7 @@
 #include <QNetworkAccessManager>
 #include <QStringList>
 #include <QSignalMapper>
+#include <QFile>
 
 #include "qjson/parser.h"
 #include "qjson/serializer.h"
@@ -70,7 +71,7 @@ public:
     bool deleteDocument(QString database, QString id, QString revision);
     
     void putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source); 
-    QString getAttachment(QString database, QString id, QString name);
+    QString getAttachment(QString database, QString id, QString name, QFile* file);
     void removeAttachment(QString database, QString id, QString revision, QString name);
     
     QString getUUID();
