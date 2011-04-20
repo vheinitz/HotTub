@@ -408,7 +408,12 @@ Document View::findTemplate(){
     
 }
 
-bool View::loadDocument(Document doc, bool force){
+bool View::loadDocument(QString database, QString id){
+    Document doc = couch.getDocument(database, id);
+    return loadDocument(doc, false);
+}
+
+bool View::loadDocument(Document doc, bool force, bool skipAttachments){
     
     if ( !force && hasChanges() ) {
         QMessageBox msgBox;
@@ -439,28 +444,25 @@ bool View::loadDocument(Document doc, bool force){
     }
     
     	
-    attachments->loadDocument(doc);
-    
+    if ( !skipAttachments ) {
+        attachments->loadDocument(doc);
+    }
     hasDocument = true;
     return true;
 }
 
 void View::fileAttached(QUrl url) {
-    
     QString canonicalFilename = url.toLocalFile();
     QString filename = canonicalFilename.split("/").last();
     QFile file(canonicalFilename);
     if ( file.open(QIODevice::ReadOnly) ) {
         QString revision = couch.putAttachment(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), filename, &file);
         file.close();
-        
-        Document doc = couch.getDocument(currentDoc.getSourceDatabase(), currentDoc.getId());
-        loadDocument(doc, true);
-        emit documentUpdated(doc);
-        
+        currentDoc.setRevision(revision);
+        loadDocument(currentDoc, true, true);
+        emit documentUpdated(currentDoc);
+    
     }
-    
-    
 }
 
 void View::removeAllWidgets(){

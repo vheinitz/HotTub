@@ -167,7 +167,7 @@ void MainWindow::documentAdded(Document& doc){
 void MainWindow::listSelectionChanged(int index){
     if( index >= 0 ){
       Document doc = model->getDocument(index);
-      view->loadDocument(doc);
+      view->loadDocument(doc.getSourceDatabase(), doc.getId());
     }
 }
 
