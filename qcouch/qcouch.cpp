@@ -334,7 +334,10 @@ QString QCouch::getAttachment(QString database, QString id, QString name, QFile 
     
 }
 
-void QCouch::putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source) {
+/*
+  Returns the new revision
+ */
+QString QCouch::putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source) {
     QNetworkRequest request;
     QUrl url;
     
@@ -352,6 +355,13 @@ void QCouch::putAttachment(QString database, QString id, QString revision, QStri
     QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
     
     loop.exec();
+    
+    QVariant ret = parser.parse(reply->readAll());
+    checkErrors(ret);
+    
+    QVariantMap map = ret.toMap();
+    return map["rev"].toString();
+    
 }
 
 void QCouch::removeAttachment(QString database, QString id, QString revision, QString name) {

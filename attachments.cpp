@@ -187,8 +187,6 @@ void Attachments::mouseDoubleClickEvent(QMouseEvent *event){
 
 
 void Attachments::mouseMoveEvent(QMouseEvent *event){
-    
-    
     if (!(event->buttons() & Qt::LeftButton))
         return;
     if ((event->pos() - dragStartPosition).manhattanLength()
@@ -219,7 +217,7 @@ void Attachments::mouseMoveEvent(QMouseEvent *event){
     drag->setPixmap(map);
     drag->setHotSpot(QPoint(dragStartPosition.x()-selectedColumn*columnWidth+15-leftmargin ,dragStartPosition.y()));
     
-    Qt::DropAction dropAction = drag->exec(Qt::MoveAction);
+    drag->exec(Qt::MoveAction);
     
 }
 

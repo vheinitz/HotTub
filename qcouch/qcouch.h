@@ -70,7 +70,7 @@ public:
     QString updateDocument(QString database, QString id, QString revision, QVariant var); 
     bool deleteDocument(QString database, QString id, QString revision);
     
-    void putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source); 
+    QString putAttachment(QString database, QString id, QString revision, QString name, QIODevice* source); 
     QString getAttachment(QString database, QString id, QString name, QFile* file);
     void removeAttachment(QString database, QString id, QString revision, QString name);
     

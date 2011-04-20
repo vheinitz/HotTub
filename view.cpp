@@ -451,8 +451,13 @@ void View::fileAttached(QUrl url) {
     QString filename = canonicalFilename.split("/").last();
     QFile file(canonicalFilename);
     if ( file.open(QIODevice::ReadOnly) ) {
-        couch.putAttachment(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), filename, &file);
+        QString revision = couch.putAttachment(currentDoc.getSourceDatabase(), currentDoc.getId(), currentDoc.getRevision(), filename, &file);
         file.close();
+        
+        Document doc = couch.getDocument(currentDoc.getSourceDatabase(), currentDoc.getId());
+        loadDocument(doc, true);
+        emit documentUpdated(doc);
+        
     }
     
     
