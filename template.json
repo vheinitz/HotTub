@@ -1,8 +1,0 @@
-{
-  "_id": "_design/templates",
-  "views": {
-     "all":{
-       "map":"function(doc) {if ( doc.type && doc.type == 'template' ) {emit([doc.design, doc.view], null);}}"
-     }
-  }
-}
