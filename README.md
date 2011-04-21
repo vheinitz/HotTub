@@ -12,8 +12,8 @@ Building
 
 Hot Tub is based on Qt.  If you do not have the Qt SDK available on your system, you must get it first, then:
 
-qmake
-make  (nmake for Windows)
+    1. qmake
+    2. make  (nmake for Windows)
 
 
 Enjoy!
