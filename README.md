@@ -18,4 +18,12 @@ Hot Tub is based on Qt.  If you do not have the Qt SDK available on your system,
     2. make  (nmake for Windows)
 
 
+Future Enhancements
+-------------------
+
+    Conflict resolution
+    Scripting environment for assigning default values to new documents
+    
+Your feature request, bug reports, and contributions are welcome.
+
 Enjoy!
