@@ -140,6 +140,7 @@ void MainWindow::updateView(){
     QString startkey = startKeyEdit->text();
     QString endkey = endKeyEdit->text();
     bool desc = descending->checkState() == Qt::Checked;
+	model->resetPages();
     model->loadView( selectedDatabase, design, currentView, startkey, endkey, desc);
     loadViewConfiguration();
  

@@ -158,6 +158,10 @@ bool Model::hasPreviousPage(){
     return !previousStack.isEmpty();
 }
 
+void Model::resetPages(){
+	previousStack.clear();
+}
+
 void Model::nextPage(QString database, QString design, QString view, bool descending ){
     if ( hasNextPage() ) {
         previousStack.push(qMakePair(currentStartKey, currentStartKeyDocId));

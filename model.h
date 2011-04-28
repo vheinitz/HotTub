@@ -49,6 +49,7 @@ public:
     void loadView( QString database, QString design, QString view, QString startkey, QString endkey, bool descending, QString startKeyDocId="" );
     void nextPage( QString database, QString design, QString view, bool descending );
     void previousPage( QString database, QString design, QString view, bool descending );
+	void resetPages();
     bool hasNextPage();
     bool hasPreviousPage();
     Document getDocument(int);
