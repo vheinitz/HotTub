@@ -94,8 +94,7 @@ MainWindow::MainWindow() : QMainWindow() {
     
     couch.connect("http://localhost", 5984);
     
-    selectedDatabase = "addresses";
-    //doDatabaseSelection();
+    doDatabaseSelection();
 
     view->setDatabase(selectedDatabase);
     getViews(selectedDatabase);
