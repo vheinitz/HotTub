@@ -102,3 +102,7 @@ void ListEdit::reset(){
     model->setStringList(list);
 }
 
+
+void ListEdit::setDisabled(bool disabled){
+    view->setDisabled(disabled);
+}

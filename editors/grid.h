@@ -53,6 +53,8 @@ public:
     void saveConfiguration(QVariantMap& map);
     void loadConfiguration(QVariant&);
     void setColumnHeaders(QStringList);
+    void setDisabled(bool);
+
 private slots:
     void columnsConfigAccepted();
     void configureItems();

@@ -41,6 +41,8 @@ public:
     void saveChanges(Document& doc);
     bool hasChanges();
     void reset();
+    void setDisabled(bool);
+
 private slots:
     void textChanged(const QString &);
 private:

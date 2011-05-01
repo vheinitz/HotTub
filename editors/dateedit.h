@@ -42,6 +42,7 @@ public:
     QString type();
     bool hasChanges();
     void reset();
+    void setDisabled(bool);
 private:
     QDateTimeEdit *edit;
     QLayout *layout;

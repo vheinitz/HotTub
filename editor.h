@@ -38,6 +38,7 @@ public:
     virtual QSize sizeHint() = 0;
     virtual int getLeftAlignmentHint() = 0;
     virtual QString type() = 0;
+    virtual void setDisabled(bool enable) = 0;
     void setField(QString);
     QString getField();
     

@@ -180,3 +180,8 @@ void Grid::setBackgroundColor(QColor color){
 }
 
 
+void Grid::setDisabled(bool disabled){
+    view->setDisabled(disabled);
+}
+
+

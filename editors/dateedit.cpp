@@ -90,3 +90,8 @@ QString DateEdit::type(){
     return "dateedit";
 
 }
+
+
+void DateEdit::setDisabled(bool disabled){
+    edit->setDisabled(disabled);
+}

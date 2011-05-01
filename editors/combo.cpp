@@ -149,6 +149,10 @@ QString Combo::type(){
 
 
 
+void Combo::setDisabled(bool disabled){
+    edit->setDisabled(disabled);
+}
+
 
             
             

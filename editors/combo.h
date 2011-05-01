@@ -51,6 +51,7 @@ public:
     void loadConfiguration(QVariant&);
     void paintEvent(QPaintEvent* event);
     bool isDirty();
+    void setDisabled(bool);
 private slots:
     void configureItems();
     void comboConfigAccepted();

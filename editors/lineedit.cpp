@@ -113,3 +113,8 @@ void LineEdit::textChanged(const QString &text){
 
 
 
+void LineEdit::setDisabled(bool disabled){
+    edit->setDisabled(disabled);
+}
+
+

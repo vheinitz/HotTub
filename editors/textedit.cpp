@@ -100,3 +100,7 @@ void TextEdit::setBackgroundColor(QColor color){
 void TextEdit::textChanged(){
     setBackgroundColor(QColor(255,229,229));
 }
+
+void TextEdit::setDisabled(bool disabled){
+    edit->setDisabled(disabled);
+}

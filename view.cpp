@@ -286,6 +286,8 @@ void View::loadTemplate(QString _design, QString _view){
                 editor = new Grid(this);
             }
             
+            editor->setDisabled(true);
+            
             TemplateWidget *widget = new TemplateWidget(editor, this);
             widget->setLabel(key);
             widget->setField(key);
@@ -458,6 +460,7 @@ bool View::loadDocument(Document doc, bool force, bool skipAttachments){
     
     for (int i=0; i<widgets.size(); i++) {
         widgets[i]->loadDocument(doc);
+        widgets[i]->getEditor()->setDisabled(false);
     }
     
     	
