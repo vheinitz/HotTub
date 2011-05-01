@@ -8,4 +8,5 @@ object_script*
 *.swp
 *.xcodeproj
 Info.plist
+.DS_Store
 
