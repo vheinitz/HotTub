@@ -42,8 +42,6 @@ Attachments::Attachments(QCouch& couch, QWidget* parent) : QWidget(parent), couc
     connect(openAction, SIGNAL(triggered()), this, SLOT(openObject()));
     connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteObject()));
     
-    
-    
     contextMenu->addAction(openAction);
     contextMenu->addAction(deleteAction);
     contextMenu->addSeparator();
@@ -51,8 +49,27 @@ Attachments::Attachments(QCouch& couch, QWidget* parent) : QWidget(parent), couc
     
     columnWidth = iconWidth * 2;
     columnHeight = iconHeight * 1.5;
+
+	QHBoxLayout *layout = new QHBoxLayout;
+	layout->addStretch();
+	QPushButton* button = new QPushButton("Add");
+	connect(button, SIGNAL(clicked()), this, SLOT(addButtonClicked()));
+	layout->addWidget(button);
+	setLayout(layout);
     
     setAcceptDrops(true);
+}
+
+void Attachments::addButtonClicked(){
+	QFileDialog dialog(this);
+	dialog.setFileMode(QFileDialog::AnyFile);
+	QStringList selectedFiles;
+	if ( dialog.exec() ) {
+		selectedFiles = dialog.selectedFiles();
+	}
+	foreach(QString file, selectedFiles){
+		acceptUrl(file);
+	}
 }
 
 QSize Attachments::sizeHint(){
@@ -165,6 +182,11 @@ void Attachments::paintEvent(QPaintEvent *event){
     
 }
 
+
+void Attachments::acceptFileByName(QString filename){
+	QUrl url = QUrl::fromLocalFile(filename);
+	acceptUrl(url);
+}
 
 void Attachments::acceptUrl(QUrl url) {
     

@@ -47,6 +47,7 @@ public:
     QSize sizeHint();
     void paintEvent(QPaintEvent *event);
     void acceptUrl(QUrl url);
+	void acceptFileByName(QString filename);
     void mousePressEvent(QMouseEvent *event);
     void mouseDoubleClickEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
@@ -54,7 +55,6 @@ public:
     void dragEnterEvent(QDragEnterEvent *event);
     void dragMoveEvent(QDragMoveEvent *event);
     void dropEvent(QDropEvent *event);
-    
     void loadDocument(Document &);
 signals:
     void fileAttached(QUrl url);
@@ -63,6 +63,7 @@ private slots:
     void addFolder();
     void openObject();
     void deleteObject();
+	void addButtonClicked();
     
 private:
     QCouch& couch;
