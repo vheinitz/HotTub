@@ -129,9 +129,8 @@ void MainWindow::nextPage(){
 void MainWindow::previousPage(){
     bool desc = descending->checkState() == Qt::Checked;
     model->previousPage( selectedDatabase, design, currentView, desc);
-    if ( !model->hasPreviousPage() ) {
-        previousPageButton->setDisabled(true);
-    }
+	previousPageButton->setDisabled(!model->hasPreviousPage());
+	nextPageButton->setDisabled(!model->hasNextPage());
 }
 
 
